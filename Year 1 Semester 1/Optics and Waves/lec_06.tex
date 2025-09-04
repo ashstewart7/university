@@ -1,0 +1,113 @@
+% !TeX root = main.tex
+\lecture{6}{Fri 17 Oct 2025 13:00}{Standing Waves 2 Electric Boogaloo}
+
+\section*{Recap}
+\[
+    \frac{\partial y}{\partial x} = 2 A k \cos(kx) \sin(\omega t)
+\]
+
+\[
+    \frac{\partial^2 y}{\partial x^2} = 2 A(-k^2) \sin (kx) \sin (\omega t)
+\]
+
+\[
+    \frac{\partial y}{\partial t} = 2 A \omega \sin (kx) \cos (\omega t)
+\]
+
+\[
+    \frac{\partial ^2 y}{\partial t^2} = 2A(-\omega^2)\sin (kx) \sin (\omega t)
+\]
+
+Therefore:
+
+\[
+  \frac{\frac{\partial^2 y}{\partial t^2}}{\frac{\partial^2 y}{\partial x^2}} = \frac{2A(-\omega^2)\sin (kx) \sin (\omega t)}{2A(-k^2)\sin (kx) \sin (\omega t)} = \frac{\omega^2}{k^2} = v^2  
+\]
+
+\[
+    \frac{\partial^2 y}{\partial x^2} =  \frac{1}{v^2} \frac{\partial^2 y}{\partial t^2}
+\]
+Therefore a standing wave still obeys the wave equation, as it must.
+
+
+\section*{Standing Wave Properties}
+\subsection*{Wavelength}
+Consider a horizontal string from $x = 0$ to $x = L$, with both ends fixed. We generate a sinusoidal wave pulse, which must satisfy:
+\[
+    y(x, t) = 2A \sin(kx) \sin(\omega t)
+\]
+
+We know at $x = L$ and $x = 0$, $y = 0$ at all times as fixed at this point. Therefore:
+
+$$kL = n \pi, (n \in \N)$$
+
+For $n = 1$, we have half a wavelength on the string:
+\[
+    \lambda = \frac{2L}{1} = 2L
+\]
+
+And this has a general form: $\lambda = \frac{2L}{n}$.
+
+\subsection*{Frequency}
+\[
+    f_n = \frac{v}{\lambda_n} = \frac{v}{\left(\frac{2L}{n}\right)} = \frac{nv}{2L}
+\]
+
+Crucially: 
+\[
+    f_1 = \frac{v}{2L}
+\]
+Is the first harmonic (or fundamental). $f_2 = 2f_1$ is the second harmonic, or first overtone, etc. All of these, $f_n$ where $n \in \N$ are called ``normal modes''. For each normal mode, the corresponding frequency is called the resonant frequency (natural frequency of the system).
+
+What happens if we try to create a standing wave where $\lambda \neq \frac{2L}{n}$? In short, we cannot. The system will reject any attempts to do so.
+
+\subsection*{Energy}
+Energy is proportional to $\omega^2$. Energy can only take certain discrete values (corresponding to $f_1, f_2, \ldots, f_n$), we find that the system has quantised possible values for energy.
+
+To generate a wave with a higher frequency we either have to use a shorter L, or a higher v. A higher v is achieved by using a lighter string or placing the system under higher tension.
+
+\section*{Sound Waves}
+\subsection*{Notation}
+Displacement of a sound wave is denoted:
+\[
+    s(x, t) = S_m \cos(kx - \omega t)
+\]
+
+And pressure is given by:
+\[
+    \Delta P(x, t) = \Delta P_m \sin(kx - \omega t)
+\]
+
+\section*{Different Boundary Conditions}
+The equations for standing waves given is only true for the boundary conditions of both ends fixed. If we vary these (for example left end fixed, right end not, wave initially travelling left) we get a different solution. For example, the first harmonic:
+\[
+    L = \frac{1}{4 \lambda_1}
+\]
+\[
+    f_1 = \frac{v}{4L}
+\]
+Where the left end forms a node (as required by boundary conditions) and the right end forms an antinode, as it is free to move. For the third harmonic:
+\[
+    L = \frac{3}{4 \lambda_3}
+\]
+\[
+    f_3 = \frac{3v}{4L} = 3 f_1
+\]
+And fifth:
+\[
+    L = \frac{5}{4 \lambda_5}
+\]
+\[
+    f_5 = \frac{5v}{4L} = 5f_1
+\]
+
+Notably, this system cannot support even harmonics.
+
+
+
+
+
+
+
+
+
