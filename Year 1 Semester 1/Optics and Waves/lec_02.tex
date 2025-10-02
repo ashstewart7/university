@@ -1,1 +1,96 @@
-\lecture{2}{Wed 01 Oct 2025 18:57}{}
+\lecture{2}{Thu 02 Oct 2025 13:00}{Wave Functions}
+
+\subsection*{Sine Waves}
+\paragraph{Mechanical Waves} A mechanical wave is a disturbance through a medium. It's formed of a single wave pulse or a periodic wave. 
+
+Mechanical Waves have the following properties:
+\begin{enumerate}
+    \item Transverse: Where displacement of the medium is perpendicular to the direction of propogation.
+    \item Longitudinal, displaccement of hte medium is in the same direction as propogation.
+    \item Propogation depends on the medium the wave moves through (i.e. density, rigidity)
+    \item The medium does not travel with the wave.
+    \item Waves have a magnitude and a direction.
+    \item The disturbance travels with a known exact speed.
+    \item Waves transport energy but not matter throughout the medium.
+\end{enumerate}
+
+
+\subsection*{Wave Functions}
+
+We want to define a wave function in terms of two variables, $x$ and $t$. In any given moment, if we consider a single point on the wave (i.e. $t = 0$), and wait a short while, the wave will have travelled to some $t = t_1 > 0$.
+
+In order to quantify displacement, we therefore want to specify both the time, and the displacement. This will let us find the wave speed, acceleration and the (new) wave number.
+
+We are also able to talk about the velocity and acceleration of individual particles on the wave.
+
+\subsection*{Wave Function for a Sine Wave}
+Consider a sine wave. We want to find a wave funtion in the form $y(x, t)$. Consider the particle at $x = 0$.
+
+We can express the wave function at this point as $y(x = 0, t) = A \cos \omega t$. However we want to expand this to any general point. Now consider a point (2) which is one wavelength away. We know the behaviour of particle 1 is mirrored by particle 2 (with a time lag).
+
+Since the string is initially at rest, it takes on period ($T$) for the propogation of the wave to reach point 2, therefore point 2 is lagging behind the motion of point 1 however. The wave equation is therefore (if particle two has $x = \lambda$) $y(x = \lambda, t) = A \cos (\omega t - \frac{\pi}{2})$. 
+
+For arbitrary $x$, $y(x, t) = A \cos(\omega t - \frac{x}{\lambda}\cdot 2 \pi)$ to account for this delay. This quantity is called the wave number:
+
+\[
+    \text{Wave Number: } k = \frac{2 \pi}{\lambda}
+\]
+
+So:
+\[
+    y(x,t) = A \cos(\omega t - k x)
+\]
+\[
+    = A \cos(kx - \omega t)
+\]
+
+Note the second step is possible as cos is an even function. If $k > 0$, the wave travels in the positive x. If $k < 0$, the wave travels in the negative x direction. Again, $\omega = 2 \pi f$
+
+\subsection*{Displacement Stuff}
+Considering a point (starting at equi), the time taken for the particle on the sin wave to reach maximum displacement, minimum displacement and back takes the time period $T$. The speed of the wave is distance travelled over the time taken. We take the distance to be the wavelength $\lambda$, as we know the time by definition this takes is one time period $T$. Therefore wave speed $v$ is:
+\[
+    v = \frac{\lambda}{T} = \lambda f
+\]
+
+Since $\lambda = \frac{2 \pi}{k}$ and $f = \frac{\omega}{2 \pi}$ (as $\omega$ is defined as $\frac{2 \pi}{T}$), we can also write:
+
+\[
+    v = \frac{2 \pi}{k} \cdot \frac{\omega}{2 \pi} = \frac{\omega}{k}
+\]
+
+\subsection*{Particle Velocity}
+We can also determine the velocity of individual particles in the medium. We can use this to determine the acceleration.
+
+We know that
+\[
+    y(x, t) = A \cos(kx - \omega t)
+\]
+
+The vertical velocity $v_y$ is therefore given by:
+\[
+    v_y = \frac{dy(x, t)}{dt}
+\]
+
+Which is unhelpful (as we can't differentiate two variables at once), we can slightly cheat this by looking at purely a certain value of x, and therefore treating x as constant (to get a single variable derivative).
+\[
+    v_y = \frac{dy(x, t)}{dt} \Bigr\rvert_{x = \text{const.}}
+\]
+
+
+However this is notationally yucky, so we therefore use the notation:
+\[
+    \frac{\partial y(x, t)}{\partial t}
+\]
+
+To represent the same thing. Finally (carrying out the partial derivative):
+
+\[
+  v_y(x, t) = \frac{\partial y(x, t)}{\partial t} = \omega A \sin(kx - \omega t)
+\]
+
+\subsection*{Particle Acceleration}
+We can work out particle acceleration (transverse acceleration) by differentiating in the same manner again:
+\[
+    a_y(x, t) = \frac{\partial^2 y(x, t)}{\partial t^2} = \frac{\partial}{\partial t} \left(\frac{\partial y(x, t)}{\partial t} \right) = - \omega^2 A \cos(kx - \omega t) = \omega^2 y(x, t).
+\]
+
