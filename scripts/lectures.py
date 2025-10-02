@@ -124,6 +124,7 @@ class Lectures(list):
         date = today.strftime(DATE_FORMAT)
 
         new_lecture_path.touch()
+        new_lecture_path.write_text(f'% !TeX root = master.tex\n')
         new_lecture_path.write_text(f'\\lecture{{{new_lecture_number}}}{{{date}}}{{}}\n')
 
         if new_lecture_number == 1:
@@ -141,7 +142,7 @@ class Lectures(list):
     def compile_master(self):
         print(self.master_file)
         result = subprocess.run(
-            ['latexmk', '-pdf', '-interaction=nonstopmode', str(self.master_file)],
+            ['latexmk', '-pdf', '-interaction=nonstopmode', '-jobname=main', str(self.master_file)],
             stdout=subprocess.DEVNULL,
 
             cwd=str(self.root)
@@ -150,10 +151,5 @@ class Lectures(list):
         if result.returncode != 0:
             print("LaTeX compilation failed.")
             return result.returncode
-
-        subprocess.run(
-            ['latexmk', '-c', str(self.master_file)],
-            cwd=str(self.root)
-        )
 
         return result.returncode
