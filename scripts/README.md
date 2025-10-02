@@ -1,0 +1,1 @@
+Credit to Gilles Castel for the scripts: https://github.com/gillescastel/university-setup. They have been adapted by me as required to suit my workflow and more recent packages changes.

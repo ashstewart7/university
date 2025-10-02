@@ -1,0 +1,3 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{Lecture 1: Intro to Waves and SHM Recap}{2}{}%
+\contentsline {section}{Lecture 2}{3}{}%
