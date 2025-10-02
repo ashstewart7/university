@@ -1,5 +1,0 @@
-\babel@toc {english}{}\relax 
-\contentsline {section}{Lecture 1: Intro to Waves and SHM Recap}{2}{}%
-\contentsline {paragraph}{What is a wave?}{2}{}%
-\contentsline {section}{Lecture 2: Wave Functions}{4}{}%
-\contentsline {paragraph}{Mechanical Waves}{4}{}%
