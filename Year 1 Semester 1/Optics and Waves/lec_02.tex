@@ -1,3 +1,4 @@
+% !TeX root = main.tex
 \lecture{2}{Thu 02 Oct 2025 13:00}{Wave Functions}
 
 \subsection*{Sine Waves}
@@ -28,7 +29,7 @@ Consider a sine wave. We want to find a wave funtion in the form $y(x, t)$. Cons
 
 We can express the wave function at this point as $y(x = 0, t) = A \cos \omega t$. However we want to expand this to any general point. Now consider a point (2) which is one wavelength away. We know the behaviour of particle 1 is mirrored by particle 2 (with a time lag).
 
-Since the string is initially at rest, it takes on period ($T$) for the propogation of the wave to reach point 2, therefore point 2 is lagging behind the motion of point 1 however. The wave equation is therefore (if particle two has $x = \lambda$) $y(x = \lambda, t) = A \cos (\omega t - \frac{\pi}{2})$. 
+Since the string is initially at rest, it takes on period ($T$) for the propogation of the wave to reach point 2, therefore point 2 is lagging behind the motion of point 1 however. The wave equation is therefore (if particle two has $x = \lambda$) $y(x = \lambda, t) = A \cos (\omega t - 2\pi)$. 
 
 For arbitrary $x$, $y(x, t) = A \cos(\omega t - \frac{x}{\lambda}\cdot 2 \pi)$ to account for this delay. This quantity is called the wave number:
 
@@ -91,6 +92,6 @@ To represent the same thing. Finally (carrying out the partial derivative):
 \subsection*{Particle Acceleration}
 We can work out particle acceleration (transverse acceleration) by differentiating in the same manner again:
 \[
-    a_y(x, t) = \frac{\partial^2 y(x, t)}{\partial t^2} = \frac{\partial}{\partial t} \left(\frac{\partial y(x, t)}{\partial t} \right) = - \omega^2 A \cos(kx - \omega t) = \omega^2 y(x, t).
+    a_y(x, t) = \frac{\partial^2 y(x, t)}{\partial t^2} = \frac{\partial}{\partial t} \left(\frac{\partial y(x, t)}{\partial t} \right) = - \omega^2 A \cos(kx - \omega t) = -\omega^2 y(x, t).
 \]
 

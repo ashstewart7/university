@@ -57,7 +57,7 @@ class Lectures(list):
     def __init__(self, course):
         self.course = course
         self.root = course.path
-        self.master_file = self.root / 'master.tex'
+        self.master_file = self.root / 'main.tex'
         list.__init__(self, self.read_files())
 
     def read_files(self):
@@ -124,8 +124,7 @@ class Lectures(list):
         date = today.strftime(DATE_FORMAT)
 
         new_lecture_path.touch()
-        new_lecture_path.write_text(f'% !TeX root = master.tex\n')
-        new_lecture_path.write_text(f'\\lecture{{{new_lecture_number}}}{{{date}}}{{}}\n')
+        new_lecture_path.write_text(f'% !TeX root = main.tex\n\\lecture{{{new_lecture_number}}}{{{date}}}{{}}\n')
 
         if new_lecture_number == 1:
             self.update_lectures_in_master([1])
