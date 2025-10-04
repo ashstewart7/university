@@ -1,2 +1,93 @@
 % !TeX root = main.tex
 \lecture{1}{Fri 03 Oct 2025 12:00}{Atomic Structure}
+
+\subsection*{What is the course?}
+\begin{itemize}
+    \item Quantum mech is weird and unintuative, we will build up a case in the course for why this weird theory was necessary and why we're confident it works.
+    \item Each week will be a self-contained concept and/or historial experiment, working up to the Shroedinger Equation and wave-particle duality.
+    \item Names and dates do not need to be memorised.
+    \item Recommended text: University Physics (Young and Freedman).
+    \item Office hours: 13:00 -- 13:50 Fridays (immediately post-lecture), Physics East Rm 207.
+\end{itemize}
+
+\subsection*{Atomic Structure}
+What actually is an atom? What does it actually look like inside?
+
+\textbf{Early Clues}
+\begin{itemize}
+    \item Periodic Table (Mendelev, 1989), periodic patterns in elements properties.
+    \item Radioactivity (Becquerel, 1896, Curie 1898)
+    \item Atoms emit and absorb specific discrete wavelengths, (Balmer, 1884)
+    \item Discovery of the Electron (Thompson 1897). Cathode rays - heating metal in a vacuum with an electric field above it, to strip away electrons from the metal.
+    \begin{itemize}
+        \item This showed electrons were negatively charged and extremely light (1/2000th of the atomic mass).
+    \end{itemize}
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/absorption_spectra.png}
+     \caption{Absorption Spectra}
+\end{figure}
+
+\subsection*{Plum Pudding Model}
+A solid, uniform lump of positively charged matter, approximately $10^{-10}$m across. This had evenly distributed negative charges (electrons) scattered throughout.
+
+\subsection*{Discovery of the Nucleus}
+Geiger and Marsden (1908-1913), figured alpha particles (He Nucleus) at thin gold foil and measured the deflection/scattering.
+
+The alpha particles had a mass of 4u, a charge of +2e and an energy of approximately 5MeV.
+
+They found that most $\alpha$ were scattered only by small angles, but (surprisingly) a small number were scattered right back towards to emitter (through $\theta > 90\deg$). The distribution of the angles is approximately Normally distributed, with a mean of 0. Only approximately 1 in 8,000 fired $\alpha$s were scattered by $\theta>90$ ("back-scattering").
+
+Can this be explained with the Plum Pudding Model? No, it cannot. This was used to demonstrate that atoms cannot be evenly distributed.
+
+\textbf{Demonstrating by Calculation}
+Lets work out the work done to take an $\alpha$ from infty to the pudding centre. If the electrostatic repulsion is not enough to overcome this, we cannot stop the $\alpha$ and cannot back scatter.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/scattering.png}
+     \caption{The experiment}
+\end{figure}
+
+\subsection*{Assumptions}
+\begin{itemize}
+    \item The atom stays still.
+    \item Ignore the gold electrons (this is fine, as they would cancel some positive charge and make repulsion weaker, which would be even worse. If we can't do it without them, it would be equally impossible to do it with.)
+\end{itemize}
+
+\subsection*{Recap and Eqns}
+ 
+Coulomb Potential Energy is:
+\[
+    u(r) - \frac{qQ}{4 \pi \epsilon_0 r}
+\]
+
+Force is:
+\[
+    F(r) = -\frac{du}{dr} = \frac{qQ}{4 \pi \epsilon_0 r^2}
+\]
+
+Change in potential energy ($u_2 - u_1$) is work done:
+\[
+    \int_{u_1}^{u_2} du = -\int_{r_1}^{r_2} F(r) dr
+\]
+
+From outside the atomic radius, we treat the atomic pudding as a point charge of charge Q.
+From inside the atomic radius, we treat it as a smaller point charge $Q'(r)$, where we only consider the charge inside the portion of the pudding where $r<0$.
+
+If charge is spread uniformly, the total charge is proportional to the volume of the sphere. So:
+\[
+    \frac{Q'}{Q} = \frac{4 \pi r^3}{4 \pi a^3}
+\]
+\[
+    Q' = Q\frac{r^3}{a^3}
+\]
+
+\textbf{Inside the Pudding}
+\[
+    F = \frac{qQ}{4 \pi \epsilon_0 r^2}
+\]
+
+
+\subsection*{Next Idea: The Solar System Model}
