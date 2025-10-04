@@ -124,7 +124,14 @@ class Lectures(list):
         date = today.strftime(DATE_FORMAT)
 
         new_lecture_path.touch()
-        new_lecture_path.write_text(f'% !TeX root = main.tex\n\\lecture{{{new_lecture_number}}}{{{date}}}{{}}\n')
+        # Automatically add graphicspath pointing to lecture's figures folder
+        figures_path = self.root / "figures"
+        figures_path_relative = figures_path.relative_to(self.root)  # will be "figures"
+        new_lecture_path.write_text(
+            f'% !TeX root = main.tex\n'
+            f'\\graphicspath{{{{{figures_path_relative}/}}}}\n'
+            f'\\lecture{{{new_lecture_number}}}{{{date}}}{{}}\n'
+        )
 
         if new_lecture_number == 1:
             self.update_lectures_in_master([1])

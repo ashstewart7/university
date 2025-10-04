@@ -4,14 +4,17 @@ from courses import Courses
 for course in Courses():
     lectures = course.lectures
     course_title = lectures.course.info["title"]
+
     lines = [
-        r'\documentclass[a4paper]{article}',
+        r'\documentclass[a4paper]{report}',
         r'\input{../preamble.tex}',
         fr'\title{{{course_title}}}',
         r'\begin{document}',
-        r'    \maketitle',
-        r'    \hrulefill',
+        r'    \begin{titlepage}',
+        r'        \maketitle',
+        r'    \end{titlepage}',
         r'    \tableofcontents',
+        fr'   \course{{{course_title}}}',
         r'    % start lectures',
         r'    \input{lec_01.tex}',
         r'    \input{lec_02.tex}',

@@ -5,3 +5,4 @@ main.log
 main.synctex.gz
 main.tex.latexmain
 main.toc
+*.fls
