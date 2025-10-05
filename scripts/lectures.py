@@ -8,7 +8,7 @@ import re
 import subprocess
 
 
-from config import get_week, DATE_FORMAT, CURRENT_COURSE_ROOT
+from config import DATE_FORMAT, CURRENT_COURSE_ROOT
 
 # TODO
 locale.setlocale(locale.LC_TIME, "en_GB.UTF-8")
@@ -31,13 +31,11 @@ class Lecture():
 
         date_str = lecture_match.group(2)
         date = datetime.strptime(date_str, DATE_FORMAT)
-        week = get_week(date)
 
         title = lecture_match.group(3)
 
         self.file_path = file_path
         self.date = date
-        self.week = week
         self.number = filename2number(file_path.stem)
         self.title = title
         self.course = course

@@ -10,8 +10,7 @@ def number2filename(n):
 lines = [
     r'\documentclass[a4paper, oneside]{book}',
     r'\input{preamble.tex}',  # preamble is now in the same directory
-    r"\title{Ash's Lecture Notes}",
-    r'\date{Year 1, Semester 1}',
+    r"\title{Lecture Notes}",
     r'\begin{document}',
     r'    \begin{titlepage}',
     r'        \maketitle',
@@ -30,8 +29,6 @@ for course in Courses():
     # Insert part heading for the course
     lines.append(f'    \\part*{{{course_title}}}')
     lines.append(f'    \\addcontentsline{{toc}}{{part}}{{{course_title}}}')
-    lines.append('')  # optional spacing
-
     lines.append(f'    \\graphicspath{{{{{course_folder}/}}}}')
     lines.append(f'    \\course{{{course_title}}}')
     lines.append(f'    % start lectures {course_code}')

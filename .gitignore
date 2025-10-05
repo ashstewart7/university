@@ -6,3 +6,5 @@ main.synctex.gz
 main.tex.latexmain
 main.toc
 *.fls
+*.out
+*.xdv
