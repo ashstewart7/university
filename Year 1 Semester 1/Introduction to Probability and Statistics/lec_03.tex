@@ -1,0 +1,107 @@
+% !TeX root = main.tex
+\graphicspath{{figures/}}
+\lecture{3}{Wed 08 Oct 2025 12:02}{}
+
+\textbf{Office Hours}: 11:00 to 13:00 Thursdays, Physics West Rm 122
+
+\section*{Types of Error}
+Broadly two types of error: Statistical/Random Error (resulting from low precision) and Systematic Error (from Low Accuracy).
+
+Random error widens the distribution, while systematic error shifts the whole distribution up or down, meaning no matter how many repeats you take and how precise you think you are, the value is still nonsense as all datapoints have been equally shifted (i.e. by a poor experimental setup).
+
+For example, you are trying to measure the length of an object using a ruler that has been unknowingly stretched. You cannot get a true value no matter the number of repeats or degree of precision.
+
+\subsection*{Accuracy vs Precision}
+High accuracy is preferable to high precision - having high precision but low accuracy can lead to false conclusions (as an incorrect value appears confidently correct). Accuracy is more difficult to improve - precision can be improved by gathering more data, while higher accuracy can only be improved by a better experimental design.
+
+\section*{Error Propogation}
+If we take a distribution, and add a constant value to all points, the distribution is shifted up/down without changing the variance.
+
+\[
+    \langle x+k \rangle = \langle x \rangle + k
+\]
+
+\[
+    Var(x+k) = Var(x)
+\]
+
+If we multiply by a constant value, the mean is multiplied by this value, but the distribution becomes stretched and the variance grows:
+\[
+    \langle xk \rangle = k \langle x \rangle
+\]
+
+\[
+    Var(kx) = k^2 Var(x)
+\]
+
+Or taking the natural log:
+\[
+    \langle \ln x \rangle \approx ln \langle x \rangle
+\]
+
+\[
+    Var(\ln x) \approx \frac{Var(x)}{x^2}
+\]
+As this is a non-linear operator, these become good approximations rather than strict rules of equivalence.
+
+And another example:
+\[
+    \langle e^x \rangle \approx e^{\langle x\rangle}
+\]
+
+\[
+    Var(e^x) \approx (e^x)^2 Var(x)
+\]
+Note here, even though our underlying distribution is Normal and symmetric, the new distribution after $e^x$ is neither, and these are an even worse approximation than before.
+
+\subsection*{Combining Operators}
+We can apply some linear transformation $mx + c$, we can chain these rules together by doing the multiplicative transformation m first, then the linear scale c.
+
+\[
+    \langle mx + c\rangle = m \langle x \rangle + c
+\]
+
+\[
+    Var(mx+c) = m^2 Var(x)
+\]
+
+\subsection*{Multiple Variables}
+What if we have mutliple distributed variables we want to add?
+
+\[
+    \langle A+B\rangle = \langle A \rangle + \langle B\rangle
+\]
+
+\[
+    Var(A+B) = Var(A) + Var(B)
+\]
+
+And multiplying them (again this are now approximations)?
+\[
+    \langle AB\rangle \approx \langle A\rangle \langle B\rangle
+\]
+
+\[
+    Var(AB) \approx \langle B\rangle^2 Var(A) + \langle A\rangle^2 Var(B)
+\]
+
+\[
+    \frac{Var(AB)}{\langle AB\rangle^2} \approx \frac{Var(A)}{\langle A\rangle^2} + \frac{Var(B)}{\langle B\rangle^2}
+\]
+
+Or division?
+\[
+    \left\langle \frac{A}{B}\right\rangle \approx \frac{\langle A\rangle}{\langle B\rangle}
+\]
+
+\[
+    Var\left(\frac{A}{B}\right) = \frac{Var(A)}{\langle B\rangle^2} + \frac{Var(B)}{\langle A\rangle^2}
+\]
+
+\section*{One Rule to Rule Them All}
+\[
+    Var(f) \approx \left(\frac{\partial f}{\partial A} \Bigr\rvert_{A = \langle A\rangle, B = \langle B\rangle}\right)^2 Var(A) + \left(\frac{\partial f}{\partial A} \Bigr\rvert_{A = \langle A\rangle, B = \langle B\rangle}\right)^2 Var(B)
+\]
+
+
+
