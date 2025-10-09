@@ -1,0 +1,54 @@
+% !TeX root = main.tex
+\graphicspath{{figures/}}
+\lecture{4}{Thu 09 Oct 2025 09:00}{Covariance and Correlation}
+
+\textbf{Office Hours:} Thursday 11am - 1pm, Physics West Rm 222 (b.becsy@bham.ac.uk)
+
+Previous, when looking at two or more variables for error propogation/combinations etc, we assumed that they were independant of one another. Today we look at how to handle multiple variables which may be correlated.
+
+\section*{Covariance}
+Covariance is a measure that indicates how much two variables fluctuate together:
+\[
+\text{Cov}(x,y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y})
+\]
+
+Covariance matrices represent all combinations of covariance (noting Cov(x, y) = Cov(y, x) and Cov(x, y) = Var(x))
+
+$$\Sigma = \begin{pmatrix}
+    Cov(x, x) & Cov(x, y) \\
+    Cov(y, x) & Cov(y, y)
+\end{pmatrix}$$
+
+We can then define correlation:
+\[
+    Corr(x, y) = \frac{Cov(x, y)}{\sqrt{Var(x)Var(y)}} = \frac{\sum_{i=1}^{N} (x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^{N} (x_i - \bar{x})^2 \sum_{i=1}^{N} (y_i - \bar{y})^2}}
+\]
+This is bounded between -1 (x = -y), y (x = y) and zero for no correlation. We can again put this in a matrix, noting it is symmetrical:
+\[
+    \begin{pmatrix}
+    1 & Corr(x, y) \\
+    Corr(y, x) & 1
+    \end{pmatrix}
+\]
+
+\subsection*{Variable Combinations}
+Now, with correlated variables, we can say:
+\[
+    \langle x + y\rangle = \langle x\rangle + \langle y\rangle
+\]
+
+\[
+    Var(x, y) = Var(x) + Var(y) + 2Cov(x, y)
+\]
+
+And (noting the mean slightly increases with correlated variables):
+\[
+    \langle xy\rangle = \langle x\rangle \langle y\rangle + Cov(x, y)
+\]
+And the one formula to rule them all
+\[
+    Var(f) \approx \frac{\partial f}{\partial A}^2 Var(A) + \frac{\partial f}{\partial B}^2 Var(B) + 2 \frac{\partial f}{\partial A} \frac{\partial f}{\partial B} Cov(A, B)
+\]
+
+
+
