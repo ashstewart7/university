@@ -127,7 +127,6 @@ class Lectures(list):
         figures_path_relative = figures_path.relative_to(self.root)  # will be "figures"
         new_lecture_path.write_text(
             f'% !TeX root = main.tex\n'
-            f'\\graphicspath{{{{{figures_path_relative}/}}}}\n'
             f'\\lecture{{{new_lecture_number}}}{{{date}}}{{}}\n'
         )
 
