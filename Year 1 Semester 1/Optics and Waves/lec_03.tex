@@ -114,7 +114,7 @@ We assume the string is 1D, under tension $T$ (constant throughout) and has mass
 
 Consider a small segment of string of length $\Delta L$ from $x$ to $x + \Delta x$. This string makes angle $\theta$ with the horizontal at the bottom of the string, and angle $\theta'$ with the horizontal at the top of the string.
 
-Net force is:
+Net force (transverse in y) is:
 \[
     F_y = T \sin \theta' - T \sin \theta
 \]
@@ -141,5 +141,38 @@ Therefore:
     F_y = T \frac{d^2y}{dx} \Delta x
 \]
 
+The mass of this section of string is $\mu \Delta x$, and considering the acceleration in the y direction we can plug into $F = ma$ to get:
+
+\[
+    F = ma
+\]
+
+\[
+    T \frac{d^2y}{dx^2} \Delta x = \mu \Delta x \frac{d^2 y}{dt^2}
+\]
+
+\[
+    \frac{d^2y}{dx^2} = \frac{\mu}{T} \frac{d^2y}{dt^2}
+\]
+
+The LHS is the rate of change of the string's gradient, which as mentioned is the curvature of the string. The RHS includes the transverse acceleration of the string, therefore acceleration is proportional to curvature. To evaluate this at a fixed time/position we should write:
+\[
+    \frac{\partial^2 y}{\partial x^2} = \frac{\mu}{T} \frac{\partial^2 y}{\partial t^2}
+\]
+
+And comparing to the wave equation we get:
+\[
+    \frac{1}{v^2} \frac{\partial^2 y}{\partial t^2} = \frac{\mu}{T} \frac{\partial^2 y}{\partial t^2}
+\]
+
+\[
+    \frac{1}{v^2} = \frac{\mu}{T}
+\]
+
+\[
+    v = \sqrt{\frac{T}{\mu}}
+\]
+
+So a wave travels faster under a higher tension with a lower mass per unit length.
 
 
