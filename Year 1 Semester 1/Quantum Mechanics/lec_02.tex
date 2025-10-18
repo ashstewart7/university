@@ -45,7 +45,9 @@ Wien's Displacement Law gives $\lambda_{\text{peak}} = \frac{b}{T}$, where $b = 
 
 \subsection*{Why does classical mechanics break?}
 
-Lets model the $I(\lambda)$ spectrum by slotting standing waves into a cavity. Consider a 1D cavity of length $L$. We can consider `cavity modes' as the possible waves that can exist in this cavity. As we know the wave is bound at each end, the displacement at each end of the cavity must be $0$. Therefore, the only possible waves must obey this, and these are cavity modes.
+Lets model the $I(\lambda)$ spectrum by slotting standing waves into a cavity. Inside the blackbody, EM waves form standing waves (in a limited number of possible configurations).
+
+We can simplify by considering a 1D cavity of length $L$. We can consider `cavity modes' as the possible standing waves that can exist in this cavity. As we know the wave is bound at each end, the displacement at each end of the cavity must be $0$. Therefore, the only possible waves must obey this, and these are cavity modes.
 
 \begin{figure}[H]
     \centering
@@ -55,7 +57,7 @@ Lets model the $I(\lambda)$ spectrum by slotting standing waves into a cavity. C
 
 The amplitude $a(x)$ can be given by this:
 \[
-    a(x) = \sin \left(\frac{n \pi x}{L}\right), n = 1, 2, 3, \ldots n \text{(mode number)}
+    a(x) = \sin \left(\frac{n \pi x}{L}\right), \qquad n = 1, 2, 3, \ldots n \quad \text{(mode number)}
 \]
 
 And by inspection from the figures:
@@ -81,7 +83,7 @@ The issue was assuming that all cavity modes have average energy $k_B T$ - the `
 
 In brief: the probability distribution of energies is a ``Boltzmann Distribution'':
 \[
-    p(E) = \frac{e^-{\frac{E}{k_B T}}}{k_B T}
+    p(E) = \frac{\exp \left(-\frac{E}{k_B T}\right)}{k_B T}
 \]
 
 Average energy:
@@ -89,8 +91,7 @@ Average energy:
     \bar{E} = \int_{0}^{\infty} E p (E) \, dE = k_B T
 \]
 
-Which seems to be incorrect...
-
+Which the UV Catastrophe says is incorrect\ldots We therefore need another model to replace the idea of the Boltzmann Distribution.
 \subsection*{Plank's Hypothesis}
 A rather desperate Plank hypothesised that energy was quantised, i.e. it comes in discrete packets, called quanta. The energy of these quanta is proportional to frequency. This was radical at the time, even though we accept it now.
 
@@ -101,15 +102,50 @@ Where $h = 6.626 \times 10^{-34}Js$ is Plank's constant.
 
 Sticking this into the Partition Function from statistical mechanics (which we will properly encounter later on, for now don't worry!), we get an average energy:
 \[
-    \bar{E}(\lambda) = \frac{hc/\lambda}{\exp(\lambda k_B T) - 1}
+    \bar{E}(\lambda) = \frac{hc/\lambda}{\exp(hc / \lambda k_BT) - 1}
 \]
 Looking at limits:
 \[
-    \bar{E(\lambda \to \infty)}, \frac{hc}{\lambda k_BT} << 1
+    \text{For } \bar{E}(\lambda \to \infty): \quad \frac{hc}{\lambda k_BT} << 1
+\]
+
+And the Taylor Series of $e^x$:
+\[
+    \exp \left(\frac{hc}{\lambda k_B T}\right) \approx 1 + \frac{hc}{\lambda k_B T} + \ldots
+\]
+
+Yields:
+\[
+    \bar{E}(\lambda) \approx \frac{hc / \lambda}{1 + (hc / \lambda k_B T) -1} = k_B T
+\]
+
+This is a good sign, because it means that Plank's Hypothesis holds the correct classically predicted and empirically observed behaviour for higher wavelengths.
+
+Now what about lower wavelengths, where the classical behaviour broke?
+
+\[
+    \text{For } \bar{E}(\lambda \to 0): \quad \exp\left(\frac{hc}{\lambda k_BT}\right) \to \infty \quad \text{(very quickly)} 
+\]
+\[
+    \text{For } \bar{E}(\lambda \to 0): \quad \frac{hc}{\lambda} \to \infty \quad \text{(slower)} 
 \]
 
 
+Therefore, in the expression:
+\[
+    \bar{E}(\lambda) = \frac{hc/\lambda}{\exp(hc / \lambda k_BT) - 1}
+\]
 
+The numerator and denominator both tend to infinity, but the denominator does so much faster. Therefore (and this can be done in a less handwavy manner via L'Hopital):
+\[
+    \bar{E}(\lambda \to 0) \to \frac{1}{\infty} \to 0
+\]
 
+Which recovers the behaviour at UV wavelengths, so no Catastrophe!
 
-
+\section*{Conclusion}
+\begin{itemize}
+    \item This strange quantisation hypothesis actually fits the data.
+    \item Quantising energy means that the average energy of each cavity mode is wavelength dependant, and not fixed $k_B T$ as seen at larger wavelengths.
+    \item This solves the UV Catastrophe! 
+\end{itemize}

@@ -23,6 +23,13 @@ def compile_all_files():
     # Iterate over all courses
     for course in Courses():
         lectures = course.lectures
+
+        # Compile Individual Course Documents
+        lecture_range = lectures.parse_range_string('all')
+        lectures.update_lectures_in_master(lecture_range)
+        lectures.compile_master()
+
+        # Compile Masterdoc of All Courses
         course_code = lectures.course.info['short']
         course_title = lectures.course.info['title']
         course_folder = lectures.root.relative_to(ROOT)  # relative path from ROOT to course folder

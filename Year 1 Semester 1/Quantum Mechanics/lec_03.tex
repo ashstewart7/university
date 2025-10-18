@@ -130,6 +130,23 @@ We must consider relativistic effects here given the high speed ($E^2 = p^2c^2 +
      \caption{}
 \end{figure}
 
+\subsection*{Setup}
+For a massless photon ($m = 0$):
+\[
+    E = pc
+\]
+And:
+\[
+    E = \frac{hc}{\lambda}
+\]
+
+So:
+\begin{equation}
+    p = \frac{h}{\lambda}
+    \label{cscattere2}
+\end{equation}
+
+\subsection*{Conservation and Relativity}
 Conserving momentum (underlines ommitted for speed):
 \[
     p_1 = p_e + p_2
@@ -138,31 +155,63 @@ Conserving momentum (underlines ommitted for speed):
     p_e = p_1 - p_2
 \]
 
-Squaring both sides and noting that cos appears as it is a dot product multiplication between two vectors (as momentum is a vector).
+Squaring both sides:
 \[
-    p_e^2 = p_1^2 + p_2^2 - 2p_1p_2 \cos \theta
+    p_e^2 = p_1^2 + p_2^2 - 2p_1 \cdot p_2
 \]
+\begin{equation}
+    p_e^2 = p_1^2 + p_2^2 - 2p_1p_2 \cos \theta
+    \label{cscattere1}    
+\end{equation}
 
 And then by conservation of energy:
 \[
-    E_1 + E_e = E_2 + E_e
+    E_1 + E_e = E_2 + E_e'
 \]
 
-And applying relativity:
+Where $E_1$ is the incoming photon energy, $E_e$ is the energy of the electron at rest in atom before collision, $E_2$ is the deflected photon energy and finally $E_e'$ is the deflected electron's energy.
+
+Using this:
 \[
-    p_1 c = m_e c^2 + p_2 c + \sqrt{p_e^2 + m_e^2 c^4}
+    p_1c + m_e c^2 = p_2 c + \sqrt{p_e^2c^2 + m_e^2c^4}
 \]
 \[
-    p_1 - p_2 + m_ec = \sqrt{p_e^2 + m_e^2 c^4}
+    \implies p_1 - p_2 + m_ec = \sqrt{p_e^2 + m_e^2c^2}
 \]
 
-Squaring both sides:
+And squaring both sides:
 \[
-    (p_1 - p_2)^2 +    
+    (p_1 - p_2)^2 + \cancel{m_e^2c^2} + 2m_ec(p_1 - p_2) = p_e^2 + \cancel{m_e^2c^2}
 \]
 
+Subsituting in Eqn \ref{cscattere1} for $p_e^2$
+\begin{align*}
+    (p_1 - p_2)^2 + 2m_ec(p_1 - p_2) &= p_e^2\\
+    (p_1 - p_2)^2 + 2m_ec(p_1 - p_2) &= p_1^2 + p_2^2 - 2p_1p_2 \cos \theta
+\end{align*}
 
+And rearranging:
+\begin{align*}
+    (p_1 - p_2)^2 + 2m_ec(p_1 - p_2) &= p_1^2 + p_2^2 - 2p_1p_2 \cos \theta\\
+    p_1^2 + p_2^2 - 2p_1p_2 + 2m_ec(p_1 - p_2) &= p_1^2 + p_2^2 - 2p_1p_2 \cos \theta\\
+    -2p_1p_2 + 2m_ec(p_1 - p_2) &= - 2p_1p_2 \cos \theta\\
+    -p_1p_2 + m_ec(p_1 - p_2) &= - p_1p_2 \cos \theta\\
+    m_ec(p_1 - p_2) &= - p_1p_2 \cos \theta + p_1p_2\\
+    m_ec(p_1 - p_2) &= p_1p_2 (1 - \cos \theta) 
+\end{align*}
 
+Subsituting Eqn \ref{cscattere2}:
+\begin{align*}
+    m_ec(p_1 - p_2) &= p_1p_2 (1 - \cos \theta)\\
+    m_ec\left(\frac{h}{\lambda_1} - \frac{h}{\lambda_2}\right) &= \frac{h}{\lambda_1} \frac{h}{\lambda_2} (1 - \cos \theta)\\
+    m_ec\left(\frac{h}{\lambda_1} - \frac{h}{\lambda_2}\right) &= \frac{h^2}{\lambda_1 \lambda_2} (1 - \cos \theta)\\
+    m_ec\left(\frac{1}{\lambda_1} - \frac{1}{\lambda_2}\right) &= \frac{h}{\lambda_1 \lambda_2} (1 - \cos \theta)\\
+    m_ec\left(\frac{\lambda_1 \lambda_2}{\lambda_1} - \frac{\lambda_1 \lambda_2}{\lambda_2}\right) &= h (1 - \cos \theta)\\
+    m_ec\left(\lambda_2 - \lambda_1\right) &= h (1 - \cos \theta)\\
+    \left(\lambda_2 - \lambda_1\right) &= \frac{h}{m_ec} (1 - \cos \theta)
+\end{align*}
 
+Which is the Compton Equation. This shows that the change in wavelength is proportional to $1 - \cos \theta$.
 
-
+\section*{Conclusions}
+The photoelectric effect and Compton scattering are two more physical phenomena that cannot be explained using traditional classical mechancics with EM waves alone. They both require assuming photons of energy $E = hf$ to be adequately explained.
