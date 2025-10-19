@@ -1,9 +1,9 @@
 % !TeX root = main.tex
 \graphicspath{{figures/}}
 \lecture{3}{Thu 04 Sep 2025 12:00}{Kinematics Introduction}
-For kinematics, we'll treat all objects as points and disregard aspects like rotation/the physical sie of the body etc.
+For kinematics, we'll treat all objects as points and disregard aspects like rotation/the physical size of the body etc.
 
-Given some point, we can define its position as a fucntion of time $\vec{r}(t)$, and velocity as the derivative wrt time of this:
+Given some point, we can define its position as a function of time $\vec{r}(t)$, and velocity as the derivative wrt time of this:
 \[
     \vec{v}(t) = \frac{d \vec{r}}{dt}
 \]
@@ -27,10 +27,24 @@ So:
 \[
     = \sum_j \frac{d}{dt}(r_j \hat{e}_J)
 \]
+\[
+    = \sum_j \frac{dr_j}{dt} \hat{e}_j
+\]
+\[
+    \vec{v} = \sum_j v_j \hat{e}_j
+\]
 
-Note: Taking the derivative of a vector wrt time is looking at how the variable changes in some infinitestimal time. This can be a change in direction, and/or a change in magnitude. To differentiate a vector we can differentiate it component-wise.
+And:
+\[
+    \vec{a} = \frac{d \vec{v}}{dt} = \sum_{j=1}^{3} a_j \hat{e}_j
+\]
 
-\subsection*{Cartestian and Polar}
+
+
+
+Note: Taking the derivative of a vector wrt time is looking at how the variable changes in some infinitesimal time. This can be a change in direction, and/or a change in magnitude. To differentiate a vector we can differentiate it component-wise.
+
+\subsection*{Cartesian and Polar}
 Instead of representing a point as x and y components (in 2D), we can instead define it as a distance from the origin $r$ and the angle this distance line forms with the positive x-axis $\theta$.
 
 Therefore (by basic right angle trig) $x = rcos \theta$, $y = rsin \theta$, and hence:
