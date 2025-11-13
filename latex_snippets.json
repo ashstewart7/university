@@ -22,6 +22,10 @@
       "$$"
     ]
   },
+  "sqrt": {
+    "prefix": "sqrt",
+    "body": "\\sqrt{$1}$0"
+  },
   "Equation": {
     "prefix": "eq",
     "body": [
@@ -30,6 +34,10 @@
       "\\end{equation}",
       "${0}"
     ]
+  },
+  "rangle": {
+    "prefix": "lan",
+    "body": "\\langle $1\\rangle$0"
   },
     "Vec": {
     "prefix": "vc",
@@ -41,6 +49,13 @@
 	"prefix": "sse",
 	"body": [
 		"\\subsection*{${1:TITLE}}",
+		"$0"
+	]
+  },
+  "Section": {
+	"prefix": "see",
+	"body": [
+		"\\section*{${1:TITLE}}",
 		"$0"
 	]
   },
@@ -111,11 +126,11 @@
     ]
   },
   "Matrix (pmatrix)": {
-    "prefix": "m",
+    "prefix": "ma",
     "body": [
       "\\begin{pmatrix}",
-      "\\t${1:a} & ${2:b} \\\\",
-      "\\t${3:c} & ${4:d}",
+      "    ${1:a} & ${2:b} \\\\\\",
+      "    t${3:c} & ${4:d}",
       "\\end{pmatrix}"
     ]
   },
@@ -488,6 +503,12 @@
       "\\cos"
     ]
   },
+  "sin": {
+    "prefix": "sin",
+    "body": [
+      "\\sin"
+    ]
+  },
   "beta": {
     "prefix": "beta",
     "body": [
@@ -734,6 +755,18 @@
       "\\operatorname{erf}\\left(${1:x}\\right)"
     ]
   },
+  "lb": {
+    "prefix": "lb",
+    "body": [
+      "\\left(${1:x}\\right)$0"
+    ]
+  },  
+  "ls": {
+    "prefix": "ls",
+    "body": [
+      "\\left[${1:x}\\right]$0"
+    ]
+  },
   "erfc": {
     "prefix": "erfc",
     "body": [
@@ -753,7 +786,7 @@
     ]
   },
   "text": {
-    "prefix": "t",
+    "prefix": "txt",
     "body": [
       "\\text{${1:text}}"
     ]
