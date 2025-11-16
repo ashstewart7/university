@@ -4,17 +4,17 @@
 
 \textbf{Office Hours}: 11:00 to 13:00 Thursdays, Physics West Rm 122
 
-\section*{Types of Error}
+\section{Types of Error}
 Broadly two types of error: Statistical/Random Error (resulting from low precision) and Systematic Error (from Low Accuracy).
 
 Random error widens the distribution, while systematic error shifts the whole distribution up or down, meaning no matter how many repeats you take and how precise you think you are, the value is still nonsense as all datapoints have been equally shifted (i.e. by a poor experimental setup).
 
 For example, you are trying to measure the length of an object using a ruler that has been unknowingly stretched. You cannot get a true value no matter the number of repeats or degree of precision.
 
-\subsection*{Accuracy vs Precision}
+\subsection{Accuracy vs Precision}
 High accuracy is preferable to high precision - having high precision but low accuracy can lead to false conclusions (as an incorrect value appears confidently correct). Accuracy is more difficult to improve - precision can be improved by gathering more data, while higher accuracy can only be improved by a better experimental design.
 
-\section*{Error Propogation}
+\section{Error Propogation}
 If we take a distribution, and add a constant value to all points, the distribution is shifted up/down without changing the variance.
 
 \[
@@ -54,7 +54,7 @@ And another example:
 \]
 Note here, even though our underlying distribution is Normal and symmetric, the new distribution after $e^x$ is neither, and these are an even worse approximation than before.
 
-\subsection*{Combining Operators}
+\subsection{Combining Operators}
 We can apply some linear transformation $mx + c$, we can chain these rules together by doing the multiplicative transformation m first, then the linear scale c.
 
 \[
@@ -65,7 +65,7 @@ We can apply some linear transformation $mx + c$, we can chain these rules toget
     Var(mx+c) = m^2 Var(x)
 \]
 
-\subsection*{Multiple Variables}
+\subsection{Multiple Variables}
 What if we have mutliple distributed variables we want to add?
 
 \[
@@ -98,7 +98,7 @@ Or division?
     Var\left(\frac{A}{B}\right) = \frac{Var(A)}{\langle B\rangle^2} + \frac{Var(B)}{\langle A\rangle^2}
 \]
 
-\section*{One Rule to Rule Them All}
+\section{One Rule to Rule Them All}
 \[
     Var(f) \approx \left(\frac{\partial f}{\partial A} \Bigr\rvert_{A = \langle A\rangle, B = \langle B\rangle}\right)^2 Var(A) + \left(\frac{\partial f}{\partial A} \Bigr\rvert_{A = \langle A\rangle, B = \langle B\rangle}\right)^2 Var(B)
 \]

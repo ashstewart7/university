@@ -48,7 +48,14 @@
   "Subsection": {
 	"prefix": "sse",
 	"body": [
-		"\\subsection*{${1:TITLE}}",
+		"\\subsection{${1:TITLE}}",
+		"$0"
+	]
+  },
+  "Section": {
+	"prefix": "see",
+	"body": [
+		"\\section{${1:TITLE}}",
 		"$0"
 	]
   },

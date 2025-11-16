@@ -10,7 +10,6 @@ import subprocess
 
 from config import DATE_FORMAT, CURRENT_COURSE_ROOT
 
-# TODO
 locale.setlocale(locale.LC_TIME, "en_GB.UTF-8")
 
 def number2filename(n):

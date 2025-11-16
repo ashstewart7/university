@@ -6,7 +6,7 @@
 
 Previous, when looking at two or more variables for error propogation/combinations etc, we assumed that they were independant of one another. Today we look at how to handle multiple variables which may be correlated.
 
-\section*{Covariance}
+\section{Covariance}
 Covariance is a measure that indicates how much two variables fluctuate together:
 \[
 \text{Cov}(x,y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y})
@@ -31,7 +31,7 @@ This is bounded between -1 (x = -y), y (x = y) and zero for no correlation. We c
     \end{pmatrix}
 \]
 
-\subsection*{Variable Combinations}
+\subsection{Variable Combinations}
 Now, with correlated variables, we can say:
 \[
     \langle x + y\rangle = \langle x\rangle + \langle y\rangle

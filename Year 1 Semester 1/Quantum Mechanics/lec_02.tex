@@ -7,7 +7,7 @@ In this lecture:
     \item How quantising light into photons gives predictions that fit this observation.
 \end{itemize}
 
-\section*{Black Body Radiation}
+\section{Black Body Radiation}
 A `black body' is an idealised perfect object, that does not reflect, and absorbs internally all light (regardless of wavelength) incident upon it. No light is transmitted, so nothing shines out the other side. The object is perfectly black.
 
 All bodies emit electromagnetic energy, usually outside the visible portion of the spectrum. For example, Paul Hollywood (and other humans) emit at about 300 Kelvin, which is infrared (at the temperature which night vision goggles are tuned to).
@@ -28,7 +28,7 @@ However, we run into a problem. If we plot the spectra predicted by classical th
      \caption{Predicted and Observed Spectra for 5000K (and Observed for 4k K and 3k K)}
 \end{figure}
 
-\subsection*{Notation}
+\subsection{Notation}
 $I(\lambda)$ is the intensity per wavelength for an emitted wavelength $\lambda$. $I$ is the total intensity across all wavelengths per unit time (in $W/m^2$, power per unit area).
 
 \[
@@ -37,13 +37,13 @@ $I(\lambda)$ is the intensity per wavelength for an emitted wavelength $\lambda$
 
 I is the total area under the $I(\lambda)$ curve, i.e. the sum of intensity per wavelength, across every wavelength.
 
-\section*{The Ultraviolet Catastrophe}
-\subsection*{Empirical Results}
+\section{The Ultraviolet Catastrophe}
+\subsection{Empirical Results}
 The Stefan-Boltzmann Law gives $I = \sigma T^4$, where $\sigma$ is the Stefan-Boltzmann constant, $\sigma = 6.57 \times 10^{-8} W m^{-2} K^{-4}$
 
 Wien's Displacement Law gives $\lambda_{\text{peak}} = \frac{b}{T}$, where $b = 2.898 \times 10^{-3} Km$.
 
-\subsection*{Why does classical mechanics break?}
+\subsection{Why does classical mechanics break?}
 
 Lets model the $I(\lambda)$ spectrum by slotting standing waves into a cavity. Inside the blackbody, EM waves form standing waves (in a limited number of possible configurations).
 
@@ -78,7 +78,7 @@ So, classically:
 Where the first term is the density of nodes at lambda, and the second is the average energy of nodes. As we head to UV and $\lambda \to 0$, $I(\lambda) \to \infty$... which is not accurate. This is the UV Catastrophe!
 
 
-\subsection*{Where did it go wrong?}
+\subsection{Where did it go wrong?}
 The issue was assuming that all cavity modes have average energy $k_B T$ - the ``Equipartition Theorem'' (which we'll meet in later courses).
 
 In brief: the probability distribution of energies is a ``Boltzmann Distribution'':
@@ -92,7 +92,7 @@ Average energy:
 \]
 
 Which the UV Catastrophe says is incorrect\ldots We therefore need another model to replace the idea of the Boltzmann Distribution.
-\subsection*{Plank's Hypothesis}
+\subsection{Plank's Hypothesis}
 A rather desperate Plank hypothesised that energy was quantised, i.e. it comes in discrete packets, called quanta. The energy of these quanta is proportional to frequency. This was radical at the time, even though we accept it now.
 
 \[
@@ -143,7 +143,7 @@ The numerator and denominator both tend to infinity, but the denominator does so
 
 Which recovers the behaviour at UV wavelengths, so no Catastrophe!
 
-\section*{Conclusion}
+\section{Conclusion}
 \begin{itemize}
     \item This strange quantisation hypothesis actually fits the data.
     \item Quantising energy means that the average energy of each cavity mode is wavelength dependant, and not fixed $k_B T$ as seen at larger wavelengths.

@@ -22,6 +22,7 @@
 \usepackage{xifthen}
 \usepackage{accents}
 \usepackage{lmodern}
+\usepackage{titlesec}
 \renewcommand{\familydefault}{\sfdefault}
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
@@ -30,6 +31,7 @@
 \renewcommand\O{\ensuremath{\emptyset}}
 \newcommand\Q{\ensuremath{\mathbb{Q}}}
 \newcommand\C{\ensuremath{\mathbb{C}}}
+\newcommand{\currentlecture}{}
 
 \newtheorem*{DefNoLabel}{}
 
@@ -64,6 +66,7 @@
         \def\@lecturenum{#1}%
         \def\@lecturetitle{#3}%
         \addcontentsline{toc}{chapter}{Lecture #1}%
+        \refstepcounter{chapter}
         \chapter*{\small{#2}\\\LARGE{Lecture #1}}%
         \markboth{}{Lec #1}%
         \thispagestyle{fancy}%
@@ -73,6 +76,7 @@
         \def\@lecturenum{#1}%
         \def\@lecturetitle{#3}%
         \addcontentsline{toc}{chapter}{Lecture #1: #3}%
+        \refstepcounter{chapter}
         \chapter*{\small{#2}\\\LARGE{Lecture #1 - #3}}%
         \markboth{}{Lec #1 - #3}%
         \thispagestyle{fancy}%
@@ -83,6 +87,7 @@
 
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setcounter{tocdepth}{0}
 
 \usepackage{fancyhdr}
 \setlength{\headheight}{20pt}
@@ -90,6 +95,7 @@
 \fancyhf{}
 \fancyhead[L]{\currentcourse}
 \fancyhead[R]{\currentlecture}
+\fancyhead[C]{Ash's Lecture Notes}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -120,6 +126,20 @@
 \setlength{\abovedisplayskip}{10pt plus 2pt minus 5pt}
 \setlength{\belowdisplayskip}{10pt plus 2pt minus 5pt}
 
+\titleformat{\part}[display]
+  {\normalfont\huge\bfseries\filcenter}
+  {}
+  {0pt}
+  {\Huge}
+
+
+\makeatletter
+\@addtoreset{section}{chapter}
+\@addtoreset{subsection}{section}
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\makeatother
 
 \author{MSci Physics w/ Particle Physics and Cosmology\\University of Birmingham}
 \date{Year 1, Semester 1\\Ash Stewart}
