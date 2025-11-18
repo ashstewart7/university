@@ -69,14 +69,30 @@ So:
 \subsection{Example}
 Lets model a particle, in a single dimension moving with constant acceleration ($a_0$) along a line. What is x(t)?
 
-\subsection{Going Backwards}
-Lets say we have some body with $a(t) = k t^3$. What is the position function $x(t)$?
-
 \[
-    a = \frac{dv}{dt} = kt^3
+    a = \text{constant} = a_0
+\]
+\[
+    a = a_0 = \frac{dv}{dt}
+\]
+\[
+    \int_{v_0}^{v} dv = \int_{t_0}^{t} a_o \, dt = a_0 \int_{t_0}^{t} dt
+\]
+\[
+    v - v_0 = a_0(t-t_0)
+\]
+\[
+    v = v_0 a_0(t-t_0)
+\]
+
+And now the position function:
+\[
+    v = \frac{dx}{dt}
+\]
+\[
+    \int_{x_0}^{x} v \, dt = \int_{t_0}^{t} v_0 + a_0(t-t_0) \, dt
 \]
 
 \[
-    v = \int_{a}^{b} kt^3 \, dx
+    x-x_0 = v_0(t-t_0)+\frac{1}{2}a_0(t-t_0)^2
 \]
-

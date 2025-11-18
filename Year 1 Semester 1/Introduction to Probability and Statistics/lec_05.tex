@@ -1,13 +1,14 @@
-% !TeX root = main.tex
-\lecture{10}{Fri 07 Nov 2025 11:00}{Introduction to Probability}
-\paragraph{What is probability?} Probability is the pure mathematical description of randomness.
+\lecture{5}{15 Oct 2025 12:00}{Distributions}
 
-\section{Set Theory}
-Say we want to group trees into four sets:
-\begin{itemize}
-    \item Tall, or not.
-    \item Variegated (has a lighter coloured leaf border) or not.
-\end{itemize}
+\section{Coin Flips}
+Flipping a coin is one of the simplist distributions we can create.
 
-In a park of 142 trees, we observe:
+Given a:
+\begin{align*}
+P(H) &= 0.5\\
+P(T) &= 0.5
+\end{align*}
 
+We know that $P(HHHH) = 0.5^4$.
+
+And $P(\text{Three Heads and One Tail}) = P(\text{HHHT or HHTH or THHH or HTHH}) = 4 \times 0.5^4$
