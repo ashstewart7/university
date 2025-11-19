@@ -112,9 +112,50 @@ Also (this is non-relativistic so we can use circular motion)
     F = ma = \frac{mv^2}{r}
 \end{equation}
 \begin{equation}
+    \label{elecscattering2}
     \frac{e^2}{4 \pi \epsilon_0 r_n} = mv_n^2
 \end{equation}
 
-We can eliminate 
+We can use \ref{elecscattering1} and \ref{elecscattering2} to eliminate $v_n$ and show:
+\[
+    r_n = n^2 a_0, \qquad a_0 = \frac{\epsilon_0h^2}{\pi m e^2} = 5.2918 \times 10^{-11} \text{ (``Bohr Radius'')}
+\]
 
+
+\subsection{Energies}
+Using \ref{elecscattering1}:
+\[
+    2\pi r_n = n \lambda_n = n \frac{h}{p_n} = n \frac{h}{m v_n}
+\]
+\[
+    p_n = \frac{n h}{2 \pi r_n}
+\]
+And using our new result:
+\[
+    p_n = \frac{n h}{2 \pi r_n} = \frac{h}{2 \pi n a_0}
+\]
+
+\subsubsection{Kinetic Energy}
+
+\[
+    T_n = \frac{p_n^2}{2m} = \frac{h^2}{8 \pi^2 m n^2 a_0^2} = \frac{me^4}{8 \epsilon_0^2 h^2 n^2} = +\frac{13.6}{n^2}
+\]
+
+\subsubsection{Potential Energy}
+\[
+    U_n = \frac{-e^2}{4 \pi \epsilon_0 r_n} = \frac{-e^2}{4 \pi \epsilon_0 n^2 a_0} = \frac{-me^4}{4 \pi \epsilon_0^2 h^2 n^2} = -\frac{27.2}{n^2} eV
+\]
+
+\subsubsection{Total Energy}
+\[
+    E_n = T_n + u_n = \frac{-13.6}{n^2}eV
+\]
+This is the Bohr Model result, as required.
+
+\section{Conclusions}
+\begin{itemize}
+    \item Matter is wave-like, with a wavelength given by de Broglie wavelength.
+    \item Electrons can therefore interfere, which we see with electron diffraction.
+    \item A wave-like electron gives us the observed Bohr model result.
+\end{itemize}
 
