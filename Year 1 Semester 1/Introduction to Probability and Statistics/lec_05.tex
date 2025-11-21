@@ -60,11 +60,82 @@ And for the probability of the result lying between a and b:
 
 We cannot, in a continuous distribution consider the probability of an exact result, i.e. $P(x = a)$, $a \in \R$. As there are infinitely many possible values, the probability of any precise one is not meaningful (always zero). We therefore must always consider the probability of the result lying in some non-zero range. 
 
-P(x) in this case is called a \emph{probability density function} and the area under the PDF curve must sum to zero. Note that this means that P(x) at any point may exceed one, so long as the overall area is equal to 1.
+P(x) in this case is called a \emph{probability density function} and the area under the PDF curve must sum to one. Note that this means that P(x) at any point may exceed one, so long as the overall area is equal to 1. For some probability $a < P(x) < b$ (noting that since the P(a) for any precise a is zero, the equalities being strict or not is meaningless), the probability is the area of the curve between a and b.
 
 \section{Binomial Distribution}
+The Binomial Distribution represents a scenario where we conduct some number of identical trials, where each trial has two possible outcomes (which we denote success and failure). For example, flipping a coin. Here:
+\begin{itemize}
+    \item $n$ - The number of trials.
+    \item $p$ - The probability of success.
+    \item $q$ - The probability of failure ($q = 1 - p$).
+    \item $r$ - The number of successes.
+\end{itemize}
+
+This has probability mass function:
+\[
+    P(r; n, p) = \frac{n!}{r!(n-r)! }p^r (1-p)^{n-r}
+\]
+
+And has the following properties:
+\[
+    \langle r\rangle = np
+\]
+\[
+    Var(r) = np(1-p)
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec05-01.png}
+     \caption{The Binomial Distribution}
+\end{figure}
+\section{Poisson Distribution}
+This describes the number of events (i.e. the number of neutrinos detected by a neutrino detector) occurring in some time interval, given:
+\begin{itemize}
+    \item The mean rate of events is constant.
+    \item Each event occurs independently from the last.
+\end{itemize}
+
+This is created by taking the limit of a Binomial distribution, as:
+\begin{itemize}
+    \item The number of trials tends to infinity ($n \to \infty$)
+    \item The mean number of successes remains fixed ($np = \lambda = \text{constant}$)
+\end{itemize}
+
+Given $\lambda$ as the mean number of expected events (per unit time) and $r$ as the number of events occurring in that time, it has PMF:
+\[
+    P(r; \lambda) = \frac{\exp(-\lambda) \lambda^r}{r!}
+\]
+
+And has the following properties:
+\[
+    \langle r\rangle = \lambda
+\]
+\[
+    Var(r) = \lambda
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec05-02.png}
+     \caption{The Poisson Distribution}
+\end{figure}
 
 \section{Normal Distribution}
+A.K.A. The Gaussian distribution. This is the most well known and most useful distribution. Given a mean $\mu$ and a standard deviation $\sigma$, the probability density function is:
+\[
+    P(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2 \pi}} \exp\left(\frac{-(x - \mu)^2}{2 \sigma^2}\right)
+\]
 
-\section{Poisson Distribution}
+It is a very important distribution as it arises as a result of the Central Limit Theorem, which we will cover properly in the probability section of the course. It looks like this, noting it is symmetric and forms a ``bell-shaped curve'':
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec05-03.png}
+     \caption{The Normal Distribution}
+\end{figure}
 
+Note that since the tails are logarithmic, they tend to zero, but never reach it truly. A Poisson distribution approaches a Normal distribution as $\lambda \to \infty$. It is generally a good approximation for $\lambda > 30$ but this depends on the application being used.\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec05-04.png}
+     \caption{Poisson approximations to a Normal}
+\end{figure}

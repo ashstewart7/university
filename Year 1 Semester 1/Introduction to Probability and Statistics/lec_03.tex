@@ -14,7 +14,7 @@ For example, you are trying to measure the length of an object using a ruler tha
 \subsection{Accuracy vs Precision}
 High accuracy is preferable to high precision - having high precision but low accuracy can lead to false conclusions (as an incorrect value appears confidently correct). Accuracy is more difficult to improve - precision can be improved by gathering more data, while higher accuracy can only be improved by a better experimental design.
 
-\section{Error Propogation}
+\section{Error Propagation}
 If we take a distribution, and add a constant value to all points, the distribution is shifted up/down without changing the variance.
 
 \[
@@ -66,7 +66,7 @@ We can apply some linear transformation $mx + c$, we can chain these rules toget
 \]
 
 \subsection{Multiple Variables}
-What if we have mutliple distributed variables we want to add?
+What if we have multiple distributed variables we want to add?
 
 \[
     \langle A+B\rangle = \langle A \rangle + \langle B\rangle
@@ -99,6 +99,7 @@ Or division?
 \]
 
 \section{One Rule to Rule Them All}
+This single rule allows us to propagate error in any situation, assuming the two variables are uncorrelated:
 \[
     Var(f) \approx \left(\frac{\partial f}{\partial A} \Bigr\rvert_{A = \langle A\rangle, B = \langle B\rangle}\right)^2 Var(A) + \left(\frac{\partial f}{\partial A} \Bigr\rvert_{A = \langle A\rangle, B = \langle B\rangle}\right)^2 Var(B)
 \]
