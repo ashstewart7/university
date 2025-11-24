@@ -4,7 +4,7 @@
 \section{Likelihood}
 We want to fit a model to our data. We want some kind of function to specify how well this model fits the data, so that we can optimise to find the best. This is the likelihood function. There are many different ways to formulate it, but we denote it:
 \[
-    P(D \, | \, \theta)
+    P(D \, \mid \, \theta)
 \]
 
 Where D is our data, and $\theta$ is our model parameters. This is the probability of the data, given some parameters.
@@ -41,7 +41,7 @@ As a reminder, our model is, noting we are treating time as a discrete set of ti
 
 And the probability of getting some value of the noise on the $i$th measurement is (note the first equality, where we can also write it ignoring theta, because noise is independent of the parameters):
 \[
-    P(\epsilon_i | \theta) = P(\epsilon_i) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp \left(\frac{-\epsilon_i^2}{2 \sigma^2_{D_i}}\right)
+    P(\epsilon_i \mid \theta) = P(\epsilon_i) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp \left(\frac{-\epsilon_i^2}{2 \sigma^2_{D_i}}\right)
 \]
 This is a Normal distribution with a mean of zero, and a standard deviation of $\sigma_{D_i}$
 
@@ -52,12 +52,12 @@ We cannot directly measure $\epsilon_i$, but we know it is the difference betwee
 
 Since the noise is additive and Normal, we can combine these two equations to get our merit function - the probability of a single observed data point given the parameters as:
 \[
-    P(D_i | \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
+    P(D_i \mid \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
 \]
 
 Where $\theta$ is our list of parameters $\theta = [T_0, T_\text{env}, \tau]$. Crucially, this is a Normal distribution where the mean is our model's prediction given the parameters, and the standard deviation is the uncertainty on the error point. Assuming we have multiple uncorrelated data points, the total likelihood function is:
 \[
-    P(D | \theta) = \prod_{i=1}^{n} P(D_i | \theta)
+    P(D \mid \theta) = \prod_{i=1}^{n} P(D_i \mid \theta)
 \]
 
 Considering $\tau$ as the variable we actually change, we get:
@@ -67,7 +67,7 @@ Considering $\tau$ as the variable we actually change, we get:
      \caption{A heatmap of the likelihood function overlaid on the data.}
 \end{figure}
 
-The high likelihood values of $P(D|\tau)$ are the models which are most likely to generate the observed data, given the parameters. This, therefore, means that they are the models which best fit the data.
+The high likelihood values of $P(D\mid\tau)$ are the models which are most likely to generate the observed data, given the parameters. This, therefore, means that they are the models which best fit the data.
 
 If we plot $P(D, \tau)$ against $\tau$, we can see that the likelihood does a reasonable job of giving us a value which is close to true:
 \begin{figure}[H]
@@ -78,37 +78,37 @@ If we plot $P(D, \tau)$ against $\tau$, we can see that the likelihood does a re
 
 We can use Maximum Likelihood Estimation (note that it is just an estimate, the value of tau given by the maximum likelihood and the true value are \textbf{not} the same) to estimate the best value of tau for the model. We chose the value of tau that gives the maximum likelihood:
 \[
-    \hat{\tau} = \arg\max_{\tau} P(D|\tau)
+    \hat{\tau} = \arg\max_{\tau} P(D\mid\tau)
 \]
 
 In general, given a set of multiple parameters, we say:
 \[
-    \hat{\theta} = \arg\max_{\theta} P(D|\theta)
+    \hat{\theta} = \arg\max_{\theta} P(D\mid\theta)
 \]
 
 \section{Log Likelihood}
 We still need to estimate the uncertainty on this predicted best value of tau. It turns out that a good way to do this is by taking the log likelihood instead of just the likelihood. We take the natural log of the normal probability density function for a single data point:
 \[
-    P(D_i | \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
+    P(D_i \mid \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
 \]
 \[
-    \ln P(D_i | \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
+    \ln P(D_i \mid \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
 \]
 \[
-    \ln P(D_i | \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}}\right) +\ln\left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
+    \ln P(D_i \mid \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}}\right) +\ln\left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
 \]
 \[
-    \ln P(D_i | \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) - \ln\left(\sigma_{D_i}\right) - \ln \left(\sqrt{2 \pi}\right)
+    \ln P(D_i \mid \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) - \ln\left(\sigma_{D_i}\right) - \ln \left(\sqrt{2 \pi}\right)
 \]
 
 If we ignore the constant term, as it does not change the results (as we care about the results comparative to each other to find the maximum), and if we assume that the uncertainty is the same on each data point (which we must be careful about, in case uncertainties are variables too):
 \[
-    \ln P(D_i | \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) + \text{constant}
+    \ln P(D_i \mid \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) + \text{constant}
 \]
 
 This gives the final log likelihood as:
 \[
-    \boxed{\mathcal{L} = \ln P(D|\theta) = \sum_{i=1}^{n} P(D_i | \theta) = \sum_{i=1}^{n} \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)}
+    \boxed{\mathcal{L} = \ln P(D\mid\theta) = \sum_{i=1}^{n} P(D_i \mid \theta) = \sum_{i=1}^{n} \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)}
 \]
 
 \begin{figure}[H]
@@ -127,7 +127,7 @@ We can see this generates similar values to the standard likelihood, but with mu
 
 This is similar again, but with a very different order of magnitude. We can calculate the predicted optimum $\tau$ by determining the maximum point where:
 \[
-    \frac{\partial}{\partial \tau} \ln P(D | \tau) = 0
+    \frac{\partial}{\partial \tau} \ln P(D \mid \tau) = 0
 \]
 Note the swap from theta to tau, this is because tau is the parameter we're actually using to fit, while the other parameters bundled into theta are constant. This gives $\tau \approx 3.23$. Yes we could have done this with traditional likelihood, but the differentiation is nicer in log form and it becomes relevant later.
 
@@ -173,7 +173,7 @@ Using the log likelihood has:
 
 
 \subsection{Multidimensional Generalisation}
-This works in 1D, but we can generalise to a higher number of parameters. We assume here however that $P(D| \theta)$ is going to be a normal distribution. If this is not the case, we cannot use the approximations for uncertainties, and the problem becomes too complex for first year stats. It is generally the case that it either will approximate a normal as many datapoints are taken. If this isn't true, it becomes a problem for Y4 Bayesian Stats.
+This works in 1D, but we can generalise to a higher number of parameters. We assume here however that $P(D\mid \theta)$ is going to be a normal distribution. If this is not the case, we cannot use the approximations for uncertainties, and the problem becomes too complex for first year stats. It is generally the case that it either will approximate a normal as many datapoints are taken. If this isn't true, it becomes a problem for Y4 Bayesian Stats.
 
 We find the maximum likelihood (given multiple parameters $\hat{\theta}$) with:
 \[

@@ -1,0 +1,29 @@
+% !TeX root = main.tex
+\lecture{9}{Wed 29 Oct 2025 12:00}{Linear Regression}
+Previously, we've used numerical methods to determine the best fit parameters for a line of best fit to some data. This is good, because it easily generalises to more complex problems, however lines of best fit have a more specific (and easier to implement) algebraic method.
+
+\section{Method}
+And, we have to perform the same broad steps:
+\begin{enumerate}
+    \item A generative model for the data, with knowledge of how the noise is distributed.
+    \item Likelihood function.
+    \item A method for finding the maximum likelihood.
+    \item Method for finding the uncertainties on best fit parameters.
+    \item A method for checking how good the fit is.
+\end{enumerate}
+
+\subsection{Generative Model}
+We use the same generative model as before, with a straight line fit with some additively generated noise (with a standard deviation that may differ from point to point, $\sigma_{D_i}$):
+\[
+    M(x, \theta) = mx+c
+\]
+
+\subsection{Likelihood Function}
+Using the same likelihood and log likelihood formulae has before, we can take this one step further by defining (as the extra factor of $-2$ does not matter when calculating the maxima/minima and ignoring it will make the algebra nicer):
+\[
+    \chi^2 = -2\LL = \sum_{i=1}^{n} \left(\frac{D_i - M(x_i, \theta)}{\sigma_{D_i}}\right)^2
+\]
+
+\subsection{Finding Maximum Likelihood (Minimum $\chi^2$)}
+
+
