@@ -1,0 +1,49 @@
+% !TeX root = main.tex
+\lecture{7}{Wed 22 Oct 2025 12:00}{Fitting a Straight Line 1}
+We want to create a model for a straight line:
+\[
+    M(x, \theta) = mx + c
+\]
+
+Where are datapoints are given by this model and some additive noise:
+\[
+    D = M(x, \theta) + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma_i)
+\]
+
+The general recipe for line fitting is given by:
+\begin{enumerate}
+    \item A generative model for the data, with knowledge of how the noise is distributed.
+    \item Likelihood function.
+    \item A method for finding the maximum likelihood.
+    \item Method for finding the uncertainties on best fit parameters.
+    \item A method for checking how good the fit is.
+\end{enumerate}
+
+We can write down the likelihood function for this model as:
+
+\begin{align*}
+    P(D_i | \theta) &= \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp\left(\frac{-(D_i - M(x_i, \theta))^2}{2 \sigma^2_{D_i}}\right)\\
+    P(D | \theta) &= \prod_{i=1}^{n} P(D_i | \theta)
+\end{align*}
+
+And again:
+\[
+    \LL = \ln P(D | \theta) = \sum_{i=1}^{n} \ln P(D_i | \theta) \propto \sum_{i=1}^{n} \left(\frac{-(D_i - M(x_i, \theta))^2}{2\sigma^2_{D_i}}\right)
+\]
+
+We want to find the parameters of distribution that maximise the (log)likelihood:
+\[
+    \hat{\theta} = \arg\max_{\theta} P(D|\theta)
+\]
+Or:
+\[
+    \hat{\theta} = \arg\max_{\theta} \LL
+\]
+
+There are a number of different approaches to do this:
+\begin{itemize}
+    \item Find where all first derivatives equal zero (as last lecture, various clever algorithms to do so).
+    \item Brute force on a grid.
+    \item Iterative or stochastic methods.
+    \item Analytic maximisation for a simple linear model - see next lecture.
+\end{itemize}

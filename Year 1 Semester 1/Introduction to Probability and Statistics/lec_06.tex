@@ -87,4 +87,129 @@ In general, given a set of multiple parameters, we say:
 \]
 
 \section{Log Likelihood}
-We still need to estimate the uncertainty on this predicted best value of tau. It turns out that a good way to do this is by taking the log likelihood instead of just the likelihood.
+We still need to estimate the uncertainty on this predicted best value of tau. It turns out that a good way to do this is by taking the log likelihood instead of just the likelihood. We take the natural log of the normal probability density function for a single data point:
+\[
+    P(D_i | \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
+\]
+\[
+    \ln P(D_i | \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
+\]
+\[
+    \ln P(D_i | \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}}\right) +\ln\left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
+\]
+\[
+    \ln P(D_i | \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) - \ln\left(\sigma_{D_i}\right) - \ln \left(\sqrt{2 \pi}\right)
+\]
+
+If we ignore the constant term, as it does not change the results (as we care about the results comparative to each other to find the maximum), and if we assume that the uncertainty is the same on each data point (which we must be careful about, in case uncertainties are variables too):
+\[
+    \ln P(D_i | \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) + \text{constant}
+\]
+
+This gives the final log likelihood as:
+\[
+    \boxed{\mathcal{L} = \ln P(D|\theta) = \sum_{i=1}^{n} P(D_i | \theta) = \sum_{i=1}^{n} \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)}
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-04.png}
+     \caption{The likelihood plot, repeated with log likelihood}
+\end{figure}
+
+We can see this generates similar values to the standard likelihood, but with much friendlier values (-20 to -120, rather than very small numbers). The equation is also nicer to calculate as we're able to get rid of the constant terms. If we again consider this as a function of tau (the parameter we're actually changing to produce a fit):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-05.png}
+     \caption{}
+\end{figure}
+
+This is similar again, but with a very different order of magnitude. We can calculate the predicted optimum $\tau$ by determining the maximum point where:
+\[
+    \frac{\partial}{\partial \tau} \ln P(D | \tau) = 0
+\]
+Note the swap from theta to tau, this is because tau is the parameter we're actually using to fit, while the other parameters bundled into theta are constant. This gives $\tau \approx 3.23$. Yes we could have done this with traditional likelihood, but the differentiation is nicer in log form and it becomes relevant later.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-06.png}
+     \caption{}
+\end{figure}
+
+\section{Uncertainties on Log Likelihood}
+In our single dimension problem, we'll create a new value called the Hessian ($H$), we define this as:
+\[
+    \boxed{H = \frac{\partial^2 \LL}{\partial \tau^2} \biggr\rvert_{\tau = \hat{\tau}}}
+\]
+
+Why is this (and the log likelihood) actually useful? It turns out that the curvature of the log likelihood around the maximum point tells us the uncertainty. We can use the Hessian and log likelihood to estimate the uncertainty on the parameter $\tau$, using the inverse of $H$, $H^{-1}$ where $HH^{-1} = 1$.
+\[
+    \sigma_{\hat{\tau}} \approx \sqrt{|H^{-1}|}
+\]
+
+Since we're in 1D, this value of the Hessian is a scalar, and we can estimate it by either differentiating twice or estimating using two points:
+\[
+    f''(x) = \lim_{h \to 0} \frac{f(x+h) - 2f(x) + f(x-h)}{h^2}
+\]
+And calculating:
+\[
+    \sigma_{\hat{\tau}} = \sqrt{\frac{1}{|H|}}
+\]
+But note that this works differently in higher dimensions (more parameters) has $H$ becomes a matrix. This gives us $\hat{\tau} \approx 3.23$ from the previous result, and now $\sigma_{\hat{\tau}} \approx 0.133$. Note that the true value is 1.8 standard deviations away from the best estimate, which is okay - anything larger than 3 sigma away would start to become worrying.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-07.png}
+     \caption{}
+\end{figure}
+
+Using the log likelihood has:
+\begin{itemize}
+    \item Been a nicer calculation, which is computationally easier, as we can strip out all the constant terms.
+    \item Allowed us to calculate the uncertainties on our predicted values.
+    \item Allowed us to get back to the standard likelihood (as the black and red curves above are approximately the same) anyways.
+\end{itemize}
+
+
+\subsection{Multidimensional Generalisation}
+This works in 1D, but we can generalise to a higher number of parameters. We assume here however that $P(D| \theta)$ is going to be a normal distribution. If this is not the case, we cannot use the approximations for uncertainties, and the problem becomes too complex for first year stats. It is generally the case that it either will approximate a normal as many datapoints are taken. If this isn't true, it becomes a problem for Y4 Bayesian Stats.
+
+We find the maximum likelihood (given multiple parameters $\hat{\theta}$) with:
+\[
+    \frac{\partial \LL}{\partial \theta_1} = \frac{\partial \LL}{\partial \theta_2} = \cdots = 0
+\]
+
+And the Hessian is given by:
+
+\[
+\mathbf{H}(\hat{\theta}) =
+\begin{bmatrix}
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_1^2}\biggr\rvert_{\theta=\hat{\theta}} &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_1 \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
+\cdots &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_1 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
+\\[1.0em]
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_2 \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_2^2}\biggr\rvert_{\theta=\hat{\theta}} &
+\cdots &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_2 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
+\\[1.0em]
+\vdots & \vdots & \ddots & \vdots
+\\[1.0em]
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_k \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_k \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
+\cdots &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_k^2}\biggr\rvert_{\theta=\hat{\theta}}
+\end{bmatrix}.
+\]
+

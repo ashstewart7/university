@@ -35,10 +35,9 @@ def compile_all_files():
         course_folder = lectures.root.relative_to(ROOT)  # relative path from ROOT to course folder
 
         # Insert part heading for the course
-        lines.append(f'    \\part*{{{course_title}}}')
         lines.append(f'    \\addcontentsline{{toc}}{{part}}{{{course_title}}}')
-        lines.append(f'    \\graphicspath{{{{{course_folder}/}}}}')
         lines.append(f'    \\course{{{course_title}}}')
+        lines.append(f'    \\graphicspath{{{{{course_folder}}}}}')
         lines.append(f'    % start lectures {course_code}')
         for lecture in lectures:
             lecture_file = lecture.file_path.name
