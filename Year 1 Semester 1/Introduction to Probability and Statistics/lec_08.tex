@@ -49,7 +49,7 @@ We want to estimate:
     \frac{\partial^2 \LL}{\partial c^2} \biggr\rvert_{\theta = \hat{\theta}}
 \]
 
-While we shouldn't use these 1D distributions to estimate the best fit parameters, this problem has deliberately been created to minimise the correlation between $m$ and $c$ and creating something with them that describes $P(D\mid\theta)$ is still instructive.
+While we shouldn't use these 1D distributions to estimate the best fit parameters, this problem has deliberately been created to minimise the correlation between $m$ and $c$ and creating something with them that describes $P(D\mid\theta)$ is still instructive. We can however create a grid of the values of $m$ and $c$, calculate the likelihood for all points with some resolution and pick the maximum. This is slow, but crucially does find the maximum point of the 3D distribution surface and is not the same as finding the max for each variable individually.
 
 We assume that $P(D\mid\theta)$ can be described by a two dimensional normal distribution, and we can  build this from two discrete normal distributions of two independent variables (with the caveats above). We say that the mean value of $P(D\mid m)$ is $\hat{m}$ and the uncertainty is therefore given by:
 \[

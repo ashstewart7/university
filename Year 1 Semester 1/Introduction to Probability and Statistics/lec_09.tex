@@ -25,5 +25,275 @@ Using the same likelihood and log likelihood formulae has before, we can take th
 \]
 
 \subsection{Finding Maximum Likelihood (Minimum $\chi^2$)}
+Since our model is linear, there will only be one turning point for $\chi^2$, so we can be sure that the minimum of $\chi^2$ will be at the point where the first derivatives (wrt $m$ and $c$) are zero.
+\[
+    \frac{\partial (\chi^2)}{\partial m} = \frac{\partial (\chi^2)}{\partial c} = 0
+\]
+
+Rather than doing this numerically, as last lecture, we can do it algebraically:
+\[
+    \chi^2 = \sum_{i=1}^{n} \left(\frac{D_i - M(x_i, \theta)}{\sigma_{D_i}}\right)^2 = \sum_{i=1}^{n} \left(\frac{D_i - mx_i - c}{\sigma_{D_i}}\right)^2
+\]
+
+\subsubsection{\underline{w.r.t $m$:}}
+\[
+    \frac{\partial (\chi^2)}{\partial m} = \frac{\partial}{\partial m} \sum_{i=1}^{n} \left(\frac{D_i - mx_i - c}{\sigma_{D_i}}\right)^2 = 0
+\]
+\[
+     = \sum_{i=1}^{n} \frac{\partial}{\partial m} \left(\frac{D_i - mx_i - c}{\sigma_{D_i}}\right)^2
+\]
+
+Let $u_i$ = $(D_i - mx_i - c) / \sigma_{D_i}$, so $\partial u_i / \partial m$ = $-x_i / \sigma_{D_i}$:
+\[
+    = \sum_{i=1}^{n} \frac{\partial u_i}{\partial m} \frac{\partial}{\partial u_i} u_i^2
+\]
+\[
+    = \sum_{i=1}^{n} \frac{\partial u_i}{\partial m} (2u_i)
+\]
+\[
+    = \sum_{i=1}^{n} \left(\frac{-x_i}{\sigma_{D_i}}\right)(2u_i)
+\]
+\[
+    -2 \sum_{i=1}^{n} \frac{x_i u_i}{\sigma_{D_i}}
+\]
+
+So:
+\[
+    \frac{\partial (\chi^2)}{\partial m} = -2 \sum_{i=1}^{n} \frac{x_i}{\sigma_{D_i}} \frac{D_i - mx_i - c}{\sigma_{D_i}}
+\]
+\[
+    \boxed{\frac{\partial (\chi^2)}{\partial m} = -2 \sum_{i=1}^{n} \left(\frac{x_i(D_i - mx_i - c)}{\sigma_{D_i}^2}\right) = 0}
+\]
+
+\subsubsection{\underline{w.r.t $c$:}}
+\[
+    \frac{\partial (\chi^2)}{\partial c} = \frac{\partial}{\partial c} \sum_{i=1}^{n} \left(\frac{D_i - mx_i - c}{\sigma_{D_i}}\right)^2 = 0
+\]
+\[
+     = \sum_{i=1}^{n} \frac{\partial}{\partial c} \left(\frac{D_i - mx_i - c}{\sigma_{D_i}}\right)^2
+\]
+Let $u_i$ = $(D_i - mx_i - c) / \sigma_{D_i}$, so $\partial u_i / \partial c$ = $-1 / \sigma_{D_i}$:
+\[
+    = \sum_{i=1}^{n} \frac{\partial u_i}{\partial c} \frac{\partial}{\partial u_i} u_i^2
+\]
+\[
+    = \sum_{i=1}^{n} \frac{\partial u_i}{\partial c} (2u_i)
+\]
+\[
+    = \sum_{i=1}^{n} \left(\frac{-1}{\sigma_{D_i}}\right)\left(2u_i\right)
+\]
+\[
+    = -2 \sum_{i=1}^{n} \frac{u_i}{\sigma_{D_i}}
+\]
+So:
+\[
+    \boxed{\frac{\partial (\chi^2)}{\partial c}= -2 \sum_{i=1}^{n} \frac{(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0}
+\]
+
+
+\section{Putting it All Together}
+We now have two simultaneous equations with two variables ($m, c$), so we can solve for the optimum values:
+\[
+    \frac{\partial (\chi^2)}{\partial c}= -2 \sum_{i=1}^{n} \frac{(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0
+\]
+\[
+    \frac{\partial (\chi^2)}{\partial m} = -2 \sum_{i=1}^{n} \frac{x_i(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0
+\]
+
+We can make some substitutions for ease:
+\[
+    S = \sum_{i=1}^{n} \frac{1}{\sigma_{D_i}^2}
+\]
+\[
+    S_x = \sum_{i=1}^{n} \frac{x_i}{\sigma^2_{D_i}}
+\]
+\[
+    S_{xx} = \sum_{i=1}^{n} \frac{x_i^2}{\sigma^2_{D_i}}
+\]
+\[
+    S_D = \sum_{i=1}^{n} \frac{D_i}{\sigma^2_{D_i}}
+\]
+\[
+    S_{Dx} = \sum_{i=1}^{n} \frac{x_i D_i}{\sigma^2_{D_i}}
+\]
+
+\subsection{Subbing into $\partial (\chi^2) / \partial c$}
+\[
+    -2 \sum_{i=1}^{n} \frac{(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0
+\]
+\[
+    \sum_{i=1}^{n} \frac{(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0
+\]
+
+\[
+    S_D - mS_x - cS = 0 \implies S_D = mS_x + cS
+\]
+
+\subsection{Subbing into $\partial (\chi^2) / \partial m$}
+\[
+     -2 \sum_{i=1}^{n} \frac{x_i(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0
+\]
+\[
+    \sum_{i=1}^{n} \frac{x_i(D_i - mx_i - c)}{\sigma_{D_i}^2} = 0
+\]
+\[
+    S_{Dx} - mS_{xx} - cS_x = 0 \implies S_{Dx} = mS_{xx} + cS_x
+\]
+
+\subsection{Combining}
+We now have two simultaneous equations to solve:
+\begin{equation*}
+    \begin{cases}
+            S_D = mS_x + cS \quad(1)\\
+            S_{Dx} = mS_{xx} + cS_x \quad(2)
+    \end{cases}
+\end{equation*}
+
+Rearranging (1) gives:
+\[
+    c = \frac{S_d - m S_x}{S} \quad (3)
+\]
+
+And (3) into (2):
+\[
+    S_{Dx} = mS_{xx} + \frac{S_d - m S_x}{S} S_x
+\]
+\[
+    S_{Dx} = mS_{xx} + \frac{S_D S_x}{S} - \frac{m(S_x)^2}{S}
+\]
+\[
+    S_{Dx} - \frac{S_D S_x}{S} = mS_{xx} - \frac{m(S_x)^2}{S}
+\]
+\[
+    S_{Dx} - \frac{S_D S_x}{S} = m\left(S_{xx} - \frac{(S_x)^2}{S}\right)
+\]
+
+\[
+    m = \left( S_{Dx} - \frac{S_D S_x}{S} \right) / \left(S_{xx} - \frac{(S_x)^2}{S}\right)
+\]
+Simplifying to:
+\[
+    \boxed{m = \frac{SS_{Dx} - S_D S_x}{SS_{xx} - S_x^2}}
+\]
+
+
+And for $c$, rearranging (2) gives:
+\[
+    m = \frac{S_D - cS}{S_x} \quad (4)
+\]
+
+(4) into (2)
+\[
+    S_{Dx} = \frac{S_D - cS}{S_x} S_{xx} + cS_x
+\]
+\[
+    S_{Dx} = \frac{S_D S_{xx}}{S_x} - \frac{cSS_{xx}}{S_x} + cS_x
+\]
+\[
+    S_{Dx} - \frac{S_D S_{xx}}{S_x} = cS_x - \frac{cSS_{xx}}{S_x}
+\]
+\[
+    S_{Dx} - \frac{S_D S_{xx}}{S_x} = c\left(S_x - \frac{SS_{xx}}{S_x}\right)
+\]
+\[
+    c = \left(S_{Dx} - \frac{S_D S_{xx}}{S_x}\right) / \left(S_x - \frac{SS_{xx}}{S_x}\right)
+\]
+
+Simplifying to:
+\[
+    \boxed{c = \frac{S_D S_{xx} - S_x S_{Dx}}{SS_{xx} - S_x^2}}
+\]
+
+\subsection{And Finally\dots}
+To simplify, let $\Delta = S S_{xx} - S_x^2$:
+\[
+    \hat{c} \equiv \langle c\rangle = \frac{S_D S_{xx} - S_x S_{Dx}}{\Delta}
+\]
+\[
+    \hat{m} \equiv \langle m\rangle = \frac{SS_{Dx} - S_D S_x}{\Delta}
+\]
+
+We have therefore managed to calculate the best fit parameters $\hat{m}$ and $\hat{c}$ in closed form without any numerical methods. 
+
+\section{Uncertainties on Best Fit Parameters}
+Given we're now in 2D, the Hessian matrix is given as:
+{\Large\[
+\mathbf{H} =
+\begin{bmatrix}
+\frac{\partial^{2}\LL}{\partial \theta_{1}^{2}} \bigr\rvert_{\theta=\hat{\theta}} &
+\frac{\partial^{2}\LL}{\partial \theta_{1}\partial \theta_{2}} \bigr\rvert_{\theta=\hat{\theta}} \\[8pt]
+\frac{\partial^{2}\LL}{\partial \theta_{2}\partial \theta_{1}} \bigr\rvert_{\theta=\hat{\theta}} &
+\frac{\partial^{2}\LL}{\partial \theta_{2}^{2}} \bigr\rvert_{\theta=\hat{\theta}}
+\end{bmatrix}
+\]}
+
+And the covariance matrix $\Sigma$ is given as:
+\[
+    \Sigma = -\mathbf{H}^{-1}
+\]
+
+We therefore need to calculate the relevant second derivatives. Note that while we could ignore the $-2$ term before, as it did not matter for finding the location of the maximum, it does matter for errors and cannot be left off. We therefore go back to working in $\LL$ and not $\chi^2$
+
+We know the first derivatives of the log likelihood are:
+\[
+    \frac{\partial (\chi^2)}{\partial m} = -2(S_{Dx} - mS_{xx} - cS_x)  \implies\frac{\partial \LL}{\partial m} = S_{Dx} - mS_{xx} - cS_x
+\]
+\[
+    \frac{\partial (\chi^2)}{\partial c} = -2(S_{D} - mS_{x} - cS)  \implies\frac{\partial \LL}{\partial c} = S_{D} - mS_{x} - cS
+\]
+
+Taking second derivatives:
+\[
+    \frac{\partial^2 \LL}{\partial m^2} = \frac{\partial}{\partial m} \left(S_{Dx} - mS_{xx} - cS_x\right) = -S_{xx}
+\]
+\[
+    \frac{\partial^2 \LL}{\partial c^2} = \frac{\partial}{\partial c} \left(S_{D} - mS_{x} - cS\right) = -S
+\]
+
+And for the term wrt both variables:
+\[
+    \frac{\partial^2 \LL}{\partial m \partial c} = \frac{\partial^2 \LL}{\partial c \partial m} = \frac{\partial}{\partial c} (S_{Dx} - mS_{xx} - cS_x) - S_x 
+\]
+
+Hence (taking $\theta_1 = m$, $\theta_2 = c$):
+\[
+    \mathbf{H} =
+    \begin{bmatrix}
+        -S_{xx} & -S_x\\
+        -S_x & -S
+    \end{bmatrix}
+\]
+
+And finally:
+\[
+\Sigma = -\mathbf{H}^{-1} =
+\frac{1}{S S_{xx} - S_x^2} 
+\begin{bmatrix}
+S & -S_x \\
+-S_x & S_{xx}
+\end{bmatrix} 
+= \frac{1}{\Delta} 
+\begin{bmatrix}
+S & -S_x \\
+-S_x & S_{xx}
+\end{bmatrix},
+\]
+
+Therefore (from the definitions of the covariance matrix):
+\[
+    Var(m) = \Sigma_{11} = \frac{S}{\Delta}
+\]
+\[
+    Var(c) = \Sigma_{22} = \frac{S_{xx}}{\Delta}
+\]
+\[
+    Cov(m, c) = \Sigma{12} = \Sigma_{21} = -\frac{S_x}{\Delta}
+\]
+
+And using the definition of correlation:
+\[
+    Cor(m, c) = \frac{Cov(m, c)}{\sqrt{Var(m)Var(c)}} = \frac{-S_x}{\sqrt{SS_{xx}}}
+\]
+
 
 
