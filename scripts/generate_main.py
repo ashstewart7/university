@@ -17,6 +17,8 @@ def compile_all_files():
         r'        \maketitle',
         r'    \end{titlepage}',
         r'    \tableofcontents',
+        r'    \thispagestyle{empty}',
+
         ''
     ]
 

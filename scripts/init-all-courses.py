@@ -8,7 +8,7 @@ for course in Courses():
     lines = [
         r'\documentclass[a4paper]{report}',
         r'\input{../preamble.tex}',
-        fr'\title{{{course_title}}}',
+        fr'\title{{{course_title} Lecture Notes}}',
         r'\begin{document}',
         r'    \begin{titlepage}',
         r'        \maketitle',
