@@ -1,0 +1,177 @@
+% !TeX root = main.tex
+\lecture{11}{Fri 12 Dec 2025 12:00}{Applications of The Schrodinger Equation}
+Recap:
+\begin{itemize}
+    \item Operators bring out observables from wavefunctions.
+    \item We can build operators for T, E, V and substitute them into energy conservation $T = E + V$ to get the Schrodinger Equation.
+    \item Expectation values let us find `average' values for observables that are not well defined eigenvalues of a wavefunction.
+\end{itemize}
+
+In this lecture:
+\begin{itemize}
+    \item Using the Time Independent Schrodinger Equation to solve free-particle at a step problems.
+    \item Reflection and quantum tunnelling.
+\end{itemize}
+
+\section{Potential Step Where $E \geq V_0$}
+Consider a particle of mass $m$ incident on a `potential step' at $x = 0$. Note that the energy of the incoming particle has greater energy than the step potential, so $E > v_0$. This means the particle has sufficient energy to exist in the region, otherwise the particle would be trapped on the left (effectively half a potential well). This particle has enough energy to get past the step with excess K.E.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11_01.png}
+     \caption{}
+\end{figure}
+
+In each of the two regions of constant potential, there is no force on the particle:
+\[
+    F = -\frac{dV}{dx} = 0
+\]
+
+The most general form of the T.I.S.E is given by the wave function in the two regions. We have to do this piecewise, as the solution in each area of constant potential will be different:
+
+For $x < 0$, consider $\psi_1$:
+\[
+    \psi_1 = Ae^{ik_1x} + Be^{-ik_1x}
+\]
+Where the A term is the incident wave and the B term is the reflected wave.
+
+For $x \geq 0$, consider $\psi_2$:
+\[
+    \psi_2 = Ce^{ik_2x}
+\]
+Note that there is no reflection term, as the region of $x > 0$ has no boundary, hence no reflected wave from the right.
+
+\subsection{Verifying Solutions}
+Lets show that $\psi_2$ is a solution of the TISE:
+\[
+    -\frac{\hbar^2}{2m} \frac{d^2 \psi_2}{dx^2} + V_0 \psi_2 = E \phi_2
+\]
+\[
+    -\frac{\hbar^2}{2m} \left[(i k_2)^2 Ce^{ik_2x}\right] + V_0 \psi_2 = E \psi_2
+\]
+\[
+    -\frac{\hbar^2}{2m} ( i k_2)^2 \psi_2 + V_0 \psi_2 = E \psi_2
+\]
+\[
+    \implies k_2 = \frac{\sqrt{2m(E-V_0)}}{\hbar}
+\]
+If this equality is true, \emph{then} $\psi_2$ is a solution of the TISE. In other words, $\psi_2$ is a solution of the TISE for this value of $k_2$ (only).
+
+Doing the same for $\psi_1$ gives us:
+\[
+    k_1 = \frac{\sqrt{2mE}}{\hbar}
+\]
+So $\psi_1$ is a solution of the TISE for this value of $k_1$.
+
+
+\subsection{Boundary Conditions}
+We still, however, do not know the values of $A, B, C$ (where $A, B, C \in \C$). We can do this by ``matching up'' the two wavefunctions by applying boundary conditions for the boundary between the area of zero potential and the potential step (at $x = 0$) 
+
+\paragraph{(1) The wavefunction must be continuous.}
+Since $p \propto \frac{\partial \psi}{\partial x}$, momentum will tend to infinity if there is a discontinuity in the wavefunction. Therefore, there cannot be any jump, and:
+\[
+    \psi_1(0) = \psi_2(0)
+\]
+
+\paragraph{(2) The gradient of the wavefunction must be continuous.} Since $E \propto \frac{\partial^2 \psi}{\partial x^2}$ the same logic applies. We cannot have a particle of infinite energy, so the gradient of the wavefunction must also be continuous. Note: this does not apply in the infinite potential well case, as we do allow the concept of infinite energy in that model.
+
+\[
+    \frac{\partial \psi_1}{\partial x} \biggr\rvert_{x=0} = \frac{\partial \psi_2}{\partial x} \biggr\rvert_{x=0}
+\]
+
+From (1):
+\[
+    Ae^{ik_1 0} + Be^{-ik_1 0} + Ce^{ik_2 0}
+\]
+\[
+    \boxed{A + B = C}, \qquad \text{noting: } A, B, C \in \C
+\]
+
+From (2):
+\[
+    ik_1 \left(Ae^{ik0} - Be^{-k_1 0}\right) = ik_2 C e^{ik_2 0}
+\]
+\[
+    A - B = \frac{k_2}{k_1} C
+\]
+
+Lets use this to find the probability of a particle reflecting, given by $R$. From now on we specify $E \geq V_0$ not just $E > V_0$:
+\[
+    R = \left| \frac{\text{reflected amplitude}}{\text{incident intensity}} \right|^2
+\]
+\[
+    R = \left|\frac{B}{A}\right|^2
+\]
+
+Eliminating C shows that:
+\[
+    R = \left|\frac{k_1 - k_2}{k_1 + k_2}\right|^2
+\]
+And we know $k_2 \propto \sqrt{E-V_0}$ and $k_1 \propto \sqrt{E}$. We can check some values:
+\begin{itemize}
+    \item When $E = V_0$: $k_2 = 0 \implies R = 1$.  
+    \item When $E > V_0$: As $E \to \infty$, the $\sqrt{E - V_0}$ is dominated by the $E$ term, and we end up with a square root decay curve tending towards zero.
+\end{itemize}
+
+This makes physical sense. We start with a high probability of reflection, which becomes smaller and smaller as we turn up the energy (or decrease the step). However, there is an asymptote at $R = 0$, and the curve is never equal to zero. There is always \emph{some} probability of reflection.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-01.png}
+     \caption{}
+\end{figure}
+
+
+\section{What if $E < V_0$?}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec11-02.png}
+     \caption{}
+\end{figure}
+
+Classically, $x > 0$ is completely impossible. The particle must bounce off and cannot exist in this region. Let's approach from a QM perspective and reconsider $k_2$:
+\[
+    k_2 = \frac{\sqrt{2m(E-V_0)}}{\hbar}
+\]
+The contents of the square root are now negative. We can rewrite this (to simplify a little) as:
+\[
+    k_2 = \frac{i \sqrt{2m(V_0 - E)}}{\hbar}
+\]
+
+This changes our wave function, and so:
+\[
+    \psi_2 = C \exp \left(ii \frac{\sqrt{2m(V_0 - E)}}{\hbar}x\right)
+\]
+Letting $\alpha = \sqrt{2m(V_0 - E)} / \hbar$ which is a constant.
+\[
+    \psi_2 = Ce^{-\alpha x}
+\]
+
+This is no longer a wavefunction, and is simply exponential decay. This makes sense, as the particle classically cannot truly exist in the region of too high energy. Sketching probability density against $x$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-03.png}
+     \caption{}
+\end{figure}
+
+The ``decay characteristic length'' (depth of penetration into the barrier) is given by $1/\alpha$. This means that the particle is allowed to penetrate into the ``forbidden zone'' of the potential step. What if the forbidden zone ends at some $X = L$. We can see that the potential goes back to zero, and the particle goes back from exponential decay to being a wave. In effect, the particle has passed straight through the wall, despite having insufficient potential so being classically forbidden. This is called ``Quantum Tunnelling''.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-04.png}
+     \caption{}
+\end{figure}
+
+\section{Conclusions}
+\begin{itemize}
+    \item For a finite step (or well) substitute in the general solutions to the TISE, piecewise.
+    \item Use boundary conditions to match up the value and the slope of $\psi$ at the boundary.
+    \item There will always be some reflection, and therefore some interference.
+    \item If energy is lower than the step potential, the wavefunction turns into exponential decay.
+    \item If the step is of finite depth, since this exponential decay never reaches zero - there is some probability of the particle passing entirely through the step.
+\end{itemize}
+
+\begin{center}
+    \vspace{1cm}
+    \textbf{\large End of Module.}
+\end{center}
