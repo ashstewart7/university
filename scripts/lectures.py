@@ -141,10 +141,10 @@ class Lectures(list):
 
         return l
 
-    def compile_master(self):
+    def compile_master(self, jobname='main'):
         print(self.master_file)
         result = subprocess.run(
-            ['latexmk', '-pdf', '-interaction=nonstopmode', '-jobname=main', str(self.master_file)],
+            ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={jobname}', str(self.master_file)],
             stdout=subprocess.DEVNULL,
 
             cwd=str(self.root)
@@ -155,3 +155,10 @@ class Lectures(list):
             return result.returncode
 
         return result.returncode
+
+    def clean_master(self, jobname='main'):
+        subprocess.run(
+            ['latexmk', '-c', f'-jobname={jobname}', str(self.master_file)],
+            stdout=subprocess.DEVNULL,
+            cwd=str(self.root)
+        )

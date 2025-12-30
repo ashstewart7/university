@@ -10,7 +10,7 @@ In this lecture:
 \section{Black Body Radiation}
 A `black body' is an idealised perfect object, that does not reflect, and absorbs internally all light (regardless of wavelength) incident upon it. No light is transmitted, so nothing shines out the other side. The object is perfectly black.
 
-All bodies emit electromagnetic energy, usually outside the visible portion of the spectrum. For example, Paul Hollywood (and other humans) emit at about 300 Kelvin, which is infrared (at the temperature which night vision goggles are tuned to).
+All bodies emit electromagnetic energy, usually outside the visible portion of the spectrum. For example, Paul Hollywood (and other humans) emit at about $300\,\text{K}$, which is infrared (at the temperature which night vision goggles are tuned to).
 
 For the black body, emission spectrum is \textbf{only} from this thermal emission (no reflection, no fluorescence, etc). Hotter objects are brighter and bluer (hotter means higher energy, and therefore a shorter wavelength)
 
@@ -25,23 +25,23 @@ However, we run into a problem. If we plot the spectra predicted by classical th
 \begin{figure}[H]
     \centering
     \includegraphics{figures/lec02-02.png}
-     \caption{Predicted and Observed Spectra for 5000K (and Observed for 4k K and 3k K)}
+     \caption{Predicted and Observed Spectra for 5000K (and Observed for 4000K and 3000K)}
 \end{figure}
 
 \subsection{Notation}
-$I(\lambda)$ is the intensity per wavelength for an emitted wavelength $\lambda$. $I$ is the total intensity across all wavelengths per unit time (in $W/m^2$, power per unit area).
+$I(\lambda)$ is the intensity for an emitted wavelength $\lambda$. $I$ is the total intensity across all wavelengths per unit time (in $\text{W}/\text{m}^2$, power per unit area).
 
 \[
     I = \int_{0}^{\infty} I(\lambda) \, d \lambda
 \]
 
-I is the total area under the $I(\lambda)$ curve, i.e. the sum of intensity per wavelength, across every wavelength.
+$I$ is the total area under the $I(\lambda)$ curve, i.e. the sum of intensity per wavelength, across every wavelength.
 
 \section{The Ultraviolet Catastrophe}
 \subsection{Empirical Results}
-The Stefan-Boltzmann Law gives $I = \sigma T^4$, where $\sigma$ is the Stefan-Boltzmann constant, $\sigma = 5.67 \times 10^{-8} W m^{-2} K^{-4}$
+The Stefan-Boltzmann Law gives $I = \sigma T^4$, where $\sigma$ is the Stefan-Boltzmann constant, $\sigma = 5.67 \times 10^{-8} \, \text{W} \, \text{m}^{-2} \, \text{K}^{-4}$.
 
-Wien's Displacement Law gives $\lambda_{\text{peak}} = \frac{b}{T}$, where $b = 2.898 \times 10^{-3} Km$.
+Wien's Displacement Law gives $\lambda_{\text{peak}} = \frac{b}{T}$, where $b = 2.898 \times 10^{-3} \, \text{K} \cdot \text{m}$.
 
 \subsection{Why does classical mechanics break?}
 
@@ -57,7 +57,7 @@ We can simplify by considering a 1D cavity of length $L$. We can consider `cavit
 
 The amplitude $a(x)$ can be given by this:
 \[
-    a(x) = \sin \left(\frac{n \pi x}{L}\right), \qquad n = 1, 2, 3, \ldots n \quad \text{(mode number)}
+    a(x) = \sin \left(\frac{n \pi x}{L}\right), \qquad n = 1, 2, 3, \ldots \quad \text{(mode number)}
 \]
 
 And by inspection from the figures:
@@ -70,12 +70,14 @@ And therefore the number of nodes per wavelength is:
     n(\lambda) = \frac{2L}{\lambda}
 \]
 
-So, classically:
+Moving to a 3D cavity, the number of modes allowed in a volume scales with volume, meaning the density of modes becomes proportional to $1/\lambda^4$.
+
+So, classically (in 3D):
 \[
-    I(\lambda) \propto \frac{n(\lambda)}{\lambda} \times k_B T \propto \frac{1}{\lambda^2}
+    I(\lambda) \propto \frac{n(\lambda)}{\lambda} \times k_B T \propto \frac{1}{\lambda^4}
 \]
 
-Where the first term is the density of nodes at lambda, and the second is the average energy of nodes. As we head to UV and $\lambda \to 0$, $I(\lambda) \to \infty$... which is not accurate. This is the UV Catastrophe!
+Where the first term is the density of nodes at lambda, and the second is the average energy of nodes. As we head to UV and $\lambda \to 0$, $I(\lambda) \to \infty$\dots which is not accurate. This is the UV Catastrophe!
 
 
 \subsection{Where did it go wrong?}
@@ -98,7 +100,7 @@ A rather desperate Planck hypothesised that energy was quantised, i.e. it comes 
 \[
     \Delta E = hf = \frac{hc}{\lambda}
 \]
-Where $h = 6.626 \times 10^{-34}Js$ is Planck's constant.
+Where $h = 6.626 \times 10^{-34}\,\text{J} \cdot \text{s}$ is Planck's constant.
 
 Sticking this into the Partition Function from statistical mechanics (which we will properly encounter later on, for now don't worry!), we get an average energy:
 \[
@@ -106,7 +108,7 @@ Sticking this into the Partition Function from statistical mechanics (which we w
 \]
 Looking at limits:
 \[
-    \text{For } \bar{E}(\lambda \to \infty): \quad \frac{hc}{\lambda k_BT} << 1
+    \text{For } \bar{E}(\lambda \to \infty): \quad \frac{hc}{\lambda k_BT} \ll 1
 \]
 
 And the Taylor Series of $e^x$:

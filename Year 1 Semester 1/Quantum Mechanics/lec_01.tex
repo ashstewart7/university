@@ -5,7 +5,7 @@
 \subsection{What is the course?}
 \begin{itemize}
     \item Quantum mech is weird and unintuitive, we will build up a case in the course for why this weird theory was necessary and why we're confident it works.
-    \item Each week will be a self-contained concept and/or historical experiment, working up to the Shroedinger Equation and wave-particle duality.
+    \item Each week will be a self-contained concept and/or historical experiment, working up to the Schrödinger Equation and wave-particle duality.
     \item Names and dates do not need to be memorised.
     \item Recommended text: University Physics (Young and Freedman).
     \item Office hours: 13:00 -- 13:50 Fridays (immediately post-lecture), Physics East Rm 207.
@@ -16,7 +16,7 @@ What actually is an atom? What does it actually look like inside?
 
 \textbf{Early Clues}
 \begin{itemize}
-    \item Periodic Table (Mendelev, 1869), periodic patterns in elements properties.
+    \item Periodic Table (Mendeleev, 1869), periodic patterns in elements properties.
     \item Radioactivity (Becquerel, 1896, Curie 1898)
     \item Atoms emit and absorb specific discrete wavelengths, (Balmer, 1884)
     \item Discovery of the Electron (Thomson 1897). Cathode rays - heating metal in a vacuum with an electric field above it, to strip away electrons from the metal.
@@ -26,21 +26,27 @@ What actually is an atom? What does it actually look like inside?
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics{figures/absorption_spectra.png}
+    \includegraphics[width=0.5\textwidth]{figures/absorption_spectra.png}
      \caption{Absorption Spectra}
 \end{figure}
 
 \subsection{Plum Pudding Model}
-A solid, uniform lump of positively charged matter, approximately $10^{-10}$m across. This had evenly distributed negative charges (electrons) scattered throughout.
+A solid, uniform lump of positively charged matter, approximately $10^{-10}\,\text{m}$ across. This had evenly distributed negative charges (electrons) scattered throughout.
 
 \subsection{Discovery of the Nucleus}
-Geiger and Marsden (1908-1913), fired alpha particles (He nuclei) at thin gold foil and measured the deflection / scattering.
+Geiger and Marsden (1908-1913), in an experiment designed by Rutherford fired alpha particles ($\text{He}$ nuclei, mass of $4\,\text{u}$, charge of $+2e$) at thin gold foil and measured the deflection / scattering. The accelerating voltage gave these alpha particles an energy of $\approx 5\,\text{MeV}$.
 
-The alpha particles had a mass of 4u, a charge of +2e and an energy of approximately 5MeV.
+They found that most $\alpha$ were scattered only by small angles, but (surprisingly) a small number were scattered right back towards to emitter (through $\theta > 90^\circ$). The distribution of the angles is approximately Normally distributed, with a mean of 0. Only approximately 1 in 8,000 fired $\alpha$s were scattered by $\theta>90^\circ$ back towards the emitter (``back-scattering'').
 
-They found that most $\alpha$ were scattered only by small angles, but (surprisingly) a small number were scattered right back towards to emitter (through $\theta > 90\deg$). The distribution of the angles is approximately Normally distributed, with a mean of 0. Only approximately 1 in 8,000 fired $\alpha$s were scattered by $\theta>90$ ("back-scattering").
+Can back-scattering be explained with the Plum Pudding Model? No, it cannot. A plum pudding is too large, and has an insufficient charge density to produce the repulsion force required at the distances required. 
 
-Can this be explained with the Plum Pudding Model? No, it cannot. This was used to demonstrate that atoms cannot be evenly distributed.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec01-01.png}
+     \caption{Rutherford Scattering Experiment Data}
+\end{figure}
+The first image is the theoretical data, from an atomic radius of $70\,\text{fm}$, consistent with the plum pudding model. The traces represent paths of incoming, then deflected alpha particles. Notably, the scattering is of small angles, less than $90^\circ$. The second image is data from a much smaller volume of the same charge, not consistent with the plum pudding model. Here, backscattering occurs, which (as this was experimentally observed) shows that the plum pudding model is not accurate.
+
 
 \section{Demonstrating by Calculation}
 Lets work out the work done to take an $\alpha$ from infty to the pudding centre. If the electrostatic repulsion is not enough to overcome this, we cannot stop the $\alpha$ and cannot back scatter.
@@ -54,10 +60,10 @@ Lets work out the work done to take an $\alpha$ from infty to the pudding centre
 \subsection{Assumptions}
 \begin{itemize}
     \item The atom stays still.
-    \item Ignore the gold electrons (this is fine, as they would cancel some positive charge and make repulsion weaker, which would be even worse. If we can't do it without them, it would be equally impossible to do it with.)
+    \item Ignore the gold electrons (this is fine, as they would cancel some positive charge and make repulsion weaker. If we can't do it without them, it would be equally impossible to do it with).
 \end{itemize}
 
-\subsection{Recap and Eqns}
+\subsection{Calculating Repulsive Force}
  
 Coulomb Potential Energy is:
 \[
@@ -75,7 +81,7 @@ Change in potential energy ($u_2 - u_1$) is work done:
 \]
 
 From outside the atomic radius, we treat the atomic pudding as a point charge of charge Q.
-From inside the atomic radius, we treat it as a smaller point charge $Q'(r)$, where we only consider the charge inside the portion of the pudding where $a<r$, where $a$ is the current position inside the sphere and $r$ is the atomic radius.
+From inside the atomic radius, we treat it as a smaller point charge $Q'(r)$, where we only consider the charge inside the portion of the pudding where $r < a$, where $r$ is the current position inside the sphere and $a$ is the atomic radius. We totally disregard any of the charge which sits at a greater radius than the current position.
 
 If charge is spread uniformly, the total charge is proportional to the volume of the sphere. So:
 \[
@@ -115,9 +121,7 @@ Hence inside, $F \propto r$
 \]
 
 
-Hence outside, $F \propto \frac{1}{r^2}$
-
-To integrate, we are therefore integrating the area under this (almost) triangle:
+Hence outside, $F \propto \frac{1}{r^2}$. We are therefore integrating the area under this (almost) triangle:
 \begin{figure}[H]
     \centering
     \includegraphics{figures/lec01-03.png}
@@ -125,20 +129,20 @@ To integrate, we are therefore integrating the area under this (almost) triangle
 \end{figure}
 
 \[
-    \Delta u = - \int_{r_1}^{r_2} F(r) \, dx
+    \Delta u = - \int_{r_1}^{r_2} F(r) \, dr
 \]
 
-Splitting into two sections (prior to, and after the point where r = atomic radius, $r = a$), and integrating across all r (as we are attempting to work out the work done to bring an $\alpha$ from infinity to the charge, at which point distance is 0):
+Splitting into two sections (when the alpha particle is outside vs inside the atomic radius), and integrating across all r (as we are attempting to work out the work done to bring an $\alpha$ from infinity to the charge, at which point distance is 0):
 \[
-    = -\int_{\infty}^{a} \frac{qQ}{4 \pi \epsilon_0 r^2} \, dx - \int_{a}^{0} \frac{qQr}{4 \pi \epsilon_0 a^3} \, dx
-\]
-
-\[
-    = -\frac{qQ}{4 \pi \epsilon_0}\int_{\infty}^{a} \frac{1}{r^2} \, dx - \frac{qQ}{4 \pi \epsilon_0 a^3}\int_{a}^{0} r \, dx
+    = -\int_{\infty}^{a} \frac{qQ}{4 \pi \epsilon_0 r^2} \, dr - \int_{a}^{0} \frac{qQr}{4 \pi \epsilon_0 a^3} \, dr
 \]
 
 \[
-    = -\frac{qQ}{4 \pi \epsilon_0} \lim_{x \to \infty} \int_{x}^{a} \frac{1}{r^2} \, dx - \frac{qQ}{4 \pi \epsilon_0 a^3}\int_{a}^{0} r \, dx
+    = -\frac{qQ}{4 \pi \epsilon_0}\int_{\infty}^{a} \frac{1}{r^2} \, dr - \frac{qQ}{4 \pi \epsilon_0 a^3}\int_{a}^{0} r \, dr
+\]
+
+\[
+    = -\frac{qQ}{4 \pi \epsilon_0} \lim_{x \to \infty} \int_{x}^{a} \frac{1}{r^2} \, dr - \frac{qQ}{4 \pi \epsilon_0 a^3}\int_{a}^{0} r \, dr
 \]
 
 \[
@@ -166,45 +170,47 @@ Splitting into two sections (prior to, and after the point where r = atomic radi
 \]
 
 \[
-    = \frac{3}{2}\frac{qQ}{4 \pi \epsilon_0}
+    = \frac{3}{2}\frac{qQ}{4 \pi \epsilon_0 a}
 \]
 As required! Plugging in values gives us:
 \[
     \Delta u = \frac{3}{2} \frac{(2e)(79e)}{4 \pi (8.854 \times 10^{-12}) \times 10^{-10}}
 \]
 \[
-    = 5.45 \times 10^{-16}J = 3.41KeV
+    = 5.45 \times 10^{-16}\,\text{J} = 3.41\,\text{keV}
 \]
-This is much less than the kinetic energy of the 5MeV alpha particle, therefore (as this value is maximum work done against the repulsive force) a plum pudding could not backscatter a 5MeV alpha particle. However, since $\Delta u \propto 1/a$, a smaller volume of charge could. How small, however?
+This is much less than the kinetic energy of the $5\,\text{MeV}$ alpha particle, therefore (as this value is maximum work done against the repulsive force) a plum pudding could not stop, and therefore could not backscatter a $5\,\text{MeV}$ alpha particle. However, since $\Delta u \propto 1/a$, a smaller volume of charge could. How small, however?
 
 \[
-    \Delta u = 5 \text{MeV} = -\int_{\infty}^{r_{max}} \frac{qQ}{4 \pi \epsilon_0 r^2} \, dr
-\]
-
-\[
-    -5 \text{MeV} = \frac{qQ}{4 \pi \epsilon_0}\int_{\infty}^{r_{max}} \frac{1}{r^2} \, dr
+    \Delta u = 5\,\text{MeV} = -\int_{\infty}^{r_{max}} \frac{qQ}{4 \pi \epsilon_0 r^2} \, dr
 \]
 
 \[
-    -5 \text{MeV} = \frac{qQ}{4 \pi \epsilon_0} \lim_{x \to \infty} \left[ - \frac{1}{r}\right]^{r_{max}}_x
-\]
-\[
-    -5 \text{MeV} = \frac{qQ}{4 \pi \epsilon_0} \left[ -\frac{1}{r_{max}} - \lim_{x \to \infty} \frac{1}{x}\right]
+    -5\,\text{MeV} = \frac{qQ}{4 \pi \epsilon_0}\int_{\infty}^{r_{max}} \frac{1}{r^2} \, dr
 \]
 
 \[
-    -5 \text{MeV} = \frac{qQ}{4 \pi \epsilon_0} \left[ -\frac{1}{r_{max}}\right]
+    -5\,\text{MeV} = \frac{qQ}{4 \pi \epsilon_0} \lim_{x \to \infty} \left[ - \frac{1}{r}\right]^{r_{max}}_x
+\]
+\[
+    -5\,\text{MeV} = \frac{qQ}{4 \pi \epsilon_0} \left[ -\frac{1}{r_{max}} - \lim_{x \to \infty} \frac{1}{x}\right]
 \]
 
 \[
-    5 \text{MeV} = \frac{qQ}{4 \pi \epsilon_0 r_{\text{max}}}
+    -5\,\text{MeV} = \frac{qQ}{4 \pi \epsilon_0} \left[ -\frac{1}{r_{max}}\right]
 \]
 
-Substitution and rearrangement gives $r_{\text{max}} = 4.5 \times 10^{-14}m = 45fm$.
-We accept the $10^{-10}\text{m} = 100,000 \text{fm}$ figure as the total width of the atom, but this demonstrates that there must exist a nucleus of no larger than 45fm.
+\[
+    5\,\text{MeV} = \frac{qQ}{4 \pi \epsilon_0 r_{\text{max}}}
+\]
+\[
+    r_{\text{max}} = \frac{qQ}{4 \pi \epsilon_0 (5\,\text{MeV})}
+\]
+
+Substitution and rearrangement gives $r_{\text{max}} = 4.5 \times 10^{-14}\,\text{m} = 45\,\text{fm}$. This gives us the ``distance of closest approach''. The nucleus cannot be any smaller than this, or an incoming alpha particle would collide with it. This is not the true size of the nucleus (a gold nucleus is smaller at $\approx 7\,\text{fm}$), but an alpha particle is not energetic enough to get this close. It instead gives the maximum size.
 
 \subsection{Next Idea: The Solar System Model}
-Therefore, the next idea was an orbiting solar system model, where electrons orbit in fixed paths around a central nucleus. However, accelerating charges (i.e. a charge in circular motion) radiates energy, so this orbiting electron would be on a decaying path to crash into the nucleus. We can observe this does not happen, so need another idea\dots
+Therefore, the next idea was an orbiting solar system model, where electrons orbit in fixed paths around a central nucleus. However, accelerating charges (i.e. a charge in circular motion) radiate energy, so this orbiting electron would be on a decaying path to crash into the nucleus. We can observe this does not happen, so need another idea\dots
 
 Bohr made two postulates:
 \begin{itemize}

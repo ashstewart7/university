@@ -1,7 +1,8 @@
-#!/bin/python3
 from courses import Courses
 from config import ROOT
 import subprocess
+import shutil
+import os
 
 def number2filename(n):
     return f'lec_{n:02d}.tex'
@@ -10,7 +11,7 @@ def compile_all_files():
     # Initialize lines for main.tex
     lines = [
         r'\documentclass[a4paper, oneside]{book}',
-        r'\input{preamble.tex}',  # preamble is now in the same directory
+        r'\input{preamble.tex}',
         r"\title{Lecture Notes}",
         r'\begin{document}',
         r'    \begin{titlepage}',
@@ -18,23 +19,55 @@ def compile_all_files():
         r'    \end{titlepage}',
         r'    \tableofcontents',
         r'    \thispagestyle{empty}',
-
         ''
     ]
 
-    # Iterate over all courses
+    root_abs = ROOT.resolve()
+    
+    compiled_base = root_abs.parent / "compiled"
+    compiled_dir = compiled_base / root_abs.name    
+    compiled_dir.mkdir(parents=True, exist_ok=True)
+    
+    print(f"Destination directory: {compiled_dir}")
+    for item in compiled_dir.iterdir():
+        if item.is_file() or item.is_symlink():
+            item.unlink()
+        elif item.is_dir():
+            shutil.rmtree(item)
+    print(f"Cleaned contents of {compiled_dir}")
+
     for course in Courses():
         lectures = course.lectures
 
-        # Compile Individual Course Documents
         lecture_range = lectures.parse_range_string('all')
         lectures.update_lectures_in_master(lecture_range)
         lectures.compile_master()
 
-        # Compile Masterdoc of All Courses
-        course_code = lectures.course.info['short']
         course_title = lectures.course.info['title']
-        course_folder = lectures.root.relative_to(ROOT)  # relative path from ROOT to course folder
+        
+        source_pdf = lectures.root / "main.pdf"
+
+        if source_pdf.exists():
+            safe_title = course_title.replace(" ", "_")
+            new_filename = f"{safe_title}.pdf"
+
+            local_dest = lectures.root / new_filename
+
+            if local_dest.exists():
+                local_dest.unlink()
+
+            source_pdf.rename(local_dest)
+
+            shutil.copy2(local_dest, compiled_dir / new_filename)
+            
+            print(f"Success: {course_title} -> {compiled_dir.name}/{new_filename}")
+        else:
+            print(f"Warning: Could not find main.pdf for {course_title}")
+        # -----------------------------
+
+        # Compile Masterdoc of All Courses Logic
+        course_code = lectures.course.info['short']
+        course_folder = lectures.root.relative_to(ROOT)
 
         # Insert part heading for the course
         lines.append(f'    \\addcontentsline{{toc}}{{part}}{{{course_title}}}')
@@ -43,11 +76,10 @@ def compile_all_files():
         lines.append(f'    % start lectures {course_code}')
         for lecture in lectures:
             lecture_file = lecture.file_path.name
-            # prepend course folder to lecture file
             lecture_path = course_folder / lecture_file
             lines.append(f'    \\input{{{lecture_path.as_posix()}}}')
         lines.append(f'    % end lectures {course_code}')
-        lines.append('')  # extra line for readability
+        lines.append('')
 
     lines.append(r'\end{document}')
 

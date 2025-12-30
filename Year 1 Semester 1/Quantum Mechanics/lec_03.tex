@@ -43,7 +43,7 @@ For fixed UV wavelength, increasing the intensity of light increases the measure
     \caption{}
 \end{figure}
 \begin{itemize}
-    \item Increasingly negative potential the cathode decreases photocurrent. At some potential $v_s$ (the ``stopping potential'') this current drops to zero.
+    \item Increasingly negative potential the cathode decreases photocurrent. At some potential $v_s$ applied to the circuit (the ``stopping potential'') this current drops to zero.
     \item Potential does not affect electron emission, however adding potential causes an electric field which effectively blows electrons back towards the anode. The stopping potential is when this electric field is perfectly strong to prevent electrons from reaching the cathode and causing a current.
     \item The fact this can happen consistently (i.e. no current means no electrons made it through) implies that there must be some maximum kinetic energy these electrons can have ($KE_{max} = eV_S$).
     \item The stopping potential is independent of UV intensity. More UV makes current increase, but does not change stopping potential (i.e. it does not give more energy to each electron, they each have the same energy). This does not make sense classically. Classically we would expect adding more energy to cause emitted electrons to have more energy, therefore changing the stopping potential.
@@ -109,8 +109,8 @@ The difference between these two wavelengths increases with scattering angle $\t
 
 Possible options when a photon collides:
 \begin{itemize}
-    \item Elastic: No loss of energy, hence no change in wavelength.
-    \item Inelastic: Change of energy, so the wavelength also changes. An electron is fired out of the target, carrying energy and momentum, so the photon loses energy.
+    \item Scattering off the whole atom (Rayleigh Scattering). The photon hits a tightly bound electron that cannot move independently. The photon effectively scatters off the entire atom. Since $M_\text{atom} \gg m_e$, the recoil energy of the atom is minimal and the photon loses almost no energy, hence the wavelength is effectively unchanged. This gives us the existing $\lambda_1$ peak.
+    \item Scattering off a free electron (Compton Scattering.): The photon hits a loosely bound electron which has a much lower binding energy, so the electron is knocked loose. The photon transfers momentum and energy to this electron, leading to a loss of energy and therefore change of wavelength. This gives the new $\lambda_2$ peak.
 \end{itemize}
 
 \begin{figure}[H]
@@ -120,7 +120,7 @@ Possible options when a photon collides:
 \end{figure}
 
 \section{Deriving Compton's Equation}
-Given an incoming photon with with energy $E_1$, wavelength $\lambda_1$ and momentum $\underline{p}_1$. This strikes a carbon atom and is deflected by angle $\theta$. There is also an emitted electron at angle $\phi$ which must be in the opposite direction (angled up vs down) to conserve momentum. The new deflected photon has $E_2$, $\lambda_2$, $\underline{p}_2$.
+Given an incoming photon with with energy $E_1$, wavelength $\lambda_1$ and momentum $\underline{p}_1$. This strikes an electron and is deflected by angle $\theta$. The electron is deflected by some angle $\phi$ such that momentum is conserved. The new deflected photon has $E_2$, $\lambda_2$, $\underline{p}_2$.
 
 We must consider relativistic effects here given the high speed ($E^2 = p^2c^2 + m^2c^4$)
 

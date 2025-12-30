@@ -5,6 +5,7 @@ main.log
 main.synctex.gz
 main.tex.latexmain
 main.toc
+main.pdf
 *.fls
 *.out
 *.xdv
