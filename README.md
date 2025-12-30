@@ -6,7 +6,7 @@ Ash's course notes. Taken as part of **MSci Physics with Particle Physics and Co
 
 ## Modules Covered
 ### Year 1 Semester 1 ([Combined Notes](<compiled_notes/Year 1 Semester 1/Year_1_Semester_1_Combined.pdf>))
-- LC [Quantum Mechanics](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
+- LC [Quantum Mechanics (1)](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
 - [LC Mathematics for Physicists 1A](<compiled_notes/Year 1 Semester 1/LC_Mathematics_for_Physicists_1A.pdf>)
 - [LC Classical Mechanics and Relativity 1](<compiled_notes/Year 1 Semester 1/LC_Classical_Mechanics_and_Relativity_1.pdf>)
 - [LC Introduction to Probability and Statistics](<compiled_notes/Year 1 Semester 1/LC_Introduction_to_Probability_and_Statistics.pdf>)
