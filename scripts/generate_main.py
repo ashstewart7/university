@@ -5,19 +5,17 @@ import subprocess
 from courses import Courses
 from config import ROOT
 
-def compile_all():
+def build():
     root = ROOT.resolve()
-    root_name = root.name
-    safe_root_name = root_name.replace(" ", "_")
+    # E.g. "Year_1_Semester_1" -> "Year_1_Semester_1_Combined"
+    job_name = f"{root.name.replace(' ', '_')}_Combined"
     
-    # Setup output directory
-    output_dir = root.parent / "compiled_notes" / root_name
-    if output_dir.exists():
-        shutil.rmtree(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = root.parent / "compiled_notes" / root.name
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Start building the master tex file content
-    lines = [
+    tex = [
         r'\documentclass[a4paper, oneside]{book}',
         r'\input{preamble.tex}',
         r'\title{Lecture Notes}',
@@ -31,76 +29,65 @@ def compile_all():
     ]
 
     for course in Courses():
-        lectures = course.lectures
-        lectures.update_lectures_in_master(lectures.parse_range_string('all'))
+        c = course.lectures
+        c.update_lectures_in_master(c.parse_range_string('all'))
 
-        # Compile module
-        title = lectures.course.info['title']
-        safe_title = title.replace(" ", "_")
+        title = c.course.info['title']
+        slug = title.replace(" ", "_")
         
+        # Build individual module
         subprocess.run(
-            ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={safe_title}', 'main.tex'],
-            cwd=lectures.root,
+            ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={slug}', 'main.tex'],
+            cwd=c.root,
             stdout=subprocess.DEVNULL
         )
 
-        # Move PDF and cleanup
-        pdf = lectures.root / f'{safe_title}.pdf'
+        pdf = c.root / f'{slug}.pdf'
         if pdf.exists():
-            shutil.move(str(pdf), str(output_dir / pdf.name))
+            shutil.move(str(pdf), str(out_dir / pdf.name))
         
         subprocess.run(
-            ['latexmk', '-c', f'-jobname={safe_title}', 'main.tex'],
-            cwd=lectures.root,
+            ['latexmk', '-c', f'-jobname={slug}', 'main.tex'],
+            cwd=c.root,
             stdout=subprocess.DEVNULL
         )
+        (c.root / 'main.pdf').unlink(missing_ok=True)
 
-        # Cleanup stray main.pdf if it exists
-        if (lectures.root / 'main.pdf').exists():
-            (lectures.root / 'main.pdf').unlink()
-
-        # Add module to master document
-        rel_path = lectures.root.relative_to(ROOT)
-        lines.append(f'    \\addcontentsline{{toc}}{{part}}{{{title}}}')
-        lines.append(f'    \\course{{{title}}}')
-        lines.append(f'    \\graphicspath{{{{{rel_path}}}}}')
+        # Append to master
+        rel = c.root.relative_to(ROOT).as_posix()
+        tex.append(f'    \\addcontentsline{{toc}}{{part}}{{{title}}}')
+        tex.append(f'    \\course{{{title}}}')
+        tex.append(f'    \\graphicspath{{{{{rel}/}}}}')
         
-        short = lectures.course.info['short']
-        lines.append(f'    % start lectures {short}')
-        for l in lectures:
-            lines.append(f'    \\input{{{rel_path / l.file_path.name}}}')
-        lines.append(f'    % end lectures {short}')
-        lines.append('')
+        code = c.course.info['short']
+        tex.append(f'    % {code}')
+        for l in c:
+            tex.append(f'    \\input{{{rel}/{l.file_path.name}}}')
+        tex.append('')
 
-    lines.append(r'\end{document}')
+    tex.append(r'\end{document}')
 
-    # Write master main.tex
-    main_tex = ROOT / "main.tex"
-    main_tex.write_text('\n'.join(lines))
+    # Generate master tex
+    (ROOT / "main.tex").write_text('\n'.join(tex))
     (ROOT / "main.tex.latexmain").touch()
 
-    # Compile master document
-    # We use a distinct jobname so we don't accidentally overwrite a 'main.pdf' if it exists
-    master_jobname = f"{safe_root_name}_Combined"
-    
+    # Build master
     subprocess.run(
-        ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={master_jobname}', 'main.tex'],
+        ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={job_name}', 'main.tex'],
         cwd=ROOT,
         stdout=subprocess.DEVNULL
     )
 
-    master_pdf = ROOT / f'{master_jobname}.pdf'
-    if master_pdf.exists():
-        shutil.move(str(master_pdf), str(output_dir / f'{safe_root_name}.pdf'))
+    src_pdf = ROOT / f'{job_name}.pdf'
+    if src_pdf.exists():
+        shutil.move(str(src_pdf), str(out_dir / src_pdf.name))
 
     subprocess.run(
-        ['latexmk', '-c', f'-jobname={master_jobname}', 'main.tex'],
+        ['latexmk', '-c', f'-jobname={job_name}', 'main.tex'],
         cwd=ROOT,
         stdout=subprocess.DEVNULL
     )
-
-    if (ROOT / 'main.pdf').exists():
-        (ROOT / 'main.pdf').unlink()
+    (ROOT / 'main.pdf').unlink(missing_ok=True)
 
 if __name__ == '__main__':
-    compile_all()
+    build()
