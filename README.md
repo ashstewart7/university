@@ -1,6 +1,9 @@
 # University Notes
 Ash's course notes. Taken as part of **MSci Physics with Particle Physics and Cosmology** at the **University of Birmingham**.
 
+> [!WARNING]
+> These are nothing but my own personal lecture notes, I've made the repository public on the off-chance they're ever useful to anyone else, but I make no guarantees about the accuracy of anything in my notes. I do my best for my own sake to keep them up-to-date and accurate, but no promises...
+
 ## Modules Covered
 ### Year 1 Semester 1 ([Combined Notes](<compiled_notes/Year 1 Semester 1/Year_1_Semester_1_Combined.pdf>))
 - LC [Quantum Mechanics](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
