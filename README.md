@@ -8,7 +8,7 @@ Ash's course notes. Taken as part of **MSci Physics with Particle Physics and Co
 - [LC Classical Mechanics and Relativity 1](<compiled_notes/Year 1 Semester 1/LC_Classical_Mechanics_and_Relativity_1.pdf>)
 - [LC Introduction to Probability and Statistics](<compiled_notes/Year 1 Semester 1/LC_Introduction_to_Probability_and_Statistics.pdf>)
 ### Year 1 Semester 2 ([Combined Notes](<compiled_notes/Year 1 Semester 2/Year_1_Semester_2_Combined.pdf>))
-- LC [Electromagnetism](<compiled_notes/Year 1 Semester 2/LC_Electromagnetism.pdf>) and [Temperature and Matter](<compiled_notes/Year 1 Semester 1/LC_Temperature_and_Matter.pdf>)
+- LC [Electromagnetism](<compiled_notes/Year 1 Semester 2/LC_Electromagnetism.pdf>) and [Temperature and Matter](<compiled_notes/Year 1 Semester 2/LC_Temperature_and_Matter.pdf>)
 - [LC Mathematics for Physicists 1B](<compiled_notes/Year 1 Semester 2/LC_Mathematics_for_Physicists_1B.pdf>)
 - [LC Classical Mechanics and Relativity 2](<compiled_notes/Year 1 Semester 2/LC_Classical_Mechanics_and_Relativity_2.pdf>)
 - [LC Electric Circuits](<compiled_notes/Year 1 Semester 2/LC_Electric_Circuits.pdf>)
