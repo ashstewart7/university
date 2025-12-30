@@ -12,3 +12,4 @@ main.pdf
 *.pyc
 /scripts/pycache/
 .directory
+.vscode
