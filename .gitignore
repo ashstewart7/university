@@ -11,3 +11,4 @@ main.pdf
 *.xdv
 *.pyc
 /scripts/pycache/
+.directory

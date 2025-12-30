@@ -16,8 +16,6 @@ for course in Courses():
         r'    \tableofcontents',
         fr'   \course{{{course_title}}}',
         r'    % start lectures',
-        r'    \input{lec_01.tex}',
-        r'    \input{lec_02.tex}',
         r'    % end lectures',
         r'\end{document}'
     ]
