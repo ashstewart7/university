@@ -1,0 +1,131 @@
+
+\lecture{6}{Fri 07 Nov 2025 12:00}{X-Ray Spectra}
+
+In this lecture:
+\begin{itemize}
+    \item The production of X-rays - the spectrum created.
+    \item Attenuation of X-rays in matter.
+    \item Absorption of X-rays in materials, and `absorption edges'.
+\end{itemize}
+
+\section{Typical Tube Spectra}
+As a reminder, the source is metal bombarded with high-energy electrons. This causes electron energy level changes in deep electron shells in the metal.
+This spectrum is characteristic of the anode (the thing being hit by the electrons) material.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec06-01.png}
+     \caption{A typical x-ray spectra, with a background continuum and unique discrete peaks. Note there is some min $\lambda$}
+\end{figure}
+
+The continuous background curve is due to `Bremsstrahlung', or `braking radiation'.
+
+\section{Braking Radiation}
+Braking radiation is independent of anode materials. As an electron comes in at a high KE, it interacts with matter (charged nuclei etc) it is deflected and slows down. This lost KE is emitted as X-rays.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec06-02.png}
+     \caption{}
+\end{figure}
+
+
+\subsection{Lambda Min}
+
+By C.O.E:
+\[
+    E_{\text{x-ray}} = E_e - E^{'}_{e} = \frac{hc}{\lambda}
+\]
+
+If the electron came to a stop entirely, $E_e'$ would be minimised (braking radiation maximised). The minimum wavelength $\lambda_\text{min}$ occurs at the highest x-ray energy, i.e. when $E_e'$ is zero.
+
+\[
+    E_e - 0 = \frac{hc}{\lambda_\text{min}} = eV
+\]
+\[
+    \lambda_\text{min} = \frac{hc}{eV}
+\]
+
+Where $V$ is the accelerating voltage.
+
+\section{Discrete Lines}
+These arise from inner shell electron transitions. These, unlike Bremsstrahlung, are characteristic of the anode material. We can use this to investigate the anode material, or we can use different materials to build different x-ray tubes with different emission spectra.
+
+\section{Jargon}
+Note the following stupid jargon.
+\begin{itemize}
+    \item k means the n = 1 energy level.
+    \item l means the n = 2 energy level.
+    \item et cetera.
+\end{itemize}
+
+Lets again consider the atomic energy levels (and their associated maximum occupancy):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec06-03.png}
+     \caption{}
+\end{figure}
+
+If the incoming energy $eV$ is bigger than the binding energy $B_k$ of the k-shell electrons, they can be ejected. This is called `collisional ionisation'. The intention is to eject an electron from the n=1 shell. This leads to an open space in the n=1 shell (a `hole'), and the atom will automatically settle into the lowest energy state, i.e. a higher level electron will drop down to fill the lower energy hole. This change in energy requires the emission of a photon. 
+
+This specific n = 2 to n = 1 state transition is called $k_\alpha$ (the k denoting `to the 1st level'), while n = 3 to n = 1 would be $k_\beta$ etc. Transitions from the third to the second would be $L_\alpha$, etc etc.
+
+$k_\alpha$ etc only appear if bombardment energy is sufficiently high to cause collisional ionisation. Lower energy lines will therefore appear sooner.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec06-04.png}
+     \caption{Molybdenum X-Ray Spectra (1 Angstrom = 1\AA \ = 0.1nm)}
+\end{figure}
+
+Note that, while Bremsstrahlung is present consistently (albeit with a changing min wavelength where higher accelerating voltage leads to a higher energy x-ray and a lower min wavelength), the sharp spectra lines only appear at higher accelerating voltages where a sufficiently high threshold energy to trigger collisional ionisation is met.
+
+\section{X-Ray Absorption}
+As x-rays pass through a material, x-ray intensity will fall exponentially with distance travelled. Suppose we hit a material with x-rays of intensity $I_0$. These x-rays travel $x$ distance units. The final intensity is:
+\[
+    I = I_0 e^{- \mu x}
+\]
+Where $\mu$, the attenuation coefficient, depends on the material and incoming energy.
+\[
+    \mu \propto \frac{1}{E^3_\text{x-ray}}
+\]
+This hearkens back to the photoelectric effect.
+
+Absorption drops as energy of the x-ray falls below the binding energy of a given shell.
+
+\section{Absorption Edges}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec06-05.png}
+     \caption{Absorption varying with x-ray energy.}
+\end{figure}
+
+Each line represents the $1/E^3$ value for a given energy shell. If we decrease energy and follow the red line along, we eventually hit the point where there is no longer sufficient energy for ejection from the k-shell. We then drop, and can now eject from everything except from the k-shell until we reach the point where we can no longer eject from the k-shell \emph{or} the l-shell. We drop again, (blue line) and only have emission from all shells except for k and l.
+
+Note:
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec06-06.png}
+     \caption{}
+\end{figure}
+
+\begin{itemize}
+    \item Measuring these `absorption edges' lets us determine what atom something is made of, and the associated electronic energy levels.
+    \item Describing these as hard lines is inaccurate, there is (in reality) much more fine detail.
+    \item This process is called x-ray absorption spectroscopy.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec06-07.png}
+     \caption{Fine detail visible in absorption edges (especially visible on L-edge).}
+\end{figure}
+
+\section{Moseley's Law}
+If you measure the frequency of k alpha for some material, it is equal to a constant times (Z-1) squared, where Z is the atomic number. This lets us identify elements:
+\[
+    f_{k \alpha} = (2.48 \times 10^{15})(Z-1)^2 
+\]
+Note: the `- 1' appears because there will be a second electron `left behind' in the k shell, which reduces effective nuclear charge by one. This is called screening or shielding.

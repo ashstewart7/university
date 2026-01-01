@@ -2,7 +2,7 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from courses import Courses
+from modules import Modules
 from config import ROOT
 
 def build():
@@ -10,14 +10,14 @@ def build():
     # E.g. "Year_1_Semester_1" -> "Year_1_Semester_1_Combined"
     job_name = f"{root.name.replace(' ', '_')}_Combined"
     
-    out_dir = root.parent / "compiled_notes" / root.name
+    out_dir = root.parent.parent / "compiled_notes" / root.name
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     tex = [
         r'\documentclass[a4paper, oneside]{book}',
-        r'\input{preamble.tex}',
+        r'\input{../preamble.tex}',
         r'\title{Lecture Notes}',
         r'\begin{document}',
         r'    \begin{titlepage}',
@@ -28,11 +28,11 @@ def build():
         ''
     ]
 
-    for course in Courses():
-        c = course.lectures
+    for module in Modules():
+        c = module.lectures
         c.update_lectures_in_master(c.parse_range_string('all'))
 
-        title = c.course.info['title']
+        title = c.module.info['title']
         slug = title.replace(" ", "_")
         
         # Build individual module
@@ -56,10 +56,10 @@ def build():
         # Append to master
         rel = c.root.relative_to(ROOT).as_posix()
         tex.append(f'    \\addcontentsline{{toc}}{{part}}{{{title}}}')
-        tex.append(f'    \\course{{{title}}}')
+        tex.append(f'    \\module{{{title}}}')
         tex.append(f'    \\graphicspath{{{{{rel}/}}}}')
         
-        code = c.course.info['short']
+        code = c.module.info['short']
         tex.append(f'    % {code}')
         for l in c:
             tex.append(f'    \\input{{{rel}/{l.file_path.name}}}')

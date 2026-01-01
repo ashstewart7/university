@@ -1,0 +1,27 @@
+% !TeX root = main.tex
+\lecture{1}{Wed 01 Oct 2025 12:00}{\textbf{Start of Stats}: Introduction and Descriptive Statistics}
+
+\subsection{Course Welcome}
+\begin{itemize}
+    \item First half of the semester: Statistics
+    \item Second half the of semester: Probability
+    \item All slides and notes on Canvas.
+\end{itemize}
+
+\textbf{Why Descriptive Statistics?}
+If we want to share an interesting bit of data, sharing the whole data is going to be confusing. Instead, we can share a small number of stats which describe and summarise the data.
+
+\subsection{Sample Statistics}
+One of the most simple is the number of samples ($N$), and the sample mean:
+
+\[
+    \text{Sample Mean: }\bar{x} = \frac{1}{N} \sum^N_{i=1} x_i
+\]
+
+We can also calculate the sample standard deviation as the average of mean squared error across the points in the sample:
+
+\[
+    \text{Sample STDev: } s_n^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})^2
+\]
+
+We can also use median or mode as measures of central tendency. The mode is a poor estimator however (as it massively depends on how binning is done, for a continuous measurement), while the median is more resistant to outliers.

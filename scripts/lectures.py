@@ -8,7 +8,7 @@ import re
 import subprocess
 
 
-from config import DATE_FORMAT, CURRENT_COURSE_ROOT
+from config import DATE_FORMAT, CURRENT_MODULE_ROOT
 
 locale.setlocale(locale.LC_TIME, "en_GB.UTF-8")
 
@@ -19,7 +19,7 @@ def filename2number(s):
     return int(str(s).replace('.tex', '').replace('lec_', ''))
 
 class Lecture():
-    def __init__(self, file_path, course):
+    def __init__(self, file_path, module):
         with file_path.open() as f:
             for line in f:
                 lecture_match = re.search(r'lecture\{(.*?)\}\{(.*?)\}\{(.*)\}', line)
@@ -37,7 +37,7 @@ class Lecture():
         self.date = date
         self.number = filename2number(file_path.stem)
         self.title = title
-        self.course = course
+        self.module = module
 
     def edit(self):
         subprocess.Popen([
@@ -47,19 +47,19 @@ class Lecture():
         ])
 
     def __str__(self):
-        return f'<Lecture {self.course.info["short"]} {self.number} "{self.title}">'
+        return f'<Lecture {self.module.info["short"]} {self.number} "{self.title}">'
 
 
 class Lectures(list):
-    def __init__(self, course):
-        self.course = course
-        self.root = course.path
+    def __init__(self, module):
+        self.module = module
+        self.root = module.path
         self.master_file = self.root / 'main.tex'
         list.__init__(self, self.read_files())
 
     def read_files(self):
         files = self.root.glob('lec_*.tex')
-        return sorted((Lecture(f, self.course) for f in files), key=lambda l: l.number)
+        return sorted((Lecture(f, self.module) for f in files), key=lambda l: l.number)
 
     def parse_lecture_spec(self, string):
         if len(self) == 0:
@@ -137,7 +137,7 @@ class Lectures(list):
         self.read_files()
 
 
-        l = Lecture(new_lecture_path, self.course)
+        l = Lecture(new_lecture_path, self.module)
 
         return l
 

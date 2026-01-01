@@ -1,0 +1,119 @@
+
+% !TeX root = main.tex
+\lecture{4}{Fri 24 Oct 2025 12:00}{Atomic Energy Levels and Spectra}
+
+In this lecture:
+\begin{itemize}
+    \item The spectra of light emitted and absorbed by electrons in:
+    \begin{itemize}
+        \item Hydrogen (simple)
+        \item Larger atoms (not simple\ldots)
+    \end{itemize}
+    \item Electronic shells and orbits.
+\end{itemize}
+
+\section{Spectra}
+The Bohr Model says that electrons in an atom can hold discrete values ``levels'' of energy. As electrons go up or down these levels they must absorb or will emit a photon. This emission causes a discrete spectra of emitted frequencies, unique to the element causing it.
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec04-01.png}
+     \caption{Example emission spectra.}
+\end{figure}
+
+Each of the transitions from one energy level to another have a discrete change in energy (measured in eV), therefore each transition will have a discrete wavelength of produced photons.
+
+From the Bohr model, he postulated (from experimental observations) that light can \emph{only} be absorbed or emitted when an electron goes up or down a discrete energy level (excitation or relaxation). The lowest energy level is known as the ``Ground State'' ($n = 1$).
+
+\section{Absorption and Emissions}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec04-02.png}
+     \caption{}
+\end{figure}
+
+An electron is excited up an energy level, leaving a vacancy behind. Some time after, the electron drops back down into the ground state, emitting the energy in terms of a photon. By conservation of energy:
+\[
+    E_{\text{in}} = E_\text{out} = E_2 - E_1 = hf = \frac{hc}{\lambda}
+\]
+
+Notably, the energy of the photon that initially triggered the excitation is given by $E_\gamma = E_2 - E_1$
+
+\section{Atomic Hydrogen}
+Atomic Hydrogen is by far the simplest example we can deal with (given the single proton and single electron). This single electron is `orbiting\footnote{for the sake of argument, even if in practice it does not really}' the nucleus at some distance $r$.
+
+The potential energy of this electron is:
+\[
+    v(r) = \frac{-e^2}{4 \pi \epsilon_0 r}
+\]
+
+This P.E. is negative, so the electron is trapped in a potential well and must be supplied with energy to escape, assuming no K.E. We also know (if we take into account kinetic energy too):
+\[
+    E = T + V
+\]
+Where E is total energy, T is K.E, V is P.E. If the total is negative, the electron is bound to the atom.
+
+We can see from the equation for potential energy that $v(r) \propto -1/r$, which gives us the green line. Of the points on this green line, only some of them are actually discrete allowed orbits. The region at the top is called the continuum, which is where an electron has positive energy and has therefore left the nucleus.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec04-03.png}
+     \caption{}
+\end{figure}
+
+In Lec 08, we will properly derive from the Bohr model that the energy of each energy level is given by this:
+\[
+    E_n = \frac{-13.6eV}{n^2} \quad n=1,2,3,\ldots,\infty
+\]
+
+Note that if $n \to \infty$, $E_n \to 0$. Emission and absorption happens when an electron moves from two different energy levels ($m \to n$).
+\[
+    E_\gamma = E_n - E_m = 13.6(1/n^2 - 1/m^2)eV
+\]
+
+\[
+   \frac{hc}{\lambda} = E_n - E_m = 13.6(1/n^2 - 1/m^2)eV
+\]
+
+Or, finally:
+\[
+    \frac{1}{\lambda} = \frac{13.6eV}{hc}\left(\frac{1}{n^2} - \frac{1}{m^2}\right)
+\]
+
+The $\frac{13.6eV}{hc}$ term is known as the Rydberg constant. 
+
+\subsection{Balmer Series}
+The `Balmer Series' is a portion of the hydrogen emission spectra which happens to take place at visible wavelengths. It is specifically transitions which take place to n = 2. To find these wavelengths, we set $n = 2$:
+
+\[
+    \frac{1}{\lambda} = R\left(\frac{1}{2^2} - \frac{1}{n^2} \right)
+\]
+
+Moving from $3 \to 2$ gives us the Balmer Alpha line, for example.
+
+\section{Ionisation Energy of Hydrogen}
+The ionisation energy is the minimum energy required to kick an electron out of the ground state and into the continuum. This is just enough energy to barely make it free (i.e. when the continuum is reached the electron has 0 KE). Setting $n = 1, m=\infty$:
+\[
+    \frac{1}{\lambda} = R\left(\frac{1}{1} - \frac{1}{\infty}\right) = R
+\]
+Where R is the Rydberg constant. Note: the energy levels can be very sharp, and they do not change (unless external stimuli like a strong external magnetic field are applied). We can therefore use this in e.g. atomic clocks.
+
+\section{Bigger Atoms}
+Bigger atoms gets more complex than we can reasonably consider now. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec04-04.png}
+     \caption{}
+\end{figure}
+
+Electrons begin interacting with each other and the nucleus in weird ways, and it becomes too messy to calculate easily. If there is only a single electron, we can still use the Bohr model, just with a different charge of the nucleus, and we multiply by $Z^2$ when calculating. If we have multiple electrons, there is no general formula and it becomes unpleasant. The energy levels become split into multiple possible orbitals, i.e for $n = 1$, 1s. For $n = 2$, 2s, 2p. For $n = 3$, $3s, 3p, 3d$ (where s, p, d are different electronic orbitals). 
+
+\subsection{Spin}
+Electrons also have an intrinsic quantum property called `spin', with a value $\frac{1}{2}$. They are fermions with two spin states (up, down). Note that spin is quantum, and has no relation to a physical geometric spin. The maximum occupancy of each level is $2n^2$ (i.e. the 1s state has space for one electron of each spin, i.e. one spin up and one spin down).
+
+\section{More Complexity\ldots}
+\begin{itemize}
+    \item \textbf{Fine Splitting}: Electrons are moving, so have non-zero angular momentum. A moving charge creates a magnetic field, which changes the energy of the other electrons.
+    \item \textbf{Hyperfine Splitting:} The nucleus also has a spin, they can be parallel (i.e. both have the same spin), or antiparallel, where the electron and the nucleus have opposing spins. These two configurations have slightly different energies (difference of $5.9 \mu eV$). The parallel state is metastable, with a half life of 10 million years. There is so much hydrogen in the galaxy that radioastronomers can use this decay, and by detecting it they can image the location of hydrogen in the universe.
+\end{itemize}
+

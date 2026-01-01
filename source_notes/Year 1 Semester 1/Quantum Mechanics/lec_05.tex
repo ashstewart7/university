@@ -1,0 +1,88 @@
+% !TeX root = main.tex
+\lecture{5}{Fri 31 Oct 2025 12:00}{X-Ray Production and Diffraction}
+In this lecture:
+\begin{itemize}
+    \item Production of x-rays
+    \item How to measure their wavelength
+    \item Bragg scattering of x-rays by crystals and Bragg conditions.
+\end{itemize}
+
+\section{Production of X-Rays}
+From the blackbody spectra lecture, we saw that something becoming hotter affects the wavelength of emission. Surely we, therefore, can just heat something hot enough for the peak of the emission spectra to be in the x-ray range?
+
+Unfortunately not, this works, but would need the black body to be 1MK.
+
+The more practical alternative to to fire high energy electrons (keV range) into a metal target in a vacuum.
+
+\section{What are they?}
+Electromagnetic radiation (light) outside of the visible spectrum. It sits beyond the UV portion.
+
+Approximately 0.1keV ($\lambda = 10nm$) to 100keV ($\lambda = 0.01nm$), these are called soft and hard x-rays respectively.
+
+\section{Measuring Wavelength}
+How can we measure or select x-ray wavelengths? With visible light, we can use a prism to turn wavelength into an angle and measure the angle. However, a prism works for visible light because of its high refractive index. Unfortunately, for x-rays, $n \approx 1$ for all materials.
+
+We therefore need some other way to split up wavelengths into angles, for which we can use a diffraction grating. Different wavelengths will be diffracted at different angles.
+
+Another problem arises however\dots We need the slit separation $d$ to be $d \approx \lambda$ for a diffraction grating to work. For x-rays, $\lambda \approx 10^{-10}m$, which is approximately the width of an atom. Good luck making that grating\dots
+
+Luckily, nature has made these gratings for us --- crystalline materials! Strontium titanate ($SrTiO_3$) has an approx 0.389nm spacing between strontium atoms. We can therefore use this crystal lattice as a diffraction grating.
+
+\section{X-Ray Diffraction from Crystals}
+We treat the x-rays as EM waves (and ignore weird photon stuff for now) and we assume that each atom scatters independently. We also assume that the atom absorbs the x-ray and later re-emits it, in all directions uniformly (at photon level, the emission is in a random direction, therefore we probabilistically treat it as in all).
+
+We want to find the angles where \emph{constructive interference} occurs. Zero intensity everywhere else due to very very high number of slots.
+
+The Bragg Conditions determine where this interference happens. Consider a single plane of equally spaced atoms.
+
+\subsection{First Bragg Condition}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec05-01.png}
+     \caption{}
+\end{figure}
+
+The outgoing waves (red) are all in phase when the wavefronts line up perpendicularly. This happens when path lengths \color{blue}AB \color{black} and \color{red}CD \color{black} are the same. So:
+\[
+    a \cos \theta_{in} = a \cos \theta_{out}
+\]
+\[
+    \theta_{out} = \theta_{in}
+\]
+
+We disregard higher orders where:
+\[
+    \cos(\theta_{out} + 2n \pi) = \cos(\theta_{in} + 2k \pi), \quad n, k \in \Z^+
+\]
+And we only consider the case where they are explicitly equal.
+Note that, so far, this is independent of wavelength (i.e. there is `no dispersion'). This means we're not acting like a diffraction grating yet, more of a mirror.
+
+\subsection{Second Bragg Condition}
+Now we consider the inclusion of a second plane of atoms (we have some much larger number of $n$ planes).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-02.png}
+     \caption{}
+\end{figure}
+
+The ray which hits the lower plane travels further than the ray which hits the upper plane. For constructive interference to take place, this extra path difference must be an integer multiple of the wavelength. So:
+\[
+    AB + BC = 2d \sin \theta = n \lambda \quad n = 1, 2, 3, \ldots
+\]
+Where d is the separation of crystal planes. Note: This $\theta$ is not the beam deflection angle. It is the angle between the \textbf{horizontal} and the incoming beam.
+
+This equation gives us different angles for different wavelengths, therefore we can select light (inc X-rays) of a certain wavelength by splitting multi-wavelength light into different angles, and physically selecting the one that we wish. This throws back to Lec 03, where a Bragg Analyser was used with a detector to measure the wavelength of the produced X-rays.
+
+\section{Uses}
+We can use this in two ways:
+
+We can determine an unknown wavelength (or select a wavelength out of multi-frequency light) by varying $\theta$ and identifying the detection peak. Note that $\theta$ is here twice, the detector must also be moved, and therefore the total deflection angle is $2 \theta$
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec05-03.png}
+     \caption{}
+\end{figure}
+
+Alternatively, we can know lambda and fire at an unknown crystal to determine the atomic spacing. We can scan through $2 \theta$ and identify the angles where $n \lambda = 2 d_i \sin \theta$ for various $d_i$. This leads us to x-ray crystallography, where we use x-rays to work out the structure of materials. Using crystals to measure or select an x-ray wavelength is called ``wavelength dispersive x-ray spectroscopy''.

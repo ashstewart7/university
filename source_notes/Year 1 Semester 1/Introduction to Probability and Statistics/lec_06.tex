@@ -1,0 +1,215 @@
+% !TeX root = main.tex
+\lecture{6}{Thu 16 Oct 2025 09:00}{Likelihood and Log Likelihood}
+
+\section{Likelihood}
+We want to fit a model to our data. We want some kind of function to specify how well this model fits the data, so that we can optimise to find the best. This is the likelihood function. There are many different ways to formulate it, but we denote it:
+\[
+    P(D \, \mid \, \theta)
+\]
+
+Where D is our data, and $\theta$ is our model parameters. This is the probability of the data, given some parameters.
+
+\section{An Example}
+Lets say we have this model:
+\[
+    T(t) = T_\text{env} + (T_0 - T_\text{env}) \exp(-t / \tau)
+\]
+Which represents the cooling of an object, where $\tau$ is a constant of cooling. We think we will observe some additive, normally distributed noise on these measurements, giving us:
+\[
+    T_\text{obs}(t) = T(t) + \epsilon
+\]
+
+We may observe something like this, where the blue dots are the model-predicted values and the observed data with error noise is in black:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec06-01.png}
+     \caption{Simulated Data}
+\end{figure}
+
+Given the noise is normally distributed, we would expect the true values to lie within the error bars of our observation about 68\% of the time. We see this approximately here. How can we then fit a model to this data? We need to:
+\begin{enumerate}
+    \item Formulate a model.
+    \item Estimate a probability that the model is correct.
+\end{enumerate}
+ 
+Given we now have data, and some model we would like to try to fit the data to (we want to fit it to Newton's Law of Cooling, the model previously, and determine and appropriate value of parameters and $\tau$). We therefore want to find a `merit function' to describe how good a fit any model we might create is. We start from the probability of getting some value of the noise.
+
+As a reminder, our model is, noting we are treating time as a discrete set of times, indexed by $i$:
+\[
+    M(t_i, \theta) = T_\text{env} + (T_0 - T_\text{env}) \exp(-t_i / \tau)
+\]
+
+And the probability of getting some value of the noise on the $i$th measurement is (note the first equality, where we can also write it ignoring theta, because noise is independent of the parameters):
+\[
+    P(\epsilon_i \mid \theta) = P(\epsilon_i) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp \left(\frac{-\epsilon_i^2}{2 \sigma^2_{D_i}}\right)
+\]
+This is a Normal distribution with a mean of zero, and a standard deviation of $\sigma_{D_i}$
+
+We cannot directly measure $\epsilon_i$, but we know it is the difference between the measured value in the data and the `true' value predicted by our model:
+\[
+    \epsilon_i = D_i - M(t_i, \theta)
+\]
+
+Since the noise is additive and Normal, we can combine these two equations to get our merit function - the probability of a single observed data point given the parameters as:
+\[
+    P(D_i \mid \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
+\]
+
+Where $\theta$ is our list of parameters $\theta = [T_0, T_\text{env}, \tau]$. Crucially, this is a Normal distribution where the mean is our model's prediction given the parameters, and the standard deviation is the uncertainty on the error point. Assuming we have multiple uncorrelated data points, the total likelihood function is:
+\[
+    P(D \mid \theta) = \prod_{i=1}^{n} P(D_i \mid \theta)
+\]
+
+Considering $\tau$ as the variable we actually change, we get:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec06-02.png}
+     \caption{A heatmap of the likelihood function overlaid on the data.}
+\end{figure}
+
+The high likelihood values of $P(D\mid\tau)$ are the models which are most likely to generate the observed data, given the parameters. This, therefore, means that they are the models which best fit the data.
+
+If we plot $P(D, \tau)$ against $\tau$, we can see that the likelihood does a reasonable job of giving us a value which is close to true:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec06-03.png}
+     \caption{}
+\end{figure}
+
+We can use Maximum Likelihood Estimation (note that it is just an estimate, the value of tau given by the maximum likelihood and the true value are \textbf{not} the same) to estimate the best value of tau for the model. We chose the value of tau that gives the maximum likelihood:
+\[
+    \hat{\tau} = \arg\max_{\tau} P(D\mid\tau)
+\]
+
+In general, given a set of multiple parameters, we say:
+\[
+    \hat{\theta} = \arg\max_{\theta} P(D\mid\theta)
+\]
+
+\section{Log Likelihood}
+We still need to estimate the uncertainty on this predicted best value of tau. It turns out that a good way to do this is by taking the log likelihood instead of just the likelihood. We take the natural log of the normal probability density function for a single data point:
+\[
+    P(D_i \mid \theta) = \frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
+\]
+\[
+    \ln P(D_i \mid \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}} \exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
+\]
+\[
+    \ln P(D_i \mid \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}}\right) +\ln\left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
+\]
+\[
+    \ln P(D_i \mid \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) - \ln\left(\sigma_{D_i}\right) - \ln \left(\sqrt{2 \pi}\right)
+\]
+
+If we ignore the constant term, as it does not change the results (as we care about the results comparative to each other to find the maximum), and if we assume that the uncertainty is the same on each data point (which we must be careful about, in case uncertainties are variables too):
+\[
+    \ln P(D_i \mid \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) + \text{constant}
+\]
+
+This gives the final log likelihood as:
+\[
+    \boxed{\mathcal{L} = \ln P(D\mid\theta) = \sum_{i=1}^{n} P(D_i \mid \theta) = \sum_{i=1}^{n} \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)}
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-04.png}
+     \caption{The likelihood plot, repeated with log likelihood}
+\end{figure}
+
+We can see this generates similar values to the standard likelihood, but with much friendlier values (-20 to -120, rather than very small numbers). The equation is also nicer to calculate as we're able to get rid of the constant terms. If we again consider this as a function of tau (the parameter we're actually changing to produce a fit):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-05.png}
+     \caption{}
+\end{figure}
+
+This is similar again, but with a very different order of magnitude. We can calculate the predicted optimum $\tau$ by determining the maximum point where:
+\[
+    \frac{\partial}{\partial \tau} \ln P(D \mid \tau) = 0
+\]
+Note the swap from theta to tau, this is because tau is the parameter we're actually using to fit, while the other parameters bundled into theta are constant. This gives $\tau \approx 3.23$. Yes we could have done this with traditional likelihood, but the differentiation is nicer in log form and it becomes relevant later.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-06.png}
+     \caption{}
+\end{figure}
+
+\section{Uncertainties on Log Likelihood}
+In our single dimension problem, we'll create a new value called the Hessian ($H$), we define this as:
+\[
+    \boxed{H = \frac{\partial^2 \LL}{\partial \tau^2} \biggr\rvert_{\tau = \hat{\tau}}}
+\]
+
+Why is this (and the log likelihood) actually useful? It turns out that the curvature of the log likelihood around the maximum point tells us the uncertainty. We can use the Hessian and log likelihood to estimate the uncertainty on the parameter $\tau$, using the inverse of $H$, $H^{-1}$ where $HH^{-1} = 1$.
+\[
+    \sigma_{\hat{\tau}} \approx \sqrt{|H^{-1}|}
+\]
+
+Since we're in 1D, this value of the Hessian is a scalar, and we can estimate it by either differentiating twice or estimating using two points:
+\[
+    f''(x) = \lim_{h \to 0} \frac{f(x+h) - 2f(x) + f(x-h)}{h^2}
+\]
+And calculating:
+\[
+    \sigma_{\hat{\tau}} = \sqrt{\frac{1}{|H|}}
+\]
+But note that this works differently in higher dimensions (more parameters) has $H$ becomes a matrix. This gives us $\hat{\tau} \approx 3.23$ from the previous result, and now $\sigma_{\hat{\tau}} \approx 0.133$. Note that the true value is 1.8 standard deviations away from the best estimate, which is okay - anything larger than 3 sigma away would start to become worrying.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-07.png}
+     \caption{}
+\end{figure}
+
+Using the log likelihood has:
+\begin{itemize}
+    \item Been a nicer calculation, which is computationally easier, as we can strip out all the constant terms.
+    \item Allowed us to calculate the uncertainties on our predicted values.
+    \item Allowed us to get back to the standard likelihood (as the black and red curves above are approximately the same) anyways.
+\end{itemize}
+
+
+\subsection{Multidimensional Generalisation}
+This works in 1D, but we can generalise to a higher number of parameters. We assume here however that $P(D\mid \theta)$ is going to be a normal distribution. If this is not the case, we cannot use the approximations for uncertainties, and the problem becomes too complex for first year stats. It is generally the case that it either will approximate a normal as many datapoints are taken. If this isn't true, it becomes a problem for Y4 Bayesian Stats.
+
+We find the maximum likelihood (given multiple parameters $\hat{\theta}$) with:
+\[
+    \frac{\partial \LL}{\partial \theta_1} = \frac{\partial \LL}{\partial \theta_2} = \cdots = 0
+\]
+
+And the Hessian is given by:
+
+\[
+\mathbf{H}(\hat{\theta}) =
+\begin{bmatrix}
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_1^2}\biggr\rvert_{\theta=\hat{\theta}} &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_1 \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
+\cdots &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_1 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
+\\[1.0em]
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_2 \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_2^2}\biggr\rvert_{\theta=\hat{\theta}} &
+\cdots &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_2 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
+\\[1.0em]
+\vdots & \vdots & \ddots & \vdots
+\\[1.0em]
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_k \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_k \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
+\cdots &
+\displaystyle 
+\frac{\partial^2 \LL}{\partial \theta_k^2}\biggr\rvert_{\theta=\hat{\theta}}
+\end{bmatrix}.
+\]
+

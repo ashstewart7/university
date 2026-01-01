@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from courses import Courses
+from modules import Modules
 from rofi import rofi
 from generate_main import compile_all_files
 
-lectures = Courses().current.lectures
+lectures = Modules().current.lectures
 
 commands = ['last', 'prev-last', 'all', 'prev', 'master']
 options = ['Current lecture', 'Last two lectures', 'All lectures', 'Previous lectures', 'Master compile']

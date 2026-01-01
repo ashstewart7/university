@@ -1,0 +1,81 @@
+% !TeX root = main.tex
+\lecture{4}{Thu 20 Nov 2025 09:00}{Conditional Probability}
+\section{Axioms of Probability}
+
+For a sample space $\Omega$, a distribution $P(x)$ must satisfy:
+\begin{enumerate}
+    \item $P(x) \geq 0$ for any $x \in \Omega$ (for discrete events)
+    \item $P(\Omega) = 1$
+    \item $P(e_1 \cup e_2 \cup + \cdots \cup e_n) = P(e_1) + P(e_2) + \cdots + P(e_n)$ 
+    \begin{itemize}
+        \item if the elements are pairwise disjoint ($e_i \cap e_j = \emptyset, i \neq j$).
+    \end{itemize}
+\end{enumerate}
+
+\section{Conditional Probability}
+\subsection{Example}
+{
+    \centering
+    \emph{Throw two dice. What is the probability that we see a 4, given the total was 6?}
+    \par
+}
+{
+    \raggedright
+    This ``given that'' is the key. It provides us with an extra piece of information that the final probability depends on.
+    \par
+}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec15-01.png}
+     \caption{The sample space.}
+\end{figure}
+
+We can now see that our probability is $\frac{2}{5}$. This is different than if we had not considered the extra information, and would have drastically changed our answer.
+
+\subsection{Definition}
+The conditional probability of A given B is written $P(A \mid B)$ and is defined by:
+\[
+    P(A \mid B) \equiv \frac{P(A \cap B)}{P(B)} = \frac{\text{number of events in A and B}}{\text{number of events in B}} \qquad P(B) \neq 0
+\]
+
+This is the fraction of events in $B$ where both $A$ and $B$ happen.
+
+\subsection{Verifying This is Still a Probability}
+It may not be obvious that this is still a valid probability (i.e. that taking ratios of probabilities still yields a probability).
+
+\begin{proof}
+Assume that P is a valid probability function and let $Q(A \mid B) \equiv \dfrac{P(A \cap B)}{P(B)}$
+
+\textbf{Consider the first axiom of probability:}
+
+$Q(A \mid B) \geq 0$. This is satisfied, as $P(x) \geq 0$ for any $x \in \Omega$.
+
+\textbf{Consider the second:}
+
+$Q(\Omega \mid B) = \dfrac{P(\Omega \cap B)}{P(B)}=\dfrac{P(B)}{P(B)} = 1$ so satisfied.
+
+\textbf{Consider the third:}
+
+If $a_1 \cap a_2 = \emptyset$, is $Q(a_1 \cup a_2 \mid B) = Q(a_1 \mid B) + Q(a_2 \mid B)$?
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{figures/lec15-02.png}
+     \caption{}
+\end{figure}
+The definition of Q gives:
+
+\begin{align*}
+    Q(a_1 \cup a_2 \mid B) &= \dfrac{P([a_1 \cup a_2] \cap B)}{P(B)} \\
+    &= \dfrac{P([a_1 \cap B] \cup [a_2 \cap B])}{P(B)} \\
+    &= \dfrac{P(a_1 \cap B) + P(a_2 \cap B)}{P(B)} \\
+    &= \frac{P(a_1 \cap B)}{P(B)} + \frac{P(a_2 \cap B)}{P(B)} \\
+    &= Q(a_1 \mid B) + Q(a_2 \mid B)
+\end{align*}
+
+So yes, the third axiom is satisfied.
+
+\emph{Since all three axioms are satisfied, $Q$, hence $P$, is a valid probability distribution.}
+\end{proof}
+
+\section{Reconditioning}
+Reconditioning is using $P(A \mid B)$ to determine $P(B \mid A)$.

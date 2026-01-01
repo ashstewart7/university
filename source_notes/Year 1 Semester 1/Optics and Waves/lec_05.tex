@@ -1,0 +1,153 @@
+% !TeX root = main.tex
+\lecture{5}{Wed 15 Oct 2025 11:00}{Wave Applications and Introduction to Standing Waves}
+
+\section{Wave Applications}
+Reflection and transmission have some very important real word applications:
+\begin{itemize}
+    \item Fibre Optics.
+    \item Vision and Photography.
+    \item X-Ray Imaging.
+    \item Sonar Imaging.
+    \item Ultrasound Imaging
+    \item Police Speed Checks.
+\end{itemize}
+
+We will look at a few in a bit more detail.
+
+\subsection{Electron Microscopes}
+
+We have two types:
+\begin{itemize}
+    \item Scanning Electron Microscope (SEM)
+    \begin{itemize}
+        \item We take some sample, and generate a very narrow beam of electrons. Some of these electrons will scatter off the sample back up. We take a detector, ``scan'' it around many angles and detect angles of scattering, to build a picture of the sample's surface.
+    \end{itemize}
+    \item Transmission Electron Microscope (TEM)
+    \begin{itemize}
+        \item We take a very thin sample, fire the electron beam at it. Some of the electron beam will pass through the sample, where we can detect it on the other side. Areas of the sample which are thinner act as being more transparent, with a greater rate of transmission. We can measure this difference.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Solar Cells}
+Consider a solar cell with light incident on it at some angle. We want to maximise absorption of light and minimise reflection, to maximise the energy efficiency of the cell.
+
+\subsection{Ultrasound Imaging}
+
+So far, we have considered a wave to only be able to transmit or reflect at a boundary. What we have not considered yet is attenuation. This is where a wave passing through a medium loses some energy to the medium. As the wave propagates, it loses energy and hence decreases in amplitude.
+
+For example, a sound wave propagating though a medium causes particles in the medium to oscillate. This causes a heating effect on the medium, where some of the wave energy is lost thermally resulting in a decrease in amplitude (volume).
+
+Ultrasound is sound with very high frequencies, compared to audible sound:
+\[
+    f_\text{ultrasound}: 2 - 20 \mathrm{MHz}
+\]
+\[
+    f_\text{sound}: 20 \text{Hz} - 20 \text{kHz}
+\]
+
+Wave speed is given by the below, where $\rho$ is density and $B$ is bulk modulus (resistance to compression):
+\[
+    v = \sqrt{\frac{B}{\rho}}
+\]
+
+
+This means:
+\begin{itemize}
+    \item Ultrasound's wavelength in air (10MHz) is $33 \mu m$.
+    \item Sound's wavelength in air (at 300Hz) is $\approx 1m$
+\end{itemize}
+
+Ultrasound has a longer wavelength in fat (human tissue) of about $150 \mu m$ as while fat does have a higher density, it has a much greater bulk modulus, and a greater $B / \rho$ ratio.
+
+Lets consider transmission of ultrasound at an air-fat boundary. Since the wavelength in air is smaller, and the density of air is much smaller, $C \approx A$, so $B \approx 0$ and there is (almost) zero transmission from air to fat. 
+
+This is why ultrasound gel is used, to ensure that there is transmission from air to gel and gel to fat, effectively bridging the gap.
+
+\section{Introduction to Standing Waves}
+Consider a string (of indefinite length) attached to the wall on the left. We send series of wave pulses ($y_1$) into the string from the right, which travel left and reflect. The reflected wave ($y_2$) travels back to the right.
+
+If we continue sending a wave signal from $y_1(x, t)$ we would have a continuous wave signal back in the form of $y_2(x, t)$.
+
+This causes the two waves to overlap and interfere with each other. We can say that the resultant amplitude for any point on the string is given by:
+\[
+    y = y_1(x, t) + y_2(x, t)
+\]
+
+This works because the wave equation is a linear partial differential equation. If two functions $y_1, y_2$ are solutions to the wave equation, then this means their sum will be two (hence $y$ is a valid final wave).
+
+The incident wave is:
+\[
+    y_1 = -A \cos(kx + \omega t)
+\]
+
+And the reflected wave is (assuming the two waves have equal amplitude, period and wavelength, with the second travelling in the opposite direction and being inverted due to the reflection):
+\[
+    y_2 = A \cos(kx - \omega t)
+\]
+
+We add these together:
+\[
+    y_\text{total} = y_1 + y_2 = A \left[\cos(\underbrace{kx}_A - \underbrace{\omega t}_B) - \cos(kx + \omega t)\right]
+\]
+\[
+    \text{using: } \cos(A \pm B) = \cos A \cos B \mp \sin A \sin B
+\]
+\[
+    y_\text{total} = A\left[- \cos(kx) \cos(\omega t) + \sin(kx) \sin(\omega t)\right] + A\left[\cos (kx) \cos(\omega t) + \sin(kx) \sin(\omega t)\right]
+\]
+\[
+    y_\text{total} = 2A \sin(kx) \sin(\omega t)
+\]
+
+This gives us the general form of a sinusoidal standing wave function.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-01.png}
+     \caption{}
+\end{figure}
+
+At some point $x = x_1$:
+\[
+    y_t(x = x_1, t) = \boxed{2A \sin(k x_1)} \sin(\omega t)
+\]
+As  $x_1$ is a constant, the boxed term is now another constant too. Let this constant be $E$.
+\[
+    y_t(x = x_1, t) = E \sin \omega t
+\]
+This is the equation for a harmonic oscillator. This point of the string oscillates in simple harmonic motion with a maximum amplitude dependant on position.
+
+If we consider a higher frequency wave, we may encounter points where $\sin kx = 0$. These are called nodes.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-02.png}
+     \caption{}
+\end{figure}
+
+The amplitude at a node is always $y = 0$, regardless of time, as the sine term is zero regardless of time.
+
+This wave does not propagate, it is ``stationary''.
+
+\section{Standing Waves and the Wave Equation}
+It's important to note that standing waves also satisfy the wave equation. Carrying out derivatives, we can get:
+\[
+    \frac{\partial y}{\partial x} = 2A k \cos kx \sin \omega t
+\]
+\[
+    \frac{\partial^2 y}{\partial x^2} = 2A(-k^2) \sin kx \sin \omega t
+\]
+\[
+    \frac{\partial y}{\partial t} = 2A \omega \sin kx \cos \omega t
+\]
+\[
+    \frac{\partial^2 y}{\partial t^2} = 2A (- \omega^2) \sin kx \sin \omega t
+\]
+
+And substituting into the wave equation:
+
+\[
+    \frac{\left(\dfrac{\partial^2 y}{\partial t^2}\right)}{\left(\dfrac{\partial^2 y}{\partial x^2}\right)} = \frac{2A(-\omega^2) \sin kx \sin \omega t}{2A(-k^2) \sin kx \sin \omega t} = \frac{\omega^2}{k^2} = v^2
+\]
+\[
+  \therefore \dfrac{\partial^2 y}{\partial x^2} = \frac{1}{v^2} \frac{\partial^2 y}{\partial t^2}  
+\]
+So the wave equation is satisfied.

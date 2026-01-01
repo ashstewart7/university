@@ -1,0 +1,152 @@
+% !TeX root = main.tex
+\lecture{8}{Thu 23 Oct 2025 13:00}{EM Standing Waves and Lasers}
+
+\section{Lasers}
+A traditional laser has two mirrors on either side of a cavity. One is (ideally) 100\% reflecting, while another is almost perfectly reflecting (say 99\% reflective), but allows some transmission. This causes EM waves to reflect back and forth (with some transmitted to actually cause the visible laser).
+
+These reflecting waves cause a standing wave inside the laser cavity. This standing wave oscillates with the equation given in Lec 07.
+
+\section{A Quick Audio Interlude}
+Listening to various sounds from a frequency generator, we notice two things:
+\begin{itemize}
+    \item The human ear is very sensitive to changes in frequency, even in the single Hz range.
+    \item A square wave has a higher percieved pitch than a sine wave of the same frequency.
+    \begin{itemize}
+        \item This is because a sqaure wave can be decomposed into the sum of many sine waves, and some of these sine wave components have a higher frequency compared to the square wave itself, which out ears can detect.
+    \end{itemize}
+\end{itemize}
+
+\section{And Back to Superposition}
+Given two travelling waves:
+\[
+    y_1 = A \cos(k_1 x - \omega_1 x)
+\]
+\[
+    y_2 = A \cos(k_2 x - \omega_2 x)
+\]
+\[
+    y = y_1 + y_2
+\]
+
+Hence:
+\[
+    y = A \cos(k_1 x - \omega_1 x) + A \cos(k_2 x - \omega_2 t)
+\]
+And using a double angle formula:
+\[
+    y = 2A \cos\left(\frac{k_1 - k_2}{2}x - \frac{\omega_1 - \omega_2}{2} t\right) \cos\left(\frac{k_1 + k_2}{2}x - \frac{\omega_1 + \omega_2}{2}t\right)
+\]
+
+Or briefly:
+\[
+    y = 2A \color{blue}\underbrace{\cos(\Delta k x - \Delta \omega t)}_\text{group} \color{red}\underbrace{\cos(k_{avg} x - \omega_{avg}t)}_\text{carrier} \color{black}
+\]
+
+We define the phase velocity as:
+\[
+    v_\text{phase} = \frac{\omega_{avg}}{k_{avg}}
+\]
+
+And the group velocity as:
+\[
+    v_\text{group} = \frac{\Delta \omega}{\Delta k}
+\]
+
+\section{Carriers and Groups}
+What actually is a carrier and a group? Lets take radio as an example. Radio waves travel for potentially hundreds of kilometers, and it's not possible to send sound waves remotely close to that distance because of high attenuation. 
+
+The idea therefore arose of using a radio frequency wave to carry sound. Lets consider an example EM RF wave at $500kHz$. We then approximate our sound wave as a sine wave of pressure variations, say at $1000Hz$.
+
+The first thing we can do is to modulate the amplitude of the RF wave by the audio wave. The RF wave keeps the same frequency, but changes amplitude depending on the amplitude of the audio wave. 
+
+Upon receipt of the wave, we filter out the high frequency oscillations of the radio wave itself, but we extract a lower frequency wave defined by a wave that passes through the maximum points of oscillation. This effectively restores the sound wave.
+
+This is known as AM radio. The carrier is the high frequency wave, and the group is the lower frequency constructed wave.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec08-01.png}
+     \caption{Carrier and Group waves. The lower freq. dotted line is the extracted wave (group), the higher frequency wave is the carrier.}
+\end{figure}
+
+
+\section{Velocities}
+Which of the two waves have a higher speed?
+
+Assuming wave speed and frequency are independent, we have:
+\[
+    \boxed{V = \omega_1 / k_1 \qquad V = \omega_2 / k_2}
+\]
+\[
+    v_\text{phase} = \frac{\omega_\text{avg}}{k_\text{avg}} = \frac{(\omega_1 + \omega_2) / 2}{(k_1 + k_2) / 2} = V
+\]
+
+And for group:
+\[
+    v_g = \frac{(\omega_1 - \omega_2)/2}{(k_1 - k_2) / 2} = V
+\]
+Hence they move at the same speed. This is only true on the assumption that wave speed does not depend on frequency, which is not generally true. Depending on the circumstances, phase velocity can be greater or smaller than group velocity.
+
+In a medium where the wave speed depends on frequency, we call this medium dispersive.
+
+Air is non-dispersive (i.e. sound), and in a vacuum the same applies (i.e. speed of light). 
+
+What about the speed of light in glass? Does this depend on frequency? We'll investigate later in the optics section.
+
+\section{A Few More Definitions}
+
+\textbf{Coherence: } Two (or more) sources that are in phase, or have a constant phase difference ($\Delta$) are said to be coherent.
+
+\subsection{Adding Coherent Waves}
+Constant phase difference means we can nicely add amplitudes, so total intensity:
+\[
+    I = |A|^2 = (A_1 + A_2 + A_2, \ldots, A_n)^2
+\]
+
+\subsection{Adding Incoherent Waves}
+We directly add intensities instead:
+\[
+    I = I_1 + I_2 + \ldots = A_1^2 + A_2^2 + \ldots
+\]
+
+
+\subsection{The Decibel Scale}
+\[
+    \beta = 10\log\left(\frac{I}{I_0}\right)
+\]
+
+Where $I$ is the intensity of the source, and $I_0$ is a reference level approximately at threshold of hearing equal to $10^{-12} W/m^2$
+
+At the threshold of hearing:
+\[
+    \beta = 10\log\left(\frac{10^{-12}}{10^{-12}}\right) = 10\log(1) = 0dB
+\]
+Crucially, 0dB is not zero sound intensity.
+
+At the upper pain threshold:
+\[
+    \beta = 10 \log \left(\frac{1}{10^{-12}}\right) = 120dB
+\]
+
+But, how do we calculate I here?
+\[
+    I = \frac{\text{Power}}{\text{Area}}
+\]
+
+Power is related to energy, so:
+\[
+    I = \frac{\text{energy}}{\text{time} \times \text{area}}
+\]
+
+And to get intensity for an actual volume:
+\[
+    I = \frac{energy \times length}{time \times volume}
+\]
+\[
+    I = \frac{energy}{volume} \times wave speed
+\]
+
+What displacement on the eardrum do we actually have? For 120dB, $10^{-5}$m, or $10^{-11}$ for 0dB. The latter measurement is smaller than an atom. The ear is a very sensitive instrument.
+
+\section{Human Senses}
+Interestingly, we see, hear and smell all on a log scale. Physical feeling is not very scientific and can't easily be quantified. Emotional feeling is also not quantifiable\dots

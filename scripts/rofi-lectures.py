@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from courses import Courses
+from modules import Modules
 from rofi import rofi
 from utils import generate_short_title, MAX_LEN
 
-lectures = Courses().current.lectures
+lectures = Modules().current.lectures
 
 sorted_lectures = sorted(lectures, key=lambda l: -l.number)
 

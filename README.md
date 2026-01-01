@@ -20,7 +20,7 @@ Ash's course notes. Taken as part of **MSci Physics with Particle Physics and Co
 ## Workflow
 The _Year X Semester Y_ folders contain raw LaTeX notes for each module and lecture. Compiled PDF notes are in _compiled_notes/Year X Semester Y_, and compilation happens as a pre-commit hook.
 
-_current_course_ is a symlink to the module folder that is currently in use, as determined by the Rofi UI. These Rofi UIs (as defined in _scripts/_) provide a mechanism to:
+_active_module_ is a symlink to the module folder that is currently in use, as determined by the Rofi UI. These Rofi UIs (as defined in _scripts/_) provide a mechanism to:
 - Select a current module.
 - Open a lecture in that module for editing.
 - Compile a module with control over which lectures are included.

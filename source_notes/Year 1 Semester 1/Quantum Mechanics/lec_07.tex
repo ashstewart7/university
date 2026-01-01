@@ -1,0 +1,161 @@
+\lecture{7}{Fri 14 Nov 2025 12:00}{``Matter Waves''}
+In this lecture:
+\begin{itemize}
+    \item Particles acting as waves: de Broglie wavelength.
+    \item Proof: Davisson and Germer experiment.
+\end{itemize}
+
+\section{de Broglie Wavelength}
+We've seen light waves behaving like particles - photons have an energy and momentum related to their wave frequency and wavelength. We can see however that this goes both ways - particles can also behave as waves.
+
+De Broglie suggested that matter/particles should have wave-like properties, and indeed everything behaves as matter, and as waves, and is simultaneously both and neither.
+
+He proposed the De Broglie wavelength:
+\begin{equation}
+    \lambda = \frac{h}{p} = \frac{h}{mv}
+\end{equation}
+
+A bigger momentum $mv$ means a smaller wavelength. Taking Paul Hollywood as an example, if he has a 250kg mass and can run at 43mph (=20m/s):
+\[
+    p = 5,000kgms^{-1}
+\]
+\[
+    \lambda = \frac{6.6 \times 10^{-34}}{5000} = 10^{-37}
+\]
+
+Which is so small it's practically irrelevant. Macroscopic object have such small wavelengths we can effectively ignore them, hence why classical mechanics still holds on a larger scale.
+
+\subsection{For an Electron}
+For an electron accelerated by 54V, we have a KE of $54eV$. First we check that this is non-relativistic:
+\[
+    m_e c^2 = (9 \times 10^{-31}) (3 \times 10^8)^2 = 8 \times 10^{-14}J = 500,000eV
+\]
+Therefore KE is much less than the relativistic mass-energy, so classical mechanics are fine. Now:
+\[
+    E = \frac{1}{2}mv^2 = \frac{p^2}{2m} \implies p = \sqrt{2mE}
+\]
+\[
+    \lambda = \frac{h}{p} = \frac{h}{\sqrt{2mE}} = \frac{h}{\sqrt{2meV}}
+\]
+\[
+    \lambda = 1.67 \times 10^{-10}m = 1.67 \text{\AA}
+\]
+
+This is no longer small enough that we can get away with totally ignoring it.
+
+\section{Experimental Verification - Davisson and Germer}
+They fired electrons into the surface of metal (with an accelerating voltage of 54V). They measured electron intensity in a scattered beam vs angle. They predicted that electrons should be diffracted, as if they were waves. They observed a constructive interference pattern, equivalent to x-rays. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec07-01.png}
+     \caption{}
+\end{figure}
+
+\section{Their Result}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec07-02.png}
+     \caption{}
+\end{figure}
+
+We interpret the peak at $\phi = 50$ as due to electron diffraction. Note that the `scattering angle', $\phi$ measured is not the same as the Bragg angle $\theta$.
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec07-03.png}
+     \caption{}
+\end{figure}
+
+\subsection{Explaining the Result}
+Given the Bragg condition $2d \sin \theta = n \lambda$, and $d = 0.91 \text{\AA}$, we take $n = 1$ for the central peak, and substitute to get $\lambda = 1.65 \times 10^{-10}$m. This is (approximately) what we predicted earlier. Note that this is now the Bragg angle $\theta$, not $\phi$.
+
+\subsection{GP Thomson}
+At the same time, G.P. Thomson conducted `powder diffraction'. Grinding a crystal into a powder creates a mess of smaller sub-crystals. This replaces the need for scanning and matching in/out angles, as there will be some correct orientation crystal for any input angle. Since the many small cystallites will be arranged at many angles, we can effectively consider getting all possible angles at once. This means that there will be some cystallites which always satisfy the Bragg conditions, \emph{if $\lambda$ makes this possible.}
+
+There is some rotational symmetry, so we get rings produced, and if we use electrons and x-rays on the same target, we can see we get the same pattern.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{figures/lec07-04.png}
+     \caption{}
+\end{figure}
+
+This is a little bit difficult to think about, as what does the `amplitude' of a matter wave actually mean? This is easy to define with EM waves, in terms of the EM field, but not for matter\ldots
+
+\section{Back to Bohr}
+Looking back to the Bohr model, we want to get:
+\begin{equation}
+    E_n = \frac{-13.6eV}{n^2}
+\end{equation}
+
+As a starting point, the electron must `fit' into a circular orbit. Electrons are in a potential well and are bound to a positively charged nucleus:
+\[
+    V(r) = \frac{-e}{4 \pi \epsilon_0 r}
+\]
+\[
+    u(r) = \frac{-e^2}{4 \pi \epsilon_0 r}
+\]
+
+The electron is in the nth orbital, with a radius $r_n$, velocity $v_n$. Plotting wave function amplitude  against circumference:
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/lec07-05.png}
+     \caption{}
+\end{figure}
+We note that this must be continuous, so the ends must join up:
+\begin{equation}
+    \label{elecscattering1}
+    2 \pi r_n = n \lambda_n = n \frac{h}{p_n} = n \frac{h}{m v_n}
+\end{equation}
+
+Also (this is non-relativistic so we can use circular motion)
+\begin{equation}
+    F = ma = \frac{mv^2}{r}
+\end{equation}
+\begin{equation}
+    \label{elecscattering2}
+    \frac{e^2}{4 \pi \epsilon_0 r_n} = mv_n^2
+\end{equation}
+
+We can use \ref{elecscattering1} and \ref{elecscattering2} to eliminate $v_n$ and show:
+\[
+    r_n = n^2 a_0, \qquad a_0 = \frac{\epsilon_0h^2}{\pi m e^2} = 5.2918 \times 10^{-11} \text{ (``Bohr Radius'')}
+\]
+
+
+\subsection{Energies}
+Using \ref{elecscattering1}:
+\[
+    2\pi r_n = n \lambda_n = n \frac{h}{p_n} = n \frac{h}{m v_n}
+\]
+\[
+    p_n = \frac{n h}{2 \pi r_n}
+\]
+And using our new result:
+\[
+    p_n = \frac{n h}{2 \pi r_n} = \frac{h}{2 \pi n a_0}
+\]
+
+\subsubsection{Kinetic Energy}
+
+\[
+    T_n = \frac{p_n^2}{2m} = \frac{h^2}{8 \pi^2 m n^2 a_0^2} = \frac{me^4}{8 \epsilon_0^2 h^2 n^2} = +\frac{13.6}{n^2}
+\]
+
+\subsubsection{Potential Energy}
+\[
+    U_n = \frac{-e^2}{4 \pi \epsilon_0 r_n} = \frac{-e^2}{4 \pi \epsilon_0 n^2 a_0} = \frac{-me^4}{4 \pi \epsilon_0^2 h^2 n^2} = -\frac{27.2}{n^2} eV
+\]
+
+\subsubsection{Total Energy}
+\[
+    E_n = T_n + u_n = \frac{-13.6}{n^2}eV
+\]
+This is the Bohr Model result, as required.
+
+\section{Conclusions}
+\begin{itemize}
+    \item Matter is wave-like, with a wavelength given by de Broglie wavelength.
+    \item Electrons can therefore interfere, which we see with electron diffraction.
+    \item A wave-like electron gives us the observed Bohr model result.
+\end{itemize}
+
