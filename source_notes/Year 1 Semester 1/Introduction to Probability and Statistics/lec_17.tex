@@ -1,0 +1,137 @@
+% !TeX root = main.tex
+\lecture{6}{Thu 27 Nov 2025 09:00}{Ordered Events and Expectation Values}
+
+\section{Ordering}
+So far we've just had fairly abstract events. We now want to add a structure into these events, by considering what happens when the events are ordered. This (rather than physical order) means what if each event is associated with an actual number.
+
+For example, events being getting a head or getting a tail is abstract, while counting the number of heads when tossing a coin is numerical and ordered.
+
+\subsection{Probability Mass Functions (PMFs)}
+If we have a variable $x$, the probability of observing x is $P(x)$. Since we now consider cases where events are numerical values, we can graph $P(x)$.
+
+We previously had a probability function that assigns probabilities to events. Now we are assigning probabilities to numbers, this is called a probability mass function (PMF). 
+
+\subsection{Normalisation}
+The events in a PMF are disjoint from the rest. We can therefore normalise through summation to $1$:
+\[
+    \sum_{x} P(x) = 1
+\]
+
+\subsection{Cumulative Distributions}
+This is the probability that a variable is less than or equal to a certain value.
+\[
+    C(x) \equiv P(X \leq x) = \sum_{X \leq x} P(x)
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec16-02.png}
+     \caption{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec16-03.png}
+     \caption{}
+\end{figure}
+
+\section{Expectation Values}
+The expectation value for a probability mass function is defined by:
+\[
+    \langle x\rangle = \sum_{x} xP(x)
+\]
+
+It's the weighted sum of all the outcomes (weighted by their probability of occurring), and is a measure of location. Note that the expectation value may not be an actual value that our discrete distribution can obtain, it may be between two.
+
+The best way to describe what it actually represents is the long-term average of a distribution (if you take many draws from the PMF and average them).
+
+\subsection{Expectation Value of a Function}
+\[
+    \langle f\rangle = \sum_x f(x) P(x)
+\]
+
+This is again a weighted sum over the values of $x$.
+
+Note: For some constant $c$:
+\[
+    \langle c\rangle = \sum_{x} x P(x) = c \sum_{x} P(x) = c
+\]
+\[
+    \langle c\rangle = c
+\]
+
+This implies that:
+\[
+    \langle \langle x\rangle\rangle = \langle x\rangle
+\]
+
+\subsection{Linear Combinations}
+We stated these as fact earlier in the stats portion of the module. We can now derive them.
+
+$\mathbf{\langle ax + b\rangle}$:
+\begin{align*}
+  \langle ax + b\rangle &= \sum_x (ax + b) P(x)\\
+  &= \sum_x axP(x) = \sum_x bP(x)\\
+  &= a \sum_x xP(x) + b \sum_x P(x)\\
+  &= a \langle x\rangle + b
+\end{align*}
+
+\section{Measure of Dispersion}
+Now we know $\langle x\rangle$, we can ask the question how far, on average, does the value of $x$ get away from this.
+
+In other words, what is the expectation value of the difference between $x$ and $\langle x\rangle$? Lets try:
+\[
+    \langle x - \langle x\rangle\rangle = \langle x\rangle = \langle \langle  x\rangle\rangle = 0
+\]
+Ah, this is always $0$, so doesn't work\ldots. What else can we try?
+\[
+    \langle |x - \langle x\rangle\rangle = \text{MAD}(x)
+\]
+This is the Mean Absolute Deviation of $x$. This is perfectly valid, but not really very common anymore. More commonly, we use the variance:
+\[
+    \langle |x - \langle x\rangle|^2\rangle = \sum_{x} \left(x - \langle x\rangle\right)^2 P(x) = \text{Var}(x)
+\]
+
+\subsection{Simplifying Variance}
+\[
+    \text{Var}(x) \equiv \langle (x - \langle x\rangle)^2\rangle
+\]
+\[
+  = \langle x^2 - 2 \langle x\rangle x + \langle x\rangle^2\rangle  
+\]
+\[
+= \langle x^2\rangle - \langle 2 \langle x\rangle x\rangle + \langle \langle x\rangle^2\rangle
+\]
+\[
+= \langle x^2\rangle - 2 \langle x\rangle^2 + \langle x\rangle^2
+\]
+\[
+    \text{Var}(x) = \langle x^2\rangle - \langle x\rangle^2
+\]
+
+We are further going to define \emph{standard deviation} as the square root of variance:
+\[
+    \text{std}(x) = \sqrt{\langle x^2\rangle - \langle x\rangle^2}
+\]
+
+\subsection{Linear Variance Combinations}
+We now want to consider the same linear combinations but for variance this time:
+\[
+    \text{var}(ax+b) = \langle (ax)^2\rangle - \langle ax\rangle^2
+\]
+\[
+    = \langle a^2 x^2\rangle - a^2 \langle x\rangle^2
+\]
+\[
+    = a^2 \left\{\langle x^2 \rangle- \langle x\rangle^2\right\}
+\]
+\[
+    \boxed{\text{var}(ax+b) = a^2 \text{var}(x)}
+\]
+
+
+
+
+
+
+
+

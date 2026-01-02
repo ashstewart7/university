@@ -1,0 +1,148 @@
+% !TeX root = main.tex
+\lecture{7}{Fri 28 Nov 2025 11:00}{Discrete Distributions}
+
+\section{Parametric Distributions}
+So far, we've treated $P(x)$ very arbitrarily. We now want to define it a bit more tightly. 
+
+So far, we've explicitly defined values for every combination (i.e. $P(x = 0) = a, P(x = 1) = b$) etc. Instead of doing this, we can define then \emph{parametrically}. We add some number of parameters $\theta$ in:
+\[
+    P(x \mid \theta)
+\]
+
+We can have more than one parameter:
+\[
+    P(x \mid \theta_1, \theta_2, \cdots, \theta_n) = P(x \mid \pmb{\theta})
+\]
+
+
+\subsection{Bernoulli Distribution}
+The Bernoulli Distribution is the simplest distribution we can define. It underpins all of the rest. We define two events, $0$ and $1$. $1$ happens with probability $p$ and $0$ with probability $1-p$. We then run a \textbf{single} trial.
+
+If:
+\[
+    P(x = 0 \mid p) = 1 - p \qquad P(x = 1 \mid p) = p
+\]
+
+Then:
+\[
+    P(x \mid p) = p^x (1-p)^{1-x} \qquad x = 0, 1
+\]
+Or:
+\[
+    P(x \mid p) = (1 - x)(1 - p) + xp \qquad x = 0, 1
+\]
+
+\textbf{Properties}
+
+\[
+    \langle x\rangle \equiv \sum_{x} x P(x \mid p) = \sum_{x=0}^{1} x p^x (1 - p)^{1-x} = 0 p^0 (1 - p)^1 + 1 p^1 (1 - p)^0 = p
+\]
+\[
+    \langle x^2\rangle \equiv \sum_{x} x^2 P(x \mid P) = p
+\]
+\[
+    \text{var}(x) = p - p^2 = p(1 - p)
+\]
+
+\subsection{Binomial Distribution}
+The binomial distribution is the sum of Bernoulli distributions. If we toss $N$ coins and count the number of heads $k$, what is the distribution of $k$?
+
+Let $P(H) = p$, so $P(T) = 1 - p$. 
+
+If $n = 3$:
+\[
+    \Omega \left\{\text{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\right\}
+\]
+We assume that each throw of the coin is independent of the previous throw. Therefore $P(\text{HHH}) = P(\text{H}) P(\text{H}) P(\text{H}) = P(\text{H})^3$
+
+For $k$ heads, we use the union. For $k = 1$, we have:
+\[
+    P(k = 1) = P(\text{TTH} \cup \text{THT} \cup \text{HTT})
+\]
+
+Each one of these options has probability $p(1-p)^2$, so $P(k = 1) = 3p(1-p)^2 = {}^{3}C_{1} p(1-p)^2$ (as there are 3 possible outcomes that give us that combination of H and T).
+
+This gives us:
+\[
+    P(k = 0) = {3\choose 0} (1-p)^3
+\]
+\[
+    P(k = 1) = {3 \choose 1} p(1-p)^2
+\]
+\[
+    P(k = 2) = {3 \choose 2} p^2 (1-p)
+\]
+\[
+    P(k = 3) = {3\choose 3} p^3
+\]
+
+We can get the final probability mass function:
+\[
+    P(k \mid N, p) = {N \choose k} p^k (1 - p)^{N-k}
+\]
+
+And therefore the expectation value:
+\begin{align*}
+   \langle k\rangle &\equiv \sum_{k=0}^{N} k P(k \mid N, p)\\
+   &= \sum_{k=0}^{N} k \frac{N!}{k! (N-k)!} p^k (1-p)^{N-k}\\
+   &= 0 + \sum_{k=1}^{N} k \frac{N!}{k! (N-k)!} p^k (1-p)^{N-k}\\
+   &= \sum_{k=1}^{N} \frac{N!}{(k-1)! (N-k)!} p^k (1-p)^{N-k}\\
+   &= Np \sum_{k=1}^{N} \frac{(N-1)!}{(k-1)! (N-k)!} (p^{k-1}) (1-p)^{N-k}\\
+   &\text{Let: } t = k - 1 \implies k = t+1:\\
+   &= Np \sum_{t=0}^{N-1} \frac{N!}{(t)! (N-1-t)!} (p^r) (1-p)^{N-1-t}\\
+   &= Np \sum_{t=0}^{N-1} P(t \mid N-1, p)\\
+   &= Np \times 1\\
+   \langle x\rangle &= Np
+\end{align*}
+
+We can do the same thing for $\langle k^2\rangle$ to get:
+\[
+    \langle k^2\rangle = \sum_{k=0}^{N} k^2 P(k \mid N-1, p)
+\]
+\[
+    \langle k^2\rangle = N^2p^2 - Np^2 + Np
+\]
+
+Hence:
+\[
+    \text{var}(k) = \langle k^2\rangle - \langle k\rangle^2 = N^2p^2 - Np^2 + Np - N^2p^2 = Np - Np^2 = \boxed{Np(1-p)}
+\]
+
+
+\subsection{Poisson Distribution}
+What if p was very small, but N was very large? Consider $N$ people living in a town, each of whom (rarely) goes to a shop, independently with probability $p$. We use $N \to \infty$ and $p \to 0$, fixed by $Np = \lambda$.
+\[
+    P(k \mid N, p) = \frac{N!}{k! (N-k)!} p^x (1-p)^{N-k}
+\]
+
+If $k \ll N$, then:
+\[
+    \frac{N!}{(N-k)!} = \frac{N \times (N-1) \times \dots \times (N-k+1) \times \overbrace{(N-k) \times \dots \times 1}^{(N-k)!}}{\underbrace{(N-k) \times \dots \times 1}_{(N-k)!}}
+\]
+\[
+    N(N-1)(N-2)\ldots(N-k+1) \approx \underbrace{N \cdot N \cdot \ldots \cdot N}_{k \text{ times}} = N^k
+\]
+
+Hence $N!(N-k)! \approx N^k$ (better and better approximation as N gets larger and larger):
+\[
+    P(k \mid N, p) = \frac{N^k}{k!} p^x (1-p)^{N-k}
+\]
+And using $\lambda = np$:
+\[
+    P(k) = \frac{\lambda^k}{k!} \left(1 - \frac{\lambda}{N}^{N-k}\right)
+\]
+
+Taking limits as $N \to \infty$:
+\[
+    \lim_{N \to \infty} \left(1 - \frac{x}{N}^N\right) = e^{-x} \qquad \lim_{N \to \infty} \left(1 - \frac{x}{N}^a\right) = 1
+\]
+
+Hence:
+\[
+    \boxed{P(k \mid \lambda) \equiv \frac{\lambda^k}{k!}e^{- \lambda}}
+\]
+
+This gives us the probability mass function for the Poisson Distribution. It is an approximation for the binomial distribution for very large $N$. It has expectation value $\langle k\rangle = \lambda$, as the underlying binomial has expectation $Np$ and $\lambda = Np$.
+
+By the same trick, for the underlying binomial $\text{var}(k) = Np(1-p)$, so for very large $N$ and very small $p$, $\text{var}(k) = \lambda$ too.
+

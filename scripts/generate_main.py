@@ -7,7 +7,6 @@ from config import ROOT
 
 def build():
     root = ROOT.resolve()
-    # E.g. "Year_1_Semester_1" -> "Year_1_Semester_1_Combined"
     job_name = f"{root.name.replace(' ', '_')}_Combined"
     
     out_dir = root.parent.parent / "compiled_notes" / root.name
@@ -19,6 +18,8 @@ def build():
         r'\documentclass[a4paper, oneside]{book}',
         r'\input{../preamble.tex}',
         r'\title{Lecture Notes}',
+        rf'\date{{Ash Stewart\\University of Birmingham}}', # Yes, I know these are neither really an author or a date, but shut up...
+        rf'\author{{{root.name}\\MSci Physics with Particle Physics and Cosmology}}',
         r'\begin{document}',
         r'    \begin{titlepage}',
         r'        \maketitle',
@@ -55,7 +56,6 @@ def build():
 
         # Append to master
         rel = c.root.relative_to(ROOT).as_posix()
-        tex.append(f'    \\addcontentsline{{toc}}{{part}}{{{title}}}')
         tex.append(f'    \\module{{{title}}}')
         tex.append(f'    \\graphicspath{{{{{rel}/}}}}')
         

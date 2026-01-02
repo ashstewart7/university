@@ -1,0 +1,169 @@
+% !TeX root = main.tex
+\lecture{5}{Fri 21 Nov 2025 11:00}{Law of Total Probability and Bayes Theorem}
+\section{Total Probability}
+Given some sets $A$ and $B$ that are not mutually exclusive, we can take an event in A and break it down into:
+\begin{enumerate}
+    \item The piece of $A$ which is also in $B$.
+    \item The piece of $A$ which is not also in $B$.
+\end{enumerate}
+
+This means that:
+\[
+    P(A) = P(A \cap B) + P(A \cap B^C)
+\]
+
+\subsection{The Law of Total Probability}
+This becomes more useful when we consider multiple events. Say we have a sequence of disjoint sets $B_1, B_2, \cdots, B_n$. These events tile A. We then have:
+\[
+    P(A) = P(A \cap B_1) + P(A \cap B_2) + \cdots + P(A \cap B_n)
+\]
+\[
+    P(A) = \sum_{n=1}^{N} P(A \cap B_n)
+\]
+
+This distribution $P(A)$ is called the marginal distribution.
+
+\section{Change of Notation}
+We now abstract ourselves away from sets, so change our notation:
+\[
+    P(A \cap B) \mapsto P(A, B)
+\]
+This is called the ``joint distribution''. Our previous equations now become:
+\[
+    \text{Marginalisation: } \qquad P(A) = \sum_{n=1}^{N} P(A, B_n)
+\]
+\[
+    \text{Conditional Probability: } \qquad P(A \mid B) = \frac{P(A, B)}{P(B)}
+\]
+\[
+    \text{Statistical Independence: } \qquad P(A, B) = P(A)P(B)
+\]
+
+
+\subsection{Example 1}
+If the joint distribution $P(x, y)$ is given by:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec16-01.png}
+     \caption{}
+\end{figure}
+What is $P(y)$? We marginalise over $x$ so:
+\[
+    P(y = 1) = \sum_{x=0}^{2} P(x, y=1)
+\]
+\[
+    = 1/9 + 1/9 + 1/9 = 1/3
+\]
+
+\[
+    P(y = 0) = \sum_{x=0}^{2} P(x, y=0)
+\]
+\[
+    = 2/9 + 2/9 + 2/9 = 2/3
+\]
+
+\section{Conditional Probability with the Law of Total Probability}
+We have that:
+\[
+    P(A, B) = P(A \mid B)P(B)
+\]
+
+So we can adapt our law of total probability to use this:
+\[
+    P(A) = \sum_{n=1}^{N} P(A, B_n) = \sum_{n=1}^{N} P(A \mid B_n) P(B_n)
+\]
+
+\subsection{Example}
+If:
+\[
+    P(A \mid B) = 0.2
+\]
+\[
+    P(A \mid \bar{B}) = 0.4
+\]
+\[
+    P(B) = 0.1
+\]
+
+What is $P(A)$? We marginalise (taking the two possible outcomes as B happening or not):
+\[
+    P(A) = P(A \mid B)P(B) + P(A \mid \bar{B})P(\bar{B})
+\]
+\[
+    = 0.2 \times 0.1 + 0.4 \times (1 - 0.1) = 0.38
+\]
+
+\section{Bayes' Theorem}
+We can now derive the general form of Bayes' Theorem by combining the definition of conditional probability with the Law of Total Probability.
+
+The definition of conditional probability is
+\[
+    P(A \mid B) = \frac{P(A, B)}{P(B)}
+\]
+
+We can recondition to get:
+\[
+    P(A, B) = P(B \mid A)P(A)
+\]
+
+Substituting this into the definition gives:
+\[
+    P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}
+\]
+However, we often do not know $P(B)$ explicitly. We need to marginalise over all possible states of A to get this:
+\[
+    P(B) = \sum_A P(B, A) = \sum_A P(B \mid A)P(A)
+\]
+\[
+    \boxed{P(A \mid B) = \frac{P(B \mid A)P(A)}{\sum_A P(B \mid A)P(A)}}
+\]
+
+\section{Bayes' Examples}
+\subsection{Example 1}
+
+\textbf{Likely to come up on exam.}
+
+There are two boxes:
+\begin{itemize}
+    \item Box A has 5 gold and 5 silver.
+    \item Box B has 5 gold coins and 10 silver.
+\end{itemize}
+
+If a box is picked at random, and a coin picked at random from this box, what is the probability that the box chosen was A, given the coin was silver.
+
+We want $P(A \mid s)$:
+\[
+    P(A \mid s) = \frac{P(s \mid A)P(A)}{P(S \mid A)P(A) + P(S \mid B)P(B)}
+\]
+\[
+    = \frac{1/2}{1/2 + 2/3} = 3/7
+\]
+
+\subsection{Example 2}
+Polygraphs are used to screen people. Either an individual tells the truth, or they lie. The (imperfect) polygraph returns 0 if it thinks the person lies, or 1 if being truthful, with the following probabilities:
+\[
+    P(0 \mid \text{lies}) = 0.88
+\]
+\[
+    P(1 \mid \text{truth}) = 0.86
+\]
+
+People lie rarely, about $1\%$ of the time. What is the probability that a person is actually lying if the polygraph gives a zero? I.e. we want $P(\text{lie} \mid 0)$
+
+\[
+    P(L \mid 0) = \frac{P(0 \mid L)P(L)}{P(0 \mid L)P(L) + P(0 \mid T)P(T)}
+\]
+\[
+    = \frac{0.88 \times 0.01}{0.88 \times 0.01 + (1 - 0.86) \times (1-0.01)}
+\]
+\[
+    = 0.06
+\]
+
+We therefore also know: $P(T \mid 0) = 0.94$. Even though the polygraph is ``accurate'', so assume that so few people will lie which makes the results unreliable. This means it is inherently difficult to conduct large-scale testing for rare events.
+
+
+
+
+
+

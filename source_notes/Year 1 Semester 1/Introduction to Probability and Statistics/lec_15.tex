@@ -79,3 +79,62 @@ So yes, the third axiom is satisfied.
 
 \section{Reconditioning}
 Reconditioning is using $P(A \mid B)$ to determine $P(B \mid A)$.
+
+\[
+    (1) \quad P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]
+\[
+    (2) \quad P(B \mid A) = \frac{P(B \cap A)}{P(A)}
+\] 
+
+Using the fact that $A \cap B = B \cap A$:
+\[
+    P(B \mid A) = \frac{P(A \cap B)}{P(A)}
+\]
+\[
+    \implies P(A \cap B) = P(A \mid B)P(B) = P(B \mid A)P(A)
+\]
+\[
+    \boxed{\implies P(B \mid A) = \frac{P(A \mid B)P(B)}{P(A)}}
+\]
+
+\subsection{Example}
+A rare cold-like disease has symptoms with probability $0.95$. The probability in the population of having the disease is $0.0001$. The probability of having the cold-like symptoms in the population is $0.4$, either from the disease or any other cold.
+
+Given someone has symptoms, what is the probability they have the disease? Let $d$ be having the disease, and let $s$ be having symptoms. Then:
+\[
+    P(d) = 0.0001
+\]
+\[
+    P(s) = 0.4
+\]
+\[
+    P(s \mid d) = 0.95
+\]
+
+Therefore:
+\[
+    P(d \mid s) = \frac{P(s \mid d)P(d)}{P(s)}
+\]
+\[
+    = \frac{0.95 \times 0.0001}{0.4} = 0.002
+\]
+
+So, as expected, it is very unlikely for someone to have the disease even if they present with symptoms.
+
+\section{Statistical Independence}
+If knowing B happened has no impact on whether A happens or not, then:
+\[
+    P(A \mid B) = P(A)
+\]
+
+In this case:
+\[
+    P(A \cap B) = P(A \mid B) P(B) = P(A)P(B)
+\]
+\[
+    P(x_1 \cap x_2 \cap \cdots \cap x_n) = P(x_1)P(x_2)\cdots P(x_n)
+\]
+
+
+This (if it is true) is called \emph{statistical independence}.

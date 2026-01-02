@@ -35,10 +35,16 @@ class Modules(list):
 
     @property
     def current(self):
-        return Module(CURRENT_MODULE_ROOT.resolve())
+        try:
+            return Module(CURRENT_MODULE_ROOT.resolve())
+        except (FileNotFoundError, OSError):
+            return None
 
     @current.setter
     def current(self, module):
-        CURRENT_MODULE_SYMLINK.unlink()
+        try:
+            CURRENT_MODULE_SYMLINK.unlink()
+        except FileNotFoundError:
+            pass
         CURRENT_MODULE_SYMLINK.symlink_to(module.path)
         CURRENT_MODULE_WATCH_FILE.write_text('{}\n'.format(module.info['short']))

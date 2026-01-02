@@ -23,7 +23,6 @@
 \usepackage{accents}
 \usepackage{lmodern}
 \usepackage{titlesec}
-% \renewcommand{\familydefault}{\sfdefault}
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
@@ -60,8 +59,14 @@
 
 \newcommand{\currentmodule}{} 
 \newcommand{\module}[1]{%
+    \part*{#1}%
     \gdef\currentmodule{#1}%
 }
+
+\newcommand{\modulenopart}[1]{%
+    \gdef\currentmodule{#1}%
+}
+
 
 \def\@lecture{}%
 \newcommand{\lecture}[3]{%
@@ -144,6 +149,3 @@
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \makeatother
-
-\author{MSci Physics w/ Particle Physics and Cosmology\\University of Birmingham}
-\date{Year 1, Semester 2\\Ash Stewart}

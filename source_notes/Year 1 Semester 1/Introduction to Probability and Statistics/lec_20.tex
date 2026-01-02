@@ -1,0 +1,57 @@
+% !TeX root = main.tex
+\lecture{9}{Fri 05 Dec 2025 11:00}{Continuous Probability}
+So far, we have only discussed discrete probability. In this, $P(x)$ means the probability of $x$ happening and we've ignored the possibility of an infinite number of possible events, because it never caused a problem.
+
+\section{Continuous Distributions}
+\subsection{Continuous Random Walk}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec20-01.png}
+     \caption{The path taken by the particle in a random walk.}
+\end{figure}
+
+We have a particle conducting a random walk. What is the probability of the particle landing exactly on $(\pi, \pi)$? This is zero, and indeed it will be zero for every specific point we can name. 
+
+We have to think about probability a bit differently, and we have to ask the question about the particle being \emph{near} $(\pi, \pi)$. We cannot consider exact values.
+
+Continuous probability allows possible values to be real numbers (uncountably infinite) whereas before we were limited to discrete integers (countably infinite). $\Omega$ is therefore $\R$ or a subset thereof.
+
+We have to set our question to be ``What is the probability that x lies in some interval''. Effectively, sums become integrals. $P(x)$ is now a probability density function, and the area under $P(x)$ is what gives us probability, rather than values of $P(x)$ alone.
+
+\subsection{Properties of a PDF}
+\begin{itemize}
+    \item $P(x) \geq 0 \; , \forall x$
+    \item It is normalised, hence:
+    \[
+        \int_{\Omega} P(x) \, dx = 1
+    \]
+    \item Since we care about the area under $P(x)$ to get probabilities, $P(x)$ itself may be bigger than 1, provided the integral is never bigger than 1.
+    
+\end{itemize}
+
+All the old formulae still hold, but with integration instead of summation:
+\begin{itemize}
+    \item Expectation Values:
+    \[
+        \langle x\rangle = \int_{\Omega} xP(x) dx
+    \]
+    \item Expectation of a Function:
+    \[
+        \langle f\rangle =  \int_{\Omega} f(x) P(x) dx
+    \]
+    \item Variance:
+    \[
+        \text{var}(x) = \langle (x - \langle x\rangle)^2\rangle
+    \]
+    \[
+        =  \int_{\Omega} (x - \langle x\rangle)^2 P(x)
+    \]
+    \[
+        = \langle x^2\rangle - \langle x\rangle^2
+    \]    
+\end{itemize}
+
+\subsection{Example}
+\[
+    C(x) \equiv
+\]
