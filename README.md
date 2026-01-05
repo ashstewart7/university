@@ -5,8 +5,10 @@ My lecture notes, from MSci Physics with Particle Physics and Cosmology at the U
 > These are nothing but my own personal lecture notes, I've made the repository public on the off-chance they're ever useful to anyone else, but I make no guarantees about the accuracy of anything in them. I do my best for my own sake to keep them  accurate, but no promises... Feel free to email me with feedback though!
 
 ## Modules Covered
+Some modules (i.e. Quantum Mechanics and Optics and Waves in Y1S1) are grouped into a single module administratively, but are taught as two distinct modules. I treat them as if they were two separate modules for easy of finding notes.
+
 ### Year 1 Semester 1 ([Combined Notes](<compiled_notes/Year 1 Semester 1/Year_1_Semester_1_Combined.pdf>)): Sept 2025 - Dec 2025
-- LC [Quantum Mechanics (1)](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
+- LC [Quantum Mechanics](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
 - [LC Mathematics for Physicists 1A](<compiled_notes/Year 1 Semester 1/LC_Mathematics_for_Physicists_1A.pdf>)
 - [LC Classical Mechanics and Relativity 1](<compiled_notes/Year 1 Semester 1/LC_Classical_Mechanics_and_Relativity_1.pdf>)
 - [LC Introduction to Probability and Statistics](<compiled_notes/Year 1 Semester 1/LC_Introduction_to_Probability_and_Statistics.pdf>)
