@@ -1,28 +1,27 @@
 # University Notes
-Ash's course notes. Taken as part of **MSci Physics with Particle Physics and Cosmology** at the **University of Birmingham**.
+My lecture notes, from MSci Physics with Particle Physics and Cosmology at the University of Birmingham. 
 
 > [!WARNING]
-> These are nothing but my own personal lecture notes, I've made the repository public on the off-chance they're ever useful to anyone else, but I make no guarantees about the accuracy of anything in my notes. I do my best for my own sake to keep them up-to-date and accurate, but no promises...
+> These are nothing but my own personal lecture notes, I've made the repository public on the off-chance they're ever useful to anyone else, but I make no guarantees about the accuracy of anything in them. I do my best for my own sake to keep them  accurate, but no promises... Feel free to email me with feedback though!
 
 ## Modules Covered
-### Year 1 Semester 1 ([Combined Notes](<compiled_notes/Year 1 Semester 1/Year_1_Semester_1_Combined.pdf>))
+### Year 1 Semester 1 ([Combined Notes](<compiled_notes/Year 1 Semester 1/Year_1_Semester_1_Combined.pdf>)): Sept 2025 - Dec 2025
 - LC [Quantum Mechanics (1)](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
 - [LC Mathematics for Physicists 1A](<compiled_notes/Year 1 Semester 1/LC_Mathematics_for_Physicists_1A.pdf>)
 - [LC Classical Mechanics and Relativity 1](<compiled_notes/Year 1 Semester 1/LC_Classical_Mechanics_and_Relativity_1.pdf>)
 - [LC Introduction to Probability and Statistics](<compiled_notes/Year 1 Semester 1/LC_Introduction_to_Probability_and_Statistics.pdf>)
-### Year 1 Semester 2 ([Combined Notes](<compiled_notes/Year 1 Semester 2/Year_1_Semester_2_Combined.pdf>))
+### Year 1 Semester 2 ([Combined Notes](<compiled_notes/Year 1 Semester 2/Year_1_Semester_2_Combined.pdf>)): Jan 2026 - March 2026
 - LC [Electromagnetism](<compiled_notes/Year 1 Semester 2/LC_Electromagnetism.pdf>) and [Temperature and Matter](<compiled_notes/Year 1 Semester 2/LC_Temperature_and_Matter.pdf>)
 - [LC Mathematics for Physicists 1B](<compiled_notes/Year 1 Semester 2/LC_Mathematics_for_Physicists_1B.pdf>)
 - [LC Classical Mechanics and Relativity 2](<compiled_notes/Year 1 Semester 2/LC_Classical_Mechanics_and_Relativity_2.pdf>)
 - [LC Electric Circuits](<compiled_notes/Year 1 Semester 2/LC_Electric_Circuits.pdf>)
 - [LC Introduction to Particle Physics and Cosmology](<compiled_notes/Year 1 Semester 2/LC_Introduction_to_Particle_Physics_and_Cosmology.pdf>)
 
-## Workflow
-The _Year X Semester Y_ folders contain raw LaTeX notes for each module and lecture. Compiled PDF notes are in _compiled_notes/Year X Semester Y_, and compilation happens as a pre-commit hook.
-
-_active_module_ is a symlink to the module folder that is currently in use, as determined by the Rofi UI. These Rofi UIs (as defined in _scripts/_) provide a mechanism to:
-- Select a current module.
-- Open a lecture in that module for editing.
-- Compile a module with control over which lectures are included.
-
-This is heavily derived from Gilles Castel's work, but has been substantially tweaked to my uses.
+## Folder Structure
+- `source_notes` contains raw latex files and assets, grouped by semester and module.
+- `compiled_notes` contains the final PDF versions.
+- `scripts` has a collection of Python scripts for the management of lectures, this is mostly:
+    - `generate_main.py`, which runs as a Git hook on commit to delete the temporary compilations (`main.pdf`) created for live viewing by VSCode's LaTeX Workshop extension and generate final PDFs for each module in the active semester.
+    - `rofi` scripts to provide a UI for selecting a module (reflected in `source_notes/active_module` as a symlink) and accessing a given lecture faster than it would be to open with VSCode and enter boilerplate LaTeX manually. This also provides a window with compilation options for the temporary `main.pdf`, i.e. include all lectures, include only the current lecture etc.
+ 
+The contents of `scripts` are derived from Gilles Castel's work, as detailed in his [blog](https://castel.dev/post/lecture-notes-1/). His scripts have, however, been heavily adapted and modified to suit my workflow.
