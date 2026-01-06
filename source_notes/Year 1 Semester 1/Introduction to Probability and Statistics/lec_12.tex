@@ -1,8 +1,8 @@
 % !TeX root = main.tex
-\lecture{1}{Fri 07 Nov 2025 09:00}{\textbf{Start of Probability}: Introduction}
+\lecture{12}{Fri 07 Nov 2025 11:00}{\textbf{Start of Probability}: Introduction}
 \paragraph{What is probability?} Probability is the pure mathematical description of randomness.
 
-\section{Set Theory}
+\section{Empirical Probability}
 Say we want to group trees into four sets:
 \begin{itemize}
     \item Tall, or not.
@@ -10,4 +10,60 @@ Say we want to group trees into four sets:
 \end{itemize}
 
 In a park of 142 trees, we observe:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec12-01.png}
+     \caption{}
+\end{figure}
 
+We denote Tall as $T$, Variegated as $V$ and not Tall/not Variegated as $\bar{T}$ and $\bar{V}$. We use $n$ as the number of number of trees that satisfy the parameters, i.e $n(T, \bar{V}) = 72$. $N = 142$ is the total number of trees, so:
+\[
+    N = n(T, V) + n(T, \bar{V}) + n(\bar{T}, \bar{V}) + n(\bar{T}, V) 
+\]
+
+
+Similarly, we define the fraction of trees that meet the provided criteria as $f$, i.e:
+\[
+    f(T, V) \equiv \frac{n(T, V)}{N}
+\]
+Hence:
+\[
+    1 = f(T, V) + f(T, \bar{V}) + f(\bar{T}, \bar{V}) + f(\bar{T}, V) 
+\]
+
+We define probability as the limit of this as $N \to \infty$:
+\[
+    \boxed{P(T, V) = \lim_{N \to \infty} f(T, V) = \lim_{N \to \infty} \frac{n(T, V)}{N}}
+\]
+And discrete probability as the limiting fraction of the times an event will occur. Probability is bounded between 0 (the event \textbf{never} occurs) and 1 (the event \textbf{always} occurs). In a particular experiment, the total probability is one, therefore something must happen (we just may not know what exactly).
+
+\section{Set Theory}
+A set is a collection of elements, i.e.:
+\[
+    A = \{1, 2, 3\}
+\]
+A deck of cards is a set, with 52 elements. Elements can be anything, including other sets.
+
+\subsection{Subsets}
+Consider some set $A$. Another set, $B$ is a ``subset'' of $A$ if it contains (solely) some of the elements of A. We denote this $B \subset A$.
+
+For example:
+\[
+    A = \{1, 2, 3, 4, 5, 6\}\]\[
+    B= \{1, 2, 3\}\]\[
+    C = \{4, 5, 6\}\]\[
+    D = \{1, 5, 7\}\]
+\[
+    B \subset A
+\]
+\[
+    C \subset A
+\]
+\[
+    D \not\subset A
+\]
+
+\subsection{Sample Space}
+We observe a particular outcome, and the set of all possible outcomes we could observe is called the sample space $\Omega$. Any event (that can occur) is a subset of $\Omega$.
+
+If drawing 5 cards from a deck, all possible combinations of 5 cards form the sample space. Drawing an ace is an event.
