@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{6}{Thu 16 Oct 2025 09:00}{Likelihood and Log Likelihood}
+\lecture{S6}{Thu 16 Oct 2025 09:00}{Likelihood and Log Likelihood}
 
 \section{Likelihood}
 We want to fit a model to our data. We want some kind of function to specify how well this model fits the data, so that we can optimise to find the best. This is the likelihood function. There are many different ways to formulate it, but we denote it:
@@ -98,17 +98,17 @@ We still need to estimate the uncertainty on this predicted best value of tau. I
     \ln P(D_i \mid \theta) = \ln\left(\frac{1}{\sigma_{D_i} \sqrt{2 \pi}}\right) +\ln\left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)
 \]
 \[
-    \ln P(D_i \mid \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) - \ln\left(\sigma_{D_i}\right) - \ln \left(\sqrt{2 \pi}\right)
+    \ln P(D_i \mid \theta) = \left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right) - \ln\left(\sigma_{D_i}\right) - \ln \left(\sqrt{2 \pi}\right)
 \]
 
 If we ignore the constant term, as it does not change the results (as we care about the results comparative to each other to find the maximum), and if we assume that the uncertainty is the same on each data point (which we must be careful about, in case uncertainties are variables too):
 \[
-    \ln P(D_i \mid \theta) = \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right) + \text{constant}
+    \ln P(D_i \mid \theta) = \left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right) + \text{constant}
 \]
 
 This gives the final log likelihood as:
 \[
-    \boxed{\mathcal{L} = \ln P(D\mid\theta) = \sum_{i=1}^{n} P(D_i \mid \theta) = \sum_{i=1}^{n} \left(\exp{\left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}\right)}
+    \boxed{\mathcal{L} = \ln P(D\mid\theta) = \sum_{i=1}^{n} \ln P(D_i \mid \theta) = \sum_{i=1}^{n} \left(\frac{-(D_i - M(t_i, \theta))^2}{2 \sigma^2_{D_i}}\right)}
 \]
 
 \begin{figure}[H]
@@ -173,7 +173,7 @@ Using the log likelihood has:
 
 
 \subsection{Multidimensional Generalisation}
-This works in 1D, but we can generalise to a higher number of parameters. We assume here however that $P(D\mid \theta)$ is going to be a normal distribution. If this is not the case, we cannot use the approximations for uncertainties, and the problem becomes too complex for first year stats. It is generally the case that it either will approximate a normal as many datapoints are taken. If this isn't true, it becomes a problem for Y4 Bayesian Stats.
+This works in 1D, but we can generalise to a higher number of parameters. We assume here however that $P(D\mid \theta)$ is going to be a normal distribution. If this is not the case, we cannot use the approximations for uncertainties, and the problem becomes too complex for first year stats. It is generally the case that it will approximate a normal as many datapoints are taken. If this isn't true, it becomes a problem for Y4 Bayesian Stats.
 
 We find the maximum likelihood (given multiple parameters $\hat{\theta}$) with:
 \[
@@ -186,30 +186,30 @@ And the Hessian is given by:
 \mathbf{H}(\hat{\theta}) =
 \begin{bmatrix}
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_1^2}\biggr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^2 \LL}{\partial \theta_1^2}\biggr\rvert_{\theta=\hat{\theta}} &
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_1 \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^2 \LL}{\partial \theta_1 \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
 \cdots &
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_1 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
+\dfrac{\partial^2 \LL}{\partial \theta_1 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
 \\[1.0em]
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_2 \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^2 \LL}{\partial \theta_2 \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_2^2}\biggr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^2 \LL}{\partial \theta_2^2}\biggr\rvert_{\theta=\hat{\theta}} &
 \cdots &
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_2 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
+\dfrac{\partial^2 \LL}{\partial \theta_2 \partial \theta_k}\biggr\rvert_{\theta=\hat{\theta}}
 \\[1.0em]
 \vdots & \vdots & \ddots & \vdots
 \\[1.0em]
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_k \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^2 \LL}{\partial \theta_k \partial \theta_1}\biggr\rvert_{\theta=\hat{\theta}} &
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_k \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^2 \LL}{\partial \theta_k \partial \theta_2}\biggr\rvert_{\theta=\hat{\theta}} &
 \cdots &
 \displaystyle 
-\frac{\partial^2 \LL}{\partial \theta_k^2}\biggr\rvert_{\theta=\hat{\theta}}
+\dfrac{\partial^2 \LL}{\partial \theta_k^2}\biggr\rvert_{\theta=\hat{\theta}}
 \end{bmatrix}.
 \]
 

@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{9}{Wed 29 Oct 2025 12:00}{Linear Regression}
+\lecture{S9}{Wed 29 Oct 2025 12:00}{Linear Regression}
 Previously, we've used numerical methods to determine the best fit parameters for a line of best fit to some data. This is good, because it easily generalises to more complex problems, however lines of best fit have a more specific (and easier to implement) algebraic method.
 
 \section{Method}
@@ -217,15 +217,15 @@ We have therefore managed to calculate the best fit parameters $\hat{m}$ and $\h
 
 \section{Uncertainties on Best Fit Parameters}
 Given we're now in 2D, the Hessian matrix is given as:
-{\Large\[
+\[
 \mathbf{H} =
 \begin{bmatrix}
-\frac{\partial^{2}\LL}{\partial \theta_{1}^{2}} \bigr\rvert_{\theta=\hat{\theta}} &
-\frac{\partial^{2}\LL}{\partial \theta_{1}\partial \theta_{2}} \bigr\rvert_{\theta=\hat{\theta}} \\[8pt]
-\frac{\partial^{2}\LL}{\partial \theta_{2}\partial \theta_{1}} \bigr\rvert_{\theta=\hat{\theta}} &
-\frac{\partial^{2}\LL}{\partial \theta_{2}^{2}} \bigr\rvert_{\theta=\hat{\theta}}
+\dfrac{\partial^{2}\LL}{\partial \theta_{1}^{2}} \bigr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^{2}\LL}{\partial \theta_{1}\partial \theta_{2}} \bigr\rvert_{\theta=\hat{\theta}} \\[8pt]
+\dfrac{\partial^{2}\LL}{\partial \theta_{2}\partial \theta_{1}} \bigr\rvert_{\theta=\hat{\theta}} &
+\dfrac{\partial^{2}\LL}{\partial \theta_{2}^{2}} \bigr\rvert_{\theta=\hat{\theta}}
 \end{bmatrix}
-\]}
+\]
 
 And the covariance matrix $\Sigma$ is given as:
 \[

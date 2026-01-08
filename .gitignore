@@ -1,3 +1,4 @@
+# LaTeX Compilation Junk
 main.aux
 main.fdb_latexmk
 main.fls
@@ -10,6 +11,11 @@ main.pdf
 *.out
 *.xdv
 *.pyc
+
+# Editor and linux stuff
 /scripts/pycache/
 .directory
 .vscode
+
+
+universityphysicswithmodernphysics15e.pdf

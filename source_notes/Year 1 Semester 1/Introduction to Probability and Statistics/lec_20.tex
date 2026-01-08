@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{9}{Fri 05 Dec 2025 11:00}{Continuous Probability}
+\lecture{P9}{Fri 05 Dec 2025 11:00}{Continuous Probability}
 So far, we have only discussed discrete probability. In this, $P(x)$ means the probability of $x$ happening and we've ignored the possibility of an infinite number of possible events, because it never caused a problem.
 
 \section{Continuous Distributions}
@@ -20,7 +20,12 @@ We have to set our question to be ``What is the probability that x lies in some 
 
 \subsection{Properties of a PDF}
 \begin{itemize}
-    \item $P(x) \geq 0 \; , \forall x$
+    \item $P(x) \geq 0$:
+    \begin{itemize}
+        \item $P(x) = 0,\; \forall x \not \in \Omega$
+        \item $P(x) > 0,\; \forall x \in \Omega$
+    \end{itemize}
+    
     \item It is normalised, hence:
     \[
         \int_{\Omega} P(x) \, dx = 1

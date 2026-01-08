@@ -1,0 +1,217 @@
+% !TeX root = main.tex
+\lecture{P10}{Thu 10 Dec 2025 11:00}{Example Distributions and Central Limit Theorem}
+
+\section{Uniform Distribution}
+The continuous uniform distribution is a flat distribution between two points, $a$ and $b$. The PDF is given by:
+$$P(x \mid a, b) = \begin{cases}
+    \dfrac{1}{b-a} & \text{if } a \le x \le b \\
+    0             & \text{otherwise}
+\end{cases}$$
+
+\subsection{Expectation Value}
+\[
+    \langle x\rangle = \int_{\Omega} x P(x) \, dx
+\]
+\[
+    = \frac{1}{b - a} \int_{a}^{b} x \, dx
+\]
+\[
+    = \frac{1}{2} \frac{b^2-a^2}{b-a} = \frac{1}{2} \frac{(b-a)(b+a)}{(b-a)}
+\]
+\[
+    \langle x\rangle = \frac{b+a}{2}
+\]
+
+\section{Exponential Distribution}
+The exponential distribution models exponential growth or decay. There are two different forms, depending on what units we give the parameter $\mu$ or $\lambda$:
+
+\[
+    P(x \mid \mu) = \begin{cases}
+        \mu e^{- \mu x} & \text{if } 0 \leq x < \infty \\
+        0 & \text{otherwise.}
+    \end{cases}
+\]
+
+\[
+    P(x \mid \lambda) = \begin{cases}
+        \dfrac{1}{\lambda} e^{-x/ \lambda} & \text{if } 0 \leq x < \infty \\
+        0 & \text{otherwise.}  
+    \end{cases}
+\]
+
+\subsection{Expectation Value}
+Considering the first form:
+\[
+    \langle x\rangle = \int_{0}^{\infty} \mu e^{- \mu x} \, dx
+\]
+Letting $t = \mu x \implies dt = \mu dx$:
+\[
+    = \frac{1}{\mu} \int_{0}^{\infty} t e^{-t} \, dt
+\]
+
+Solving by parts:
+\[
+    = \frac{1}{\mu} \int_{0}^{\infty} \underbrace{t}_u \underbrace{e^{-t}}_{dv} \, dt
+\]
+\[
+    = \frac{1}{\mu} \left[-t e^{-t}\right]^\infty_0 + \frac{1}{\mu} \int_{0}^{\infty} e^{-t} \, dt
+\]
+And, as boundary conditions (can do more formally via L'Hopital's rule) cause the first term to equal zero:
+\[
+    = \int_{0}^{\infty} e^{-t} \, dt
+\]
+\[
+    \langle x\rangle = \left[\frac{1}{\mu} -e^-t\right]_0^\infty = \frac{1}{\mu}
+\]
+
+\section{Normal Distribution and the Central Limit Theorem}
+The Normal distribution (a.k.a Gaussian Distribution)
+\[
+    P(x \mid \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(- \frac{(x - \mu)^2}{2 \sigma^2}\right)
+\]
+
+Properties:
+\begin{itemize}
+    \item Expectation: $\langle  x\rangle = \mu$,
+    \item Variance: $\text{var}(x) = \sigma^2$.
+\end{itemize}
+
+To say that the random variable x follows a normal distribution we write:
+\[
+    x \sim \mathcal{N}(\mu, \sigma^2)
+\]
+Or:
+\[
+    x \sim \mathcal{N}(x \mid \mu, \sigma^2)
+\]
+
+\subsection{Standard Normal}
+If $\mu = 0$ and $\sigma = \sigma^2 = 1$, we call the distribution the standard normal distribution.
+
+\[
+    P(x \mid 0, 1) = \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{x^2}{2}\right)
+\]
+We can rescale any normal distribution onto the standard normal.
+
+\[
+    \text{let: } z = \frac{x - \mu}{\sigma} \implies x = \sigma z + \mu
+\]
+\[
+    P_z(z) = \left|\frac{d}{dz}f^{-1}(z)\right| P_x(f^{-1}(z))
+\]
+\[
+    = \sigma \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(- \frac{\sigma z + \mu - \mu}{2 \sigma^2}\right)
+\]
+\[
+    = \frac{1}{\sqrt{2 \pi}} \exp \left(- \frac{z^2}{2}\right)
+\]
+
+\subsection{CLT}
+The Central Limit Theorem states that rescaled sums of standard variables appear to be Normally distributed. We will not prove it formally.
+
+Let:
+\[
+    x_1 \sim P(x) \qquad x_2 \sim P(x) \qquad \cdots \qquad x_n \sim P(x)
+\]
+
+We define:
+\[
+    X = x_1 + x_2 + \cdots + x_n
+\]
+
+We now form the \textbf{rescaled} variable:
+\[
+    z = \frac{X - \langle X\rangle}{\text{std}(X)}
+\]
+
+Assuming independence, we have already shown that:
+\[
+    \langle X\rangle = N \langle x\rangle
+\]
+\[
+    \text{var}(X) = N \text{var}(x)
+\]
+
+Hence:
+\[
+    z = \frac{X - N \langle x\rangle}{\sqrt{N} \text{std}(x)}
+\]
+
+The CTL states that:
+\[
+    \lim_{N \to \infty} z = \mathcal{N}(0, 1) \qquad \text{if std}(x) < \infty 
+\]
+This is regardless of what $P(x)$ is, even if it is not normal.
+
+It also says that averages appear Normal. Consider the sample mean:
+\[
+    \bar{x} = \frac{X}{N} = \frac{1}{N}(x_1 + x_2 + \cdots + x_n)
+\]
+\[
+    \left\langle \bar{x}\right\rangle = \langle \frac{X}{n}\rangle = \frac{1}{N} \langle X\rangle = \frac{1}{N} N \langle x\rangle = \langle x\rangle
+\]
+
+And:
+\[
+    \text{var}(\bar{x}) = \frac{1}{N^2} \text{var}(X) = \frac{1}{N} \text{var}(x)
+\]
+
+Again lets define a standard variable:
+\[
+    z = \frac{\bar{x} - \langle x\rangle}{\text{std}(\bar{x}) / \sqrt{N}} \to \mathcal{N}(0, 1)
+\]
+
+We can invert this to get:
+\[
+    \bar{x} = \frac{\text{std}(x)}{\sqrt{N}}z  + \langle x\rangle
+\]
+\[
+    \bar{x} \sim \mathcal{N}\left(\langle x\rangle, \frac{\text{var}(x)}{N}\right)
+\]
+\[
+    \bar{x} \sim \mathcal{N} \left(\mu, \frac{\sigma^2}{N}\right)
+\]
+
+
+This tells us that when we construct a sample mean from something, we can treat it as a Normal distribution (regardless of the source distribution). The variance is a decreasing function of $N$, so taking more data creates a distribution better centred on the sample mean.
+
+\subsection{Example}
+The Erlang Distribution has PDF:
+\[
+    P(x \mid \lambda, k) = \frac{\lambda^x x^{k-1} e^{- \lambda x}}{(k - 1)!}
+\]
+
+With:
+\[
+    \langle x\rangle = \frac{k}{\lambda}
+\]
+\[
+  \text{var}(x) = \frac{k}{\lambda^2}
+\]
+
+\emph{What is the limiting distribution of the sum of N Erlang distributed random variables, if $N$ is large?}
+
+Let:
+\[
+    X = x_1 + x_2 + \cdots + x_n \qquad \text{where all are Erlang distributed random variables}
+\]
+
+We have:
+\[
+    \langle x\rangle = N \frac{k}{\lambda} \qquad \text{var}(x) = N \frac{k}{\lambda^2}
+\]
+
+Creating our rescaled variable:
+\[
+    z = \frac{X - \langle X\rangle}{\text{std}(x)} = \frac{X - (Nk / \lambda)}{\sqrt{\dfrac{Nk}{\lambda^2}}} \xrightarrow[\text{C.L.T.}]{} \mathcal{N}(0, 1)
+\]
+
+And inverting and solving for $X$:
+\[
+    X = \sqrt{\frac{Nk}{\lambda^2}}z + \frac{Nk}{\lambda}
+\]
+So:
+\[
+    X \sim \mathcal{N} \left(\frac{Nk}{\lambda}, \frac{Nk}{\lambda^2}\right)
+\]
+

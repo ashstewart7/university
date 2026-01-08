@@ -1,2 +1,113 @@
 % !TeX root = main.tex
-\lecture{11}{Wed 05 Nov 2025 11:00}{Reflection and Refraction Examples}
+\lecture{11}{Wed 05 Nov 2025 11:00}{Reflection and Refraction Examples I}
+
+\section{Simple Mirror}
+A man is standing in front of a simple flat mirror. He is height $h$m. What is the minimum height of the mirror if he wishes to see the full image of himself?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec11-01.png}
+     \caption{The man, modelled as a box (orange) and the mirror of indeterminate hight (blue)}
+\end{figure}
+
+Consider a ray from the top of the man's head to his eye level:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec11-02.png}
+     \caption{}
+\end{figure}
+
+And a ray from feet level again to the man's eye (we also label some dimensions and add two extra red rays):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-03.png}
+     \caption{}
+\end{figure}
+
+Note that the red rays are not observed by the man. The lower red ray strikes the man at too low an angle so is below eye level, while the opposite is true for the upper red ray. Neither are therefore seen.
+
+This means that the lower half of the mirror is redundant, as any rays which strike the lower section will be reflected at too low an angle to meet the man's eyes. The upper portion of the mirror is therefore the only required portion, giving a final height of:
+\[
+    l_1 / 2 + l_2/2 = (l_1 + l_2) / 2 = h/2
+\]
+
+\section{Corner Cube Reflector}
+
+\emph{Note: Pg 1088 Y\&F}
+A corner cube reflector is three mutually orthogonal reflecting surfaces:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec11-04.png}
+     \caption{Corner Cube Reflector}
+\end{figure}
+
+We'll consider a simplified setup, with two orthogonal mirrors in a 2D scenario:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-05.png}
+     \caption{}
+\end{figure}
+
+
+Here, the incoming ray is reflected twice (assuming it does not arrive parallel to a mirror), once on each mirror. We can easily analyse the problem as we know that the angle of incidence and reflection for the initial incoming ray are equal, denoted $\theta_1$.
+
+The angle of incidence and reflection for the second reflection are also equal, and are given by $90 - \theta_1$. Note that this is equal to the angle made by the incoming wave with the horizontal. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec11-06.png}
+     \caption{}
+\end{figure}
+
+This means that the reflected ray travels back towards the emitter, at the same angle as it was initially.
+
+
+\section{Light Travelling Through a Piece of Glass}
+Consider a 1cm thick slab of glass, where a light ray is fired into it at angle of incidence $\theta_1$. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-07.png}
+     \caption{}
+\end{figure}
+
+We use Snell's Law to find theta two:
+\[
+    n_1 \sin \theta_1 = n_2 \sin \theta_2
+\]
+\[
+    \theta_2 = \arcsin \left(\frac{n_1 \sin \theta_1}{n_2}\right) = 35.3^\circ
+\]
+
+
+And again:
+\[
+    n_2 \sin \theta_3 = n_1 \sin \theta_4
+\]
+\[
+    \theta_2 = \theta_3
+\]
+\[
+    \implies \theta_4 = \arcsin \frac{n_2 \sin \theta_3}{n_1} = 60^\circ
+\]
+
+Therefore as $\theta_1 = \theta_4$ the light ray exits the material a the same angle it entered, just with some displacement. We denote this displacement $d$. We can find it again using some trig:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec11-08.png}
+     \caption{}
+\end{figure}
+
+The distance is given by:
+\[
+    d = l \sin \alpha = l \sin (\theta_1 - \theta_2)
+\]
+\[
+    = \frac{t}{\cos \theta_2} \sin (\theta_1 - \theta_2) = 0.51 \mathrm{cm}
+\]
+
+\section{Apparent Depth of an Object}
+Consider an example with a fish in the pond. We want to estimate how 

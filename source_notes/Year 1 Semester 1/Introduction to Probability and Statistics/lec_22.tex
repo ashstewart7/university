@@ -1,0 +1,62 @@
+% !TeX root = main.tex
+\lecture{P11}{Fri 12 Dec 2025 11:00}{\textbf{End of Probability}: Variance Propagation}
+
+\section{Variance Propagation}
+
+Say we have $x \sim P_x(x)$, but we don't know what the actual distribution $P_x(x)$ is. We have however been able to determine (or estimate) values for $\langle x\rangle$ and var$(x)$. We set $y = f(x)$, and what is $P_y(y)$? This is a common scenario in e.g. labs, where we can measure a sample mean and estimate a standard deviation, but we cannot necessarily actually determine the underlying distribution.
+
+We would formally use:
+\[
+    P_y(y) = \left|\frac{d}{dy}f^{-1}(y)\right|P_x(x)(f^{-1}(y))
+\]
+
+But that is impossible here, as we do not know $P_x(x)$. We can however calculated values for $\langle y\rangle$ and var$(y)$.
+
+\subsection{Example}
+Imagine an experiment where we want to determine kinetic energy. This is difficult (as we would have to transfer this energy into another easier to measure form first). Instead, we measure velocity and use:
+\[
+    E = \frac{1}{2}mv^2 \quad \text{where $v$ is a random variable.}
+\]
+
+What is $\langle E\rangle$ and var$(E)$?
+
+We use Taylor Series:
+\[
+    f(x) = f(x_0) + (x - x_0) f^\prime (x_0) + \frac{(x - x_0)^2}{2!} f^{\prime \prime} (x_0) + \cdots
+\]
+This generates a polynomial approximation for $f(x)$ about the point $x_0$. What if $x$ is a random variable? Lets assume $\langle x\rangle = \mu$ and $\text{var}(x) = \sigma^2$.
+
+\[
+    f(x) = f(\mu) + (x - \mu)f^\prime(\mu) + \frac{(x - \mu)^2}{2} f^{\prime\prime}(\mu) + \cdots
+\]
+
+We have effectively decoupled the $f$ and the $x$, allowing us to work with it more easily. We take expectations:
+\[
+    \langle f(x)\rangle \approx \langle f(\mu)\rangle + \langle(x - \mu)f^\prime(\mu)\rangle + \frac{1}{2}\langle(x - \mu)^2f^{\prime\prime}(\mu)\rangle+ \cdots
+\]
+
+\[
+    \langle f(\mu)\rangle = f(\mu)
+\]
+\[
+    \langle (x - \mu ) \rangle f^\prime(\mu) =  0
+\]
+\[
+    \frac{1}{2}\langle (x - \mu ) f^{\prime\prime}(\mu)\rangle = \frac{\sigma^2}{2} f^{\prime\prime}(\mu)
+\]
+
+We know the second term is zero, and if we assume the third term and onwards are `small':
+\[
+    \langle f\rangle \approx f(\mu)
+\]
+
+We therefore use the sample mean as an estimator for $\mu$.
+
+
+
+
+
+\begin{center}
+    \vspace{1cm}
+    \textbf{\large End of Module.}
+\end{center} 
