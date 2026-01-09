@@ -1,2 +1,118 @@
 % !TeX root = main.tex
-\lecture{P2}{Thu 13 Nov 2025 09:00}{Combinatorics}
+\lecture{P2}{Thu 13 Nov 2025 09:00}{Combinatorics and Counting}
+
+\section{Combinatorics}
+This is the way of counting the number of ways of something happening. 
+
+For example, we toss two dice. How many ways are there of getting a given total. There is one way to get a two $(1, 1)$ but three ways of getting a four: $(3, 1), (1, 3), (2, 2)$.
+
+Combinatorial factors get very large extremely quickly, i.e. factorially or exponentially. For example, the number of Sudoku boards is huge at $\approx 6.7 \times 10^{21}$.
+
+Again, we use $\Omega$ to represent the set of possible outcomes, and we use $| \Omega | $ to represent the number of outcomes.
+
+\section{Sampling}
+Sampling involves having some set of $N$ objects, and selecting $k$ of them. We can:
+\begin{itemize}
+    \item \textbf{Sample with replacement and keep order:}
+    \begin{itemize}
+        \item Pick 4 numbers for a PIN freely.
+    \end{itemize}
+    \item \textbf{Sample without replacement and keep order:}
+    \begin{itemize}
+        \item Ensure that no numbers in the PIN are repeated.
+    \end{itemize}
+    \item \textbf{Sample with replacement and ignore order:}
+    \begin{itemize}
+        \item An ice cream shop has vanilla, chocolate and strawberry. You have paid for two scoops in a bowl.
+        \item You may pick any combination of the three flavours, including repeats, i.e two scoops of chocolate, one vanilla one chocolate or two strawberry are all valid. The order the scooper puts them into the bowl doesn't matter, adding strawberry and then chocolate is the same bowl of ice cream as chocolate then strawberry.
+    \end{itemize}
+    \item \textbf{Sample without replacement and ignore order.}
+    \begin{itemize}
+        \item Making a fruit salad with two fruits from bananas, cherries, apples, mangoes.
+        \item You cannot choose the same fruit twice, but the order is irrelevant, so adding apples and then mangoes vs mangoes and then apples results in the same salad.
+    \end{itemize}
+\end{itemize}
+
+In summary:
+\begin{itemize}
+    \item With replacement, once object has been selected, it goes back into the set of possible objects and can be chosen again.
+    \item With non-replacement, once an object has been selected it is removed from the pool and cannot be chosen again.
+    \item Order or not is whether or not the order selections happen in is something we keep track of or not, i.e. is 1234 an equivalent event to 4321.
+\end{itemize}
+
+\subsection{Counting}
+Most simply, we have the counting rule. This states that if we have $n$ ways of doing one thing, and $m$ ways of doing a second, the number of possible combinations if we do both things is $n \times m$
+
+In general: We sample $k$ things, the first has $n_1$ choices, the second has $n_2$, etc up to $n_k$. The total choices is $n_1 \times n_2 \times \cdots \times n_k$
+
+\subsection{Sampling with Replacement}
+We sample $k$ things from $N$ objects with replacement. The first has $N$ choices, the second still has the same $N$ choices etc. Therefore:
+\[
+    |\Omega| = \underbrace{N \times N \times \cdots \times N}_\text{k times} = N^k
+\]
+
+\subsection{Sampling without Replacement}
+We sample $k$ things from $N$ objects without replacement. The first has $N$ choices, the second time we cannot make the same choice again, so have $N-1$ choices. The third time we cannot make the same choice as the first or the second, so have $N-2$ etc. Therefore:
+\[
+    |\Omega| = N \times (N -1) \times (N-2) \times \cdots \times (N-k+1) = \frac{N!}{(N-k)!}
+\]
+
+We denote this ${}^N P_k$ or ${}^N V_k$ (where the v is for `variations' and p for `permutations').
+
+\subsection{Permutations}
+We consider order and sample $N$ things from $N$ objects without replacements, i.e. we draw every object from the set of possible objects, in some order.
+
+We get:
+\[
+    | \Omega | = N \times (N-1) \times (N-2) \times \cdots \times 2 \times 1 = N!
+\]
+
+This is commonly called a `full permutation' of N, while the previous ${}^N P_k$ is called a `k-permutation' of $N$.
+
+
+\subsection{Unordered Samples}
+In a hand of cards the order the cards appear in the hand is irrelevant. We have no replacement as you cannot have the same card twice, but a hand with (for example) the queen of hearts and jack of diamonds vs the jack of diamonds and the queen of hearts is just the same deck.
+
+If we consider order, we get $\frac{N!}{(N-k)!}$ but this ends up overcounting when we don't want order. We therefore need to divide out the total ways of permuting k! objects. For example, a three card hand would (if considering order) count each set of 3 cards $3!$ times, so we divide out to only count all of these once. This gives:
+\[
+    | \Omega | = \frac{N!}{k!(N-k)!} \equiv {}^N C_k \equiv {N \choose k}
+\]
+
+Pronounced ``n choose k''.
+
+\subsection{Interpretations of Binomial Coefficient}
+Notably, this n choose k notation pops up in the binomial expansion too:
+\[
+    (a+b)^N = \sum_{k=0}^{N} {N \choose k} a^k b^{N-k}
+\]
+
+It is also the number of ways to split $N$ objects into two groups, where one group has $k$ objects and the other has $N-k$ objects.
+
+\section{Multinomial}
+Say we split a deck of 52 cards into 4 even hands, the order of each is irrelevant. The first person picks 13 cards from 52, with $51 \choose 13$ options, the second then picks from the remaining 39 and has $39 \choose 13$ etc.
+
+This gives:
+\[
+    |\Omega| = {52 \choose 13} \times {39 \choose 13} \times {26 \choose 13} \times {13 \choose 13} = \frac{52!}{13!\, 39!} \frac{39!}{13!\, 26!} \frac{26!}{13!\, 13!} \frac{13!}{13!\, 0!} = \frac{51!}{13!\, 13!\,  13!\,  13!}
+\]
+This is called the multinomial coefficient.
+
+In general if we have $N$ objects and partition into $p$ containers, $n_1, n_2, \ldots, n_p$, we have:
+\[
+    | \Omega | = {N \choose n_1} \times {{N-n_1} \choose n_2} \times {{N-n_1-n_2} \choose n_3} \times \cdots \times {n_p \choose n_p}
+\]
+\[
+    | \Omega | = \frac{N!}{n_1 \, n! \cdots n_p} \equiv {N \choose {\; n_1 \; n_2 \; \cdots \; n_p \;}}
+\]
+
+Hence:
+\[
+    (a+b+c)^N = \sum_{k_1 + k_2 + k_3 = N} = {N \choose {\; k_1 \; k_2 \; n_k \;}} a^{k_1} b^{k_2} c^{k_3}
+\]
+
+\section{Uniform Probability}
+Assuming every outcome is equally likely to happen, i.e. probability is uniform, the probability of an event $A$ is given by:
+\[
+    P(A) = \frac{|A|}{| \Omega |}
+\]
+I.e. the probability of $A$ is the fraction of the sample space it takes up.

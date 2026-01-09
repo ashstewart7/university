@@ -56,7 +56,65 @@ All the old formulae still hold, but with integration instead of summation:
     \]    
 \end{itemize}
 
-\subsection{Example}
+\section{Cumulative Distributions}
+The definition of cumulative probability is the same:
 \[
-    C(x) \equiv
+    C(x) \equiv \mathrm{Probability}(X \leq x)
 \]
+
+However we calculate it a bit differently as we can no longer simply sum the options below, we must integrate:
+\[
+    C(x) = \int_{-\infty}^{x} P(x) \, dx
+\]
+\[
+    \frac{dC(x)}{dx} = P(x)
+\]
+
+We can also use this to determine the probability of $x$ being between two values, with:
+\[
+    P(a \leq x \leq b) = P(x \leq b) - P(x \leq a) = C(b) - C(a)
+\]
+
+\subsection{Example}
+A PDF is given by:
+\[
+    P(x) = \frac{3}{2}(1 - x^2) \quad 0 \leq x \leq 1
+\]
+
+Find:
+\[
+    P\left(\frac{1}{4} \leq x \leq \frac{1}{2}\right)
+\]
+
+\[
+        P\left(\frac{1}{4} \leq x \leq \frac{1}{2}\right) = C\left(\frac{1}{2}\right) - C\left(\frac{1}{4}\right)
+\]
+\[
+    C(x) \equiv \int_{0}^{x} \frac{3}{2}(1-x^2)  \, dx
+\]
+\[
+    = \frac{3x}{2} - \frac{x^3}{2}
+\]
+
+Hence $P\left(\frac{1}{4} \leq x \leq \frac{1}{2}\right) = C\left(\frac{1}{2}\right) - C\left(\frac{1}{4}\right)$ is easy (albeit faffy) to evaluate.
+
+\section{Change of Variables}
+As we did for discrete, let $x \sim P_x(x)$ and we set $y = f(x)$. What is $P_y(y)$?
+
+This isn't needed for CoV to work, but for ease lets assume that $\Omega_x = [a, b]$, i.e. is some finite region. We need to conserve the normalisation, so:
+\[
+    1 = \int_{a}^{b} P_x(x) \, dx
+\]
+
+We use the fact that $y = f(x) \implies x = f^{-1}(y)$. This is true only for monotonic functions. For this to work, we need $f(x)$ to have a unique inverse and is either always increasing or always decreasing. We can treat this as an integration subsitution, so:
+\[
+    dx = \frac{df^{-1}y}{dy} dy \implies 1 = \int_{f(a)}^{f(b)} \frac{df^{-1}}{dy} P_x(f^{-1}(y)) \, dy \equiv \int_{\Omega_y} P_y(y) \, dy
+\]
+
+Where we call this new distribution the induced distribution. We have the general formula (again assuming monotonicity):
+\[
+P_y(y) = \left|\frac{d}{dy} f^{-1}(y)\right| P_x(f^{-1}(y))
+\]
+Note that the $| \dots |$ appear to ensure we handle the cases (where $f(x)$ is strictly increasing or strictly decreasing) as the strictly decreasing case will add an extra negative sign in the derivative. When integrating, we would swap the limits to cancel this extra negative, but we can't here as there's no integral, so taking the absolute value ensures that $P_y(y)$ is always positive.
+
+ 

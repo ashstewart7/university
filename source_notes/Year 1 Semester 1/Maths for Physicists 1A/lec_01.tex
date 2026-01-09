@@ -1,2 +1,124 @@
 % !TeX root = main.tex
-\lecture{1}{Mon 29 Sep 2025 12:00}{}
+\lecture{1}{Mon 29 Sep 2025 12:00}{Course Welcome and Introduction to Vectors}
+
+\textbf{Recommended Course Books}
+\begin{itemize}
+    \item \emph{Mathematical Techniques...} by {DW Jordan and Smith}, 3rd Edition
+    \begin{itemize}
+        \item Closest to the course.
+    \end{itemize}
+    \item \emph{Engineering Mathematics} by {Stroud}.
+    \begin{itemize}
+        \item Lots of examples and extremely clear.
+    \end{itemize}
+    \item \emph{Mathematical Methods for the Physical Sciences} by Mary Boas (Wiley).
+    \begin{itemize}
+        \item Succinct and faster.
+    \end{itemize}
+    \item \emph{Elementary Vector Analysis} by Weatherburn.
+    \begin{itemize}
+        \item Vector specific book.
+    \end{itemize}
+    
+\end{itemize}
+
+\section{Intro To Vectors}
+
+Some physical quantities can be represented by numbers, i.e. charge, speed, time, etc. Some other quantities have an associated direction as well as a magnitude, for example velocity, acceleration, position, electric fields, etc.
+
+We call the single-number quantities scalars, and the directional quantities vectors. Some quantities (such as moment of inertia, covered in CMR2) depend on more than one direction, we call these \emph{tensors}.
+
+We will initially deal with vectors geometrically, in terms of points and the vectors which arise from them. Consider two points (in 2D for now). We label one as the origin $O$ and one as point $A$, we define the vector $\overrightarrow{OA}$ as being the distance and direction \emph{from} $O$ \emph{to} $A$.
+
+The vector has a ``sense'' from $O$ to $A$, we could also have the vector $\overrightarrow{AO}$ which would point in the opposite direction:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec01-01.png}
+     \caption{}
+\end{figure}
+
+We denote the magnitude (length) of a vector as $|\overrightarrow{OA}|$ which is the distance from $O$ to $A$.
+
+Once we define a vector, we can move it anywhere we want, and it is not constrained as having to actually start at $O$ and end at $A$. We can `liberate' the vector from its initial points and translate it anywhere we want in the plane, and it is still the same vector provided the magnitude and direction do not change. Once we've used $O$ and $A$ to define $\overrightarrow{OA}$, we can copy the vector anywhere.
+
+\section{Vector Operations}
+We now want to define standard mathematical operations for vectors, starting with addition.
+
+\subsection{Vector Addition}
+Consider three points, $O, A, B$. We can naturally define $\overrightarrow{OA}, \overrightarrow{OB}, \overrightarrow{AB}$
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec01-02.png}
+     \caption{}
+\end{figure}
+
+We define the following:
+\[
+    \overrightarrow{OA} + \overrightarrow{AB} = \overrightarrow{OB}
+\]
+
+\subsection{Vector Subtraction}
+We note that $\overrightarrow{OA}$ and $\overrightarrow{AO}$ are the same vector with opposite directions, therefore:
+\[
+    \overrightarrow{OA} + \overrightarrow{AO} = \overrightarrow{O}
+\]
+\[
+    \overrightarrow{OA} = - \overrightarrow{AO}
+\]
+
+Hence $\overrightarrow{OA}$ and $\overrightarrow{AO}$ are inverses of each other, just like $2$ and $-2$ are for numbers. We consider our equation from addition and add $\overrightarrow{BO}$ to both sides:
+\[
+    \overrightarrow{OA} + \overrightarrow{AB} + \overrightarrow{BO} = \overrightarrow{OB} + \overrightarrow{BO}
+\]
+\[
+    \overrightarrow{OA} + \overrightarrow{AB} - \overrightarrow{OB} = 0
+\]
+
+Which gives us an example of subtraction.
+
+\section{Better Notation}
+We use the following improved and more compact notation, which is especially useful if we have some number of several points relative to an origin. 
+
+Given the points $A, B, C$ we have so far written $\overrightarrow{OA}, \overrightarrow{OB}, \overrightarrow{OC}$. Instead, we now write:
+\[
+    \overrightarrow{OA} = \pmb{a}
+\]
+\[
+    \overrightarrow{OB} = \pmb{b}
+\]
+\[
+    \overrightarrow{OC} = \pmb{c}
+\]
+
+Note that vectors are handwritten with an underline, so $\underline{a}$, but may instead when typed be in bold font, so $\pmb{a}$.
+
+Say $O$ is the centre of mass of $n$ particles, we can also use the notation $r_1, r_2, r_2, \ldots, r_n$ to denote the position vectors of these particles wrt the origin $O$.
+
+\subsection{Physical Example}
+Recall the definition of equilibrium:
+\begin{itemize}
+    \item $\pmb{F} = m \pmb{a}$, for equilibrium $\pmb{F} = 0$.
+    \item Zero net moment.
+\end{itemize}
+
+Say we have a particle of mass $m$ hanging by a single spring. The spring exerts some tension force $\pmb{T}$, while the mass has a weight force $\pmb{F}_g = m \pmb{g}$.
+
+For this particle to be in equilibrium, we must have:
+\[
+    \pmb{T} + m \pmb{g} = 0
+\]
+\[
+    \pmb{T} = - m \pmb{g}
+\]
+
+Simple enough! Consider an example where two springs connect to the particle and connect to some ceiling. We now have:
+
+\[
+    \pmb{T}_1 + \pmb{T}_2 + m \pmb{g} = 0
+\]
+
+Again, simple. 
+
+\section{Midpoints}
+Consider a triangle with points (clockwise), $O$, $A$, and $B$. Say we want the position vector of the midpoint of $AB$, denoted $M$.   

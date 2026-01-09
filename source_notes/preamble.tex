@@ -1,7 +1,8 @@
 % Some basic packages
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
 \usepackage[T1]{fontenc}
-\usepackage{charter}[mathdesign]
-\linespread{1.05}
+\usepackage{XCharter}
+\usepackage[charter]{mathdesign}
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage[english]{babel}
@@ -16,18 +17,13 @@
 \usepackage{subcaption}
 \usepackage{multicol}
 \usepackage{xcolor}
-\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
 \usepackage{mathrsfs}
 \usepackage{cancel}
-\usepackage{bm}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tocloft}
 \usepackage{xifthen}
 \usepackage{accents}
 \usepackage{titlesec}
-
-
-
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
@@ -73,31 +69,29 @@
 }
 
 
-\def\@lecture{}%
 \newcommand{\lecture}[3]{%
+    \clearpage
+    \phantomsection
+    \refstepcounter{chapter}%
     \ifthenelse{\isempty{#3}}{%
         \def\@lecture{Lecture #1}%
         \def\@lecturenum{#1}%
         \def\@lecturetitle{#3}%
         \addcontentsline{toc}{chapter}{Lecture #1}%
-        \refstepcounter{chapter}
         \chapter*{\small{#2}\\\LARGE{Lecture #1}}%
         \markboth{}{Lec #1}%
-        \thispagestyle{fancy}%
         \gdef\currentlecture{Lec #1}%
     }{%
         \def\@lecture{Lecture #1: #3}%
         \def\@lecturenum{#1}%
         \def\@lecturetitle{#3}%
         \addcontentsline{toc}{chapter}{Lecture #1: #3}%
-        \refstepcounter{chapter}
         \chapter*{\small{#2}\\\LARGE{Lecture #1 - #3}}%
         \markboth{}{Lec #1 - #3}%
-        \thispagestyle{fancy}%
         \gdef\currentlecture{Lec #1 - #3}%
     }%
+    \thispagestyle{fancy}%
 }
-
 
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}

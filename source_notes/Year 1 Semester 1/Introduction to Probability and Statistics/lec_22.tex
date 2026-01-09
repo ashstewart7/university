@@ -50,11 +50,117 @@ We know the second term is zero, and if we assume the third term and onwards are
     \langle f\rangle \approx f(\mu)
 \]
 
-We therefore use the sample mean as an estimator for $\mu$.
+We therefore use $f(\langle x\rangle)$ as an approximation for $\langle f\rangle$.
 
+Now, for variance:
+\[
+    \text{var}(f) = \langle f^2\rangle - \langle f\rangle^2 \approx \langle f^2\rangle - (f(\mu))^2
+\]
 
+Approximating to the first order with $f(x) \approx f(\mu) + (x - \mu) f^\prime(\mu)$:
 
+\[
+    \langle f^2\rangle \approx \langle (f(\mu) + (x - \mu)f^\prime(\mu))^2\rangle - \langle f(\mu)^2\rangle + 2 f(\mu) f^\prime(\mu) \langle (x - \mu)\rangle + f^\prime(\mu)^2 \langle (x - \mu)^2\rangle
+\]
+\[
+    \approx f(\mu)^2 + \sigma^2 f^\prime(\mu)^2
+\]
+\[
+    \implies \text{var}(f) \approx \sigma^2 f^\prime(\mu)^2
+\]
 
+\textbf{Going back to the example:}
+
+Say we've measured $\langle v\rangle = v_0$ and $\text{var}(v) = \sigma^2$. We want to estimate $\langle E\rangle$ and var$(E)$.
+
+\[
+    E = \frac{1}{2}mv^2
+\]
+\[
+    \langle E\rangle \approx \frac{1}{2}m \langle v\rangle^2
+\]
+\[
+    \text{var}(E) \approx \left(\frac{dE}{dv}\right)^2 \sigma^2
+\]
+\[
+    = m^2 v^2 \sigma^2
+\]
+
+Here, $v$ is a `smooth' function with a constant second derivative, so the third term of the Taylor Expansion before is indeed small and this is a decent approximation, but it may not always be.
+
+\section{Example II}
+If $x$ is drawn according to a Poisson distribution with parameter $\lambda$, estimate the value of:
+\[
+    \left< \frac{1}{\sqrt{1+x}}\right>
+\]
+And:
+\[
+    \text{var} \left(\frac{1}{\sqrt{1+x}}\right)
+\]
+
+Note that:
+\[
+    \langle x\rangle = \text{var}(x) = \lambda
+\]
+\[
+    \frac{d}{dx} \frac{1}{\sqrt{1+x}} = - \frac{1}{2(1+x)^{3/2}}
+\]
+
+From the definition of discrete expectation values:
+\[
+        \left< \frac{1}{\sqrt{1+x}}\right> = \sum_{x=0}^{\infty} \dfrac{1}{\sqrt{1+x}} \frac{\lambda^x}{x!} e^{-\lambda}
+\]
+
+This is\ldots unpleasant, so we need the approximation to reasonably determine it.
+\[
+    \langle f(x)\rangle \approx f(\langle x\rangle) = \frac{1}{\sqrt{1+ \langle x\rangle}} = \frac{1}{\sqrt{1 + \lambda}}
+\]
+\[
+    \text{var}\left(\frac{1}{\sqrt{1+x}}\right) = \left(\frac{d}{dx} \frac{1}{\sqrt{1+x}}\right)^2 \text{var}(x)
+\]
+\[
+    = \frac{1}{4(1+\lambda)^3} \lambda
+\]
+
+\section{General Formulae}
+If we have N statistically independent random variables, $x_1, x_2, x_3, \ldots, x_n$ with:
+\[
+    \langle x_i\rangle = \mu_i \qquad \text{var}(x_i) = \sigma_i^2
+\]
+
+For some function $f(x_1, x_2, \ldots, x_n)$:
+\[
+    \langle f\rangle \approx f(\mu_1, \mu_2, \ldots, \mu_n)
+\]
+\[
+    \text{var}(f) \approx \left(\frac{\partial f}{\partial x_1}\right)^2 \sigma_1^2+ \left(\frac{\partial f}{\partial x_2}\right)^2 \sigma_2^2+ \cdots + \left(\frac{\partial f}{\partial x_n}\right)^2 \sigma_n^2
+\]
+
+We estimate the values of $\mu_i, \sigma^2_i$ using sample values, i.e. in labs.
+
+\subsection{Multivariate Example}
+Again we want to determine kinetic energy, but this time we measure both $m$ and $v$ with:
+\[
+    \langle v\rangle = v_0 \qquad \langle m\rangle = m_0
+\]
+\[
+    \text{var}(v) = \sigma_v^2 \qquad \text{var}(m) = \sigma_m^2
+\]
+\[
+    E = \frac{1}{2}mv^2
+\]
+
+We again want to estimate $\langle E\rangle$ and var$(E)$.
+
+\[
+    \langle E\rangle \approx \frac{1}{2} \langle m\rangle\langle v\rangle^2 = \frac{1}{2}m_0 v_0^2
+\]
+\[
+    \text{var}(E) \approx \left(\frac{dE}{dm}\right)^2 \text{var}(m) + \left(\frac{dE}{dv}\right)^2 \text{var}(v)
+\]
+\[
+    = \frac{v_0^4}{4}\sigma^2_m + m_0^2 v_0^2 \sigma_v^2
+\]
 
 \begin{center}
     \vspace{1cm}
