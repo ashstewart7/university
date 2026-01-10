@@ -1,2 +1,127 @@
 % !TeX root = main.tex
-\lecture{9}{Tue 28 Oct 2025 12:00}{}
+\lecture{9}{Tue 28 Oct 2025 12:00}{Dynamics Exercises}
+
+\section{Exercise I}
+We have a (very heavy) book on a table. We pull that book at some angle $\theta$ from the horizontal with constant force $\vv{F}$. The book has $m = 10$kg and there is some coefficient of \textbf{kinetic} friction $\mu$.
+
+What is the minimum $\vv{F}$ so that the book moves with constant velocity?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec09-01.png}
+     \caption{}
+\end{figure}
+
+
+We have the following forces acting on the object.
+
+\textbf{Vertical (in $z$):}
+\begin{itemize}
+    \item The Normal reaction force $N$ acting perpendicular to the table (directly up).
+    \item The weight force $w = mg$ acting perpendicular to the table (directly down).
+    \item A vertical component of $\vv{F}$ given my $F \sin \theta$.
+\end{itemize}
+
+\textbf{Horizontal (in $x$):}
+\begin{itemize}
+    \item The frictional force $- \mu N$.
+    \item A horizontal component of the pulling force $\vv{F}$ given by $F \cos \theta$.
+\end{itemize}
+
+The velocity is constant, so $dv / dt = a$. Hence $v = \int a \, dt$. For $v$ to be constant, $a$ must be zero. Hence there is no resultant force. Consider the total forces with $F = ma$:
+\[
+    \text{For } T_x: - \mu N + F \cos \theta = m a_x = 0
+\]
+\[
+    F \cos \theta - \mu N = 0
+\]
+
+\[
+    \text{For } T_z: N - mg + F \sin \theta = 0
+\]
+
+Therefore solving for $N$:
+\[
+    \mu N = F \cos \theta = \implies N = \frac{F \cos \theta}{\mu}
+\]
+
+And substituting into z:
+\[
+    \frac{F \cos \theta}{\mu} - mg + F \sin \theta = 0
+\]
+\[
+    \implies F \left(\cos \theta + \mu \sin \theta\right) - \mu mg = 0
+\]
+\[
+    \implies F = \frac{\mu mg}{\cos \theta + \mu \sin \theta}
+\]
+
+We can now ask ``what is the right choice of $\theta$ to minimise the required $F$''?. We take the derivative of $F$ wrt $\theta$ so that we can solve for a minima.
+
+\[
+    \frac{d F(\theta)}{d \theta} = 0
+\]
+
+This will give us stationary points, and we can classify the stat points to ensure we find a minima. Alternatively, we can save a little bit of faff and do this quicker by recognising that the numerator is a constant. The minimum of $F$ is therefore the maximum of $\cos \theta + \mu \sin \theta$.
+
+\[
+    \frac{d}{d \theta} \left( \cos \theta + \mu \sin \theta\right) = 0
+\]
+\[
+    - \sin \theta + \mu \cos \theta = 0
+\]
+\[
+    \mu = \frac{\sin \theta}{\cos \theta} = \tan \theta \implies \theta = \arctan \mu
+\]
+
+So the optimum angle depends on the coefficient of friction.
+
+\section{Exercise II}
+We have an inclined plane at angle $\theta$. There is a pulley at the top of plane and one block with mass $m_1$ on the plane, connected by an ideal string over the pulley to another block. This block has mass $m_2$ and is hanging off the plane. The plane is frictionless.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec09-02.png}
+     \caption{}
+\end{figure}
+
+\emph{What is $\theta$ such that the two masses move together with constant speed?}
+
+Both objects will move together, either up or down (depending on which mass is greater).
+
+For $m_2$:
+\begin{itemize}
+    \item The weight $w = m_2 g$ acting downwards.
+    \item The tension force $T$ acting upwards.
+\end{itemize}
+
+For $m_2$:
+\begin{itemize}
+    \item The normal force acting perpendicular to the plane.
+    \item The tension force $T$ acting in the direction of motion.
+    \item The weight force $w = m_1 g$ acting immediately down.
+\end{itemize}
+
+We ignore the normal force and the component of the weight acting perpendicular to the plane, as these are not in the direction of motion (and we have no frictional force that relies on them).
+
+Therefore (taking the vertical axis positive down):
+\[
+    m_2 g - T = 0
+\]
+
+And (taking the horizontal axis positive right parallel to the direction of motion, and the vertical axis now positive up perpendicular to the direction of motion):
+\[
+  T - m_1 g \sin \theta = 0 \implies T = m_1 g \sin \theta
+\]
+
+Substituting the second into the first:
+\[
+    m_2 g - m_1 g \sin \theta = 0
+\]
+\[
+    m_2 - m_1 \sin \theta = 0
+\]
+\[
+    \sin \theta = \frac{m_2}{m_1} \implies \theta = \arcsin \frac{m_2}{m_1}
+\]
+
