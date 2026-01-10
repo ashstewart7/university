@@ -1,2 +1,126 @@
 % !TeX root = main.tex
-\lecture{10}{Thu 30 Oct 2025 15:00}{}
+\lecture{10}{Thu 30 Oct 2025 15:00}{Terminal Velocity}
+
+\section{Connected Bodies}
+Consider $N$ blocks on a frictionless surface, all connected by an ideal string:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec10-01.png}
+     \caption{}
+\end{figure}
+
+We pull the final block, with some magnitude of force $F$. All bricks are identical and have the same mass $m$.
+
+\emph{What is the net force on brick number $i$, where i is arbitrary (and $i \leq N$). For example, what is the net force on brick $23$, denoted $F_{23}$}
+
+The total acceleration of the entire system considered together is:
+\[
+    a = \frac{F}{M} \qquad M = Nm \text{  (total system mass)}
+\]
+
+And for our choice of brick:
+\[
+    F_{23} = m_{23} a_{23}
+\]
+
+As all the strings are ideal, the acceleration is equal for every brick, and is equal to the total system acceleration, hence:
+\[
+    F_{23} = m \frac{F}{M} = m \frac{F}{Nm} = \frac{F}{N}
+\]
+
+\section{Air Drag and Terminal Velocity}
+We have some body moving with velocity $v$ through some medium (air, water etc). This medium has a frictional force (the `drag force') which acts upon the object in opposition to the direction of motion.
+
+For sufficiently low velocities, this force is proportional to speed. However, as velocity increases this no longer applies, and may increase with (for example $v^2$). In a simple case of proportionality:
+
+\[
+    F_d = kv
+\]
+\[
+    \vv{F_d} = -k v \hat{\underline{v}}
+\]
+
+\subsection{Terminal Velocity}
+Consider jumping \footnote{with a parachute!} off a very tall tower. The only two forces that act upon you are:
+\begin{itemize}
+    \item $F_w = mg$ acting downwards.
+    \item $F_d$ acting in the opposite direction to motion (upwards)
+\end{itemize}
+
+At some point, we have:
+\[
+    F_d = F_w
+\]
+At this time, there is no resultant force, no acceleration and therefore you move at a constant velocity. This velocity, which we will denote $v_*$ is the ``terminal velocity'' such that $F = a = 0$
+\[
+    F_d + F_w = 0
+\]
+\[
+    -k v_* + mg = 0 \implies k v_* = mg \implies v_* = \frac{mg}{k}
+\]
+
+We want to investigate the behaviour of $v$ as it approaches terminal velocity, so want to build expressions for $v(t)$ and $z(t)$, where $z$ is the vertical axis.
+
+\[
+    F = ma
+\]
+\[
+    mg - kv = ma
+\]
+\[
+    mg - kv = m \frac{dv}{dt}
+\]
+\[
+    \frac{mg - kv}{mg - kv} = \frac{m}{mg - kv} \frac{dv}{dt}
+\]
+\[
+1 = \frac{m}{mg - kv} \frac{dv}{dt}
+\]
+\[
+    dt = \frac{m}{mg - kv} dv
+\]
+
+And integrating:
+\[
+    \int_{t_0}^{t} \, dt = \int_{v_0}^{v} \frac{m}{mg - kv} \, dv
+\]
+
+Since our jump starts from rest at $t_0$, we have $t_0 = v_0 = 0$
+\[
+    \int_{0}^{t} \, dt = \int_{0}^{v} \frac{m}{mg - kv} \, dv
+\]
+\[
+    t = \frac{m}{mg} \int_{0}^{v} \frac{1}{1 - \frac{k}{mg}v} \, dv
+\]
+\[
+    = \frac{1}{g} \int_{0}^{v} \frac{1}{1 - \left(\frac{v}{v_*}\right)} \, dv
+\]
+
+We then stop integrating wrt $v$ alone and make a substitution such that we are integrating wrt the fraction of terminal velocity achieved:
+\[
+    t = \frac{v_*}{g} \int_{0}^{v/v_*} \frac{1}{1-\frac{v}{v_*}} \, d \left(\frac{v}{v_*}\right)
+\]
+\[
+    t = \frac{v_*}{g} \left[- \log(1 - x)\right]_0^{v/v_*}
+\]
+\[
+    t = \frac{v_*}{g} \left[-\log \left(1 - \frac{v}{v_*} + \log(1)\right)\right]
+\]
+\[
+    t = -\frac{v_*}{g} \log \left(1 - \frac{v}{v_*}\right)
+\]
+\[
+    -g \frac{t}{v_*} = \log \left(1 - \frac{v}{v_*}\right)
+\]
+
+Let $\tau \equiv v_* / g$:
+\[
+    - \frac{t}{\tau} = \log \left(1 - \frac{v}{v_*}\right)
+\]
+\[
+    e^{-t / \tau} = 1 - \frac{v}{v_*}
+\]
+Hence:
+\[
+    v(t) = v_* \left(1 - e^{- t / \tau}\right)
+\]
