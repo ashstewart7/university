@@ -1,2 +1,63 @@
 % !TeX root = main.tex
-\lecture{17}{Thu 27 Nov 2025 15:00}{}
+\lecture{17}{Tue 25 Nov 2025 12:00}{Gravitation}
+\section{Gravitation}
+Consider two particles, with masses $m_1$ and $m_2$ at distance $\vec{r}$. We know there is an attractive force between the two masses:
+\begin{equation}
+    \vec{F} = -G \frac{m_1 m_2}{r^2} \hat{e}_r
+\end{equation}
+\[
+    G = 6.67 \times 10^{-11} m^3/kg/s^2
+\]
+
+\subsection{Key Properties}
+\begin{itemize}
+    \item ``Long Range'' force. A force will exist between any two masses anywhere in the universe, regardless of distance and cannot be cancelled. Negligible at large distances, as force quickly tends to zero as distance increases - but never zero.
+    \item Weak.
+    \item $\vec{F} \propto \frac{1}{r^2}$
+\end{itemize}
+
+\subsection{Mass Caveats}
+While we don't practically make a distinction between them, $m$ in gravity refers to `gravitational mass', $m_g$, while mass in Newton's Second Law $\vec{F} = m \vec{a}$ is `inertial mass', $m_i$.
+
+Einstein's Equivalence Principle says that they're equal, i.e:
+\[
+    \frac{dm_g}{dm_i} = 1
+\]
+
+Why `they could be different but they fundamentally are not' is important is beyond me.
+
+\section{Freefall}
+Consider an object of mass $m$ at height $h$ from the ground. It has force:
+\[
+    F = mg
+\]
+And potential energy:
+\[
+    \Delta U(h) = mgh
+\]
+
+However this first expression looks quite different to our definition of force.
+\subsection{Derivation}
+Gravitational force is conservative, and there is a potential energy at all points in the gravitational field, associated with this force. 
+
+Give two bodies, $M$ and $m$. $m$ is moved away from $M$ from $r_1$ to $r_2$ along the radial direction (preserving angle, i.e. moving only in $\hat{e}_r$).
+
+\[
+    \vec{F} = -G \frac{Mm}{r^2} \hat{e}_r
+\]
+
+This is the negative gradient of the potential (as potential is area under a force curve):
+\[
+    \vec{F} = -\nabla U = - \frac{dU}{dr} \hat{e}_r
+\]
+\[
+    \vec{F}dr = -dU \hat{e}_r
+\]
+
+The work done from $r_1$ to $r_2$ is:
+\[
+    w_{1 \to 2} = \int_{r_1}^{r_2} \vec{F} \cdot \hat{e}_r \, dx
+\]
+
+
+

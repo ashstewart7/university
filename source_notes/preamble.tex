@@ -3,6 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{XCharter}
 \usepackage[charter]{mathdesign}
+\linespread{1.05}
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage[english]{babel}
@@ -24,6 +25,7 @@
 \usepackage{xifthen}
 \usepackage{accents}
 \usepackage{titlesec}
+\usepackage{esvect}
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
@@ -60,6 +62,8 @@
 
 \newcommand{\currentmodule}{} 
 \newcommand{\module}[1]{%
+    \cleardoublepage
+    \phantomsection
     \part*{#1}%
     \gdef\currentmodule{#1}%
 }
@@ -112,24 +116,6 @@
 \usepackage{tcolorbox}
 
 \tcbuselibrary{breakable}
-
-\newenvironment{correction}{\begin{tcolorbox}[
-    arc=0mm,
-    colback=white,
-    colframe=green!60!black,
-    title=Opmerking,
-    fonttitle=\sffamily,
-    breakable
-]}{\end{tcolorbox}}
-
-\newenvironment{notebox}[1]{\begin{tcolorbox}[
-    arc=0mm,
-    colback=white,
-    colframe=white!60!black,
-    title=#1,
-    fonttitle=\sffamily,
-    breakable
-]}{\end{tcolorbox}}
 
 \setlength{\abovedisplayskip}{10pt plus 2pt minus 5pt}
 \setlength{\belowdisplayskip}{10pt plus 2pt minus 5pt}

@@ -1,2 +1,132 @@
 % !TeX root = main.tex
-\lecture{5}{Tue 14 Oct 2025 12:00}{}
+\lecture{5}{Tue 14 Oct 2025 12:00}{End of Kinematics and Special Relativity I}
+
+In this lecture:
+\begin{itemize}
+    \item Vecchio clarifying things he'd been asked from Kinematics.
+    \item The start of Special Relativity.
+\end{itemize}
+
+\section{Use of Tau}
+This caused quite a bit of confusion for people in Lec 03. We have a particle subject to constant acceleration $\pmb{a} = a_0$.
+
+The displacement of a particle at time $t$ is given by:
+\[
+    x(t) = x_0 + v_0(t-t_0) + \frac{1}{2}a_0(t-t_0)^2
+\]
+
+This is only true for a constant acceleration. More generally, we have:
+\[
+    a(t) = \frac{dv}{dt}
+\]
+
+So we can integrate twice to get $x(t)$. Consider the example where $a(t) = kt^3$. This is non-constant acceleration. We assume that $t_0 = 0$ to simplify things a little. We further assume that $v(t = t_0) = v(t = 0) = 0$ and $x(t = t_0) = x(t=0) = 0$. 
+
+We want to determine $x(t)$.
+
+\[
+    \frac{dv}{dt} = kt^3  \implies dv = kt^3 dt
+\]
+\[
+    v - v_0 = \frac{kt^4}{4} \biggr\rvert_{t_0}^{t}
+\]
+
+Since we have $v_0 = t_0 = 0$, we have:
+\[
+    v(t) = \frac{k}{4} t^4
+\]
+
+And integrating again:
+\[
+    dx = v dt
+\]
+
+\[
+    x - x_0 = \frac{k}{4} \frac{t^5}{5} \biggr\rvert^t_0 = \frac{k}{20}t^5
+\]
+
+Again, $x_0 = 0$ so we finally get:
+\[
+    x(t) = \frac{k}{20} t^5
+\]
+
+Note we have simplified by assuming the initial conditions are all $0$, hence we can disregard $v_0$ etc. If we didn't have this, we'd have to include them in the integration all the way down.
+
+The goal of using $\tau$ is to make the problem clearer and easier to understand. Going back to $a(t) = kt^3$, we can tell by dimensions that $k$ must have units of an acceleration divided by a time cubed. This is a messy constant with dimensions then of $[k] = L / T^5$. It is therefore difficult to see what an increase in one time unit actually causes $a(t)$ to do.
+ 
+We can pick a constant timescale called $\tau$. Tau can be whatever we like, one hour, one millisecond, fifteen years etc etc. We rewrite:
+\[
+    a(t) = kt^3 = k \frac{t^2}{\tau^3} \tau^3 = k \tau^3 \left(\frac{t}{\tau}\right)^3
+\]
+
+We now have a new constant with units of acceleration, $k \tau^3$ which we call $a_*$. 
+
+\[
+    a(t) = a_* \left(\frac{t}{\tau}\right)^3
+\]
+
+This lets us think about the problem a little more clearly, as we know that after one $\tau$ has passed, the object will have acceleration $a_*$. After two $\tau$s of time have passed, the object will have acceleration $2^3 a_* = 8 a_*$ etc. The acceleration now nicely scales in a cubic manner.
+
+Reintegrating with $\tau$ gives:
+\[
+    dv = a dt
+\]
+\[
+    v - v_0 = a_* \tau \left(\frac{t}{\tau}\right)^4 \frac{1}{4}
+\]
+In our case for a particle starting at rest:
+\[
+    v(t) = \frac{1}{4} a_* \tau \left(\frac{t}{\tau}\right)^4
+\]
+
+And for $x$:
+\[
+    x - x_0 = \frac{1}{4} a_* \tau^2 \frac{1}{5} \left(\frac{t}{\tau}\right)^5
+\]
+\[
+    x = \frac{1}{20} a_* \tau^2 \left(\frac{t}{\tau}\right)^5
+\]
+
+The benefit of $\tau$ for $v$ and $x$ is a bit less stark, but it's still somewhat present. For constant acceleration, we can write either:
+\[
+    x(t) = \frac{1}{2} a_0 t^2
+\]
+\[
+    x(t) = \frac{1}{2} a_0 \tau^2 \left(\frac{t}{\tau}\right)^2
+\]
+
+The distance travelled over some time $\tau$ is $\frac{1}{2} a_0 \tau^2$. Note that we can compare this to the derived result for non-constant acceleration, so using $\tau$ gives us a more comfortable and familiar form even in the non-constant scenario.
+
+\section{Normalisation}
+This is where we described a particle's position not in terms of unit vectors $\hat{e}_x, \hat{e}_y, \hat{e}_z$ and instead using polar form $\hat{e}_\theta$ and $\hat{e}_r$.
+
+Consider a particle in circular motion (i.e. a child on a merry-go-round). Lets say the child wants to accelerate their motion, we want to keep the distance from the origin constant (or the child would fly off!) while increasing the speed around the circle. Doing this with the former notation would change the coefficients all three unit vectors, while using the latter notation allows us to express it as only a single constant multiplied by the unit vector changing unit vector.
+
+\section{Special Relativity}
+We will cover:
+\begin{itemize}
+    \item The Lorentz Factor $\gamma$.
+    \item Time Dilation
+    \item Length Contraction
+\end{itemize}
+
+Special relativity is about how two different observers observe the kinematics of objects. For special relativity to hold, these observers cannot be accelerating. They must move with constant velocity with respect to each other. For an observer, we describe an event with four coordinates: $(x, y, z, t)$, where $t$ is time. For a moving observer, it will see the same event, but at a different set of coordinates $(x^\prime, y^\prime, z^\prime, t^\prime)$.
+
+We note that the speed of light $c$ must be constant and independent of any observer. If two observers measure $c$ in a vacuum, they will both determine the same value regardless of motion. This breaks the standard rules of kinematics that we've seen so far, and it means that time and space are both relative - i.e. one second for one observer may be different to one second for another.
+
+We have these assumptions:
+\begin{itemize}
+    \item Two inertial observers will observe the same physics.
+    \item Two inertial observers will observe the same speed of light.
+\end{itemize}
+
+Everything in special relativity scales with the `Lorentz Factor' in some form, given by:
+\[
+    \gamma = \dfrac{1}{\sqrt{1 - \left(\frac{u}{c}\right)^2}}
+\]
+
+Gamma is always larger than $1$, as $u < c$. We have two key results which we will derive later:
+\begin{itemize}
+    \item Moving clocks run slow - a moving observer experiences time slower relative to a static observer.
+    \item Moving objects shrink - a static observer will observe that a moving object has shrunk relative to what the moving observer measures about itself.
+\end{itemize}

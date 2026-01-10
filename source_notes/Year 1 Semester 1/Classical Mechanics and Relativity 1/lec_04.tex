@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{4}{Thu 09 Oct 2025 15:00}{Projectile Motion}
+\lecture{4}{Thu 09 Oct 2025 15:00}{Projectile Motion and Relativity Reference Frames}
 
 \textbf{Projectile Motion: } The motion of a particle subject to gravitational acceleration, $g \approx 9.81 \text{m/s}$
 
@@ -55,7 +55,7 @@ Rearranging:
 Since $h, g, v_0$ are all constants, this is an $x^2$ parabola.
 
 \subsection{Interplanetary Example}
-Lets consider some planet, with $g_{\text{planet}} = 5m/s^2$. You (denoted $Y$) fall into the atmosphere at some distance $h$ from the ground, and some horizontal distance $d$ from $O (x = 0)$. There is an alien who wants to kill you, by shooting you down. This ``gun'' can throw pebbles at some constant speed $v_0$. The only degree of freedom the alien has to target you is change the shooting angle wrt the horizontal, $\theta$. From the alien's persepctive, what is the required $\theta$ to hit the incoming spacecraft?
+Lets consider some planet, with $g_{\text{planet}} = 5m/s^2$. You (denoted $Y$) fall into the atmosphere at some distance $h$ from the ground, and some horizontal distance $d$ from $O (x = 0)$. There is an alien who wants to kill you, by shooting you down. This ``gun'' can throw pebbles at some constant speed $v_0$. The only degree of freedom the alien has to target you is change the shooting angle wrt the horizontal, $\theta$. From the alien's perspective, what is the required $\theta$ to hit the incoming spacecraft?
 
 To hit you, there is some time $t$, when the position of the bullet $B$, with initial velocity $v$ where $B$ is in the same position as $Y$
 
@@ -92,7 +92,7 @@ From 2:
     \implies t = \frac{h}{v_0 \sin \theta}
 \]
 
-And subsituting:
+And substituting:
 \[
     v_0 \cos(\theta) \left(\frac{h}{v_0 \sin \theta}\right) = d
 \]
@@ -107,11 +107,24 @@ And subsituting:
 \]
 
 
-Since we have the value of $\theta$ in terms of two constants, yes, the alien can always hit the spaceship provided it correctly selects the angle corresponding to the value of these two constants. This means that the required angle does not depend on velocity, in this example.
+Since we have the value of $\theta$ in terms of two constants, yes, the alien can always hit the spaceship provided it correctly selects the angle corresponding to the value of these two constants (excluding cases where the particle is too far to the left to possibly be hit regardless of angle). This means that the required angle does not depend on velocity, in this example.
 
 
 \section{Frames of Reference}
-``Observer'' represents a frame of reference.
+``Observer'' represents a frame of reference. The way that one person sees the world (in terms of relative positions and velocities) is different to how another person may see the world. We observe the same core physics, but need to do coordinate translations to go from one reference frame to another.
 
+Say we have two reference frames, $A$ and $B$. We can represent the translation from A to B as a vector, denoted $\vv{r}$. Some vector $\vv{b_B}$ in B's frame of reference is therefore equal to:
+\[
+    \vv{b_B} = \vv{r} + \vv{b_A}
+\]
 
+Assume that the frames are moving with a constant uniform velocity $u$ with respect to reach other:
+\[
+    \frac{d}{dt}(\vv{b_B}) = \frac{d}{dt}(\vv{r}) + \frac{d}{dt}(\vv{b_A})
+\]
 
+\[
+    \vv{v_b} = \frac{d \vv{r}}{dt} + \vv{v}_r = u + \vv{v}_r
+\]
+
+This is known as the ``Galilean Transformation''.

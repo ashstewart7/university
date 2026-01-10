@@ -1,2 +1,170 @@
 % !TeX root = main.tex
-\lecture{6}{Thu 16 Oct 2025 15:00}{}
+\lecture{6}{Thu 16 Oct 2025 15:00}{Special Relativity II}
+
+\section{Special Relativity}
+We consider theoretical observers that are unaccelerated with respect to each other. Either both observers are at rest, or moving with respect to each other a a constant speed. For ease in CMR1, we only consider motion in one dimension.
+
+
+We also say that:
+\begin{itemize}
+    \item The First Law of Dynamics (Newton's First Law) still holds true, so an object at rest will remain at rest, and an object in constant motion will remain in constant motion, unless an external force acts upon it. 
+    \item The distance between two points is constant (relative to an observer).
+    \item We can synchronise clocks between two observers, and they will tick at the same rate.
+    \item We only deal with Euclidean geometry.
+\end{itemize}
+
+We have two key postulates:
+\begin{enumerate}
+    \item The laws of physics are the same for every inertial observer.
+    \item The speed of light in a vacuum is constant for every inertial observer. It is independent of any motion of the source or the observer. Even if a source travelling at $0.5c$ shines a laser facing forward, that light will still travel at $c$, and not $1.5c$.
+\end{enumerate}
+
+\subsection{Lorentz Factor}
+We have some stationary observer A, and a second observer B which is moving at velocity $u \text{m/s}$ relative to A. The Lorentz Factor $\gamma$ is defined as:
+\[
+    \gamma = \dfrac{1}{\sqrt{1 - \left(\dfrac{u}{c}\right)^2}}
+\]
+
+We may also see it written as:
+\[
+    \gamma = \dfrac{1}{\sqrt{1 - \left(u\right)^2}}
+\]
+Which holds only if $u$ is already measured in units of the speed of light. For this course, we use the first definition. This is also known as the ``Relativistic Factor''. Note that it is dimensionless and is a positive number $\gamma > 1$, as $u < c$.
+
+\paragraph{Taking Limits:} We take limits of $\gamma$ to see it's behaviour as $u$ changes relative to the speed of light.
+
+If $u \ll c$:
+\[
+    \frac{u}{c} \ll 1
+\]
+
+We use $\epsilon$ to denote a very small value. Let $\epsilon \equiv u/c$.
+
+\[
+    \gamma = \frac{1}{\sqrt{1 - \epsilon^2}}
+\]
+
+We expand this using a Taylor Series:
+\[
+    f(x) = f(x_0) + (x-x_0) f^\prime(x_0) + \frac{1}{2} (x-x_0)^2 f^{\prime\prime}(x_0) + \cdots
+\]
+\[
+    \gamma = 1 - (- \frac{1}{2} \epsilon^2) + \cdots
+\]
+
+If $u$ is very fast, say $u = 30 \text{km/s}$, then:
+\[
+    \epsilon = \frac{3 \times 10 \times 10^3}{3 \times 10^{8}}
+\]
+\[
+    \epsilon = 10^{-4}
+\]
+
+Hence:
+\[
+    \gamma = 1 + \frac{1}{2} 10^{-8} + \cdots
+\]
+
+So even for speeds which are classically extremely fast, $\gamma \approx 1$ and we therefore do not encounter relativistic effects in classical mechanics.
+
+If $u / c$ is `large', i.e. $u/c \to 1$:
+
+Now, $1 - u/c$ is small, so we define $\epsilon \equiv 1 - \frac{u}{c} \ll 1$ instead.
+\[
+    \frac{u}{c} = 1 - \epsilon
+\]
+
+\[
+    \gamma = \frac{1}{\sqrt{1 - \left(\frac{u}{c}\right)^2}} = \frac{1}{\sqrt{\left(1 - \frac{u}{c}\right)\left(1 + \frac{u}{c}\right)}}
+\]
+\[
+    \gamma = \frac{1}{\sqrt{\left(\epsilon\right)\left(1 + (1 - \epsilon)\right)}}
+\]
+\[
+    \gamma = \frac{1}{\sqrt{2 \epsilon - \epsilon^2}}
+\]
+
+Since $\epsilon \ll 1$, we say that the $\epsilon^2$ term is small enough to disregard, so we have:
+\[
+    \gamma = \frac{1}{\sqrt{2}} \epsilon^{-1/2}
+\]
+
+Again since $\epsilon$ is very small, $\epsilon^{1/2}$ tends to infinity, so as $\gamma \propto \epsilon^{-1/2}$, $\gamma \to \infty$. For non-relativistic objects, we therefore treat $\gamma = 1$, but a curve of $\gamma$ against $u/c$ has an asymptote at $u/c = 1$, hence $\gamma$ rapidly increases unbounded as $u \to c$.
+
+\section{Einstein's Thought Experiment}
+We want to design a clock. We do so by creating a perfect cylinder, with a perfectly reflective top and bottom. 
+
+We place a light source (laser) at the bottom, and we shine this laser up towards the top of the cylinder. The photons travel to the top, hit the ceiling, which is perfectly reflective, so travels back down.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec06-01.png}
+     \caption{}
+\end{figure}
+
+We also have a perfect clock, which measures the round-trip time for the photon to go up, hit the ceiling and hit the bottom again. The cylinder is $L$ distance units high, so the total photon path is $2L$ for the round trip. The time taken is therefore:
+\[
+    \Delta t = \frac{2L}{c}
+\]
+
+We add two observers, (B)  who is fixed to the top of the cylinder (and is travelling with it). We have some other observer (A) who has designed the problem to place the whole cylinder on a moving trolley, moving in 1D with speed $u$. Observer A is standing stationary on the ground as the trolley speeds past them.
+
+Observer (B) while moving sees a photon emitted at the bottom, travel up and reflect back down, with no issues.
+
+However, Observer (A) sees the whole setup moving. It sees a photon emitted and travel up, and while it travels up the trolley has moved some distance. The trolley (and photon) have moved some distance when the photon strikes the top and reflects. As the photon travels back down, the trolley (and photon) have moved some distance again.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-02.png}
+     \caption{The trolley at point of photon emission, point of reflection, and point of detection. Note the photon has moved with the trolley.}
+\end{figure}
+
+We note that the height of the cylinder is not affected by the motion of the trolley, as the motion is perpendicular to this length. We are given this as fact. The only lengths which may be affected are the lengths with components in the direction of motion.
+
+From the perspective of (B), the photon has taken the standard and simple up-down path, in some time $\Delta t$. However, from (A)'s perspective, the photon has taken a much longer path which includes horizontal motion:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-03.png}
+     \caption{}
+\end{figure}
+
+In Observer (A)'s reference frame:
+
+The two (equal) lengths that form the bases of the two right-angled triangles have length $u \frac{\Delta t}{2}$, and the two hypotenuses have length $c \frac{\Delta t}{2}$.
+
+We therefore can simply use Pythagoras to get:
+\[
+    \left(u \frac{\Delta t}{2}\right)^2 + L^2 = \left(c \frac{\Delta t}{2}\right)^2
+\]
+
+In Observer (B)'s reference frame:
+\[
+    \Delta t = \frac{2L}{c}
+\]
+
+We donate the clocks held by (A) to give measurements:
+\[
+    \Delta t_B = 2 \frac{L_B}{c_B}
+\]
+
+and for (A):
+\[
+    \left(u \frac{\Delta t_A}{2}\right)^2 + L_A^2 = \left(c_A \frac{\Delta t_A}{2}\right)^2
+\]
+
+We know that the speed of light is identical in every reference frame, so $c_A = c_B = c$. We have been told that $L$ is unaffected, since it is perpendicular to the direction of motion, so $L_A = L_B = L$.
+
+Hence:
+\[
+    \Delta t_B = \frac{2L}{c}
+\]
+Which we can rearrange and substitute to get:
+\[
+    \left(u \frac{\Delta t_A}{2}\right)^2 + \left(\frac{c \Delta t_B}{2}\right)^2 = \left(c \frac{\Delta t_A}{2}\right)^2
+\]
+\[
+   \left({c \Delta t_B}\right)^2 = \left(c {\Delta t_A}\right)^2 -  \left(u {\Delta t_A}\right)^2
+\]
+
+For this to be true, $t_B \not = t_A$, so the two observers can no longer agree on the time the photon took. This gives us time dilation, where moving clocks (i.e. the clock used by (A)) run slower, and record a longer time between two events compared to a stationary observer.
+

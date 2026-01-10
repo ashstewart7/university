@@ -1,2 +1,166 @@
 % !TeX root = main.tex
-\lecture{7}{Tue 21 Oct 2025 12:00}{}
+\lecture{7}{Tue 21 Oct 2025 12:00}{Special Relativity III}
+
+\section{Time Dilation}
+We concluded the previous lecture with:
+\[
+    \left({c \Delta t_B}\right)^2 = \left(c {\Delta t_A}\right)^2 -  \left(u {\Delta t_A}\right)^2
+\]
+
+We rearrange to get:
+\[
+    c^2 \Delta t_B^2 = \left(c^2 - u^2\right) \Delta t_A^2
+\]
+\[
+    \Delta t_B^2 = \left(1 - \left(\frac{u}{c}\right)^2\right) \Delta t_A^2
+\]
+\[
+    \Delta t_B = \sqrt{1 - \left(\frac{u}{c}\right)^2} \Delta t_A
+\]
+
+Hence:
+\[
+    \Delta t_A = \frac{1}{\sqrt{1 - \left(\frac{u}{c}\right)^2}} \Delta t_B
+\]
+\[
+    \boxed{\Delta t_A = \gamma \Delta t_B}
+\]
+
+This tells us that the time recorded for the photon to travel by the two observers is different. The moving clock runs slower, so the stationary observer measures a longer duration than the moving clock records. For non-relativistic speeds, $\gamma \approx 1$ so the difference is negligible; however, at larger speeds the disparity becomes much larger and grows without bounds. This makes physical sense, as for faster speeds, the trolley will have travelled a larger horizontal distance, therefore (A) will measure a longer path, and hence require a larger time.
+
+Generally, we have:
+\[
+    \Delta T = \gamma \Delta t_0
+\]
+
+Where $t_0$ is the ``proper time'' and is defined as the time interval taken between two events that take place in the same frame, by an observer in that frame.
+
+\section{Length Contraction}
+We have the same identical setup, except the setup is now horizontally on the trolley. Observer (B) is again attached to the cylinder, with photons again bouncing along the length of the cylinder, just with the left/right instead of top/bottom surfaces. The cylinder is still moving on a trolley, and observer (A) is still stationary.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec07-01.png}
+     \caption{}
+\end{figure}
+
+We define $\Delta t$ as the interval between emission and detection, again with a subscript to denote who is making the measurement.
+\[
+    \Delta t_B = \frac{2L_B}{c}
+\]
+\textbf{In (B)'s frame of reference:}
+\[
+    c \Delta t_B = 2L_B
+\]
+
+\textbf{In (A)'s frame of reference:}
+
+The cylinder has moved to the right as the photon travels, this adds some extra length that the photon must travel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec07-02.png}
+     \caption{}
+\end{figure}
+
+This extra length (between the two dotted lines) is $u \Delta t_1$ where $\Delta t_1$ is the time for the photon to hit the right wall. The photon now hits the wall and bounces back, while the cylinder is still moving to the right. The cylinder will move $u \Delta t_2$, where $\Delta t_2$  is the time taken for the photon to travel back and hit the left wall. 
+
+The time taken between emission and detection $\Delta t$ is given by:
+\[
+    \Delta t = \Delta t_1 + \Delta t_2
+\]
+
+For the first part of the trip, the distance is $L_A + u \Delta t_1$, so:
+\[
+    c \Delta t_1 = L_A + u \Delta t_1
+\]
+\[
+    \Delta t_1 = \frac{L_A}{c - u}
+\]
+
+
+For the second part of the trip, the distance is less as the cylinder ``catches up'' with the photon as it moves, giving us a distance of $L_A - u \Delta t_2$. This gives us:
+\[
+    c \Delta t_2 = L_A - u \Delta t_2
+\]
+\[
+    \Delta t_2 = \frac{L_A}{c+u}
+\]
+
+Hence the round-trip time is:
+\[
+    \Delta t = \frac{L_A}{c+u} + \frac{L_A}{c - u}
+\]
+\[
+    = L_A \left(\frac{c+ u + c - u}{(c-u)(c+u)}\right)
+\]
+\[
+    = L_A \left(\frac{2c}{(c-u)(c+u)}\right)
+\]
+\[
+    = 2cL_A \left(\frac{1}{c \left(1 - \frac{u}{c}\right) c \left(1 + \frac{u}{c}\right)}\right)
+\]
+\[
+    = \frac{2L_A}{c} \frac{1}{1 - \frac{u^2}{c^2}}
+\]
+
+So:
+\[
+    \Delta t_A = \frac{2L_A}{c} \left(\frac{1}{1 - \frac{u^2}{c^2}}\right)
+\]
+And we know that:
+\[
+    \Delta t_B = \frac{2L_B}{c}
+\]
+
+The fact A and B don't agree is fine, we can apply the time dilation formula:
+\[
+    \Delta t_A = \gamma \Delta t_B
+\]
+\[
+     \frac{2L_A}{c} \left(\frac{1}{1 - \frac{u^2}{c^2}}\right) = \frac{1}{\sqrt{1 - \left(\frac{u^2}{c^2}\right)}} \frac{2L_B}{c}
+\]
+\[
+     L_A \left(\frac{1}{1 - \frac{u^2}{c^2}}\right) = \frac{1}{\sqrt{1 - \left(\frac{u^2}{c^2}\right)}} L_B
+\]
+\[
+     L_A \left(\frac{\sqrt{1}}{\sqrt{1 - \frac{u^2}{c^2}}}\right)^2 = \frac{1}{\sqrt{1 - \left(\frac{u^2}{c^2}\right)}} L_B
+\]
+\[
+     L_A \left(\frac{1}{\sqrt{1 - \frac{u^2}{c^2}}}\right) = L_B
+\]
+\[
+    L_A = \frac{L_B}{\gamma}
+\]
+
+This tells us that measurements of lengths for a stationary vs moving observer also do not agree. Just like time runs slower for a moving object, a moving object will be measured to be smaller by a stationary observer. Effectively, moving lengths shrink. This is called length contraction.
+
+Generally, we have:
+\[
+    \boxed{\Delta L = \frac{\Delta L_0}{\gamma}}
+\]
+Where $\Delta L_0$ is the ``proper length'' of an object, i.e. the length of an object measured by an observer at rest relative to it.
+
+\section{Example}
+We have someone on a spaceship, coming back to earth. The spaceship is travelling rightwards, directly towards the earth in 1D.
+
+The spaceship has an astronaut, and we consider one person on the earth in Mission Control. MC spots the spaceship at distance $l = 3,000 \text{km}$ and is at speed $u$ corresponding to $\gamma = 10$ (so $u \approx c$). The earth is stationary.
+
+When the spaceship is at this distance $l$, the spaceship sends earth a distress signal saying $\Delta t_r = 10^{-3}$s, where $\Delta t_r$ is how long the spaceship's oxygen supply lasts. We assume the astronaut cannot hold their breath and dies immediately if the oxygen supply runs out before the ship makes it back to Earth. Will the astronaut survive?
+
+MC's child, who has no knowledge of relativity, calculates the travel time:
+\[
+    \Delta t = \frac{l}{u} \approx \frac{l}{c} = \frac{3 \times 10^3 \times 10^3}{3 \times 10^8} = 10^{-2}s.
+\]
+
+The child compares this to the oxygen supply ($10^{-3}s$) and concludes the astronaut dies. This isn't quite accurate however, as we need to treat the oxygen time relativistically. To MC, the clock on the spaceship runs slow (Time Dilation):
+\[
+    \Delta t_{MC} = \gamma \Delta t_0
+\]
+\[
+    \Delta t_{MC} = 10 \times 10^{-3} \text{s} = 10^{-2}s
+\]
+
+Comparing the relativistic oxygen duration ($10^{-2}s$) to the travel time ($10^{-2}s$), we see that the astronaut (just barely!!) survives. 
+
+We solved this in the Earth frame, where the distance $l$ is a proper length. We could alternatively solve this in the Astronaut's frame, where the distance to Earth is length contracted to $L = l/\gamma = 300\text{km}$. In that frame, the travel time is $10^{-3}s$, which matches the proper time of the oxygen supply, so gives the same result.

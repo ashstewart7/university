@@ -1,2 +1,205 @@
 % !TeX root = main.tex
-\lecture{8}{Tue 28 Oct 2025 12:00}{}
+\lecture{8}{Thu 23 Oct 2025 15:00}{Special Relativity IV and Intro to Dynamics}
+\section{The Relativistic Doppler Effect}
+
+For an emitted frequency $f_0$, emitted by an object moving with velocity (in 1D) $u$ relative to an observer, the received frequency $f$ is given by:
+\[
+    f = \sqrt{\frac{1 + u/c}{1 - u/c}} f_0
+\]
+
+For a relativistic speed $u$. Note that we cannot use the standard Doppler formula for relativistic speeds. Also note the lack of $\pm$, as we encode this into $u$. If the object moves towards the observer, $u$ is positive, and if the object is moving away $u$ is negative.
+
+If $u$ is non-relativistic, we assume that $u/c \ll 1$:
+\[
+    f = \left(1 + \frac{u}{c}\right)^{1/2} \left(1 - \frac{u}{c}\right)^{-1/2} f_0
+\]
+
+And Taylor Series expanding:
+\[
+    = \left(1 + \frac{1}{2} \frac{u}{c} + \cdots\right)\left(1 - \frac{-1}{2} \frac{u}{c} + \cdots\right) f_0
+\]
+
+Since $u/c$ is small, we ignore any quadratic, cubic etc terms of $u/c$, as these are very small.
+\[
+    = \left(1 + \frac{1}{2} \frac{u}{c} + \frac{1}{2} \frac{u}{c} \right) f_0
+\]
+
+Hence:
+\[
+    f \approx \left(1 + \frac{u}{c}\right) f_0
+\]
+
+Since we assume $u/c \ll 1$:
+\[
+    f = f_0 + \frac{u}{c} f_0
+\]
+\[
+    f - f_0 = \Delta f = \frac{u}{c} f_0
+\]
+\[
+    \frac{\Delta f}{f_0} = \frac{u}{c} \qquad \text{plus higher order terms we ignore}
+\]
+
+This is the classical result that we're familiar with, for non-relativistic speeds.
+
+
+\section{Lorentz Transformation}
+Say we have a reference frame $s^\prime$ which is moving along the $x$-direction relative to a static reference frame $s$.
+
+An event in the $s$ frame has coordinates $(x, y, z, t)$ and the same event in the $s^\prime$ frame has coordinates $(x^\prime, y^\prime, z^\prime, t^\prime)$. We have the following transformations:
+\[
+    t^\prime = \gamma\left(t - \frac{u}{c^2}x\right)
+\]
+\[
+    x^\prime = \gamma \left(x - ut\right)
+\]
+
+Noting that $y = y^\prime$, and $z = z^\prime$ as these are orthogonal to the direction of motion. We also have:
+
+\[
+    u^\prime_x = \frac{u_x - u}{1 - \frac{u}{c^2} u_x}
+\]
+
+Please note that CMR1 does not include derivations of these equations (which collectively form the Lorentz Transformations), however for understanding's sake I'll include them here regardless.
+
+\subsection{Derivations}
+We want a transformation in time and space between a stationary frame $S$ and the moving frame $S^\prime$. We have three postulates to do this:
+\begin{itemize}
+    \item \textbf{Linearity}: The transformation must be linear, i.e. a straight line in $S$ must map to a straight line in $S^\prime$.
+    \item \textbf{Standard rule for $c$}: $c$ is invariant and has the same velocity in all frames, regardless of motion.
+    \item \textbf{Inverse symmetry}: The inverse transformation ($S^\prime \to S$) is the same, but with $u \to -u$, as in $S^\prime$'s reference frame, it is static with $S$ moving with speed $-u$.
+\end{itemize}
+
+\paragraph{Deriving $x^\prime$: } We derive the transformation in position using length contraction:
+
+Imagine a ruler at rest in the moving frame $S^\prime$. It has one end on the origin $O^\prime$ and the right end at some coordinate $x^\prime$. The ruler therefore has proper length $L_0 = x'$.
+
+From the stationary frame $S$:
+\begin{itemize}
+    \item The origin $O^\prime$ has moved distance $ut$ after some time $t$.
+    \item The ruler is moving, so has been length contracted to the observer in $S$. The ruler now appears to have length $x^\prime / \gamma$.
+\end{itemize}
+
+The total coordinate as seen by $S$ is therefore:
+\[
+    x = ut + \frac{x^\prime}{\gamma}
+\]
+
+And rearranging gives:
+\[
+    x^\prime = \gamma(x - ut)
+\]
+ 
+
+\paragraph{Deriving $t^\prime$:} We derive the transformation for time using the third postulate above:
+
+If the transformation from $S \to S^\prime$ is:
+\[
+    x^\prime = \gamma(x - ut)
+\]
+
+Then the transformation from $S^\prime \to S$ is:
+\[
+    x = \gamma(x^\prime + ut^\prime)
+\]
+
+As the scenario is the same: $S'$ is moving with speed $u$ relative to $S$, if we instead consider $S^\prime$'s reference frame then it is static, and $S$ is moving in the opposite direction with the same magnitude of velocity, so the transformation must be the same with $u \to -u$.
+
+Substituting the position transformation for $x^\prime$ into this:
+\[
+    x = \gamma[\gamma(x - ut) + ut^\prime]
+\]
+\[
+    \frac{x}{\gamma} = \gamma x - \gamma ut + u t^\prime
+\]
+Rearranging for $t^\prime$:
+\[
+    t^\prime = \gamma t - \frac{x}{u}\left(\gamma - \frac{1}{\gamma}\right)
+\]
+Using the identity $\gamma - 1/\gamma = \beta^2\gamma = \frac{u^2}{c^2}\gamma$:
+\[
+    t^\prime = \gamma t - \frac{x}{u}\left(\gamma \frac{u^2}{c^2}\right)
+\]
+\[
+    t^\prime = \gamma \left(t - \frac{u}{c^2}x\right)
+\]
+
+Which gives us the time transformation.
+
+\paragraph{Deiving $u_x^\prime$: } We find velocity in the moving frame as $dx' / dt'$.
+
+The velocity in the moving frame $S^\prime$ is defined as $u^\prime_x = \frac{dx^\prime}{dt^\prime}$. Taking these derivatives
+\[
+    dx^\prime = \gamma(dx - u dt) \quad \text{and} \quad dt^\prime = \gamma\left(dt - \frac{u}{c^2}dx\right)
+\]
+Substituting these into the definition of velocity:
+\[
+    u^\prime_x = \frac{\gamma(dx - u dt)}{\gamma\left(dt - \frac{u}{c^2}dx\right)} = \frac{dx - u dt}{dt - \frac{u}{c^2}dx}
+\]
+Dividing through by $dt$:
+\[
+    u^\prime_x = \frac{\frac{dx}{dt} - u}{1 - \frac{u}{c^2}\frac{dx}{dt}}
+\]
+And using $u_x = \frac{dx}{dt}$:
+\[
+    u^\prime_x = \frac{u_x - u}{1 - \frac{u u_x}{c^2}}
+\]
+
+\section{Dynamics}
+Kinematics is effectively looking at objects in motion. Dynamics is effectively ``why'' they move (Newton's laws, static friction etc).
+
+\subsection{Newton's Laws}
+We have three:
+\begin{enumerate}
+    \item If there is no resultant force acting upon an object, there are two possibilities:
+    \begin{itemize}
+        \item The object was initially at rest, and stays at rest.
+        \item The object moves at a constant speed with no acceleration.
+    \end{itemize}
+    \item $\vv{F} = m \vv{a}$. Force and acceleration are proportional with a constant of proportionality $m$, the ``inertial mass''. We call it inertial mass because this is theoretically distinct from gravitational mass, however all experiments give them as having them same value. 
+    \item The Reaction Principle. If a body $A$ is producing a force $\vv{F}$ on a body $B$, then $B$ acts back upon $A$ with a force of the same magnitude but the opposite direction ``Every action has an equal and opposite reaction''.
+\end{enumerate}
+
+\subsection{Superposition Principle}
+If we have some body with $N$ forces acting upon it, the final resultant force that acts upon an object is a vector sum of these forces:
+\[
+    \vv{F} = \vv{F}_1 + \vv{F}_2 + \cdots + \vv{F}_n = \sum_{i=1}^{N} \vv{F}_i = m \vv{a}
+\]
+
+\subsection{Example}
+Consider an object of mass $m$ hanging from the ceiling with an ``ideal string''. This means that string is inextensible and is massless. The body is initially at rest.
+
+Two forces act upon this body:
+\begin{itemize}
+    \item The weight force due to local gravitational acceleration: $w = m g$.
+    \item The force produced by the string (tension).
+\end{itemize}
+
+Since the body is at rest, the resultant force must be zero and:
+\[
+    T - mg = 0
+\]
+\[
+    T = mg
+\]
+
+\subsection{Example II}
+Consider a body on a horizontal surface. We laterally pull the object with force $F$. We have these forces:
+\begin{itemize}
+    \item Again a weight force: $w = mg$.
+    \item The normal force produced by the table acting back upon the body iaw Newton's Third Law.
+    \item A frictional force acting in opposition to the direction of motion, $F_\text{fric}$
+\end{itemize}
+
+The frictional force is proportional to the Normal force with a coefficient depending on the materials used:
+\[
+    F_\text{fric} = \mu N
+\]
+
+When moving an object there are two stages:
+\begin{itemize}
+    \item Attempting to take an object from stationary to actually moving.
+    \item Continuing the motion of the object once it's moving (this is easier).
+\end{itemize}
+
+We therefore have multiple coefficients of friction. Here we consider the coefficient of static friction $\mu_s$ and the coefficient of kinetic friction $\mu_k$. There is also the coefficient of rolling friction $\mu_r$ seen in labs. Generally, $\mu_s > \mu_k$.
