@@ -1,2 +1,129 @@
 % !TeX root = main.tex
-\lecture{11}{Tue 04 Nov 2025 12:00}{}
+\lecture{11}{Tue 04 Nov 2025 12:00}{Uniform Circular Motion and Work Done}
+
+\section{Uniform Circular Motion}
+Consider a circle of radius $r$. A particle sits on this circle, travelling around it with velocity $\vv{v}$ and a force $\vv{F}$ acting from the particle towards the centre of the circle.
+
+This velocity is tangential to the circle, so is perpendicular to the force.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/lec11-01.png}
+     \caption{}
+\end{figure}
+
+The particle travels in a circular path with constant radius and constant speed. Consider the particle after some infinitesimal angle change $d \theta$. The direction vector of the particle (relative to the centre of the circle) goes from $\vv{r_1}$ to $\vv{r_2}$, which have the same magnitude but different directions.
+
+There is some tiny change $d \vv{x}$ in horizontal position. This is given by:
+\[
+    d \vv{r} = \vv{r} d \theta
+\]
+
+The particle goes from $\vv{v_1}$ to $\vv{v_2}$ (again, same magnitude with slightly different direction). We therefore have:
+\[
+    d \vv{v} = \vv{v} d \theta
+\]
+
+\subsection{Determining Acceleration}
+The magnitude of the infinitesimal displacement $|d\vv{r}|$ is related to $r$ and $d\theta$ by:
+\[
+    |d\vv{r}| = r \, d\theta \implies d\theta = \frac{|d\vv{r}|}{r}
+\]
+The velocity vectors rotate through the same angle $d\theta$ so we also have:
+\[
+    |d\vv{v}| = v \, d\theta
+\]
+\[
+    |d\vv{v}| = v \left( \frac{|d\vv{r}|}{r} \right) = \frac{v}{r} |d\vv{r}|
+\]
+\[
+    a = \frac{|d\vv{v}|}{dt} = \frac{v}{r} \frac{|d\vv{r}|}{dt}
+\]
+Using $\frac{|d\vv{r}|}{dt} = v$:
+\[
+    a = \frac{v}{r} (v) = \frac{v^2}{r}
+\]
+
+\subsection{Angular Frequency}
+We define a new (constant) quantity called ``angular frequency'', $\omega$:
+\[
+    \omega \equiv \frac{d \theta}{d t} = \dot{\theta}
+\]
+
+The particle has time period to complete a whole rotation ($\theta = 2 \pi$), $T$. Therefore:
+\[
+    T = \frac{2 \pi}{\omega} \qquad \omega = \frac{2 \pi}{T}
+\]
+
+Using:
+\[
+    \frac{dr}{d \theta} = r \frac{d \theta}{dt}
+\]
+We have:
+\[
+    v = \omega r
+\]
+Hence:
+\[
+    a = \frac{\omega^2 r^2}{r} = \omega^2 r
+\]
+
+\section{Unit Vectors}
+We define the position vector using the radial unit vector $\hat{e}_r$:
+\[
+    \vv{r} = r \hat{e}_r
+\]
+To differentiate this, we first define the unit vectors in Cartesian coordinates to determine their time derivatives:
+\[
+    \hat{e}_r = \cos\theta \, \hat{\imath} + \sin\theta \, \hat{\jmath} \quad \text{and} \quad \hat{e}_\theta = -\sin\theta \, \hat{\imath} + \cos\theta \, \hat{\jmath}
+\]
+Differentiating $\hat{e}_r$ wrt time:
+\[
+    \dot{\hat{e}}_r = \frac{d}{dt}(\cos\theta \, \hat{\imath} + \sin\theta \, \hat{\jmath}) = (-\sin\theta \cdot \dot{\theta}) \hat{\imath} + (\cos\theta \cdot \dot{\theta}) \hat{\jmath} = \dot{\theta} \hat{e}_\theta
+\]
+Differentiating $\hat{e}_\theta$ wrt time:
+\[
+    \dot{\hat{e}}_\theta = \frac{d}{dt}(-\sin\theta \, \hat{\imath} + \cos\theta \, \hat{\jmath}) = (-\cos\theta \cdot \dot{\theta}) \hat{\imath} - (\sin\theta \cdot \dot{\theta}) \hat{\jmath} = -\dot{\theta} \hat{e}_r
+\]
+
+\subsection{Velocity}
+Using the product rule on $\vv{r} = r \hat{e}_r$:
+\[
+    \vv{v} = \frac{d}{dt}(r \hat{e}_r) = \dot{r} \hat{e}_r + r \dot{\hat{e}}_r
+\]
+Substituting $\dot{\hat{e}}_r = \dot{\theta} \hat{e}_\theta$:
+\[
+    \vv{v} = \dot{r} \hat{e}_r + r \dot{\theta} \hat{e}_\theta
+\]
+
+\subsection{Acceleration}
+Using the product rule on $\vv{v}$:
+\[
+    \vv{a} = \frac{d}{dt}(\dot{r} \hat{e}_r) + \frac{d}{dt}(r \dot{\theta} \hat{e}_\theta)
+\]
+Expanding individual terms:
+\[
+    \frac{d}{dt}(\dot{r} \hat{e}_r) = \ddot{r} \hat{e}_r + \dot{r} \dot{\hat{e}}_r = \ddot{r} \hat{e}_r + \dot{r} (\dot{\theta} \hat{e}_\theta)
+\]
+\[
+    \frac{d}{dt}(r \dot{\theta} \hat{e}_\theta) = (\dot{r} \dot{\theta} + r \ddot{\theta}) \hat{e}_\theta + r \dot{\theta} \dot{\hat{e}}_\theta = (\dot{r} \dot{\theta} + r \ddot{\theta}) \hat{e}_\theta + r \dot{\theta} (-\dot{\theta} \hat{e}_r)
+\]
+Grouping the $\hat{e}_r$ and $\hat{e}_\theta$ components:
+\[
+    \vv{a} = (\ddot{r} - r \dot{\theta}^2) \hat{e}_r + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \hat{e}_\theta
+\]
+
+For UCM, radius is constant and $ \dot{\theta} = \omega$:
+\[
+    \vv{a} = (r \omega^2) \hat{e}_r + \hat{e}_\theta = -r \omega^2 \hat{e}_r
+\]
+Using $v = r \omega$:
+\[
+    \vv{a} = -\frac{v^2}{r} \hat{e}_r
+\]
+\[
+    a = \frac{-v^2}{r}
+\]
+
+\section{Work Done by a Force}
+% TODO
