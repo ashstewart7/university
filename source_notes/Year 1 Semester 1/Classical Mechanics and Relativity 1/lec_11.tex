@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{11}{Tue 04 Nov 2025 12:00}{Uniform Circular Motion and Work Done}
+\lecture{11}{Tue 04 Nov 2025 12:00}{Uniform Circular Motion and Work Done I}
 
 \section{Uniform Circular Motion}
 Consider a circle of radius $r$. A particle sits on this circle, travelling around it with velocity $\vv{v}$ and a force $\vv{F}$ acting from the particle towards the centre of the circle.
@@ -126,4 +126,76 @@ Using $v = r \omega$:
 \]
 
 \section{Work Done by a Force}
-% TODO
+We have some force $\vv{F}$ that causes the particle to move by a infinitesimal displacement $\vv{ds}$. We define the infinitesimal work done by this force as:
+\[
+    dW = \vv{F} \cdot d\vv{s}
+\]
+
+If the force acts at some angle $\theta$ to the direction of displacement, we have:
+\[
+    dW \equiv | \vv{F} | | d \vv{s} | \cos \theta = F \times ds \times \cos \theta
+\]
+
+This has dimensions of:
+\[
+    [dW] = \frac{ML}{T^2} L = \frac{M L^2}{T^2} = M \left(\frac{L}{T}\right)^2
+\]
+
+We notice this has the same dimensions as $mv^2$ which therefore gives us dimensions of energy.
+
+Say a force now displaces the object along a (not necessarily straight, so not necessarily constant $\vv{F}$) path from point $(1)$ to point $(2)$. The work done by this motion is given by the integral:
+\[
+    W = \int_{(1)}^{(2)} \vv{F} \cdot ds
+\]
+
+\subsection{Example}
+We again have some force with magnitude $F$, producing an infinitesimal displacement $d \vv{s}$. Say the two are in the same direction as each other:
+\[
+    dW = \vv{F} \cdot d \vv{s} = Fds 
+\]
+
+And if they are orthogonal:
+\[
+    dW = \vv{F} \cdot d \vv{s}
+\]
+\[
+    = F ds \cos \frac{\pi}{2}
+\]
+
+And has $\cos \pi / 2 = 0$, the the force does no work in this case (cannot cause the displacement).
+
+Finally, if the force and the displacement are in opposite directions to each other:
+\[
+    dW = \vv{F} \cdot d \vv{s} = F ds \cos \pi = -F ds
+\]
+
+So signs are important to uphold conservation of energy.
+
+\subsection{Example II}
+You, at point (1) want to travel to your friend along a beach at point (2) immediately below you. There is some frictional force opposing your motion ($F_\text{0}$).
+
+What is the work against friction to go from (1) to (2), assuming you walk in a straight line.
+
+\[
+    W = \int_{(1)}^{(2)} \vv{F} \cdot d \vv{s}
+\]
+\[
+    = - F_0 \int_{(1)}^{(2)}  \, ds
+\]
+ \[
+     -F_0 ((2) - (1)) = -F_0 L
+ \]
+ 
+Say you are a little drunk. You take the path (walking three sides of a square instead of a straight line downwards):
+\begin{itemize}
+    \item $l$m at an angle of $90^\circ$ from the correct direction to your friend.
+    \item You realise you've gone wrong, and walk $L$m downwards.
+    \item You walk back $l$m at angle $90^\circ$ to finally meet them.
+\end{itemize}
+
+This gives us:
+\[
+    W = -F_0 l + -F_0 L - F_0 l = -F_0(2l + L)
+\]
+
+So we need to have our force and our path well defined along the whole route to be able to accurately determine work, as different paths will yield different works.
