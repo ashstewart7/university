@@ -1,2 +1,145 @@
 % !TeX root = main.tex
 \lecture{13}{Tue 11 Nov 2025 12:00}{}
+
+\section{Conservative Forces}
+For a conservative force:
+\[
+    W_{(1) \to (2)} \; \text{ is independent of the path taken between the points}
+\]
+
+Equivalently, the work on a closed loop:
+\[
+    W_{(1) \to (1)} = \oint \vv{F} \cdot d \vv{s} = 0
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{figures/lec13_01.png}
+     \caption{A closed loop.}
+\end{figure}
+
+We can also (for any force, not just conservative forces) express the work done as a change in kinetic energy between the two points:
+\[
+    W_{(1) \to (2)} = E_{k(2)} - E_{k(1)}
+\]
+
+For conservative forces, we can define the (scalar) potential energy, a quantity depending solely on position. Notation differs, we will use $U$, but $\Phi$ is also common.
+
+This is defined such that the \textbf{force is the negative gradient of the potential} and has units of energy:
+\[
+    \boxed{\vv{F} = - \nabla U}
+\]
+
+\section{Local Gravitational Potential}
+Consider a particle falling from $z_1$ to $z_2$ (where $z_1 > z_1$). The particle is affected only by the gravitational force $\vv{F} = mg \hat{e}_z$.
+
+We have shown that:
+\[
+    W_{(1) \to (2)} = -mg (z_2 - z_1)
+\]
+\[
+    = mgz_1 - mgz_2
+\]
+
+Since this is computed as the difference between two points (the work done to bring a particle to each point) it follows that potential energy is:
+\[
+    U(z) = mgz + \text{const.}
+\]
+
+Where the constant depends on what height we consider to be $z = 0$. We formally define work done (for conservative forces) as the negative difference in potential energy at those two points. Therefore:
+\[
+    W_{(1) \to (2)} = -mg (z_2 - z_1) = mgz_1 - mgz_2 = \boxed{- \ (U_2 - U_1)}
+\]
+
+\subsection{Connecting Potential and Force}
+As this is a 1D problem where force, displacement are both in the downwards z direction:
+
+\[
+    dW = \vv{F} \cdot d \vv{z} = Fdz = -d U
+\]
+So:
+\[
+    F = -\frac{dU}{dz}
+\]
+\[
+    \vv{F} = - \frac{dU}{dz} \hat{e}_z
+\]
+
+Recall we have a potential given by:
+\[
+    U(z) = mgz + \xi
+\]
+
+Where $\xi$ (``xi'') is our constant. So:
+\[
+    \vv{F} = - \frac{d}{dz} \left(U(z)\right) \hat{e}_z
+\]
+\[
+    = - \frac{d}{dz} \left(mgz + \xi\right) \hat{e}_z
+\]
+\[
+    = -mg \hat{e}_z
+\]
+
+So the constant becomes irrelevant and disappears once we move into force or work.
+
+\section{Generalising}
+\subsection{Multiple Dimensions}
+
+We have $\vv{F} = - \nabla U$. In Cartesian $\R^3$ space, this is given by the operator:
+\[
+    \nabla \equiv \frac{\partial}{\partial x} \hat{e}_x+ \frac{\partial}{\partial y} \hat{e}_y+ \frac{\partial}{\partial z} \hat{e}_z
+\]
+
+I.e. applying to some function $f$:
+\[
+    \nabla f = \frac{\partial f}{\partial x} \hat{e}_x+ \frac{\partial f}{\partial y} \hat{e}_y+ \frac{\partial f}{\partial z} \hat{e}_z
+\]
+
+For our falling particle example, gravity acts purely downwards, so $U(x), U(y)$ are zero, and their derivatives are zero.
+
+\subsection{Conservation of Energy}
+
+As a reminder, we again have:
+\[
+    W_{(1) \to (2)} = E_{k2} - E_{k1} = - (U_2 - U_1)
+\]
+
+We can rearrange to get:
+\[
+    E_{k2} + U_2 = E_{k1} + U_1 = \text{constant!}
+\]
+
+We have just discovered conservation of energy. For a conservative force, the sum of kinetic and potential energy in an isolated system is constant.
+
+\subsection{Multiple Forces}
+Say we have $N$ forces, all of which are conservative, given by:
+\[
+    \vv{F} = \vv{F}_1 + \vv{F}_2 + \cdots + \vv{F}_N
+\]
+
+Work between two points $a$ and $b$ is given by:
+\[
+    W_{a \to b} = \int_{a}^{b} \vv{F} \, d \vv{s} = \int_{a}^{b} \sum_k \vv{F}_k \, d \vv{s}
+\]
+
+What if we have a force which has two components, one conservative and one not?
+\[
+    F = \vv{F}_\text{conservative} + \vv{F}_\text{non-conservative} = \vv{F}_c + \vv{F}_n
+\]
+
+\[
+    W_{a \to b} = W^\text{conservative}_{a \to b} + W^\text{non-conservative}_{a \to b}
+\]
+
+We have an expression in terms of potential energy for the work done conservatively, and we know that work done is a change in kinetic energy, therefore:
+\[
+    -U_b + U_a +  W^\text{non-conservative}_{a \to b} = K_{k_b} - E_{k_a}
+\]
+
+We can rearrange to get:
+\[
+    \boxed{E_{k_a} + U_a + W^\text{non-conservative}_{a \to b} = K_{k_b} + U_2}
+\]
+
+This makes sense, as doing work (or having work done) adds or removes work from the system. This therefore isn't an isolated system, so we get the previous conservation of energy equation plus any energy introduced from outside the system into it, or extracted from the system.

@@ -1,2 +1,139 @@
 % !TeX root = main.tex
-\lecture{12}{Thu 06 Nov 2025 15:00}{}
+\lecture{12}{Thu 06 Nov 2025 15:00}{Work Done II}
+\section{Work Done by Gravity}
+Consider a falling object with no forces other than gravity. The object falls down the vertical axis from $z_1$ to $z_2$ so $z_2 < z_1$.
+
+\[
+    \vv{F} = -mg \hat{e}_z
+\]
+\[
+    d\vv{s} = d \vv{z} = \hat{e}_z dz
+\]
+
+Hence work over an infinitesimal change in height is:
+\[
+    dW = \vv{F} \cdot d\vv{s}
+\]
+\[
+    dW = -mg \hat{e}_z \cdot \hat{e}_z dz
+\]
+\[
+    dW = -mg dz
+\]
+
+And across the whole fall between the two points:
+\[
+    W = \int_{z_1}^{z_2} -mg dz
+\]
+
+\[
+    - mg \int_{z_1}^{z_2}  \, dz = -mg \left[z\right]_{z_1}^{z_2} = -mg (z_2 - z_1)
+\]
+
+If we let the change of height be the magnitude $h = |z_2 - z_1|$. Since $z_2 - z_1 < 0$ (falling), this term is equal to $-h$. This gives:
+\[
+    W = -mg(-h)
+\]
+\[
+    W = mgh
+\]
+
+So if work is being done by gravity (the object is going down and $z_2 < z_1$), work is positive. In the opposite case (i.e. an object being raised up), work is being done against gravity and $W < 0$.
+
+\section{Work and Kinetic Energy}
+Let's revisit the general formula:
+\[
+    dW = \vv{F} \cdot d \vv{s}
+\]
+\[
+    m \vv{a} \cdot d \vv{s}
+\]
+\[
+    = m \frac{d \vv{v}}{dt} \cdot d \vv{s}
+\]
+
+
+For a small change in time, we can write $d \vv{s} = \vv{v} dt$, hence:
+
+\[
+    = m \frac{d \vv{v}}{dt} \cdot \vv{v} dt
+\]
+
+Let's consider this:
+\[
+    \vv{v} \cdot \vv{v} = v^2
+\]
+\[
+    \frac{d}{dt} \left( \vv{v} \cdot \vv{v} \right) = \frac{d}{dt} \cdot \vv{v} + \vv{v} \cdot \frac{d \vv{v}}{dt}
+\]
+\[
+ = 2 \frac{d \vv{v}}{dt} \cdot v
+\]
+
+Hence:
+\[
+     2\frac{d \vv{v}}{dt} \cdot v = \frac{d}{dt} \left( \vv{v} \cdot \vv{v} \right) = \frac{d}{dt} v^2
+\]
+
+So:
+\[
+    dW = \frac{m}{2} \frac{d}{dt} \left(v^2\right) dt
+\]
+
+And since mass is constant:
+\[
+    dW = \frac{d}{dt} \left(\frac{m}{2} v^2\right) dt
+\]
+\[
+    = d(\frac{1}{2}mv^2) = dE_k
+\]
+
+Hence work done is equal to the change in kinetic energy. This explains why work can be both positive or negative, depending on the resultant change in kinetic energy.
+
+\section{Work Done on a Curved Path}
+Consider a frictionless skateboard ramp, made of a quarter circle with radius $R$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec12_01.png}
+     \caption{}
+\end{figure}
+
+A person of mass $m$ rolls down the ramp from point (1) at the top to point (2) at the bottom. The only force on the object is due to gravity.
+
+We will again work out the work done over an infinitesimal displacement and integrate to get the full work done over the path.
+
+We consider some infinitesimal $d \vv{s}$. Instead of talking about a Cartesian $d \vv{x}$ and $d \vv{z}$, we'll think about it in terms of arc lengths. Consider the angle $\theta$ made between the upper horizontal and the radius connecting to the person. At point (1), $\theta = 0$, and at (2) $\theta = \pi / 2$.
+
+As the person moves an infinitesimal distance, there is an infinitesimal change in angle, $d \theta$ such that the change in displacement is $ds = R d \theta$ and therefore $d\vv{s} = R d \theta \hat{e}_\theta$.
+
+To determine work we need to find the component of gravity acting in the direction of motion. We can disregard the component of gravity acting perpendicular to the direction of motion as this does not contribute to work done. The component of gravity along $\hat{e}_\theta$ is $\vv{F} \cos \theta$.
+
+At the top of the ramp, $\cos \theta = 1$ (and $\hat{e}_\theta$ acts straight downwards) so gravity acts entirely in the direction of motion, while at the bottom of the ramp as $\cos \theta = 1$ there is no component of gravity acting along $\hat{e}_\theta$.
+
+ 
+Hence:
+\[
+    dW = \vv{F} \cdot \hat{e}_\theta R d \theta
+\]
+\[
+    dW = mg \cos \theta R d \theta
+\]
+
+\[
+    W = \int_{0}^{\pi / 2} mg \cos \theta R \, d \theta
+\]
+\[
+    = mgR \int_{0}^{\pi / 2} \cos \theta \, d\theta
+\]
+\[
+    W = mgR
+\]
+
+Note that this is the same as if the object had simply fallen from point (1) immediately down, without following the curved path.
+
+\section{Conservative Forces}
+There is a ``special class of forces'', including gravity such that the work does not depend on the path taken. It depends only on the start and end position.
+
+Formally, the work along a closed loop is zero, so going from some point A to some point B back to A is zero, regardless of path.
+
+We can define a quantity for conservative forces that depends purely on position, called ``potential energy'', denoted $u(x)$.
