@@ -1,2 +1,125 @@
 % !TeX root = main.tex
-\lecture{15}{Tue 18 Nov 2025 12:00}{}
+\lecture{15}{Tue 18 Nov 2025 12:00}{Conservation of Linear Momentum}
+\section{Curved Path Exercise Last Lecture}
+Last lecture, we had a setup like this:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec14-01.png}
+     \caption{}
+\end{figure}
+
+An issue arose then in how we treat the mass over the curved section. We assume today that the mass travels from $C \to B$ and we've already solved the part from $A \to B$.
+
+At the base of the ramp, the object has some velocity $v_0$. Previously, we neglected centripetal force.
+
+Since we neglected centripetal acceleration, last lecture we got to a solution which is only valid if we consider the particle to be in static equilibrium with no centripetal acceleration at every single point, i.e when $v$ is infinitesimal. However, a reasonable velocity is required for the object to get up the ramp, so we have a physically inconsistent solution. 
+
+We have a centripetal force in the same direction as the normal force:
+\[
+    F_c = N - mg \cos \theta = m r \omega^2 = mr \dot{ \theta}^2
+\]
+
+This is going to change as the object climbs, as the relative magnitude of relevant forces changes.
+
+In the tangential direction, we have two forces, and a tangential acceleration given by circular motion as $mr \ddot{\theta}$:
+\[
+    -(mg \sin \theta + F_\text{fric}) = m | a |
+\]
+\[
+      -(mg \sin \theta + F_\text{fric}) = mr\ddot{\theta}
+\]
+
+And using $F_\text{fric} = \mu N$ and $N = mr \dot \theta^2 + mg \cos \theta$:
+\[
+    -(mg \sin \theta + \mu (m r \dot \theta^2 + mg \cos \theta)) = mr \ddot \theta
+\]
+We haven't yet done the integration technique to actually solve this, but this is the correct form at least of the equation now we aren't neglecting centripetal acceleration!
+
+\section{Conservation of Linear Momentum}
+If there is no external force acting on a system in equilibrium:
+\[
+    \vv{F} = 0 \implies \frac{d \vv{\phi}}{dt} = 0 \implies \phi = \text{const.}
+\]
+
+So linear momentum does not change for a system in equilibrium unless a force is externally supplied. Linear momentum, like energy, must be conserved.
+
+\subsection{Collisions}
+For this section, we assume $u \ll c$ and special relativity can be disregarded. We consider two \emph{main} types of ideal collision although a collision in real life is not ideal, so can be in-between.
+\begin{itemize}
+    \item Totally inelastic collisions.
+    \begin{enumerate}
+        \item The two bodies stick together after the collision and behave together as one.
+        \item Linear momentum is conserved.
+        \item Kinetic energy \emph{of the two bodies} is not conserved, as some is lost to friction/sound/etc.
+    \end{enumerate}
+    
+    \item Totally elastic collisions.
+    \begin{enumerate}
+        \item The two objects perfectly rebound off each other with no loss of energy (in real life some energy is dissipated, but this is an ideal)
+        \item Linear momentum is conserved.
+        \item Kinetic energy of the two bodies is conserved.
+    \end{enumerate}
+\end{itemize}
+
+For simplicity, we consider motion in 1D, with two masses $m_1$ and $m_2$. Before the hit, they have velocities $u_1$ and $u_2$. After the collision, they have velocities $v_1$ and $v_2$.
+
+We assume the collision is totally inelastic. Both particles are travelling in the same direction, but $m_1$ (on the left) is travelling faster than $m_2$ on the right, so catches up and collides from behind. 
+
+After the collision, they travel together with mass $m = m_1 + m_2$ and velocity $v = v_1 = v_2$.
+
+The linear momentum in the system before is:
+\[
+    m_1 u_1 + m_2 u_2
+\]
+
+And after:
+\[
+    (m_1 + m_2)v
+\]
+
+So conserving:
+\[
+    m_1 u_1 + m_2 u_2 = (m_1 + m_2)v
+\]
+\[
+    \implies v = \frac{m_1 u_1 + m_2 u_2}{m_1 + m_2}
+\]
+
+
+We now assume that the collision is totally elastic, so we can conserve kinetic energy and we can conserve linear momentum.
+
+\[
+    m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2
+\]
+\[
+    \frac{1}{2}m_1 u_1^2 + \frac{1}{2} m_2 u_2^2 = \frac{1}{2}m_1 v_1^2 + \frac{1}{2}m_2 v_2^2
+\]
+\[
+    \implies m_1 u_1^2 + m_2 u_2^2 = m_1 v_1^2 + m_2 v_2^2
+\]
+
+Therefore:
+\[
+    m_1 (u_1^2 - v_1^2) = m_2(v_2^2 - u_2^2)
+\]
+\[
+    m_1 (u_1 + v_1)(u_1 - v_1) = m_2(v_2 - u_2)(v_2 + u_2) \tag{1}
+\]
+
+And as the masses don't change, conservation of momentum gives us that the sum of the velocities must be the same before and after. Rearranging the momentum equation:
+\[
+    m_1(u_1 - v_1) = m_2(v_2 - u_2) \tag{2}
+\]
+
+Dividing equation (1) by equation (2):
+\[
+    \frac{m_1 (u_1 + v_1)(u_1 - v_1)}{m_1(u_1 - v_1)} = \frac{m_2(v_2 - u_2)(v_2 + u_2)}{m_2(v_2 - u_2)}
+\]
+\[
+    u_1 + v_1 = v_2 + u_2
+\]
+
+And the standard result:
+\[
+    v_2 - v_1 = -\ (u_1 - u_2)
+\]
