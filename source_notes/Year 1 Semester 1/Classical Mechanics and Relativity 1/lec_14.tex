@@ -2,7 +2,7 @@
 \lecture{14}{Thu 13 Nov 2025 15:00}{Conservation of Energy}
 
 \section{Work Done Example I}
-We have a straight portion of track with length $D$ which becomes a quarter circle ramp with radius $R$. We kick a box of ramp $m$, providing initial horizontal velocity $v_0$.
+We have a straight portion of track with length $D$ which becomes a quarter circle ramp with radius $R$. We kick a box of mass $m$, providing initial horizontal velocity $v_0$.
 
 \begin{figure}[H]
     \centering
@@ -46,3 +46,114 @@ Breaking up the integral into the horizontal section and the ramp:
 \[
     W_{A \to B} = \int_{A}^{C} \vv{F}_f \cdot d\vv{s} + \int_{C}^{B} \vv{F}_f \cdot d\vv{s}
 \]
+\[
+    = - \mu N \int_{(A)}^{(C)} \hat{e}_s \cdot d\vv{s} +  \int_{C}^{B} \vv{F}_f \cdot d\vv{s}
+\]
+\[
+    = - \mu N D +  \int_{C}^{B} \vv{F}_f \cdot d\vv{s}
+\]
+
+Where (as no other forces are acting horizontally), $N = mg$:
+
+\[
+    = -\mu mg D +  \int_{C}^{B} \vv{F}_f \cdot d\vv{s}
+\]
+
+The weight force acting down has two components, we care about the projection of the weight force along the direction of motion, $mg \cos \theta$. Where $\theta$ is the angle that joins the vertical and a radius to the box's position, going from $0$ at (C) to $90^\circ = \pi / 2$ at (B).
+
+
+\[
+    = - \mu mg D + (- \mu mg) \int_{(C)}^{(B)} \cos \theta d\vv{s}
+\]
+\[
+    = - \mu mg D - \mu mg \int_{(C)}^{(B)} \cos \theta R d \theta
+\]
+\[
+    = - \mu mg D - \mu mg R \int_{0}^{\pi / 2} \cos \theta d \theta
+\]
+\[
+    = - \mu mg D - \mu mg R \left[\sin \theta\right]_0^{\pi / 2}
+\]
+\[
+    = - \mu mg D - \mu mg R
+\]
+\[
+    = - \mu mg \left(D + R\right)
+\]
+
+Note three things:
+\begin{itemize}
+    \item The work done is negative, as it is work done against the motion by friction.
+    \item We assume that we move infinitesimally slowly, therefore we disregard centripetal force. Yes this is slightly (very) contradictory to the premise of the problem, as high velocity is required to climb but it's an approximation.
+    \item This is exactly the same as if the object simply carried along a straight stretch of road of length $R$ after the horizontal stretch - the fact the ramp is a curve changes nothing.
+\end{itemize}
+
+Putting it all together, we therefore finally have:
+\[
+    E_A + W_{A \to B} = E_B
+\]
+\[
+    E_A  - \mu mg \left(D + R\right) = E_B
+\]
+\[
+    \frac{1}{2}mv_0^2 - \mu mg \left(D + R\right) = mgR
+\]
+
+As the object starts at our $U = 0$ baseline so has no potential energy, and we provide perfectly enough initial velocity such that the object reaches (B) with zero kinetic energy.
+
+\section{Hooke's Law}
+Consider a 1D x-axis. We are given that there is a force characterised by the potential:
+\[
+    U(x) = \frac{1}{2}k x^2 \qquad \text{where $k$ is a constant.}
+\]
+
+As this is a one dimensional problem:
+\[
+    \vv{F} = - \frac{dU}{dx} \hat{e}_x
+\]
+\[
+    = - \frac{d}{dx} \frac{1}{2}k x^2 \hat{e}_x
+\]
+\[
+    = - \frac{1}{2} k (2x) \hat{e}_x
+\]
+\[
+    = - kx \hat{e}_x
+\]
+
+So:
+\[
+    \vv{F} = -k \vv{x}
+\]
+
+We have encountered this before at A-Level, it's the restoring force of a spring.
+
+The spring is characterised by some spring constant $k$, and we assume that the spring is ideal and massless. The position $x = 0$ is the relaxed (unstretched and uncompressed) portion of the spring. The restoring force acts back towards the $x = 0$ equilibrium point.
+
+$\vv{F} = -k \vv{x}$ is known as ``Hooke's Law''. We will see applications of it later.
+
+\section{Linear Momentum}
+We now pivot from Conservation of Energy to Conservation of Linear Momentum. 
+
+If we have particle with mass $m$ and velocity $v$, we define linear momentum as:
+\[
+    \vv{\phi} = m \vv{v}
+\]
+
+We can therefore use $\vv{F} = m \vv{a}$ to rewrite force as:
+\[
+    \vv{F} = \frac{d \vv{\phi}}{dt}
+\]
+
+We also define ``impulse'' as the change of linear momentum over a time:
+\[
+    \vv{\jmath} = \int_{t_1}^{t_2} \vv{F} \, dt
+\]
+\[
+    = \int_{t_1}^{t_2} \frac{d \vv{\phi}}{dt} \, dt
+\]
+\[
+    = \phi \bigr\rvert_{t_2} - \phi \bigr\rvert_{t_1}
+\]
+
+
