@@ -9,9 +9,11 @@ Some modules (i.e. Quantum Mechanics and Optics and Waves in Y1S1) are grouped i
 
 ### Year 1 Semester 1 ([Combined Notes](<compiled_notes/Year 1 Semester 1/Year_1_Semester_1_Combined.pdf>)): Sept 2025 - Dec 2025
 - LC [Quantum Mechanics](<compiled_notes/Year 1 Semester 1/LC_Quantum_Mechanics_1.pdf>) and [Optics and Waves](<compiled_notes/Year 1 Semester 1/LC_Optics_and_Waves.pdf>)
-- [LC Mathematics for Physicists 1A](<compiled_notes/Year 1 Semester 1/LC_Mathematics_for_Physicists_1A.pdf>)
 - [LC Classical Mechanics and Relativity 1](<compiled_notes/Year 1 Semester 1/LC_Classical_Mechanics_and_Relativity_1.pdf>)
 - [LC Introduction to Probability and Statistics](<compiled_notes/Year 1 Semester 1/LC_Introduction_to_Probability_and_Statistics.pdf>)
+
+Maths 1A not included due to the quality of provided lecture notes making my own irrelevant.
+
 ### Year 1 Semester 2 ([Combined Notes](<compiled_notes/Year 1 Semester 2/Year_1_Semester_2_Combined.pdf>)): Jan 2026 - March 2026
 - LC [Electromagnetism](<compiled_notes/Year 1 Semester 2/LC_Electromagnetism.pdf>) and [Temperature and Matter](<compiled_notes/Year 1 Semester 2/LC_Temperature_and_Matter.pdf>)
 - [LC Mathematics for Physicists 1B](<compiled_notes/Year 1 Semester 2/LC_Mathematics_for_Physicists_1B.pdf>)
