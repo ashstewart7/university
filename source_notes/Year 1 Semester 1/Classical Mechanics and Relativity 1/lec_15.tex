@@ -85,6 +85,25 @@ So conserving:
     \implies v = \frac{m_1 u_1 + m_2 u_2}{m_1 + m_2}
 \]
 
+Lets assume a situation (i.e. bowling ball hitting a marble) where $m_1 \gg m_2$. The ball has some velocity $u_1$, and the marble is stationary $u_2 = 0$.
+
+Therefore:
+\[
+    v = \frac{m_1 u_1}{m_1 + m_2}
+\]
+\[
+    = \frac{m_1}{m_1 + m_2} u_1
+\]
+\[
+    = \frac{1}{1 + \frac{m_2}{m_1}}
+\]
+
+
+Since $m_1$ is much larger than $m_2$, we can express this as:
+\[
+    \approx \left(1 - \frac{m_2}{m_1}\right) u_1
+\]
+
 
 We now assume that the collision is totally elastic, so we can conserve kinetic energy and we can conserve linear momentum.
 
@@ -123,3 +142,19 @@ And the standard result:
 \[
     v_2 - v_1 = -\ (u_1 - u_2)
 \]
+
+\section{Multiple Particles}
+With many particles, we can say:
+\[
+    \sum_{k=1}^{N} \vv{p}_k^\text{(before)} = \sum_{k=1}^{N} \vv{p}_k^\text{(after)}
+\]
+
+And if the collision is totally elastic (so energy can be conserved):
+\[
+    \sum_k E_k^\text{(before)} = \sum_{k} E_k^\text{(after)}
+\]
+
+\[
+    E = \frac{1}{2}mv^2 = \frac{1}{2} \frac{m^2v^2}{m} = \frac{1}{2m} p^2
+\]
+
