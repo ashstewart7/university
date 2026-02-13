@@ -1,0 +1,146 @@
+% !TeX root = main.tex
+\lecture{2}{Thu 22 Jan 2026 09:00}{Partial Differentiation II}
+
+\section{The Total Differential}
+In order to generalise the chain rule, we need to define the total differential. Consider the change in a function of two variables, $f(x, y)$ when we move from some point $(x, y)$ to some point $(x + dx, y+dy)$.
+
+The partial derivative only tells us what happens when we change one variable, but we're changing two here. The total differential sums these two in order to get the full total change.
+\[
+    df = f(x + dx, y+dy) - f(x, y)
+\]
+
+We have to look at the change in a single variable at a time, so we split it into two pieces where only $x$ changes in the first, and only $y$ changes in the second.
+\[
+    df = \underbrace{\left[ f(x + dx, y + dy) - f(x, y + dy) \right]}_{\text{isolates change in } x} + \underbrace{\left[ f(x, y + dy) - f(x, y) \right]}_{\text{isolates change in } y}
+\]
+\[
+    df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy
+\]
+
+More generally for a function of $f(x_1, x_1, \ldots, x_n)$:
+\[
+    df = \frac{\partial f}{x_1} dx_1 + \frac{\partial f}{x_2} dx_2 + \cdots + \frac{\partial f}{x_n} dx_n = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} dx_i
+\]
+
+The total change in the function  $f(x_1, x_1, \ldots, x_n)$ is the sum of partial changes due to changing a single variable.
+
+\section{The Chain Rule}
+Recall that if $y = y(x)$, $x = x(t)$, then:
+\[
+    dy = \frac{dy}{dx} dx = \frac{dy}{dx} \frac{dx}{dt} dt \implies \frac{dy}{dt} = \frac{dy}{dx} \frac{dx}{dt}
+\]
+
+Now, if $f = f(x, y)$ and $x = x(t)$, $y = y(t)$, we can adjust the chain rule to say:
+\[
+    df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy
+\]
+\[
+    = \frac{\partial f}{\partial x} \frac{dx}{dt} dt + \frac{\partial f}{\partial y} \frac{dy}{dt} dt
+\]
+\[
+    \implies \frac{df}{dt} = \frac{\partial f}{\partial x} \frac{dx}{dt} + \frac{\partial f}{\partial y} \frac{dy}{dt}
+\]
+
+\textbf{Example}
+
+\[
+    f(x, y) = x^2 + y^2, \qquad x(t) = t^2, \qquad y(t) = t^3
+\]
+Hence:
+\[
+    f(t) = t^4 + t^5 \implies \frac{df}{dt} = 4t^3 + 6t^5
+\]
+
+By rewriting in terms of one variable:
+\[
+    \frac{\partial f}{\partial x} = 2x = 2t^2 \qquad \frac{\partial f}{\partial y} = 2y = 2t^3
+\]
+\[
+    \frac{dx}{dt} = 2t \qquad \frac{dy}{dt} = 3t^2
+\]
+
+And instead using the new chain rule:
+\[
+    \frac{\partial f}{\partial x} \frac{dx}{dt} + \frac{\partial f}{\partial y} \frac{dy}{dt}
+\]
+\[
+    = (2t^2 + 2t) + (2t^3)(3t^2)
+\]
+\[
+    = 4t^3 + 6t^5
+\]
+
+Hence the new chain rule works!
+
+\subsection{Polar Coordinates}
+Suppose our $x$ and $y$ are now functions of two different variables themselves, so:
+\[
+    f = f(x, y) \qquad x = x(r, \theta) \qquad y = y(r, \theta)
+\]
+
+From $r, \theta$ we want to calculate $x, y$ and then from $x, y$ we want to calculate $f$.
+
+\[
+    df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy
+\]
+\[
+    dx = \frac{\partial x}{\partial r} dr + \frac{\partial x}{\partial \theta} d \theta
+\]
+\[
+    dy = \frac{\partial y}{\partial r} dr + \frac{\partial y}{\partial \theta} d \theta
+\]
+
+Hence:
+\[
+df = \frac{\partial f}{\partial x} \left( \frac{\partial x}{\partial r} \, dr + \frac{\partial x}{\partial \theta} \, d\theta \right)
+   + \frac{\partial f}{\partial y} \left( \frac{\partial y}{\partial r} \, dr + \frac{\partial y}{\partial \theta} \, d\theta \right)
+\]
+
+\[
+df = \left( \frac{\partial f}{\partial x} \frac{\partial x}{\partial r} + \frac{\partial f}{\partial y} \frac{\partial y}{\partial r} \right) dr
+   + \left( \frac{\partial f}{\partial x} \frac{\partial x}{\partial \theta} + \frac{\partial f}{\partial y} \frac{\partial y}{\partial \theta} \right) d\theta
+\]
+
+We also know (if we substitute $x$, $y$ into the original function to get a function of $r, \theta$):
+\[
+    df = \frac{\partial f}{\partial r} dr + \frac{\partial f}{\partial \theta} d \theta
+\]
+
+We can read off the final partial derivatives:
+\[
+    \frac{\partial f}{\partial r} = \frac{\partial f}{\partial x} \frac{\partial x}{\partial r} + \frac{\partial x}{\partial r}, \qquad \frac{\partial f}{\partial \theta} = \frac{\partial f}{\partial x} \frac{\partial x}{\partial \theta} + \frac{\partial f}{\partial y} \frac{\partial y}{\partial \theta}
+\]
+As expected!
+
+\subsection{Generalising}
+Suppose we have two functions which map $\R^m \to \R^p$, and $\R^p \to \R^n$, respectively:
+\[
+    (x_1, x_2, \ldots, x_m) \to (y_1, y_2, \ldots, y_p) \to (z_1, z_2, \ldots, z_n)
+\]
+
+Then we have:
+\[
+    d z_i = \sum_{k = 1}^{p} \frac{\partial z_i}{\partial y_k} dy_k
+\]
+\[
+    dy_k = \sum_{l=1}^{m} \frac{\partial y_k}{\partial x_l} dx_l
+\]
+
+And substituting:
+\[
+    d z_i = \sum_{k=1}^{p} \sum_{l=1}^{m} \frac{\partial z_i}{\partial y_k} \frac{\partial y_k}{\partial x_l} dx_l
+\]
+
+And (as the two sums are independent), we can pull out the inner sum:
+\[
+    = \sum_{l=1}^{m} \left[\sum_{k=1}^{p} \frac{\partial z_i}{\partial y_k} \frac{\partial y_k}{\partial x_l}\right] dx_l
+\]
+\[
+    = \sum_{l=1}^{m} \frac{\partial z_i}{\partial x_l} dx_l
+\]
+
+The partial derivatives $\partial z_i / \partial x_j$ are therefore given by:
+\[
+    \frac{\partial z_i}{\partial x_j} = \sum_{k=1}^{p} \frac{\partial z_i}{\partial y_k} \frac{\partial y_k}{\partial x_j}
+\]
+

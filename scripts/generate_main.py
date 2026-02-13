@@ -18,6 +18,7 @@ def build():
         r'\documentclass[a4paper, oneside]{book}',
         r'\input{../preamble.tex}',
         r'\title{Lecture Notes}',
+        r'\author{Ash Stewart}',
         r'\begin{document}',
         rf'   \renewcommand{{\semester}}{{{root.name}}}',
         r'    \maketitle',

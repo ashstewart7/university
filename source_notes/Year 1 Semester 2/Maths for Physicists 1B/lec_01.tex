@@ -1,176 +1,109 @@
 % !TeX root = main.tex
-\lecture{12}{Fri 13 Feb 2026 12:00}{End of Partial Differentiation \& Start of ODEs}
+\lecture{1}{Wed 21 Jan 2026 11:00}{Course Welcome and Introduction to Partial Differentiation}
 
-Recap of lecture 11:
-
+\section{Course Welcome}
+\subsection{Recommended books:}
 \begin{itemize}
-    \item The tangent plane to a surface $f(x, y, z) = 0$ at $(x_0, y_0, z_0)$ is given by:
-    
-    \[
-        \left(\frac{\partial f}{\partial x}\right)_0 (x - x_0) + \left(\frac{\partial f}{\partial y}\right)_0 (y - y_0) + \left(\frac{\partial f}{\partial z}\right)_0 (z - z_0) = 0  
-    \]
-
-    Such that $\underline{\nabla}f(x_0, y_0, z_0)$ is the normal vector to the plane
-
-    \item The parametric representation of a curve $\underline{r}(t)$ has:
-    \begin{itemize}
-        \item Unit tangent: $\underline{\hat{T}} = \frac{d \underline{r}}{dt} / \left|\frac{d \underline{r}}{dt}\right|$
-        \item Arc length $s(t)$: $\frac{ds}{dt} = \left|\frac{d \underline{r}}{dt}\right| \to \hat{\underline{T}} = \frac{d \underline{r}}{ds}$.
-        \item Unit normal and curvature:
-    \end{itemize}
+    \item Mathematical Techniques 4e, Jordan \& Smith
+    \item Engineering Mathematics 8e, Stroud
+    \item Calculus (Schaum), 6e, Ayres \& Mendelson
+    \item Advanced Calculus (Schaum), 6e, Ayres \& Mendelson
 \end{itemize}
 
-\section{Orthonormal Triads}
-We can create an \emph{orthonormal triad} by introducing a new normal vector called the unit binormal, $\hat{\underline{B}} = \hat{\underline{T}} \times \hat{\underline{N}}$.
+\subsection{Assessment details:}
+\begin{itemize}
+    \item Maths 1A/1B form a single 20 credit module.
+    \item 80\% assessed by a 3 hour exam - Section 1 is 36\% with 6 short questions and Section 2 is 64\% with 4 long questions.
+    \item 20\% assessed by problem sheets.
+\end{itemize}
 
-Since $\hat{\underline{N}} \times \hat{\underline{N}}$, differentiating wrt $s$ gives:
-\[
-    \hat{\underline{N}} \cdot \frac{d\hat{\underline{N}}}{ds} = 0
-\]
+\subsection{Course structure:}
+\begin{enumerate}
+    \item Partial Differentiation
+    \begin{itemize}
+        \item Definition, total differential, chain rule, gradient.
+        \item Taylor series, stationary points, Lagrange multipliers.
+    \end{itemize}
+    \item Differential Equations
+    \begin{itemize}
+        \item Definition, 1st order separable, exact and homogenous.
+        \item Linear equations: general solution, 1st order and constant coefficients.
+    \end{itemize}
+    \item Integration
+    \begin{itemize}
+        \item Definition as area under the curve, fundamental theorem of calculus.
+        \item Integration by: substitution, parts, partial fractions and tricks.
+    \end{itemize}
+    \item Multiple Integrals
+    \begin{itemize}
+        \item Multiple and repeated integrals. Change of order of integration.
+        \item Change of variables and the Jacobian. Arc length. Solids of revolution.
+    \end{itemize}
+\end{enumerate}
 
-TODO
+\section{Multivariate Functions}
+Lots of physics involves functions of more than one variable. A physical quantity defined at every point in space is called a field. We can have both scalar fields and vector fields.
 
-We have:
-\[
-    \frac{d \hat{\underline{T}}}{ds} = \kappa \hat{\underline{N}}
-\]
-\[
-    \frac{d \hat{\underline{N}}}{ds} = - \kappa \hat{\underline{T}} + \tau \hat{\underline{B}}
-\]
+For example, some scalar fields are:
+\begin{itemize}
+    \item $V(x, y, z)$: Electrostatic potential. This is often easier to work with compared to the full electric (vector) field.
+    \item $T(x, y, z)$: Temperature.
+    \item $p(x, y, z)$: Pressure.
+\end{itemize}
 
-Hence:
-\[
-    \frac{d \hat{\underline{B}}}{ds} = \frac{d}{ds} \left(\hat{\underline{T} \times \hat{\underline{N}}}\right)
-\]
-\[
-    = \frac{d \hat{\underline{T}}}{ds} \times \hat{\underline{N}} + \hat{\underline{T}} \times \frac{d \hat{\underline{N}}}{ds}
-\]
-\[
-    = \kappa \hat{\underline{N}} \times \hat{\underline{N}} + \hat{\underline{T}} \times \left(- \kappa \hat{\underline{T}} + \tau \hat{\underline{B}}\right)
-\]
-\[
-    = \tau \hat{\underline{T}} \times \hat{\underline{B}} = \tau \hat{\underline{T}} \times \left(\hat{\underline{T}} \times \hat{\underline{N}}\right)
-\]
-\[
-    = \tau\left[\left(\hat{\underline{T}} \cdot \hat{\underline{N}}\right) \hat{\underline{T}} - \left(\hat{\underline{T}} \cdot \hat{\underline{T}}\right) \hat{\underline{N}}\right]
-\]
+While some vector fields are:
+\begin{itemize}
+    \item $\underline{E}(x, y, z)$: Electric Field.
+    \item $\underline{B}(x, y, z)$: Magnetic Field.
+    \item $\underline{v}(x, y, z)$: Velocity Field (i.e in fluid mechanics).
+\end{itemize}
 
+\subsection{Partial Derivatives}
+Consider a function of two variables. The partial derivative of a function with respect to one variable is the rate of change of a function wrt that variable, while keeping other variables constant. Effectively, we carry out a derivative while treating the other variables as if they were constants.
+
+Suppose we have a function $f(x, y)$. The definition of a partial derivative is:
 \[
-    = \tau \hat{\underline{N}}
-\]
-
-This gives the Frenet-Serret Formulae:
-
-\textbf{This concludes partial differentiation! :D}
-
-\section{Ordinary Differential Equations}
-A differential equation is any equation that involves derivatives. We care, because most laws of physics manifest themselves in the form of differential equations. For example:
-
-\[
- \text{Newton's Second Law: } \qquad \underline{F} = m \frac{d^2 \underline{r}}{dt^2}
-\]
-
-\[
-    \text{3D Time-Independent Schrödinger Eqn: } \qquad - \frac{\hbar}{2m} \left(\frac{\partial^2 \psi}{d x^2} + \frac{\partial^2 \psi}{d y^2} + \frac{\partial^2 \psi}{d z^2}\right) + V(x, y, z) \psi = E \psi
-\]
-
-\[
-    \text{3D Wave Eqn: } \qquad \frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} + \frac{\partial^2 \phi}{\partial z^2} = \frac{1}{c^2} \frac{\partial^2 \phi}{\partial t^2}
+    \frac{\partial f}{\partial x}(x_0, y_0) = \lim_{h \to 0} \frac{f((x_0 + h), y_0) - f(x_0, y_0)}{h}
 \]
 \[
-    = \nabla^2 \phi = \frac{1}{c^2} \frac{\partial^2 \phi}{\partial t^2}
+    \frac{\partial f}{\partial y}(x_0, y_0) = \lim_{k \to 0} \frac{f(x_0, (y_0 + k)) - f(x_0, y_0)}{k}
 \]
 
+Just like we denote $\frac{df}{dx}$ as the derivative of a function of a single variable, we denote $\frac{\partial f}{\partial x}$ as the partial derivative of a function of several variables.
+
+Note that this is not delta f and delta y, i.e. not $\frac{\delta f}{\delta x}$
+
+In theory, we'd explicitly notate:
 \[
-    \text{Gauss' Law: } \qquad \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} = \frac{\rho}{\epsilon_0}
+    \left(\frac{\partial f}{\partial x}\right)_y
 \]
+With the subscript $y$ explicitly stating that $y$ is being kept constant. This is rarely, but sometimes, needed.
 
+Consider $f(x, y, z) = x^2 \sin yz$. We have:
 \[
-    \text{Navier-Stokes Eqn: } \qquad \rho \left(\frac{\partial \underline{v}}{\partial t} + \left(\underline{v} \cdot \underline{\nabla}\right) \underline{v}\right) = - \underline{\nabla}p + \rho \underline{g} + \mu \nabla^2 \underline{v} 
+    \frac{\partial f}{\partial x} = 2x \sin yz
 \]
-
-In this course, we will only solve DEs of a single variable, i.e. Ordinary Differential Equations (ODEs). We don't look at Partial DEs of multiple variables yet.
-
-In order to think about solving these, we need to classify them. Most DEs aren't soluble in closed form with elementary functions and need to be solved numerically. Here, we only consider nice soluble functions, but this is a vast minority in reality. We want to identify classes of DEs we can reasonable solve with a method for each.
-
-We can generally solve linear equations by breaking them into small chunks and solving them individually, for example.
-
-\section{Types of DEs}
-\subsection{Partial vs. Ordinary}
-
-In the examples above, only the first was an ODE, and the rest PDEs. Ordinary Differential Equations (ODEs) involve only a single variable. 
-
-Consider a vector $\underline{r}(t) = (x(t), y(t), z(t))$. $t$ is called the independent variable, with $x, y, z$ being dependant variables. While we have 3 dependant variables, we only have one independent variable (so only one thing to differentiate wrt), so this would end up being ordinary.
-
-PDEs involve equations of two or more variables and hence involve partial derivatives.
-
-\subsection{Order}
-The order of a DE is given by the order of the highest derivative involved, so Newton's 2nd Law is a second order DE, as the highest order derivative is a second derivative.
-
-\subsection{Degree}
-The degree of a DE is a less important measure than the others. It is given by the highest power of the highest order derivative. For example, Newton's 2nd is a first order, while an equation containing $a^3$ would be third degree (and second order, as $a$ is a second derivative).
-
-Ideally, we want this to be $1$ for ease of solving, and higher degrees are rare but they do exist. For example, from Lagrangian Mechanics we have:
 \[
-    \frac{1}{2m} \left[\left(\frac{\partial s}{\partial x}\right)^2 + \left(\frac{\partial s}{\partial y}\right)^2 + \left(\frac{\partial s}{\partial z}\right)^2\right] + V(x, y, z) = \frac{ds}{dt}
+    \frac{\partial f}{\partial y} = x^2 z \cos yz
 \]
-
-\subsection{Homogenous and Inhomogeneous}
-A homogenous DE is a DE that does not have any terms of only the independent variable(s), while an inhomogeneous DE does.
-
-For example, Newton's 2nd is homogenous as there is no term that involves $t$ alone. This would be inhomogeneous:
-
 \[
-    \frac{\partial^2 x}{\partial t^2} = t + x
+    \frac{\partial f}{\partial z} = x^2 y \cos yz
 \]
 
-While this would be homogenous:
+\subsection{Higher Orders}
+Higher derivatives are defined as they were previously, but they can now be mixed. For example, with $f(x, y) = x^2 \sin y$, we can write:
 \[
-    \frac{\partial^2 x}{\partial t^2} = tx
+    \frac{\partial f}{\partial x} = 2x \sin y \qquad \frac{\partial f}{\partial y} = x^2 \cos y
 \]
-
-As $t$ is a coefficient and not a pure term in its own right.
-
-\subsection{Linear and Non-Linear}
-A DE is linear if the dependant variable(s) and all of its/their derivatives occur purely as linear functions. For example:
 \[
-    \left(1 - x^2\right) \frac{d^2 y}{dx^2} - 2x \frac{dy}{dx} + n(n+1)y = 0
+    \frac{\partial^2 f}{\partial x^2} = 2 \sin y
 \]
 
-This is linear, as the dependant variable $y$ never has a coefficient greater than $1$.
-
+We can also have:
 \[
-    \frac{dy}{dx} + xy = 0
+    \frac{\partial^2 f}{\partial y \partial x} = \frac{\partial}{\partial y} \left(\frac{\partial f}{\partial x}\right) = 2x \cos y
 \]
 
-Is also linear, while this is not:
+Shorthand notation exists, i.e. $f_{xx}$ = $\frac{\partial^2 f}{\partial x^2}$ or $f_{yx} = \frac{\partial^2 f}{\partial y \partial x}$
 
-\[
-    \frac{dy}{dx} + xy^2 = 0
-\]
-
-This is also non-linear (as shown by the Taylor Expansion of sine):
-\[
-    \frac{d^2 \theta}{dt^2} = - \frac{g}{l} \sin \theta
-\]
-
-\subsection{Examples}
-\[
-    (1) \quad \left(\frac{\partial u}{\partial x}\right)^2 + \left(\frac{\partial u}{\partial y}\right)^2 = u^2
-\]
-Homogenous first-order second-degree non-linear PDE.
-
-\[
-    (2) \quad \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} = x^2 + y^2 + z^2
-\]
-Inhomogeneous second-order first-degree linear PDE.
-
-\[
-    (3) \quad \frac{\partial y}{\partial x} + y^2 = x
-\]
-Inhomogeneous first-order second-degree non-linear ODE.
-
-
-
-
-
+For most cases, but not all, mixed derivatives are often independent of the order of partial derivatives, so: $f_{xy} = f_{yx}$
