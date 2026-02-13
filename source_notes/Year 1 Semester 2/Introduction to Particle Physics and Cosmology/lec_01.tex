@@ -1,0 +1,147 @@
+% !TeX root = main.tex
+% !TeX program = LuaTeX
+\lecture{1}{Thu 22 Jan 2026 16:00}{The Standard Model of Particle Physics}
+
+\section{Course Introduction}
+\textbf{Course Structure}
+\begin{itemize}
+    \item Particle Physics: 6 lectures in weeks 1 to 6.
+    \begin{enumerate}
+        \item Introduction and the standard model.
+        \item Experimental measurements.
+        \item Interactions with matter
+        \item Tracking detectors I
+        \item Tracking detectors II
+        \item Calorimeters and Particle Identification.
+    \end{enumerate}
+    
+    \item Cosmology: 4 lectures in weeks 7 to 11.
+\end{itemize}
+
+\textbf{Course Aims}
+\begin{itemize}
+    \item Overview of current methods in Particle Physics experiments.
+    \item An emphasis placed on the questions and challenges.
+\end{itemize}
+
+For example, the LHC has already been programmed with experiments all the way up to 2041. Therefore, any detectors we design today only become relevant in over a decade, which makes good detector design decisions incredibly important. This course will equip us to understand what drives those design choices.
+
+The course is assessed by a single one hour long exam, weighted half particle physics and half cosmology.
+
+\textbf{Recommended Texts}
+\begin{itemize}
+    \item Detectors for particle radiation (2nd edition), K. Kleinknecht (1998)
+    \item Particle Physics, Martin and Shaw.
+    \item High Energy Physics, D. H. Perkins (2nd through 4th editions)
+    \item Feynman Lectures.
+    \item Modern Particle Physics, M. Thomson.
+\end{itemize}
+
+\section{Matter Particles}
+Fermions all have quantum spin 1/2. Spin is a purely inherent quantum property (like mass or charge) and has no classical representation, but is analogous to angular momentum. They are subject to Fermi-Dirac statistics, which means that no identical fermion in a system of fermions can have the same quantum number as any other. Fermions are divided into two types, quarks and leptons.
+
+\subsection{Quarks}
+There are three generations of quarks:
+
+\textbf{First Generation}
+\begin{itemize}
+    \item Up Quark ($u$), mass of $\approx0.001$GeV
+    \item Down Quark ($d$), mass of $\approx0.001$GeV
+\end{itemize}
+
+\textbf{Second Generation}
+\begin{itemize}
+    \item Charm Quark ($c$), mass of $\approx1.3$GeV
+    \item Strange Quark ($s$) mass of $\approx4.3$GeV
+\end{itemize}
+
+\textbf{Third Generation}
+\begin{itemize}
+    \item Top Quark ($t$), mass of $\approx175$GeV
+    \item Bottom Quark ($b$), mass of $\approx4.3$GeV
+\end{itemize}
+
+``up-type quarks'', $u, c, t$ have electromagnetic charge $+2/3$ and ``down-type quarks'', $d, s, b$, have electromagnetic charge $-1/3$ (charges in units of e). Quarks do not ever exist alone in isolation.
+
+\subsection{Leptons}
+
+There are three generations of leptons, given by the electron $e^-$, muon, $\mu^-$ and tau $\tau^-$. These all have charge of $-1$ (in units of e). These have masses (in MeV) of approximately $0.5, 105, 1800$.
+
+These also have associated neutrinos, the electron neutrino, the mu neutrino and the tau neutrino, $\nu_e$, $\nu_\mu$, $\nu_\tau$. These are not massless, but have a tiny mass many orders of magnitude smaller than their corresponding non-neutrino counterparts. These are neutrally charged.
+
+Leptons are not subject to the strong interaction.
+
+\subsection{Hadrons}
+Quarks do not exist in isolation, but form bound states subject to the strong force called hadrons. There are two types of hadrons - baryons and mesons.
+
+Baryons are formed from three quarks, which may be the same or different $q_1 q_2 q_2$.
+
+Mesons are formed from a quark-antiquark pair, $q_1 \bar{q}_2$. Examples of baryons include the proton and the neutrino, given by $uud$ and $udd$.
+
+\section{Forces}
+As far as we know, there are four fundamental forces:
+\begin{itemize}
+    \item Gravity
+    \item Electromagnetism
+    \item Strong 
+    \item Weak
+\end{itemize}
+
+For considering particle interactions, we disregard gravity as it becomes incredibly weak for small masses. Creating a complete theory that incorporates all four is an open question in physics. It's okay to neglect it, but it is unsatisfying.
+
+We consider these forces as arising by the exchange (between two particles subject to a force between them) of particles called bosons. These have spin-1, so are called ``gauge bosons''. These are subject to Bose-Einstein statistics, which does not impose the same restriction as Fermi-Dirac for quantum numbers in a system.
+
+\textbf{For EM: } The exchange particle is a photon, $\gamma$. This is represented on a Feynman diagram as a wiggly line. They are massless and couple to electric charge.
+
+\textbf{For Weak: } The exchange particle is a $W^\pm$ or $Z^0$ boson. This is represented by a wiggly line or a dotted straight line. They are not massless, and have masses of approx. $80$ and $90$GeV respectively.
+
+\textbf{For Strong: } The exchange particle is a gluon $g$. This is represented by a series of curls on a Feynman diagram. They are massless. They couple to ``colour charge'' which is just another quantum number analogous to electric charge. Just like electric charge has values $\pm$, colour charge has values we denote $r$, $g$, $b$
+
+Quarks are subject to the strong, electromagnetic and weak interactions
+
+Leptons are not subject to the strong interaction, but the $e, \mu, \tau$ are subject to EM ($\nu$ is not as it is neutrally charged), and all are subject to the weak interaction. This makes neutrinos very difficult to detect as they are only affected by the weak interaction.
+
+\section{Feynman Diagrams}
+Feynman diagrams are space (y-axis), time (x-axis) diagrams to show allowed interactions between particles.
+
+Consider a simple example of electron-positron annihilation. They travel towards each other, meeting and annihilating into either a photon or a Z boson. This is called a `time-like exchange'. The boson then decays and we see pair production of two muons (one $\mu^-$ muon and one $\mu^+$ antimuon).
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{feynman}
+    \diagram [horizontal=a to b] {
+        e1 [particle=$e^-$] -- [fermion] a
+        -- [boson, edge label=$\gamma/Z$] b
+        -- [fermion] m1 [particle=$\mu^-$],
+        e2 [particle=$e^+$] -- [anti fermion] a,
+        b -- [anti fermion] m2 [particle=$\mu^+$],
+    };
+    \end{feynman}
+    \end{tikzpicture}
+\end{center}
+
+Arrows in Feynman diagrams convey ``fermion flow''. This means that for a matter particle, the arrows aligns to the time axis. For antimatter particles, they antialign. Some conservation laws (i.e. charge) apply at the vertex level, while others only apply across whole processes.
+
+We now consider a space-like exchange where the exchange is aligned with the vertical (space) axis. An antimuon scatters off a position like such:
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{feynman}
+    \diagram [vertical=a to b] {
+      i1 [particle=$\mu^+$] -- [anti fermion] a -- [anti fermion] f1 [particle=$\mu^+$],
+      a -- [boson, edge label=$\gamma/Z$] b,
+      i2 [particle=$e^+$] -- [anti fermion] b -- [anti fermion] f2 [particle=$e^+$],
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{center}
+
+\section{Luminosity}
+We can determine the rate of interactions with the following:
+\[
+    W = \LL \sigma
+\]
+
+Where $W \, (\si{s^{-1}})$ is interaction rate, $\LL \, (\si{cm^{-2} s^{-1}})$ represents the luminosity (an attribute of the accelerator being used), and $\sigma \, (\si{cm^{-2}})$ is the cross section, representing the underlying physics of the interaction.
+
+These are investigated in greater detail in Lecture 03.

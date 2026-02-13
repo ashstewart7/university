@@ -18,12 +18,9 @@ def build():
         r'\documentclass[a4paper, oneside]{book}',
         r'\input{../preamble.tex}',
         r'\title{Lecture Notes}',
-        rf'\date{{Ash Stewart\\University of Birmingham}}', # Yes, I know these are neither really an author or a date, but shut up...
-        rf'\author{{{root.name}\\MSci Physics with Particle Physics and Cosmology}}',
         r'\begin{document}',
-        r'    \begin{titlepage}',
-        r'        \maketitle',
-        r'    \end{titlepage}',
+        rf'   \renewcommand{{\semester}}{{{root.name}}}',
+        r'    \maketitle',
         r'    \tableofcontents',
         r'    \thispagestyle{empty}',
         ''

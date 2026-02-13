@@ -1,4 +1,3 @@
-% Some basic packages
 \usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
 \usepackage[T1]{fontenc}
 \usepackage{XCharter}
@@ -26,6 +25,9 @@
 \usepackage{accents}
 \usepackage{titlesec}
 \usepackage{esvect}
+\usepackage{tikz-feynman}
+\usepackage{siunitx}
+\usepackage{microtype}
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
@@ -39,8 +41,7 @@
 \newtheorem*{DefNoLabel}{}
 
 \addto\captionsenglish{
-  \renewcommand{\contentsname}%
-    {Lecture Index}%
+  \renewcommand{\contentsname}{Lecture Index}
 }
 
 \newcommand{\key}[1]{\fbox{#1}}
@@ -72,7 +73,7 @@
     \gdef\currentmodule{#1}%
 }
 
-
+\makeatletter
 \newcommand{\lecture}[3]{%
     \clearpage
     \phantomsection
@@ -96,6 +97,7 @@
     }%
     \thispagestyle{fancy}%
 }
+\makeatother
 
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
@@ -114,7 +116,6 @@
 
 \usepackage{todonotes}
 \usepackage{tcolorbox}
-
 \tcbuselibrary{breakable}
 
 \setlength{\abovedisplayskip}{10pt plus 2pt minus 5pt}
@@ -126,11 +127,40 @@
   {0pt}
   {\Huge}
 
-
 \makeatletter
 \@addtoreset{section}{chapter}
 \@addtoreset{subsection}{section}
-
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\makeatother
+
+\newcommand{\semester}{}
+
+\usepackage{microtype}
+
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{titlepage}
+    \centering
+    \includegraphics[width=0.3\textwidth]{/home/ash/Documents/uni/source_notes/uobcrest.png}
+
+    {\scshape\LARGE university of birmingham \par}
+    {\large School of Physics and Astronomy \par}
+    
+    \vspace{3cm}
+    
+    \hrule height 0.8pt
+    \vspace{0.8cm}
+    {\LARGE\bfseries\@title\par}
+    \vspace{0.3cm}
+    {\large\scshape\semester\par}
+    \vspace{0.8cm}
+    \hrule height 0.8pt
+    
+    \vfill
+    
+    {\large \@author \par}
+    \large{MSci Physics with Particle Physics and Cosmology}\\   
+\end{titlepage}
+}
 \makeatother

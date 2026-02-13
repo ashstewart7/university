@@ -11,6 +11,7 @@ main.pdf
 *.out
 *.xdv
 *.pyc
+*.png:Zone.Identifier
 
 # Editor and linux stuff
 /scripts/pycache/

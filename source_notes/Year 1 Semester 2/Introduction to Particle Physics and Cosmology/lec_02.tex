@@ -1,0 +1,159 @@
+% !TeX root = main.tex
+\lecture{2}{Mon 02 Feb 2026 12:00}{Luminosity and Particle Signatures}
+\section{Cross Sections}
+
+Consider a proton-proton interaction, producing some unknown particle $X$:
+\[
+    pp \to ppX
+\]
+
+We have said that the rate of interaction is given by:
+\[
+    W = \LL \sigma
+\]
+
+Where $\LL$ in $\si{cm^{-2} s^{-1}}$ is (coarsely) a parameter of the accelerator, describing its ability to produce collisions, and $\sigma$ in $cm^{-2}$ is a measure of interaction probability. Even though the particles are point-like, we treat them as having an effective area, and the magnitude of that area dictates how likely an interaction is to take place.
+
+In this interaction, we have two protons (modelled as solid balls) passing immediately next to each other (one travelling clockwise and one counter-clockwise) around the accelerator. Assuming they pass immediately next to each other, and we model them as having radius $10^{-15}$m, we have a a separation between the centres of each proton as $2 \times 10^{-15}$m, therefore a cross section of:
+\[
+    \pi \left(2 \times 10^{-28} \si{m^2}\right) \sim 0.12 \times 10^{-28} \si{m^2}
+\]
+
+To move this to a less annoying length scale, we define a new unit, the barn:
+\[
+    1 \si{barn} \equiv 10^{-28} \si{m^2} = 10^{-24} {cm^2}
+\]
+
+In reality, this model may approximate a cross section, but it's not accurate. In reality, there's a much wider variation:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec02-01.png}
+     \caption{}
+\end{figure}
+
+Here we have two x-axes running in parallel - the black axis is the momentum in a lab frame (as it hits some fixed target) while the red axis is the corresponding ``centre of mass energy''. How do we relate these two?
+
+We want to know what the maximum mass of the particle we can generate is. In the lab frame, this requires us to take the momentum of the incoming and generated particle into account. We then have to take the final momentum of the system into account to conserve momentum, as the whole system must continue moving in the direction of motion for conservation.
+
+Translating into the frame of reference given by the system centre of mass gives us a system where the two masses can be thought of as approaching each other with equal and opposite momenta. Since the total momentum is zero, the objects (incoming particle and the target) can theoretically hit each other and come to a complete stop. Because the system does not have to keep moving after the collision, all of the energy in this frame is free to be converted into the mass of a new particle.
+
+While this may not be accurate in practice, it gives us a hard upper maximum for the possible energy available for production.
+
+We can show relativistically that the energy in the centre of mass frame (labelled $\sqrt{s}$, the energy available for particle production) is:
+\[
+    E_\text{com} = \sqrt{s} \propto \sqrt{p_\text{lab}}
+\]
+
+This can be seen in the final values of the x-axis, which (both starting approx. 1) are $10^8$ and $10^4$. This tells us that we reach diminishing returns with a fixed target collider - increasing energies by 8 orders of magnitude only increases the energy available for particle production by 4 orders. This is an inherent inefficiency of a fixed target collider.
+
+This is much cheaper as its easier to align, we just fire a beam at a block of (for example) lead. It also makes it quite easy to change the target material. Changing materials in a colliding-beam collider (where two beams are fired in opposite directions, one clockwise and one anticlockwise, and collide with each other), i.e. to fire lead nuclei requires an extensive recalibration process.
+
+In a dual-beam collider, only a very small proportion of the accelerated material from each beam actually interact with each other. In a fixed target collider, the target is much more dense, so we see a higher rate of interactions.
+
+In summary, the advantages of a fixed target collider are:
+\begin{enumerate}
+    \item Easier to collide.
+    \item Easier to change the target.
+    \item Very high density
+\end{enumerate}
+
+\section{Luminosity}
+\subsection{Fixed Target Case}
+
+Consider a fixed target collider. We want to build an expression for the luminosity of this setup.
+
+We have some incoming flux of particles (per second per unit area), $J$, incident on the block of material with density $\rho$, thickness $t$ and mass of one nucleus $m_A$. The beam, modelled by a cylinder, illuminates some circular portion of the block, with area $A$.
+
+Consider our interaction rate $W$. This is given by (where $V$ is the volume of a cylinder from the illuminated beam, of thickness equal to the target):
+\[
+    W = \underbrace{J A}_{\substack{\text{incident particles} \\ \text{per unit time}}} \times \underbrace{\frac{\rho}{m_A} V}_{\substack{\text{total number of} \\ \text{target particles}}} \times \underbrace{\frac{\sigma}{A}}_{\substack{\text{probablity of} \\ \text{interaction}}}
+\]
+\[
+W = {J A} \times \frac{\rho}{m_A} At \times \frac{\sigma}{A}
+\]
+\[
+    W = {J} \times \frac{\rho}{m_A} At \times \sigma
+\]
+\[
+    W = \frac{J \rho A t}{m_A} \sigma
+\]
+
+Comparing to $W = \LL \sigma$ gives the luminosity as:
+\[
+    \LL = \frac{J \rho At}{m_A}
+\]
+
+\subsection{Colliding Beam Case}
+In a colliding beam case, the derivation is more (and too) complex. It is equal to:
+
+\[
+    \LL = \frac{f_\text{rep} n_b N_1 N_2}{4 \pi \sigma_x \sigma_y}
+\]
+
+Where:
+\begin{itemize}
+    \item $f_\text{rep}$ is the repetition frequency, i.e the rate of the beam passing the collision point.
+    \item $n_b$ is the number of bunches in the beam.
+    \begin{itemize}
+        \item A beam can be thought of as as string of pearls, rather than a single discrete constant beam - i.e. clusters of particles ``bunches'', followed by empty space between them.
+    \end{itemize}
+    \item $N_1, N_2$ are the number of particles per bunch for each beam
+    \item $\sigma_x, \sigma_y$ are the dimensions of the beam in the x- and y-direction, not a cross section as previously.
+\end{itemize}
+
+\section{Examples of Detectors}
+We have some interaction point producing a spray of particles, and surround this with a series of different detector layers. Each produced particle will trigger a different subset of these layers, defining a unique signature we can use to identify produced particles.
+
+Broadly, in some generic detector, we have:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-02.png}
+     \caption{}
+\end{figure}
+
+The tracking system is non-destructive. Formed of layers of silicon, a charged particle with ionise small portions of each layer. This can be turned into a signal. Neutral hadrons and photons will pass straight through, but charged particles will leave a deposit of charge and pass through unaffected.
+
+We then move to destructive layers. Particles leave tree-like structures as they pass through these layers and create a shower of particles.
+
+\subsection{Decays}
+Most decays take place over a very low time scale, $< 10^{-8}$s and produce a final state made up of some subset of the following: $\gamma, \pi^+, \pi^-, \kappa^+, \kappa^-, p, n, \pi^0, e^+, e^-, \mu^+, \mu^-$.
+
+So, in order to detect some exotic particle, we assume that it will either persist long enough to be detected itself, or decay into some subset of these known particles which will reach out detector.
+
+Consider a parent particle $A$, for example $B^0$ ($\bar{b} d$) decaying into two child particles $B, C$, given by a ``J Psi'' ($c \bar{c}$), $J/\psi$ and a ``K Short'', $K_s^0$ ($d \bar{s}$):
+
+\[
+    B \to J/\psi \quad K_s^0
+\]
+\[
+    \bar{b}d \to c \bar{c} \quad d \bar{s}
+\]
+
+This decay has a lifetime of $10^{-12}$s, via the weak interaction due to the change in quark flavour. The J Psi decays into $e^+ e^-$ or $\mu^+ \mu^-$ via the EM interaction very rapidly in $10^{-21}$s (its lifetime is governed by the strong interaction, which it may also use to decay via, even though we detect it via the EM decay path). The K Short decays into $\pi^+ \pi^-$ or $\pi^0 \pi^0$ again via the weak interaction with lifetime in $10^{-10}$s.
+
+The range of a particle is given by:
+\[
+    \text{Range} = \beta \gamma c \tau
+\]
+
+Where $\tau$ is a time scale (lifetime), $c$ is the speed of light, $\gamma$ is the Lorentz Factor and $\beta$ scales the range based on the speed actually being travelled. We also have:
+\[
+    E = \gamma m
+\]
+\[
+    p = \beta \gamma m
+\]
+
+And familiarly:
+\[
+    E^2 - p^2 = m^2
+\]
+
+If the $B^0$ has energy $20$GeV and mass $5$GeV, we have $\gamma = 4$ and this gives a range of $\approx 1$mm. This is so small we will never observe it directly. The $K_s^0$ however has range $\approx 30$cm, so is detectable.
+
+Crucially:
+\begin{itemize}
+    \item SI lifetimes: $\sim 10^{-21} - 10^{-24}$s
+    \item EM lifetimes: $\sim 10^{-16} - 10^{-20}$s
+    \item WI lifetimes: $\sim 10^{-12}$s
+\end{itemize}

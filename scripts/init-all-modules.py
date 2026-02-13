@@ -9,13 +9,11 @@ for module in Modules():
     lines = [
         r'\documentclass[a4paper]{report}',
         r'\input{../../preamble.tex}',
-        r'\date{Ash Stewart\\University of Birmingham}', # Yes, I know these are neither really an author or a date, but shut up...
-        fr'\author{{{root.name}\\MSci Physics with Particle Physics and Cosmology}}',
         fr'\title{{{module_title} Lecture Notes}}',
+        fr'\author{{Ash Stewart}}',
         r'\begin{document}',
-        r'    \begin{titlepage}',
-        r'        \maketitle',
-        r'    \end{titlepage}',
+        fr'   \renewcommand{{\semester}}{{{root.name}}}',
+        r'    \maketitle',
         r'    \tableofcontents',
         fr'   \modulenopart{{{module_title}}}',
         r'    % start lectures',
