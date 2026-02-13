@@ -1,0 +1,196 @@
+% !TeX root = main.tex
+\lecture{1}{Mon 19 Jan 2026 11:00}{EM1 Intro and Electric Fields}
+
+\section{Course Intro}
+Course Materials:
+\begin{itemize}
+    \item Background material and derivations etc on PowerPoint.
+    \item Worked examples etc are handwritten on visualiser, these are the bits we really need to know.
+\end{itemize}
+
+Why is EM important?
+\begin{itemize}
+    \item Foundations of modern technology and the modern world.
+    \item What gives elements their properties.
+    \item Responsible for life itself.
+    \item Everyday materials are held together by EM forces.
+    \item Optics can only be understood through EM theory.
+\end{itemize}
+
+The course aim is to lay down the foundations, eventually leading us to Maxell's Laws.
+
+\subsection{Maxwell's Laws}
+Maxwell's four equations are:
+\[
+    \nabla \cdot \pmb{E} = \frac{\rho}{\epsilon_0}
+\]
+\[
+    \nabla \wedge \pmb{E} = -\frac{\partial \pmb{B}}{\partial t}
+\]
+\[
+    \nabla \cdot \pmb{B} = 0
+\]
+\[
+    \nabla \wedge \pmb{B} = \mu_0 \left(\pmb{J} + \epsilon_0 \frac{\partial \pmb{E}}{\partial t}\right)
+\]
+
+Where:
+\[
+    \nabla = \pmb{i} \frac{\partial}{\partial x} + \pmb{j} \frac{\partial}{\partial y} + \pmb{k} \frac{\partial}{\partial z}
+\]
+
+Together, these show that the electric and magnetic fields are related and are two aspects of a single force, the electromagnetic force. We don't have to properly understand them yet, but cannot learn them in EMII unless we fundamentally understand E and B fields from this module.
+
+\subsection{Course Structure}
+
+\textbf{Part I: Electric Fields}
+\begin{itemize}
+    \item Charge and Coulomb's Law.
+    \item The electric field.
+    \item Gauss' Law.
+    \item Capacitors.
+\end{itemize}
+
+
+\textbf{Part II: Magnetic Fields}
+
+\begin{itemize}
+    \item Magnetic Fields
+    \item Charged Particles in B-Fields
+    \item Electromagnetic Induction.
+    \item Magnetic Dipoles
+\end{itemize}
+
+In this lecture:
+\begin{itemize}
+    \item Introduction to EM.
+    \item Electric charge.
+    \item Force between charges.
+    \item The concept of the Electric Field (E-Field).
+\end{itemize}
+
+\section{Electric Charge}
+First attributed to Thales circa. 624 - 546 BC. Experiments by Franklin and Coulomb expanded and showed that there was two types of charge, which they called positive and negative.
+
+The ``positive electricity'' came from rubbing a glass rod with silk, and the negative from rubbing an ebonite (early plastic) rod with fur. They found that like charges repel and opposite charges attract.
+
+We know that the elementary unit charge is the magnitude of charge of an electron/proton and everything else is a multiple of this \footnote{While quarks have fractional charge, we don't get free quarks}:
+\[
+    e = 1.6 \times 10^{-19}C
+\]
+
+This has units of the Coulomb.
+
+\subsection{Charge Conservation}
+Electrons and protons are both stable (protons decay with a life greater than $10^{31}$ years). This means that the total charge of an isolated system is constant and can be conserved.
+
+They have the same magnitude of charge, exactly:
+\[
+    |q_p| = |q_e| = e
+\]
+
+\subsection{Electrostatic Force}
+Like charges repeal and opposite charges attract, along the line of action given by a line drawn between the two charges. The force is proportional to the product of charges so:
+\[
+    F \propto q_1 q_2
+\]
+
+Here, a negative force means attraction and a positive force means repulsion. Newton called this ``force at a distance''. Like gravity, two charges will exert a force on each other at a distance without any contact. 
+
+There must, therefore, be something between them that mediates this force. Later physics gives this as ``virtual particles'' which isn't a Y1 topic, so classically we say that this medium is the Electric Field.
+
+\subsection{Electric Field}
+A charge produces a field around it. Another charge also interacts with this field, and this interaction is what causes a force:
+\[
+    \underline{F} = \underline{E} q 
+\]
+
+Where $F$ is the force exerted on a test charge of charge $q$ by a charge $Q$ producing a field $E$. The magnitude of the electric field has units $NC^{-1}$ (force per units charge).
+\[
+    |\underline{E}| \propto Q \qquad |\underline{F}| \propto Qq
+\]
+
+Consider a point charge with a spherical electric field spreading out around it. As the distance from the charge increases, the surface area increases as $4 \pi r^2$. Therefore the magnitude of the electric field must decrease with $4 \pi r^2$ 
+
+Therefore:
+\[
+    |\underline{E}| \propto \frac{Q}{4 \pi r^2}
+\]
+
+We need a (inverse) constant of proportionality. This depends on the medium, but for a vacuum we call it the permittivity of free space $\epsilon_0$:
+\[
+    \epsilon_0 = 8.854 \times 10^{-12} C^2m^{-2} N^{-1}
+\]
+
+Hence:
+\[
+    \boxed{E = |\underline{E}| = \frac{Q}{4 \pi \epsilon_0 r^2}}
+\]
+
+\subsection{Direction of the E-Field}
+Force is a vector, so the E-field must be too. Consider an E-field from a charge $Q$ at distance $r$. We give $E$ components $E_r$, $E_\theta$, $E_\phi$, where, since it's a sphere $\phi$ and $\theta$ represent the unit vectors in the two possible tangential directions.
+
+If there was a component in $E_\theta$ this would be clockwise from one perspective, but anticlockwise from another (walking behind it). This is not possible, as the field must behave in the same manner from all viewpoints. Therefore:
+\[
+    E_\theta = E_\phi = 0
+\]
+
+\[
+    \underline{E} = \frac{Q}{4 \pi \epsilon_0 r^2} \hat{t}
+\]
+
+\subsection{Force between two charges}
+Consider two charges $q_1$ and $q_2$. The force on $q_2$ due to the e-field from $q_1$ is:
+\[
+    \underline{F_1} = \underline{E_1} q_2
+\]
+
+This is equal to the force on $q_1$ due to the e-field from $q_2$, given by:
+\[
+    \underline{F_2} = \underline{E_2} q_1
+\]
+
+So the force between two charges is:
+\[
+    \underline{F} = \frac{q_1 q_2}{4 \pi \epsilon_0 r^2} \hat{r}_{12}
+\]
+
+\subsection{Force between many charges}
+If we have more than two positive charges, we use the ``principle of superposition''. Effectively, you consider each pair of charges at the same time and vector sum of the forces together. I.e. if we have three points and we care about the net force on one, we take the vector sum of the two vectors from that point to the others.
+
+In general:
+\[
+    \underline{F} = \underline{F_1} + \underline{F_2} + \underline{F_3} + \cdots
+\]
+\[
+    = q \sum_{i}\frac{q_i}{4 \pi \epsilon_0 r^2} \hat{r_j}
+\]
+
+Where $r_j$ is the distance between $q_i$ and $q$, with unit vector $\hat{r_j}$ between them.
+
+Since $\underline{F} = q \underline{E}$, the electric field at a test charge $q$ must be:
+\[
+    \underline{E} = \sum_{i} \frac{q_i}{4 \pi \epsilon_0 r_i^2} \hat{r_j}
+\]
+
+
+\subsection{Example}
+Say we have a square of side length $a$. Clockwise, these corners have charge $Q$, $q$, $-2Q$, $3Q$.
+
+What is the net force exerted on the $q$ charge?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
