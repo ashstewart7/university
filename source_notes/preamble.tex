@@ -3,7 +3,13 @@
 \usepackage{cancel}
 \usepackage{tikz-feynman}
 
-\usepackage{stix2} 
+% \usepackage{stix2} 
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
+\setoperatorfont{\symup}
 
 \usepackage[a4paper, margin=2cm, left=1in, right=1in]{geometry}
 \usepackage[english]{babel}
@@ -88,10 +94,12 @@
     \centering\vspace*{6cm}
     \hrule height 0.8pt\vspace{0.8cm}
     {\LARGE\bfseries\@title\par}\vspace{0.3cm}
-    {\large\semester\par}\vspace{0.8cm}
+    {\Large\semester\par}\vspace{0.8cm}
     \hrule height 0.8pt\vfill
     {\large\bfseries \@author \par}
-    {\large MSci Physics with Particle Physics and Cosmology\par}   
+    {\large MSci Physics with Particle Physics and Cosmology\par} 
+    \vspace{1cm}
+    \large{School of Physics and Astronomy}\\  
     \large{University of Birmingham}
 \end{titlepage}}
 \makeatother
