@@ -34,11 +34,12 @@ def build():
         title = c.module.info['title']
         slug = title.replace(" ", "_")
         
-        # Build individual module
+        # Build individual module with LuaLaTeX
         subprocess.run(
-            ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={slug}', 'main.tex'],
+            ['latexmk', '-lualatex', '-shell-escape', '-interaction=nonstopmode', f'-jobname={slug}', 'main.tex'],
             cwd=c.root,
-            stdout=subprocess.DEVNULL
+            stdout=subprocess.DEVNULL,
+            stderr=None
         )
 
         pdf = c.root / f'{slug}.pdf'
@@ -48,7 +49,8 @@ def build():
         subprocess.run(
             ['latexmk', '-c', f'-jobname={slug}', 'main.tex'],
             cwd=c.root,
-            stdout=subprocess.DEVNULL
+            stdout=subprocess.DEVNULL,
+            stderr=None
         )
         (c.root / 'main.pdf').unlink(missing_ok=True)
 
@@ -69,11 +71,12 @@ def build():
     (ROOT / "main.tex").write_text('\n'.join(tex))
     (ROOT / "main.tex.latexmain").touch()
 
-    # Build master
+    # Build master with LuaLaTeX
     subprocess.run(
-        ['latexmk', '-pdf', '-interaction=nonstopmode', f'-jobname={job_name}', 'main.tex'],
+        ['latexmk', '-lualatex', '-shell-escape', '-interaction=nonstopmode', f'-jobname={job_name}', 'main.tex'],
         cwd=ROOT,
-        stdout=subprocess.DEVNULL
+        stdout=subprocess.DEVNULL,
+        stderr=None
     )
 
     src_pdf = ROOT / f'{job_name}.pdf'
@@ -83,7 +86,8 @@ def build():
     subprocess.run(
         ['latexmk', '-c', f'-jobname={job_name}', 'main.tex'],
         cwd=ROOT,
-        stdout=subprocess.DEVNULL
+        stdout=subprocess.DEVNULL,
+        stderr=None
     )
     (ROOT / 'main.pdf').unlink(missing_ok=True)
 

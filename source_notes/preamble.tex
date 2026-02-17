@@ -49,7 +49,7 @@
 \setlength{\fboxsep}{3pt} 
 \setlength{\fboxrule}{0.5pt}
 
-\addto\captionsenglish{\renewcommand{\contentsname}{Lecture Index}}
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Lectures}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \setcounter{tocdepth}{0}
@@ -79,7 +79,7 @@
         \chapter*{\small{#2}\\\LARGE{Lecture #1}}%
         \gdef\currentlecture{Lec #1}%
     }{%
-        \addcontentsline{toc}{chapter}{Lecture #1: #3}%
+        \addcontentsline{toc}{chapter}{Lecture #1: \textnormal{#3}}%
         \chapter*{\small{#2}\\\LARGE{Lecture #1 - #3}}%
         \gdef\currentlecture{Lec #1 - #3}%
     }\thispagestyle{fancy}}

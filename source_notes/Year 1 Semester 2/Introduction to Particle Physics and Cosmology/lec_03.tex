@@ -1,2 +1,96 @@
 % !TeX root = main.tex
-\lecture{3}{Thu 05 Feb 2026 16:00}{Tracking Systems}
+\lecture{3}{Thu 05 Feb 2026 16:00}{Particle/Matter Interactions and Particle Signatures}
+
+In order to look at specific detectors and how they work, we need to consider how particles interact with matter. We'll consider categories of particles and their standard interactions, and use this to build a model for how we can build a detector.
+
+We've looked at this previously:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-02.png}
+     \caption{}
+\end{figure}
+
+For example:
+\begin{itemize}
+    \item Charged particles produce ionisation in the non-destructive tracking system, leaving deposits we can detect as signal.
+    \item Electrons and photons leave distinctive signatures (shape of the shower of particles) in the electromagnetic calorimeters.
+    \item Hadrons leave deposits in the electromagnetic calorimeter, but they dump all their energy (and are mostly identifiable by) the hadronic calorimeter.
+    \item Muons make it through all of the previous layers, and are picked up at the very end by the outermost muon system.
+\end{itemize}
+
+\section{Charged Particles}
+\subsection{Ionisation}
+This is the process that powers the tracking system. A charged particle, $h$ comes into the system (it could be a hadron or a lepton). It exchanges a photon with an electron in the system and excites the electron, ejecting it from the atom.
+
+Strictly:
+\begin{center}
+    \begin{tikzpicture}
+    \begin{feynman}
+    \diagram [vertical=a to b] {
+      i1 [particle=$h^+$] -- [fermion] a -- [fermion] f1 [particle=$h^+$],
+      a -- [boson, edge label=$\gamma$] b,
+      i2 [particle=$e^-$] -- [fermion] b -- [fermion] f2 [particle=$e^-$],
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{center}
+
+We can to try to characterise the rate of energy loss of the charged particle. The average rate of energy loss per unit distance is:
+\[
+    -\left\langle \frac{dE}{dl}\right\rangle \propto \ln E
+\]
+
+Where $E$ is energy, and the sign is negative as energy is being lost here.
+
+For example, a real detector here might be two charged plates with a high voltage sandwiching a gas mixture. As the gas mixture is ionised, the ionised portion drifts towards one of the electrodes where it induces a detectable current.
+
+\subsection{Bremsstrahlung}
+
+Translates to ``braking radiation''. Consider a free electron radiating a photon. This is impossible for a free particle (as if we consider the electron's rest frame, emission would violate conservation of energy). We therefore need a source of external interference, in this case matter. 
+
+An electron is accelerated by nuclear change as it passes through material and is scattered. This scattering causes bremsstrahlung photon emission. The average rate of energy loss is given by:
+\[
+    - \left< \frac{dE}{dx} \right> \propto \frac{E}{m^2} \propto \frac{E}{X_0}
+\]
+
+An electron will then generate more bremsstrahlung than a muon, due to its much smaller mass. $X_0$ is called radiation length, and is covered in future lectures.
+
+\subsection{Cherenkov Radiation}
+Consider a charged particle moving through a (non-vacuum) material. It emits photons at some angle $\theta_c$ if the particle is moving faster than the speed of light in the medium (note this does not violate relativity, as the speed of light in a medium is less than the speed of light in a vacuum).
+
+These emitted photons cause a coherent wavefront to form around the particle's trajectory, forming a cone around the direction of travel. The angle $\theta_c$ is given by:
+
+Geometrically, after time $t$, the emitted photon has travelled $ct/n$ and the particle $vt$, hence:
+\[
+    \cos \theta_c = \frac{ct/n}{vt} = \frac{c}{nv} = \frac{1}{n \beta}
+\]
+
+Where $n$ is the refractive index of the material. This is analogous to shock waves forming when an object goes faster than the speed of sound.
+
+A planar detector will take a single cross-section through this cone, detecting rings around the point the charged particle passed through the material. By measuring this ring, we can work out the speed of the particle, and use this along with a measured momentum (in a tracking detector) to work out the mass of the particle.
+
+Again:
+\[
+    - \left< \frac{dE}{dx} \right> \propto z^2 \sin^2 \theta_c
+\]
+
+Where $z$ is the particle charge in units of $|e|$. It is important to note that this is a very small energy loss for the particle. It may emit $10^3 \gamma / \si{cm}$, and only lose a few $\si{keV} / \si{cm}$
+
+\section{Photons}
+\subsection{Photoelectric Effect}
+We have a photon strike a atom, transferring energy and forcing an electron to be ejected. The max kinetic energy of the electron is given by the photon energy minus some amount of work to eject it:
+\[
+    E_{kmax} = hf - \phi
+\]
+
+Where $\phi$, the work function, is the energy required to liberate one electron from the atom's surface.
+
+\subsection{Compton Scattering}
+See QM1. A photon scatters off a quasi-free electron in an atom. The photon and electron are scattered with a change in energy:
+\[
+    \gamma + e^- \to \gamma^\prime + e^{- \prime}
+\]
+
+Thomson scattering is a low-energy form of scattering where the energies do not change, and Rayleigh scattering is a very low energy limit, where the interaction takes place between a photon and multiple atomic electrons. 
+
+\subsection{Pair Production}
