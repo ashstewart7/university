@@ -1,2 +1,171 @@
 % !TeX root = main.tex
-\lecture{11}{Tue 17 Feb 2026 11:00}{Special Relativity I}
+\lecture{11}{Tue 17 Feb 2026 11:00}{Special Relativity I: Foundations and Time Dilation}
+
+\section{Introduction}
+In this lecture:
+\begin{itemize}
+    \item Recap from CMR1
+    \item Einstein's two postulates
+    \item Time dilation
+    \item Galilean Transformations
+\end{itemize}
+
+Crucially, there are no special or absolute frames of reference - laws of motion are only sensible when we consider a frame of reference. The only slightly special frame is the one in which we are currently stationary.
+
+Special relativity provides a theory of relative motion between inertial frames of reference. An inertial frame is one which is not accelerating relative to the other frames being considered.
+
+\section{Frames of Reference}
+
+We will generally consider two related frames of reference, denoted $\Sigma$ and $\Sigma^\prime$. $\Sigma$ is our ``stationary'' frame, i.e the frame taken by an observer sat on earth. $\Sigma^\prime$ is our ``moving frame'', relative to the stationary observer and is moving with constant speed $v$.
+
+Coordinates in the stationary frame are $(x, y, z, t)$, while in the moving frame they add a prime, so are given by: $(x', y', z', t')$.
+
+We want to compare observations of position/experience of time/velocity in the moving frame with observations of the same categories in the stationary frame.
+
+The frame in which an object is stationary is denoted its rest frame $\Sigma_0$.
+
+\section{Galilean Transformations}
+\paragraph{``Galilean Invariance'':} The laws of physics are invariant in all inertial (non-accelerating) frames.
+
+\paragraph{``Galilean Transformation'':} Time is invariant and universal in all frames.
+
+In Classical Mechanics, we treat time as invariant, but this stops being true in special relativity. We can transform between frames in such a manner that time is kept constant, this is a Galilean Transformation, but this is not true by default.
+
+Consider our two reference frames $\Sigma$ and $\Sigma^\prime$, where the latter moves with speed $v$ relative to the former. Our coordinates in $(x, y)$ become coordinates in $(x^\prime, y^\prime)$.
+
+An object moves at speed $u^\prime$ in the x-direction in reference frame $\Sigma^\prime$. If we assume that time is invariant (as we're still currently doing classical physics without having introduced special relativity), then:
+\[
+    t = t^\prime
+\]
+
+And as the motion is entirely in the x-axis:
+\[
+    y = y^\prime
+\]
+
+After time $t$:
+\[
+    x = x^\prime + \text{distance moved by $\Sigma^\prime$ in time $t$ relative to $\Sigma$}
+\]
+\[
+    x = x^\prime + vt
+\]
+
+The object velocity is defined as:
+\[
+    u = \frac{dx}{dt} = \frac{d}{dt} \left(x^\prime + vt\right)
+\]
+\[
+    = \frac{dx^\prime}{dt} + v = u^\prime + v
+\]
+
+This holds if any only if time is the quantity we treat as being invariant. This agrees with our classical understanding.
+
+\subsection{Where does this break down?}
+
+Lets assume that the moving object is a photon, moving in $\Sigma^\prime$ with velocity $c^\prime$, hence, according to the previous derivation:
+\[
+    c = c^\prime + v
+\]
+
+Therefore observers in different frames will measure different values for the speed of light\dots oh no!
+
+If we assume Galilean invariance, the laws of physics are the same in all reference frames, and yet the speed of light is included as a constant in many laws (i.e. electromagnetism). Therefore observers must measure the same speed of light in all reference frames.
+
+This is a contradiction - we cannot assume that both time and the laws of physics are invariant.
+
+\subsection{Experimental Verification}
+The earth travels around the sun extremely quickly, and the sun is travelling even faster around the galactic centre. Therefore, the earth is moving in space. 
+
+If Galilean relativity is correct, we would measure the speed of light in one direction as $c + u$ and measure the speed of light in the other direction as $c - u$. 
+
+This was tested by the Michelson-Morley experiment, where incoming light was split by a half-silvered mirror. Half the light travels in one direction, and half the light is split off by $90^\circ$. They reflect off a pair of mirrors and are recombined in a splitter to be observed.
+
+If the speed of light was different in different directions, the two beams would be out of phase and we would observe an interference pattern on combination. We would expect to see phase difference that varies with time, i.e. turning from destructive to constructive etc.
+
+This was not observed and the interference pattern generated was constant. Therefore, the results showed no variation in the speed of light.\footnote{This is the same idea used in the LIGO experiment to discover gravitational waves, except this was used to show that the path length changed, and not the speed of light. If the path lengths changed, this was due to a gravitational wave (ripple in space time) propagating to the earth and interfering with the measurement.}
+
+\section{The Solution - Einstein's Special Relativity}
+To fix this contradiction, Einstein came up with two postulates:
+\begin{enumerate}
+    \item The laws of physics are the same in any inertial frame of reference.
+    \begin{itemize}
+        \item This is the same as Galilean invariance and is easily believable.
+    \end{itemize}
+    \item The speed of light is constant in every frame of reference.
+    \begin{itemize}
+        \item This was revolutionary and is much less intuitive.
+    \end{itemize}
+\end{enumerate}
+
+The last postulate is difficult to understand intuitively, but makes everything work if we accept it as true!
+
+\subsection{Proving Time Dilation}
+
+Consider an observer on the earth in frame $\Sigma$. This observer watches two rockets both travelling side by side away from the earth in the x-direction with speed $v$. They are both travelling in $x$, with a constant y-difference $y_0$ between them.
+
+Suppose the upper rocket A fires a laser beam directly at B (i.e. directly in the y-direction downwards).
+
+\textbf{Frame $\Sigma$: }
+This is the rest frame of the earth (and the observer on earth) with coordinates $(x, y)$.
+
+\textbf{Frame $\Sigma^\prime$: }
+This is the rest frame of the rockets, with coordinates $(x^\prime, y^\prime)$.
+
+In the rockets rest frame $\Sigma^\prime$, the rockets are stationary and the time taken for a laser pulse to travel between them is:
+\[
+    t_0 = \frac{y_0}{c}
+\]
+
+Or equivalently:
+\[
+    y_0 = c t_0
+\]
+
+In the earth's rest frame $\Sigma$, the observer on the earth doesn't just see the light travelling in the y-direction. It also sees the light moving in the x-direction, as the whole $\Sigma^\prime$ frame containing the rockets relativistically move away.
+
+Effectively, we have:
+% TODO
+
+B moves distance $x$ horizontally while it waits for the laser to hit it, and the length of the path of the laser beam in time $t$ is given by $D$. If the time taken for light to reach B in $\Sigma$ is $t$, then:
+\[
+    D = ct
+\]
+As the speed of light is constant in all frames. As the rockets are moving away:
+\[
+    x = vt
+\]
+
+This gives us a Pythagorean triangle, where:
+\[
+    D^2 = x^2 + y^2 = x^2 + y_0^2
+\]
+And substituting in:
+\[
+    c^2 t^2 = v^2t^2 + c^2 t_0^2
+\]
+\[
+    t^2 (c^2 - v^2) = t_0^2 c^2
+\]
+\[
+    t = t_0 \sqrt{\frac{c^2}{c^2 - v^2}}
+\]
+
+Dividing through by $c_2$:
+\[
+    t = t_0 \sqrt{\frac{1}{1 - \frac{v^2}{c^2}}}
+\]
+
+Or:
+\[
+    t = t_0 \gamma, \qquad \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
+\]
+
+$\gamma > 1$ for all object speeds that don't exceed the speed of light (which is required), so the time observed in the frame $\Sigma$ is longer than the ``proper time'' observed by the rocket.
+
+\section{The Twin Paradox}
+Consider two twins, an astronaut and a physics professor. The astronaut goes on a long trip close to the speed of light and reunites with his brother. Which brother is older?
+
+Special relativity says that because there is no absolute frame of reference, the brother travelling away also sees the same problem in reverse, i.e. he sees the physics professor brother travelling away in the opposite direction at equal and opposite speed, i.e. they are the same age.
+
+In practice, the astronaut is non-inertial and special rel isn't sufficient, so we can't solve it directly.

@@ -1,0 +1,144 @@
+% !TeX root = main.tex
+\lecture{9}{Tue 17 Feb 2026 12:00}{Laws of Thermodynamics}
+
+\section{0th Law of Thermodynamics}
+Consider two blocks next to each other, one with $T_h$ and one with $T_c$. The blocks with thermalise to their mean $(T_h + T_c) / 2$ in the trivial case where the block are identical.
+
+Net heat will flow between thw two systems until they have the same energy density and hence temperature.
+
+If we have three systems: A, B, C. If we know that A and B are in thermal equilibrium, and A and C are in thermal equilibrium, then B and C are also in thermal equilibrium.
+
+It's a fairly trivial axiom, so we denote it the zeroth law. Effectively, all objects in a system in equilibrium share the same temperature.
+
+\section{Ideal Gases}
+
+\begin{tcolorbox}
+    {\centering
+An ideal gas is defined as a collection of molecules (or atoms, if monatomic) that are non-interacting with each other (no interatomic forces) and collide elastically with each other.
+
+The internal energy of the gas is dependant on the velocities of the molecules, and hence on the temperature, and not on pressure or volume.
+\par}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\textbf{Boyle's Law: } ``The absolute pressure exerted by a given mass of an ideal gas is inversely proportional to the volume is occupies, if the temperature and amount of gas remain unchanged within a closed system.''
+
+Effectively:
+\[
+    P \propto \frac{1}{V}
+\]
+
+\textbf{Charles' Law: } ``When the pressure of a sample of an ideal gas is held constant, the Kelvin temperature and volume will be in direct proportion.''
+
+Effectively:
+\[
+    T \propto V
+\]
+
+\textbf{Ideal Gas Law: } Since $P \propto \frac{1}{V}$ and $T \propto V$, we have: $PV = kT$, where $k$ varies with context, for example when considering moles:
+\[
+    \boxed{PV = nRT}
+\]
+Where $n$ is the number of moles and $R = 8.314$ is the gas constant. %TODO UNITS
+
+
+Or for molecules:
+\[
+    \boxed{PV = Nk_b T}
+\]
+Where $N = N_a n$ is the number of molecules, and $k_b = R/N_a$ is the Boltzmann Constant.
+
+This is called an equation of state and allows us to describe the gas' state macroscopically. We generally express this on a P/V diagram, where each point on the plot represents a specific gas state. If we keep the amount of gas present constant, we can use any two of the variables to determine the third.
+
+
+%TODO PV CURVE PLOT
+
+\subsection{Joule's Second Law}
+Consider a system with a box divided in two. An ideal gas is contained in the leftmost half, and the rightmost half is a vacuum. We separate the two with a divider constituting an impermeable membrane.
+
+We remove the membrane laterally, doing no work on the gas. Joule observed that the gas stayed at the same temperature as it diffused into the vacuum.
+
+Consider the internal energy of the gas, denoted $U$, assuming that U is a function of two of the state variables. We know the temperature did not change, and the volume did, so $U(T, V)$.
+
+We would expect:
+\[
+    dU = \frac{\partial U}{\partial T} dT + \frac{\partial U}{\partial V} dV
+\]
+
+Temperature was observed experimentally to not change, hence $dT = 0$, so:
+\[
+    dU = 0 + \frac{\partial U}{\partial V} dV
+\]
+
+Volume did change, so $dV \not = 0$. We did no work on the gas, as the divider was removed laterally, hence there was no change in internal energy, so:
+\[
+    dU = \frac{dU}{dV} dV = 0
+\]
+
+And since $dU = 0$, we must have:
+\[
+    \frac{dU}{dV} \neq 0
+\]
+
+This means that there is no dependence on volume for internal energy, hence $U$ is dependent only on $T$, as found by Joule. This means that the gas Joule chose was well approximated by an ideal gas. 
+
+This is easier at higher temperatures, as a high temperature leads to high kinetic energies, so the interatomic forces becomes less significant and easier to disregard in reality.
+
+%TODO GRAPH
+We see here that it the ideal gas law becomes a better approximation has we increase temperature, and a worse and worse approximation as pressure increases. 
+
+From a LJP perspective, increasing the pressure decreases the average distance between gas molecules. This means that the potential between gas molecules is no longer negligible, and the assumption of zero potential no longer holds.
+
+If we increase pressure even further, the force becomes repulsive and $PV/nRT$ returns to being positive. At higher temperatures, this little dip isn't observed.
+
+%TODO GRAPH
+At low pressure or high temperature, the ideal gas law is a good assumption as:
+\begin{itemize}
+    \item At low pressure, interatomic spacing is large enough to disregard interatomic forces.
+    \item At high temperature, kinetic energy is large enough to comparatively disregard interatomic forces.
+\end{itemize}
+
+We deal solely with Maxwell-Boltzmann gases in this source that follow classical laws. We also have Fermi and Bose gases (made entirely of fermions and bosons respectively), but they're quantum mechanical, exotic and outside of this course.
+
+\subsection{Changing Energies}
+%TODO GRAPH
+Say we want to go from $T_1$ to $T_2$. We need to change the internal energy of the gas somehow. We have two general ways to change this:
+\begin{itemize}
+    \item Add heat to the system by transferring heat to the gas at a constant volume.
+    \item Do some work on the gas, i.e. by crushing it and reducing volume.
+\end{itemize}
+
+Consider a piston of area $A$, applying constant force $F$ with extension $\Delta L$. The pressure on the gas is $P = F/A$. The work done on the gas is:
+\[
+    \Delta W = F \Delta L
+\]
+\[
+    \implies \Delta W = P (A \Delta L)
+\]
+\[
+    \implies \Delta W = P \Delta V
+\]
+
+Moving from infinitesimal Delta values:
+\[
+    W_{\text{on gas}} = \int_{}^{}  \, dW = \int_{}^{} P \, dV
+\]
+
+In the opposite case considering work done by the gas, conservation of energy says it must be oppositely signed:
+\[
+    W_{\text{by gas}} = - \int_{}^{} P \, dV
+\]
+
+\subsection{Mass Drop Experiment}
+% TODO GRAPH
+The falling mass spins the paddles in the water, the work as potential energy is converted to kinetic energy raising the temperature of the water. 
+
+\section{1st Law of Thermodynamics}
+The change in internal energy of a system, $\Delta U$ is increased with increasing heat transfer into the system, $Q_\text{in}$ and work done on the system, $W_\text{on}$:
+\[
+    \Delta U = Q_\text{in} + W_\text{on}
+\]
+
+This is just conservation of energy.
+
