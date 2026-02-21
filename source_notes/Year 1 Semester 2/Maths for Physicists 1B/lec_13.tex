@@ -1,0 +1,138 @@
+% !TeX root = main.tex
+\lecture{15}{Fri 20 Feb 2026 11:56}{Differential Equations III}
+
+Summary of last lecture:
+\begin{itemize}
+    \item ``Homogeneous'' Equations
+    \[
+        \frac{dy}{dx} = f \left(\frac{x}{y}\right) \to x \frac{dv}{dx} = f(v) - v \text{ where } y(x) = xv(x)
+    \]
+
+    \item Linear Equations
+    \[
+        \sum_{k=0}^{n} a_k(x) \frac{d^k y}{dx^k} = f(x) \to y(x) = \sum_{k=1}^{n} \alpha_k y_k(x) + y_{PI}(x)
+    \]
+    The solution is a sum of the complementary function (the general solution of the homogenous equation) and the particular integral (one solution of the inhomogeneous equation).
+    
+    \item First Order Linear Equations
+    \[
+        \frac{dy}{dx} = P(x)y = Q(x) \to \frac{d}{dx} \left[y(x) e^{\int P(x) dx}\right] = Q(x) e^{\int P(x) dx}
+    \]
+    
+\end{itemize}
+
+\section{Examples}
+\subsection{Example I}
+\[
+    (1-x^2) \frac{dy}{dx} - xy = 1
+\]
+
+Rewriting in the standard form:
+\[
+    \frac{dy}{dx} - \frac{x}{1-x^2} y = \frac{1}{1-x^2}
+\]
+
+Hence:
+\[
+    P(x) = \frac{-x}{1-x^2}
+\]
+\[
+    I(x) = \exp \left(- \int \frac{xdx}{1-x^2}\right) = \exp \left(\frac{1}{2} \ln(1-x^2)\right) = \sqrt{1 - x^2}
+\]
+
+Multiplying through by the integrating factor:
+\[
+    \sqrt{1 - x^2} \frac{dy}{dx} - \frac{x}{\sqrt{1 - x^2}} y = \frac{1}{\sqrt{1-x^2}}
+\]
+
+The L.H.S is now the derivative of a product:
+\[
+    \frac{d}{dx} \left(y \sqrt{1-x^2}\right) = \frac{1}{\sqrt{1-x^2}}
+\]
+And integrating both sides:
+\[
+    y \sqrt{1-x^2} = \arcsin x + c
+\]
+\[
+    \implies \boxed{y = \frac{c}{\sqrt{1 - x^2}} + \frac{\arcsin x}{\sqrt{1-x^2}}}
+\]
+
+\subsection{Example II}
+%TODO  
+
+\section{Linear ODEs with Constant Coefficients}
+In the most general form, we have:
+\[
+    a_n \frac{d^n y}{dx^n} + a_{n-1} \frac{d^{n-1}y}{dx^{n-1}} + \cdots + a_1 \frac{dy}{dx} + a_0y = f(x)
+\]
+
+Firstly, we solve the homogenous equation:
+\[
+    a_n \frac{d^n y}{dx^n} + a_{n-1} \frac{d^{n-1}y}{dx^{n-1}} + \cdots a_1 \frac{dy}{dx} + a_0y = 0
+\]
+
+Let $y(x) = e^{\lambda x}$:
+\[
+    e^{\lambda x} \left(a_n \lambda^n + a_{n-1} \lambda^{n-1} + \cdots + a_1 \lambda + a_0\right) = 0
+\]
+
+This reduces to finding the zeroes of the corresponding nth order polynomial. If this polynomial has $n$ distinct zeroes, then the complimentary function is given by:
+\[
+    y_{CF}(x) = \alpha_1 e^{\lambda_1x} +  \alpha_2 e^{\lambda_2x} + \cdots +  \alpha_n e^{\lambda_nx}
+\]
+
+If these roots contain a repeated root, this will reduce the number of unique solutions by one. If we have any complex solutions, they wil come in complex conjugate pairs:
+\[
+    a^{( \pm i b)x} = e^{ax} \left(\cos bx \pm i \sin bx\right)
+\]
+
+This therefore has independent real solutions:
+\[
+    e^{ax} \cos bx
+\]
+\[
+    e^{ax} \sin bx
+\]
+
+\section{Equidimensional Equations}
+These have coefficients which do depend on $x$, but where the coefficients are functions of $x$ such that the $n$th derivative has a coefficient of $a_n x^n$
+
+The general form of a homogeneous equidimensional equation is:
+\[
+    a_n x^n \frac{d^n y}{dx^n} + a_{n-1} x^{n-1} \frac{d^{n-1}y}{dx^{n-1}} + \cdots + a_1 x \frac{dy}{dx} + a_0y = f(x)
+\]
+
+This has a solution in the general form $y(x) = x^\lambda$. When we differentiate $k$ times with respect to $x$ we lose $k$ powers of $x$, as each differentiation decreases the power. We need to restore this therefore with a $x^k$ prefactor.
+
+\section{Mass on a Spring (SHM)}
+A mass, $m$ on a spring is displaced from its equilibrium position by some distance $x$. There is a restoring force given by $F = -kx$.
+
+\[
+    F = ma \implies F = m \frac{d^2}{dt}
+\]
+\[
+    m \frac{d^2 x}{dt^2} + kx = 0
+\]
+\[
+    \frac{d^2 x}{dt^2} + \omega^2 X = 0 \qquad \text{where } \omega^2 = \frac{k}{m}
+\]
+
+We have:
+\[
+    x(t) = e^{\lambda t}
+\]
+\[
+    (\lambda^2 + \omega^2) e^{\lambda t} = 0
+\]
+\[
+    \lambda^2 + \omega^2 = 0
+\]
+
+Hence:
+\[
+    \lambda = e^{\pm i \omega t}
+\]
+
+
+
+

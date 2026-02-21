@@ -2,3 +2,186 @@
 \lecture{2}{Thu 19 Feb 2026 15:00}{Special Relativity II: Length Contraction}
 \section{Proving Length Contraction}
 
+Consider a horizontal laser cavity. We fire a laser from the left of the cavity (point A) to the right of the cavity (point B). The laser bounces off a mirror at point B and bounces back.
+
+The cavity has length $L_0$ as measured in the rest frame $\Sigma_0$. In this frame:
+\[
+    t_0 - \frac{2L_0}{c}, \qquad \text{Where $t_0$ is the time taken for the A->B->A journey in $\Sigma_0$}
+\]
+
+Now suppose the cavity moves at speed $v$ relative to a stationary observer in a different frame ($\Sigma$).
+
+The observer sees the cavity as having length $L$, how long does the A->B->A journey take as observed by a stationary observer in $\Sigma$.
+\[
+    t = t_{A \to B} + t_{B \to A}
+\]
+
+The cavity is moving away from the observer, so the laser beam doesn't just travel $L$ when going from $A \to B$. It must travel $L$ plus the distance the whole cavity has moved away in this time (as $B$ is moving away from the pulse). This extra distance is $vt_{A \to B}$, hence the distanced travelled when going from A to B is $L+ vt_{A \to B}$.
+
+As $c$ is constant in all frames, we can say:
+\[
+    c = \frac{L + vt_{A \to B}}{t_{A \to B}}
+\]
+\[
+    t_{A \to B} (c - v) = L
+\]
+\[
+    t_{A \to B} = \frac{L}{c - v}
+\]
+
+And now on the return journey from $B \to A$, as it travels back towards $A$, the cavity is moving in the same direction as the light, so $A$ ``catches up'' to the pulse and results in a smaller required distance to be travelled, $L - vt_{B \to A}$
+\[
+    c = \frac{L - vt_{B \to A}}{t_{B \to A}} \implies t_{B \to A} = \frac{L}{c+v} 
+\]
+
+And returning to the total time:
+\[
+    t = t_{A \to B} + t_{B \to A}
+\]
+\[
+    t = \frac{L}{c - v} + \frac{L}{c + v}
+\]
+\[
+    = L \left(\frac{1}{c - v} + \frac{1}{c + v}\right)
+\]
+\[
+    = L \left(\frac{c + v + c - v}{(c-v)(c+v)}\right)
+\]
+\[
+    = L \frac{2c}{c^2 - v^2}
+\]
+\[
+    = \frac{2L}{c} \frac{c^2}{c^2 - v^2}
+\]
+\[
+    = \frac{2L}{c} \frac{1}{1 - \frac{v^2}{c^2}}
+\]
+\[
+    = \frac{2L}{c} \gamma^2
+\]
+
+We now apply time dilation, which says that $t = \gamma t_0$, hence:
+\[
+    \gamma t_0 = \frac{2L}{c} \gamma^2
+\]
+\[
+    t_0 = \frac{2L}{c} \gamma
+\]
+
+From the rest frame, we know that $t_0 = 2L_0 / c$, so:
+\[
+    \frac{2L_0}{c} = \frac{2L \gamma}{c}
+\]
+
+\[
+    L_0 = L \gamma
+\]
+
+As $\gamma > 1, \, \forall (u < c)$, the proper length measured from the rest frame will always be greater than the length measured by an observer, hence length is contracted for a moving object. 
+
+\section{Example}
+In a particle accelerator, protons are accelerated to a measly $0.9c$. These protons pass through a tunnel of length $2 \si{km}$ as viewed from the a laboratory rest frame at the accelerator.
+
+Recall that:
+\[
+    t = \gamma t_0
+\]
+\[
+    L = \frac{L_0}{\gamma}
+\]
+\[
+    \gamma = \frac{1}{\sqrt{1 - \beta^2}}, \qquad \text{where: } \beta = u/c
+\]
+
+
+
+
+\subsection{How long would the journey take, according to the rest frame?}
+Viewed in the lab frame, and $v = d/t$ so:
+\[
+    t = \frac{2 \times 10^3 \si{m}}{0.9 \times 3 \times 10^8} = 7.4 \times 10^{-6}\si{s} = 7.4 \si{\micro \second}
+\]
+
+No relativity needed! 
+
+\subsection{How long would the journey take, according to the proton's frame?}
+We do need to consider relativity here, and use time dilation:
+\[
+    t = \gamma t_0
+\]
+
+\[
+    \gamma = \frac{1}{\sqrt{1 - 0.9^2}} = 2.3
+\]
+
+\[
+    t = \gamma t_0 \implies t_0 = \frac{t}{\gamma} = \frac{7.4 \si{\micro s}}{2.3} = 3.2 \si{\micro\second}
+\]
+
+\subsection{How long is the tunnel, according to the proton's frame?}
+The rest frame now corresponds to the tunnel. It has proper length in its rest frame of $2 \si{\kilo \metre}$.
+
+As viewed by the protons in their rest frame, it is the tunnel that is moving and is rushing towards them at $0.9c$. This is therefore a length contraction problem.
+
+\[
+    L = \frac{L_0}{\gamma} = \frac{2 \si{km}}{2.3} = 870 \si{m}
+\]
+
+\subsection{Checking Values}
+To check, we can reuse $v = d/t$ but this time in the proton rest frame.
+
+\[
+    d = 870\si{m}, \quad t = 3.2 \times 10^{-6} \si{s}
+\]
+
+Hence
+\[
+    v = \frac{870 \si{m}}{3.2 \times 10^{-6} \si{s}} = 2.7 \times 10^8 \si{\metre\second^{-1}} = 0.9c \text{ as required!}
+\]
+
+\section{Example II: Cosmic Rays}
+The highest energy cosmic rays are protons with massive energies $E \sim 10^{20} \si{eV}$, compared to the LHC with $E \sim 10^{12} \si{eV}$
+
+This corresponds to a $\gamma = 10^{11}$, and our galaxy is $\sim 10^{20}$m across. \footnote{$\gamma = E/mc^2$ - will be expanded on in later lectures.}
+
+As viewed on earth, these cosmic protons travel at $v \approx c$, hence,
+\[
+    t \approx \frac{d}{v} \approx \frac{10^{20}}{3 \times 10^8} = 3 \times 10^{11} \si{s} \approx 10^5 \si{ years}
+\]
+
+As viewed by the protons:
+\[
+    t_0 = \frac{t}{\gamma} = \frac{3 \times 10^{11}}{10^{11}} \approx 3 \si{s}
+\]
+
+Which is starkly different!
+
+\section{Lorentz Transformations}
+In general, transforming between coordinates in two different frames can get extremely messy, more than can easily be handed in simple applications of length contraction or time dilation.
+
+The Lorentz Transformations provide a general set of coordinate transformations between $\Sigma$ and $\Sigma^\prime$, i.e. $(x, y, z, t) \to (x^\prime, y^\prime, z^\prime, t^\prime)$.
+
+These transformations must be:
+\begin{enumerate}
+    \item Symmetric about a change in sign of $u$, i.e. the transformation from $\Sigma \to \Sigma^\prime$ with $u$ and the transformation from $\Sigma^\prime \to \Sigma$ with $-u$ must be the same.
+    \item They must be linear.
+\end{enumerate}
+
+These transformations are:
+% TODO
+
+We do not need to know the derivations, but do need to know the results.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
