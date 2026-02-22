@@ -1,0 +1,149 @@
+% !TeX root = main.tex
+\lecture{4}{Mon 09 Feb 2026 12:00}{Vertexing and Tracking Systems}
+
+In our familiar layered model:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-02.png}
+    \caption{}
+\end{figure}
+
+The first subdetector type is the initial tracking system which provides a non-destructive estimate of a particle's trajectory.
+
+\section{Tracking Systems}
+\textbf{Purpose: } To determine the trajectory of charged particles (usually in the presence of a magnetic field), in order to infer the momentum of the particle. This happens by ionisation, whereby the particle leaves small deposits of charge in either a gas or layers of a semiconductor sensor.
+
+\textbf{Position: }As the following layers are destructive (i.e. calorimeters will absorb the particle entirely in order to make an energy measurement, while a muon system will block any other particle), we need to place the tracking system first for it to be effective. 
+
+We also want it placed near the primary interaction point. Since we want to use position measurements in the tracking system to extrapolate backwards and determine the origin point (where the collision took place), keeping them as close as possible to this origin point reduces the overall uncertainty of the track.
+
+For a long path, a small uncertainty in position points propagates to a much larger uncertainty in track the further away we are from the initial collision point.
+
+\subsection{Material Budget}
+\begin{itemize}
+    \item In an ideal world, the tracking detector would have a perfectly massless and lightweight material, in order to reduce the risk of scattering. However, we need some mass in order to measure ionisation, so it's a constant trade off between the two.
+    \item We want as small a number of radiation lengths $X_0$s within / upstream of the tracking system as possible.
+    \item Some material is unavoidable, for example in the LHC there needs to be a conductive shield around the beam to prevent the large magnetic fields from inducing currents that would interfere with the sensitive measurement equipment. It also separates the highly pure vacuum of the beam pipe from the slightly less pure vacuum of the outer portion containing the LHCs electronics.
+\end{itemize}
+
+\paragraph{Radiation Length} This is an inherent property of each material and is a measure of energy loss. A particle of energy $E_0$ passes through a distance of one radiation length and loses a factor of energy $1/e$.
+
+\[
+    E(x) = E_o \exp \left(\frac{-x}{X_0}\right)
+\]
+
+For example:
+\begin{itemize}
+    \item For Cu: $X_0 = 15$mm.
+    \item For Be: $X_0 = 35.2$cm.
+\end{itemize}
+
+The processes by which energy is lost depends on the particle species in question. For example, an electron loses energy by Bremsstrahlung much more rapidly compared to a muon, due to the differences in mass ($\text{average energy loss} \propto 1/m^2$). To define radiation length, we use an electron as a scale.
+
+This lets us talk about ``material budget'', as adding more material causes a higher uncertainty. For each particle path we care about, we want the fewest radiation lengths possible.
+
+\section{Measuring Trajectories}
+For a particle passing through a tracking system, we reconstruct its trajectory by measuring individual energy deposits (called ``hits'') caused by ionisation in a large volume (typically $1\si{m}\times1\si{m}\times1\si{m}$)
+
+This volume is made up often of many layers, so we can gain an idea of the particles position as it passes through each layer and use this to extrapolate. A tracking system has a resolution of a few $100\si{\micro\metre}$ and may leave $10-100$ hits.
+
+In a ``vertex detector'', we use a smaller system to reconstruct tracks at/around the interaction point with a higher precision - typically aiming for $\sim 10 \si{\micro\metre}$. It is typically a silicon detector (layers of silicon detector sheets) and generally records fewer hits ($< 10$).
+
+In a ``tracking detector'' we use a much larger system commonly further away from the primary interaction point. In a vertex system, there's no magnetic field so while we can use it to extrapolate back to find the PIP, we cannot use it to estimate momentum. 
+
+The LHC-b experiment for example has both a vertexer very close to the PIP (to determine the PIP location), and a much more substantial tracking system behind a magnet further away (to determine the deflected track in a magnetic field and hence the momentum.)
+
+\section{Measuring Momentum}
+The motion of a charged particle in a magnetic arises due to the Lorentz force and is proportional to charge:
+\[
+    \underline{F} = q (\underline{E} + \underline{v} \times \underline{B})
+\]
+
+Where $\underline{F}$ is the force, $\underline{E}$ is the electric field, $\underline{v}$ is the particle velocity and $\underline{B}$ is the magnetic field. Assuming we are only dealing with a magnetic field, and taking magnitudes, we have:
+\[
+    \boxed{\underbrace{p}_{\si{GeV}} = 0.3 \times \underbrace{B}_{\si{T}} \times \underbrace{q}_{|e|} \times \underbrace{r}_{\si{m}}}
+\]
+
+Where the magnetic field produces curvature of radius $r$ in the plane perpendicular to the $B$-field. Motion parallel to $\underline{B}$ is unchanged.
+
+In 3D, and assuming we are contained within the magnetic field, the particle will follow a helix of constant radius of curvature. This assumes that there are no non-conservative forces (i.e. scattering). In the ideal case, there is no work done, meaning in our force:
+\[
+    \underline{F} = q \underline{v} \times \underline{B}
+\]
+
+The force and the velocity are perpendicular, so $\underline{F} \cdot \underline{v} = 0$.
+
+\subsection{Quantitatively}
+Consider a particle path with a constant radius of curvature $R$. Consider three hits, with vertical separation between the top and the bottom being $L/2$. The distance between the top/bottom hit and the origin is $\mathcal{l}$, and the final distance between this straight line and the deflected path is the ``sagitta'' $s$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/lec03-01.png}
+    \caption{}
+\end{figure}
+
+We know $L/2$ (the vertical separation between hits) as we've build the detector so know the resolution, and we want to measure the sagitta, the deviation from a straight line.
+
+We know that:
+\[
+    p = 0.3BqR
+\]
+
+And from the diagram:
+\[
+    R = \mathcal{l} + s
+\]
+\[
+    l = R \cos \left(\frac{\theta}{2}\right)
+\]
+
+Putting these together:
+\[
+    s = R \left(1 - \cos \frac{\theta}{2}\right)
+\]
+
+Assuming the bending is gentle in a detector, so $\theta$ and $s$ are small. Hence we apply a small angle approximation:
+\[
+    \cos \frac{\theta}{2} \approxeq 1 - \left(\frac{\theta}{2}\right)^2 \frac{1}{2!} + \left(\frac{\theta}{2}\right)^4 \frac{1}{4!} + \dots
+\]
+
+Taking the first order:
+\[
+    s \approxeq \left(\left(\frac{\theta}{2}\right)^2 \frac{1}{2!}\right) = \frac{R \theta^2}{8}
+\]
+
+We can also use the small angle approximation for sine:
+\[
+    \sin \frac{\theta}{2} = \frac{L}{2R}
+\]
+
+For small theta:
+\[
+    \sin \frac{\theta}{2} \approxeq \frac{\theta}{2}
+\]
+\[
+    \theta \approxeq \frac{L}{R}
+\]
+
+So:
+\[
+    s = \frac{L^2}{8R}
+\]
+
+Hence, finally, we have:
+\[
+    p = 0.3 Bq \frac{L^2}{8s}
+\]
+
+\subsection{Uncertainties}
+We want to find the uncertainty on momentum, $\sigma_p / p$:
+\[
+    \frac{\sigma_p}{p} = \frac{\sigma_s}{s} = \frac{8p}{0.3BqL^2} \sigma_s
+\]
+
+However we want to use our uncertainties on individual hits, $x_1, x_2, x_3$ etc. We have (and will not derive):
+\[
+    \frac{\sigma_p}{p} = \frac{\sigma_{xy} \, P}{0.3 BL^2} \sqrt{\frac{720}{N+4}}
+\]
+
+

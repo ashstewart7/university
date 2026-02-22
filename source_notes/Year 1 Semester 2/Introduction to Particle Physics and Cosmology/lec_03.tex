@@ -94,3 +94,72 @@ See QM1. A photon scatters off a quasi-free electron in an atom. The photon and 
 Thomson scattering is a low-energy form of scattering where the energies do not change, and Rayleigh scattering is a very low energy limit, where the interaction takes place between a photon and multiple atomic electrons. 
 
 \subsection{Pair Production}
+
+
+
+\begin{center}
+\begin{tikzpicture}
+\begin{feynman}
+  \vertex (gamma) at (-2,0) {$\gamma$};
+  \vertex (v)     at (0,0);
+  \vertex (em)    at (2,0.8) {$e^-$};
+  \vertex (ep)    at (2,-0.8) {$e^+$};
+  \vertex (Z)     at (0,-2) {$Z$, Nucleus};
+  \diagram*{
+    (gamma) -- [photon] (v),
+    (v) -- [fermion] (em),
+    (v) -- [anti fermion] (ep),
+    (v) -- [photon] (Z),
+  };
+\end{feynman}
+\end{tikzpicture}
+\end{center}
+
+A photon interacting with a nucleus can (leaving the nucleus unscathed) produce a particle and the corresponding antiparticle, typically a positron and an electron. This has a minimum photon energy of $E_\gamma > 2m_e c^2$\footnote{$m_ec^2 = 0.511 \si{MeV}$} to ensure conservation of energy isn't violated and must occur in the presence of matter (for the same reason as Bremsstrahlung). The photon is not present in the final state.
+
+However, say a photon has precisely the energy required to create a pair. This would (as it stands) create a pair of electrons with zero momentum (or very small momentum). However, a photon always has a momentum given by its energy, so momentum is not conserved. If the pair travel to attempt to resolve this, they now have some kinetic energy too, which means the photon must have a higher energy, and hence a higher momentum. This creates mismatch, we cannot conserve both energy and momentum in this situation.
+
+By this interaction taking place in the presence of a nucleus, the nucleus can absorb some recoil (via exchange of a virtual photon) to ensure conservation of energy and momentum are satisfied.
+
+This must take place in a Coulomb field to contribute this photon. The present nucleus has charge $z|e|$.
+
+Lets consider the cross section of this interaction:
+
+\[
+    \sigma_\text{pprod} \propto \frac{7}{9}\frac{A}{N_A} \frac{1}{X_0}
+\]
+
+$X_0$ is the radiation length. It is a complex property of the material but is proportional to $1/z^2$.
+
+\section{Neutrinos}
+Neutrinos are really difficult to detect, as they are only effected by the weak interaction and have no ionisation/pair production etc - they are effectively non-interacting. We detect them by detecting the products of a weak force interaction.
+
+For example:
+\begin{itemize}
+    \item A muon neutrino can exchange a $W$ boson with a proton, which becomes a neutron. The muon neutrino becomes a muon and the up quark in the proton becomes a down quark in the neutron.
+    \begin{itemize}
+        \item We can detect the muon that's produced as the neutrino passes through the detector and interacts.
+        \item We build a massive multi-tonne detector that puts a large amount of mass in the way of the neutrino, often water. 
+        \item We do this in the hope that it will interact with some of the matter and produce the more-detectable muon.
+    \end{itemize}
+    \item The neutrino can scatter off a nucleus. 
+    \begin{itemize}
+        \item A mall amount of energy is exchanged with the nucleus, depositing a small amount of heat energy in the detector's matter.
+        \item Nothing changes/decays/is produced etc other than a small amount of heat.
+        \item We build a very sensitive detector capable of detecting this very small amount of heat.
+    \end{itemize}
+\end{itemize}
+
+\section{Hadrons}
+Hadrons are really complex in their interactions. They can have inelastic nuclear interactions, with large energy deposits at a small number of sites (compared to an ECal shower where we'd expect to see many smaller deposits). This arises as a result of the nucleus becoming excited or breaking apart entirely and producing a chain of secondary hadrons/particles and a change in the nucleus. 
+
+These secondary particles can go on to interact again. This are complex and messy objects which can fragment off to cause many secondary impacts.
+
+\section{Conclusion}
+In summary:
+\begin{itemize}
+    \item The key interactions we care about are ionisation, Bremsstrahlung and Cherenkov radiation for charged particles.
+    \item For photons, we care about pair production.
+    \item For hadrons, hadron showers are messy and complex. We add inelastic nuclear interactions on top of an electromagnetic component from ionisation and everything becomes rather tricky.
+\end{itemize}
+

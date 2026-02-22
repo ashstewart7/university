@@ -1,0 +1,39 @@
+% !TeX root = main.tex
+\lecture{5}{Mon 09 Feb 2026 12:00}{Calorimetry}
+
+Now that we've finished talking about determining the principal interaction point and the momentum of produced particles in a tracking detector, we move onto calorimeters:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-02.png}
+    \caption{}
+\end{figure}
+
+\section{Materials and Energy Loss}
+Energy loss in a material is described by the Bethe formula, which gives mean energy loss by ionisation for unit path length:
+\[
+    \left\langle - \frac{dE}{dx}\right\rangle = K z^2 \frac{1}{\beta^2} \left[\frac{1}{2} \ln \frac{2m_ec^2 \beta^2 \gamma^2 W_\text{max}}{I^2} - \beta^2 - \frac{\delta(\beta \gamma)}{2}\right]
+\]
+
+This is:
+\begin{itemize}
+    \item Valid for $\beta \gamma <1000$ within a few percent precision.
+    \item Includes dependence on the medium, $I, Z, A$ etc.
+\end{itemize}
+
+The good news is that we do not need to know this formula. We do however need to know some key features:
+\begin{itemize}
+    \item $\frac{dE}{dx} \propto \frac{1}{\beta^2}$ below some minimal value of $\frac{dE}{dx}$
+    \item $\frac{dE}{dx} \propto \ln(\beta^2 \gamma^2)$ above this minimal value of $\frac{dE}{dx}$. This is called ``relativistic rise''.
+    \item This minima happens at approximately $\beta \gamma \sim 3-4$.
+    \item At large $\beta \gamma$, polarisation of the medium causes saturation (effectively a plateau).
+\end{itemize}
+
+Broadly, we expect to see a fall up until some minimal value, then a relativistic rise, and then a plateau:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec04-01.png}
+     \caption{}
+\end{figure}
+
+\section{Calorimeters}
+The purpose of a calorimeter is to determine the total energy of an incident particle. It does so by absorbing the particle entirely, creating a measurable signal which is proportional to the energy of the incident particle.
