@@ -1,0 +1,7 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/prulloac/devcontainer-features/latex:1": {}
+	},
+	"postCreateCommand": "sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-extra-utils texlive-science latexmk"
+}
