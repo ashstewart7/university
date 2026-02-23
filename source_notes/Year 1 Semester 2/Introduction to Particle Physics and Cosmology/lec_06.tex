@@ -1,0 +1,104 @@
+% !TeX root = main.tex
+\lecture{6}{Mon 16 Feb 2026 16:00}{End of Particle Physics: Calorimetry II and PID}
+
+\section{EM Calorimetry: Shower Shape}
+
+The energy deposited vs the depth in material can be expressed as:
+\[
+    \frac{dE}{dt} = E_0 b \frac{(bt)^{a-1} e^{-bt}}{\Gamma(a)}
+\]
+
+Where $t$ is expressed as a length in units of radiation length $t = x/X_0$ and $\Gamma(a)$ is the standard gamma function $\Gamma(x) = \int_{0}^{\infty} t^{x-1} e^{-x} \, dx $. $a, b$ are both constants.
+
+\textbf{For small $t$ (early in the detector): } $t^{a-1}$ dominates as $e^{-bt} \approx 1$
+
+\textbf{For large $t$ (later in the detector): } $e^{-bt}$ dominates.
+
+Considering a plot of $\frac{dE}{dt}$ against $t$, we initially have polynomial growth, reaching a peak. We then from that peak decay exponentially with an infinite tail.
+
+The maximum point of the shower is given at $t = t_\text{max}$ and is achieved by further differentiating $dE/dt$ and is given by:
+\[
+    t_\text{max} = \frac{a-1}{b} = \ln \left(\frac{E_0}{E_c}\right) + C_{\gamma \text{ or } e^{-}}
+\]
+
+For a photon, $C_\gamma = 0.5$ and for an electron, $C_e = -1$. Hence, the shower maximum is at a smaller value of $t$ for an electron/positron compared to photon.
+
+Crucially, we want to find the total energy deposited by the particle. We get that by integrating $dE/dt$:
+\[
+    \int_{0}^{\text{calo thickness}} \frac{dE}{dt} \, dt
+\]
+
+While the tail is an infinitely long decaying exponential, we only care about the portion of the tail which is inside the calorimeter. Any energy that would be deposited past this point is lost:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/lec06-01.png}
+     \caption{}
+\end{figure}
+
+If the calorimeter is too thin, we need to make a large correction to adjust for this and we therefore have a bigger uncertainty. We want to ensure that the calorimeter is thick enough to capture the vast majority of deposited energy with minimal loss.
+
+\subsection{Resolution}
+The resolution for the calorimeter varies heavily based on the material used to construct it. Typically, however:
+\begin{itemize}
+    \item ECAL resolution: $2-10\%$
+    \item HCAL resolution: $50-100\%$
+\end{itemize}
+
+Different materials will have different characteristic radiation lengths,
+
+For example:
+\begin{itemize}
+    \item W has $X_0 = 0.35$cm, $\lambda_\text{int} = 9.9$cm, $R_M = 0.93$cm
+    \item Pb has $X_0 = 0.56$cm, $\lambda_\text{int} = 17.6$cm, $R_M = 1.6$cm
+    \item Fe has $X_0 = 1.8$cm, $\lambda_\text{int} = 16.7$cm, $R_M = 1.7$cm
+    \item Cu has $X_0 = 1.4$cm, $\lambda_\text{int} = 15.3$cm, $R_M = 1.8$cm
+\end{itemize}
+
+$R_M$ is the ``Moliere Radius'' and is the radial width in which 90\% of the shower's energy deposit is confined. Note that we have different design considerations for an HCAL vs an ECAL, for example the size of an HCAL is generally much larger than that of an ECAL.
+
+\section{Particle Identification (PID)}
+We can now measure a particle's momentum and energy, and we now want to determine the mass of the particle. Surely we can do that with:
+\[
+    E^2 - p^2 = m^2
+\]
+
+Unfortunately not\dots the resolution (especially for energy on a calo) is pretty poor, so we would end up with an unreasonably large uncertainty on our mass, too large to do reasonable particle identification with. Instead, we:
+\begin{itemize}
+    \item Use information from the whole ensemble of detectors.
+    \item Use hypothesis tests: proposing a specific particle type and then using all the information we have (i.e. momentum) see if this is a reasonably likely outcome.
+    \item For example, we can use information on whether or not the particle reached the muon chambers to help narrow down what it could be. Alternatively, what is the pattern of energy deposit observed in the ECAL or HCAL?
+    \item We can also use dedicated PID, such as:
+    \begin{itemize}
+        \item A time of flight detector, determining the particle velocity (hence mass, with momentum measurements from a tracker).
+        \item Cherenkov detectors (not useful at high momenta, i.e >100GeV): As a recap, the particle emits a cone of photons at angle $\theta_c$ which depends on the refractive index of the material and $\beta$. Measuring this cone allows us to determine $\theta_c$ hence $\beta$ hence $v$.
+    \end{itemize}
+\end{itemize}
+
+Here is an example of a detector setup:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-02.png}
+     \caption{}
+\end{figure}
+
+We have covered the vertex locator, magnet, tracking stations T1, T2, T3, the HCAL, ECAL and (while we haven't yet touched on them), we have 5 muon systems.
+
+We are yet to discuss RICH1 and RICH2. These are called ``Ring Imaging Cherenkov Detectors''. These cones of Cherenkov emissions are focussed using a magnet onto a plane, where they form rings. The radii of these rings can be measured and the detector geometry can be used to determine the Cherenkov angle. The two detectors work similarly, but cover different ranges of measurable momenta.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-03.png}
+     \caption{}
+\end{figure}
+
+This Cherenkov angle can therefore be used to discriminate against particles, up to a limit of momentum, past which they become fairly useless.
+
+\begin{tcolorbox}
+    NOTE: There was a practice exam question here that would be good to come back to during revision.
+\end{tcolorbox}
+
+\vspace{1cm}
+
+\begin{center}
+    \large \textbf{End of Particle Physics}
+\end{center}

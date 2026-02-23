@@ -36,4 +36,82 @@ Broadly, we expect to see a fall up until some minimal value, then a relativisti
 \end{figure}
 
 \section{Calorimeters}
-The purpose of a calorimeter is to determine the total energy of an incident particle. It does so by absorbing the particle entirely, creating a measurable signal which is proportional to the energy of the incident particle.
+The purpose of a calorimeter is to determine the total energy of an incident particle. It does so by absorbing the particle entirely, creating a measurable signal which is proportional to the energy of the incident particle. As it is destructive, it is always located after the non-destructive tracking system. It has no need for the B-field of the tracking detector, and may be called a ``calo'', ``ECAL'' or ``HCAL''.
+
+There are two types of calorimeter:
+\begin{itemize}
+    \item Electromagnetic Calorimeter: ECAL.
+    \item Hadronic Calorimeter: HCAL.
+\end{itemize}
+
+We characterise the length of an ECAL in terms of radiation length $X_0$, typically $0.15X_0 - 0.3X_0$. It works by bremsstrahlung, and emitted bremsstrahlung photons causing pair production and more bremsstrahlung emission etc.
+
+A HCAL works on nuclear hadronic interactions, so we instead define an interaction length $\lambda_\text{int}$, typically $5 \lambda_\text{int} - 8 \lambda_\text{int}$. 
+
+They don't measure the total energy of a particle if particles produced in the process pass straight through, so not all the energy in an ECAL will be captured, as some will pass straight through. Muons, neutrinos and sometimes pions pass straight through and escape, they are not (may not for a pion) be detected by the calorimeters.
+
+An ideal calorimeter has an output signal ``response'' which is proportional to the energy of the input particle. We would ideally like a directly proportional linear relationship, but this may not always be realistic.
+
+If we already know mass (from Cherenkov rings, to be discussed later in the course) and momentum from the tracking detector, why do we need a calo when we can just use $E^2 - p^2 = m^2$ to determine energy?
+
+\begin{itemize}
+    \item Cherenkov rings and tracking systems only work with a charged particle. The calculation method is not sensitive enough, as the Cherenkov+tracker setup cannot detect $\gamma, \nu$ or neutral hadrons.
+    \item Having a direct energy measurement adds another constraint to our system - the more information we can get the better. A direct energy measurement improves resolution and is more likely to be accurate than determining it from two other uncertain quantities.
+    \item At very high momentum, (with little Coulomb scattering) the relative uncertainty of the transverse momentum of a tracking system is given by:
+    \[
+        \frac{\sigma_{p_\perp}}{p_\perp} \propto \frac{p_\perp}{BL^2}
+    \]
+    Therefore at a higher momentum, we have a higher uncertainty. At high momenta, there is a smaller deflection, so a high momentum track will just pass rapidly through the field with very little deflection and is therefore much more difficult to measure accurately - the tracking system degrades at higher momenta.
+    
+    For a calorimeter, we have nicer behaviour at high momenta:
+    \[
+        \frac{\sigma_E}{E} = \frac{a}{\sqrt{E}} \oplus b \oplus \frac{e}{C}    
+    \]
+
+    Where:
+    \begin{itemize}
+        \item $a$ arises statistical fluctuations inherent to the measurement.
+        \item $b$ arises from calibration effects (i.e. from non-linearity)
+        \item $c$ arises from electronic noise.
+        \item $\oplus$ means to ``add in quadrature'', $(p \oplus q \oplus r) = \sqrt{p^2 + q^2 + r^2}$
+    \end{itemize}
+    
+    \item Trackers are relatively slow as they require ionisation clouds drifting towards a collection point and involve quite a computationally complex problem to recognise the patterns and reconstruct the track. A calorimeter relies on  ``scintillation'' to convert energy to a response, which is much faster. 
+    
+    This is important for triggering. Every $25$ns, we need to decide whether or not to keep an event (as there is nowhere near enough storage/processing power) to perform detailed track reconstruction for every single event. We need a calorimeter to participate in this.
+\end{itemize}
+
+\subsection{EM Calorimeters}
+There are two types of electromagnetic calorimeters, sampling or homogeneous. A sampling calorimeter is layered, with a layer of absorber producing a shower of particles (i.e. lead) in front of a collector layer with a scintillator that generates a signal when particles pass through.
+
+HCALs are always sampling-type calorimeters, as it takes a lot more mass to slow down/break apart a hadron compared to a lighter charged particle.
+
+Lets build a simple model of an electromagnetic shower that might be detected by a calorimeter:
+
+We have a high energy photon (so we can mostly disregard scattering etc) enter the detector. This pair produces (i.e. an electron and a positron) which emits photons via bremsstrahlung emission. These emitted photons can then go on to pair produce themselves, generating (i.e.) an electron and a positron again, which emit more photons via bremsstrahlung, etc.
+
+The maximum energy is deposited when the average particle energy (of particles developing in the shower) is the ``critical energy''. 
+
+Here, a photon has entered from the left, and the first few radiation lengths have left the material intact.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-01.png}
+     \caption{Damage to a copper block that has had energy dumped into it via this process.}
+\end{figure}
+
+After the first few radiation lengths, we have the ``critical point'', where a large amount of energy has been dumped. This point is defined as the point where the probability of bremsstrahlung and ionisation are equal. 
+
+The shower deposits a constant amount of energy per $X_0$ travelled (by definition of radiation length). Each step in path length, in terms of $X_0$ has a doubling number of particles and a halving individual particle energy. The angle of photon emission is fairly small, so the shower is narrow. This is unlike a hadronic calorimeter that has a wider shower. The width of the shower is given by the multiple scattering of the $e^+$ and $e^-$.
+
+When the energy of the particle is less than the critical energy, ionisation dominates the interactions and the shower development stops rapidly. When the particle energy is $>E_c$, pair production and bremsstrahlung dominate. 
+
+After depth $t$ (in units of $X_0$), the number of particles is $2^t$, and the average particle energy is $E_0 / 2t$. The shower stops developing after $E = \frac{E_0}{2t} < E_c$. This happens when $E = 2t = E_0/E_c$. Hence:
+
+\[
+    t_\text{max} \log 2 = \log \left(\frac{E_0}{E_c}\right)
+\]
+\[
+    t_\text{max} = \frac{\log \left(E_0 / E_c\right)}{\log 2}
+\]
+
+This is what defines how deep our calorimeter needs to be in order to collect the energies we are expecting to require.

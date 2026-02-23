@@ -59,7 +59,7 @@
 \fancyhf{}
 \fancyfoot[L]{\currentmodule}
 \fancyhead[L]{\currentlecture}
-\fancyhead[R]{Pg \thepage}
+\fancyhead[R]{Page \thepage}
 \fancyfoot[R]{Ash's Lecture Notes}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -78,11 +78,11 @@
     \ifthenelse{\isempty{#3}}{%
         \addcontentsline{toc}{chapter}{Lecture #1}%
         \chapter*{\small{#2}\\\LARGE{Lecture #1}}%
-        \gdef\currentlecture{Lec #1}%
+        \gdef\currentlecture{Lecture #1}%
     }{%
         \addcontentsline{toc}{chapter}{Lecture #1: \textnormal{#3}}%
         \chapter*{\small{#2}\\\LARGE{Lecture #1 - #3}}%
-        \gdef\currentlecture{Lec #1 - #3}%
+        \gdef\currentlecture{Lecture #1 - #3}%
     }\thispagestyle{fancy}}
 
 \@addtoreset{section}{chapter}
