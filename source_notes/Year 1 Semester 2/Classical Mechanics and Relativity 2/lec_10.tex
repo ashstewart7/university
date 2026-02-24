@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{12}{Thu 19 Feb 2026 15:00}{Special Relativity II: Length Contraction}
+\lecture{10}{Thu 19 Feb 2026 15:00}{Special Relativity II: Length Contraction}
 \section{Proving Length Contraction}
 
 Consider a horizontal laser cavity. We fire a laser from the left of the cavity (point A) to the right of the cavity (point B). The laser bounces off a mirror at point B and bounces back.
@@ -94,8 +94,6 @@ Recall that:
 \]
 
 
-
-
 \subsection{How long would the journey take, according to the rest frame?}
 Viewed in the lab frame, and $v = d/t$ so:
 \[
@@ -146,7 +144,7 @@ This corresponds to a $\gamma = 10^{11}$, and our galaxy is $\sim 10^{20}$m acro
 
 As viewed on earth, these cosmic protons travel at $v \approx c$, hence,
 \[
-    t \approx \frac{d}{v} \approx \frac{10^{20}}{3 \times 10^8} = 3 \times 10^{11} \si{s} \approx 10^5 \si{ years}
+    t \approx \frac{d}{v} \approx \frac{10^{20}}{3 \times 10^8} = 3 \times 10^{11} \si{s} \approx 10^4 \si{ years}
 \]
 
 As viewed by the protons:
@@ -164,24 +162,37 @@ The Lorentz Transformations provide a general set of coordinate transformations 
 These transformations must be:
 \begin{enumerate}
     \item Symmetric about a change in sign of $u$, i.e. the transformation from $\Sigma \to \Sigma^\prime$ with $u$ and the transformation from $\Sigma^\prime \to \Sigma$ with $-u$ must be the same.
-    \item They must be linear.
+    \item They must be linear as otherwise a constant speed in one would not be constant in the other (and therefore not inertial frames).
+    \item If relative velocity is only in the $x$ direction, the transformations must be independent of $y$ and $z$.
 \end{enumerate}
 
-These transformations are:
-% TODO
+These transformations are (assuming motion only in $x$):
+\[
+    x = \gamma (x^\prime + v t^\prime)
+\]
+\[
+    y = y^\prime
+\]
+\[
+    z = z^\prime
+\]
+\[
+    t = \gamma \left(t^\prime + \frac{x^\prime v}{c^2}\right)
+\]
+
+And:
+\[
+    x^\prime = \gamma (x- v t)
+\]
+\[
+    y^\prime = y
+\]
+\[
+    z^\prime = z
+\]
+\[
+    t^\prime = \gamma \left(t - \frac{x v}{c^2}\right)
+\]
 
 We do not need to know the derivations, but do need to know the results.
-
-
-
-
-
-
-
-
-
-
-
-
-
 
