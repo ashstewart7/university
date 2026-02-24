@@ -1,0 +1,153 @@
+% !TeX root = main.tex
+\lecture{13}{Wed 18 Feb 2026 11:00}{ODEs II}
+
+Summary of Lecture 12:
+\begin{itemize}
+    \item Frenet-Serret Equations for a curve $\underline{r}(s)$, where $\hat{T} = d \underline{r} / d s$.
+    \item Classification of differential equations:
+    \begin{itemize}
+        \item Partial vs Ordinary
+        \item Order
+        \item Degree
+        \item Homogeneous vs Inhomogeneous
+        \item Linear vs Non-Linear
+    \end{itemize}
+\end{itemize}
+
+\section{Equations Soluble By Direct Integration}
+Given some:
+\[
+    \frac{dy}{dx} = f(x) \implies y(x) = \int^x f(x^\prime)dx\prime + c
+\]
+
+We can generalise this to some repeated derivative:
+\[
+    \frac{d^ny}{dx^n} = f(x)
+\]
+
+Instead of having one undetermined constant here, we now have $n$. As each round of integration picks up a factor of the integration subject, these constants will form an $n$th degree polynomial.
+
+\subsection{Example: Particle Falling}
+\[
+    \frac{d^2z}{dt^2} = -g
+\]
+\[
+    \implies \frac{dz}{dt} = -gt + v_0
+\]
+\[
+    z = -\frac{1}{2}gt^2 + v_0 t + z_0
+\]
+
+Here we consider our unknown constants as boundary conditions, i.e. the initial velocity and initial height.
+
+\section{Separable Equations}
+These are equations in the form:
+\[
+    \frac{dy}{dx} = \frac{f(x)}{g(x)}
+\]
+
+\[
+    g(y) dy = f(x) dx \implies \int g(y) dy = \int f(x) dx + c
+\]
+
+\subsection{Example I: Falling Particle with Air Resistance}
+\[
+    \frac{dv}{dt}= -g-kv
+\]
+\[
+    \int \frac{dv}{g+kv} = - \int dt
+\]
+\[
+    \implies \frac{1}{k} \ln \left(g + kv\right) = -t + c  
+\]
+\[
+    \implies k + gv = Ae^{-kt}
+\]
+\[
+    \implies v(t) = - \frac{g}{k} + \left(v_0 + \frac{g}{k}\right)e^{-kt}
+\]
+
+
+\subsection{Example II}
+\[
+    \frac{dy}{dx} - x^2 y^2 = x^2
+\]
+\[
+    \frac{dy}{dx} = x^2 + x^2y^2 = x^2(y^2 + 1)
+\]
+\[
+    \implies \frac{1}{y^2 + 1} dy = x^2 dx
+\]
+\[
+    \implies \arctan y = \frac{1}{3}x^3 + c
+\]
+\[
+    \implies y = \tan \left(\frac{1}{3}x^3 + c\right)
+\]
+
+\subsection{Example III}
+\[
+    \frac{dy}{dx} = -\frac{x}{y}
+\]
+\[
+    y dy = -x dx
+\]
+\[
+    \frac{1}{2}y^2 = - \frac{1}{2}x^2 + c
+\]
+\[
+    y^2 + x^2 = 2c  
+\]
+
+This is the equation for a circle.
+
+\section{Exact Equations}
+Suppose a function $y(x)$ is implicitly defined such that $f(x, y) = c$. It follows that the total differential:
+\[
+    df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy = 0
+\]
+As $f(x, y)$ is a constant for all values of $x, y$, the constant differentiates to zero.
+
+We can set:
+\[
+    M(x, y) = \frac{\partial f}{\partial x} \qquad N(x, y) = \frac{\partial f}{\partial y}
+\]
+To try to solve this equation:
+\[
+    M(x, y) dx + N(x, y) dy = 0
+\]
+
+If we can do this (i.e. if the function can be decomposed into gradient components $M$ and $N$), the equation is called ``exact''. For this to be true, we need:
+\[
+    \frac{\partial^2 f}{\partial y \partial x} = \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} = \frac{\partial^2 f}{\partial x \partial y}
+\]
+
+If this relationship holds, we have an exact equation and can integrate M and N to get $f(x, y)$ to solve the equation in the form $f(x, y) = c$
+
+\subsection{Example}
+\[
+    \frac{dy}{dx} = - \frac{2x+y}{x+2y}
+\]
+\[
+    (2x+y) dx + (x+2y) dy = 0
+\]
+
+So:
+\[
+    M(x, y) = 2x+y \qquad N(x, y) = x+2y
+\]
+And:
+\[
+    \frac{\partial M}{\partial y} = 1 \qquad \frac{\partial N}{\partial x} = 1
+\]
+
+So yes, it is an exact function. It follows that:
+\[
+    \frac{\partial f}{\partial x} = 2x+y \implies f(x, y) = x^2 + xy + c(y)
+\]
+\[
+    \frac{\partial f}{\partial y} = x+2y \implies f(x, y) = xy + y^2 + d(x)
+\]
+\[
+    \implies f(x, y) = x^2 + xy + y^2 = c
+\]

@@ -1,0 +1,82 @@
+% !TeX root = main.tex
+\lecture{14}{Thu 19 Feb 2026 09:00}{}
+
+Recap of last lecture:
+\begin{itemize}
+    \item Soluble by direct integration:
+    \[
+        \frac{dy}{dx} = f(x) \implies y(x) = \int f(x) dx + c
+    \]
+
+    \item Separable equations:
+    \[
+        \frac{dy}{dx} = \frac{f(x)}{g(y)} \implies \int f(x) dx = \int g(y) dy
+    \]
+
+    \item Exact equations:
+    
+    Given in the form (or re-arrangeable to the form):
+    \[
+        M(x, y) dx + N(x, y) dy = 0
+    \]
+
+    These are soluble if:
+    \[
+        M(x, y) = \frac{df}{dx} \qquad N(x, y) = \frac{df}{dy}
+    \]
+    With $f(x, y) = c$.
+
+    The condition for an equation being exact is:
+    \[
+        \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+    \]
+\end{itemize}
+
+\section{``Homogeneous'' Equations}
+Here, the word homogenous has a different meaning to classification of differentiating equations. If we have some function that satisfied this:
+\[
+    g(\lambda x, \lambda y) = \lambda^p g(x, y)
+\]
+
+We call it a homogeneous function of order $p$. 
+
+``Homogeneous'' differential equations in this case are functions of the form:
+\[
+    \frac{dy}{dx} = f \left(\frac{y}{x}\right)    
+\]
+
+Here, we make the substitution $v(x) = y(x)/x$. We can write:
+\[
+    y(x) = v(x) x
+\]
+
+And substitute back in. We use the product rule where:
+\[
+    \frac{dy}{dx} = x \frac{dv}{dx} + v = f(v)
+\]
+\[
+    x \frac{dv}{dx} = f(v) - v
+\]
+
+This is now separable, so:
+\[
+    \int \frac{dv}{f(v) - v} = \int \frac{dx}{x}
+\]
+
+\subsection{Example}
+\[
+    2xy dy - (x^2 + y^2) dx = 0
+\]
+This is not exact, so we put it into a standard form and substitute:
+\[
+    2xy dy = (x^2 + y^2) dx
+\]
+\[
+    \frac{dy}{dx} = \frac{x^2 + y^2}{2xy} = \frac{(y/x)^2 + 1}{2 (y/x)}
+\]
+
+Let $u(x) = y/x$:
+
+
+
+
