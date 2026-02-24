@@ -10,5 +10,6 @@ def generate_short_title(title):
     if len(title) >= MAX_LEN:
         short_title = title[:MAX_LEN - len(' ... ')] + ' ... '
     short_title = short_title.replace('$', '')
+    short_title = short_title.replace('&', '&amp;')
     return short_title
 

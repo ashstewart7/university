@@ -1,0 +1,254 @@
+% !TeX root = main.tex
+\lecture{10}{Thu 19 Feb 2026 13:00}{Thermodynamic Transitions}
+
+\section{Thermodynamic Transitions}
+\subsection{Isothermal (Fixed Temperature)}
+This may look like:
+\begin{itemize}
+    \item A curve on a PV plot. As $PV = nRT$, a PV plot shows a $1/x$ relationship for constant $T$.
+    \item A vertical straight line on a PT plot.
+    \item A vertical straight line on a VT plot.
+\end{itemize}
+
+If the temperature change is $0$, $\Delta U$ (which we derived last time only depends on temperature) follows:
+\[
+    \Delta T = \Delta U = 0
+\]
+
+Hence:
+\[
+    0 = Q_\text{in} + W_\text{on}
+\]
+
+\subsection{Isochoric (Fixed Volume)}
+This may look like:
+\begin{itemize}
+    \item A vertical straight line on a PV plot.
+    \item A proportional relationship on a PT plot.
+    \item A horizontal straight line on a VT plot.
+\end{itemize}
+
+For an isochoric transition, $\Delta U = Q_in$, as:
+\[
+    W_\text{on} = (-) \int P dV
+\]
+
+And as $dV = 0$, $W_\text{on} = 0$
+
+\subsection{Isobaric (Fixed Pressure)}
+This may look like:
+\begin{itemize}
+    \item A horizontal straight line on a PV plot.
+    \item A horizontal straight line on a PT plot.
+    \item A proportional relationship on a VT plot.
+\end{itemize}
+
+For an isobaric transition, $P$ is just a constant, so the integral:
+\[
+    W_\text{on} = \int_{V_1}^{V_2} P \, dV = \left[PV\right]_{v_1}^{v_2}
+\]
+
+Where $P$ is constant, which is nice and easy. Generally:
+\[
+    W_\text{on} = - \int P dV = (-) P \Delta V
+\]
+
+\[
+    \Delta U = \Delta Q - P \Delta V
+\]
+
+
+\section{Heat Capacities of Ideal Gases}
+Recall that:
+\[
+    \Delta Q = C \Delta T \implies C = \frac{dQ}{dT}
+\]
+
+At a fixed volume:
+\[
+    C_V = \left(\frac{dQ_\text{in}}{dT}\right)_T
+\]
+
+And at a fixed pressure:
+\[
+    C_P = \left(\frac{dQ_\text{in}}{dT}\right)_P
+\]
+
+Mayer's Relation says that:
+\[
+    C_P = C_V + nR
+\]
+
+This is an examinable derivation.
+
+\subsection{Deriving Mayer's Relation}
+\begin{proof}
+Consider a gas piston. We have state variables $V, P, T$, and $N$ is constant as the piston is sealed. The first law of thermodynamics says:
+\[
+    \Delta U = Q_\text{in} + W_\text{on}
+\]
+
+We can consider this for both a constant volume or a constant pressure. For a constant volume:
+\[
+    \Delta U = \Delta Q_1
+\]
+
+And for a constant pressure:
+\[
+    \Delta U = \Delta Q_2 - P \Delta V
+\]
+
+Noting that the two $Q$s are different as we have two different transitions. We can create a slightly different expression for constant volume by multiplying by $\Delta T / \Delta T$:
+\[
+    \Delta U = \frac{\Delta Q_1}{\Delta T} \times \Delta_T = C_V \Delta T
+\]
+
+And for constant pressure:
+\[
+    \Delta Q_2 = \Delta U + P \Delta V = \frac{\Delta Q_2}{\Delta T} \Delta T = C_P \Delta T
+\]
+
+Hence:
+\[
+    C_P \Delta T = \Delta U + P \Delta V
+\]
+\[
+    C_V \Delta T = \Delta U
+\]
+
+Setting equal to each other based on $\Delta U$:
+\[
+    \Delta U = \boxed{C_V \Delta T = C_P \Delta T - P \Delta V}
+\]
+\[
+    C_P \Delta T - C_V \Delta T = P \Delta V
+\]
+\[
+    \Delta T \left(C_P - C_V\right) = P \Delta V
+\]
+\[
+    \implies C_P - C_v = \frac{\Delta V}{\Delta T} \times P \qquad \text{NB: $P$ is still constant.}
+\]
+
+Using $PV = nRT$, for constant pressure we have $\frac{P \Delta V}{\Delta T} = nR$. Hence:
+\[
+    C_P - C_V = nR
+\]
+\[
+    C_P = C_V + nR
+\]
+\end{proof}
+
+It is clear that $C_P > C_V$.
+
+Note: We tend to use heat capacity at a constant volume unless specified.
+
+
+\section{Back to Thermodynamic Transitions}
+\subsection{Adiabatic Transitions (No Heat Transfer)}
+These seem quite a bit like isothermal transitions, but look different on a PV plot:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec10-01.png}
+     \caption{Differences in transitions on a PV Plot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec10-02.png}
+     \caption{Adiabatic Transitions on a PV and VT Plot}
+\end{figure}
+
+For isothermal transitions, $PV = \text{const}$.
+
+For adiabatic transitions, $PV^\gamma = \text{const}$ where $\gamma = \frac{C_P}{C_V}$
+
+In a PV plane, adiabatic processes appear steeper than isothermal processes and adiabatic processing are steeper in the PV plane than the VT plane.
+
+For an adiabatic transition, we can reduce the first law of thermodynamics like so:
+\[
+    \Delta U = Q_\text{in} + W_\text{on}
+\]
+
+$Q_\text{in} = 0$ as there is no heat transfer, hence:
+\[
+    \Delta U = W_\text{on}
+\]
+
+\subsection{Derivations}
+\begin{proof}
+    For adiabatic transitions, where $Q = 0$.
+
+    The First Law becomes $\Delta U = Q_\text{in} + W_\text{on}$. Since $Q_\text{in} = 0$:
+    \[
+        dU = 0 + dW_\text{on}
+    \]
+
+    And assuming work is being done \emph{on} the gas, the sign becomes negative:
+    \[
+        dU = -P dV
+    \]
+    \[
+        \frac{dU dT}{dT} = -P dV
+    \]
+
+    We slightly abuse the definition of heat capacity here, and this will be elaborated on in a later lecture:
+    \[
+        C_V dT = -P dV
+    \]
+    
+    Using $PV = nRT$, we have: $d(PV) = nR dT$:
+    \[
+        nR dT = P dV + V dP
+    \]
+    \[
+        dT = \frac{P dV + V dP}{nR}
+    \]
+    \[
+        C_V dT = - PdV
+    \]
+    \[
+        0 = C_V \frac{P dV + V dP}{nR} + PdV
+    \]
+    \[
+        0 = C_V \left(P dV + V dP\right) + nR pdV
+    \]
+    \[
+        0 = P dV \left(C_v + nR\right) + C_V V dP
+    \]
+    \[
+        0 = P dV (C_P) + V dP (C_V)  
+    \]
+    \[
+        0 = \frac{C_P}{C_V} PdV + V dP
+    \]
+
+    Let $\gamma = \frac{C_P}{C_V}$, and dividing through by pressure and volume:
+    \[
+        \gamma \frac{dV}{V} + \frac{dP}{Ps}
+    \]
+    \[
+        \int \gamma \frac{dV}{V} = - \int \frac{dP}{P}
+    \]
+    \[
+        \gamma \ln V + c_1 = - \ln(P) + c_2
+    \]
+    
+    Finally:
+    \[
+        \gamma \ln(v) + \ln(p) = \text{const}
+    \]
+    \[
+        \ln(P V^\gamma) = \text{const}
+    \]
+    \[
+        PV^\gamma = e^\text{const} = \text{another constant}
+    \]
+
+    Hence:
+    \[
+        PV^\gamma = \text{const}
+    \]
+    
+    As required!
+\end{proof}

@@ -1,2 +1,99 @@
 % !TeX root = main.tex
-\lecture{1}{Tue 20 Jan 2026 12:00}{}
+\lecture{7}{Mon 09 Feb 2026 11:00}{Introduction to Temperature}
+% TODO, THE END OF LECTURE 8 STUFF
+
+We're starting the portion of the module on thermodynamics, looking at temperature, pressure etc and transitions involving these.
+\section{What is Temperature?}
+Particle for a single particle isn't well defined for the definition of temperature we want to use. There is two definitions:
+\begin{itemize}
+    \item One is statistical, looking at average kinetic energy of particles.
+    \item One is based on entropy and isn't looked at until second year.
+\end{itemize}
+
+We define temperature as \emph{a statistical collection of energies for particles that make up the system for which we are measuring the temperature}. A material will have a range of kinetic energies, some very large, some very small, so we care about a statistical average. Thermalisation happens as a result of these high kinetic energy particles striking lower kinetic energy particles.
+
+\begin{tcolorbox}
+    \textbf{Temperature: } A statistical collection of energies of the particles that comprise the system in question.
+\end{tcolorbox}
+
+We can express temperature as using the Maxwell-Boltzmann distribution:
+\[
+    P(v) = 4 \pi \left(\frac{M}{2 \pi RT}\right)^\frac{3}{2} v^2 \exp \left(\frac{- Mv^2}{2RT}\right)
+\]
+
+We look at this in more depth when we cover statistical physics later, but for now we care about the key features. If we plot $P(v)$ (the probability of finding a particle at certain velocity) against these velocities for a range of temperatures:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec07-1.png}
+     \caption{}
+\end{figure}
+
+This has exponential decay, so theoretically we can find a particle at any velocity within a gas of any temperature. Particles with higher temperatures have a higher peak, so a higher average velocity.
+
+\section{Temperature Scales}
+We can use a number of different temperature scales:
+\begin{itemize}
+    \item The Fahrenheit scale is set such that the freezing point of water is $98.6^\circ$F, and the boiling point of water at $212^\circ$F. It's designed to be based around the range of temperatures that a person could realistically could experience in the core range from 0-200. It's not a useful unit and won't be used in exams.
+    \item Celsius is the standard unit.
+    \item Kelvin is the common unit of thermodynamics. It has the same graduations as degrees celsius but is shifted such that absolute zero is at $0$K. Note that Kelvin has no degrees symbol. $\si{\degreeCelsius} \to \si{\kelvin}$ can be converted between using:
+    \[T (\si{\kelvin}) = T (\si{\degreeCelsius}) + 273.15\]
+\end{itemize}
+
+\section{Thermal Expansion}
+As a solid is heated, it expands in all directions. Consider a cuboid of height, width, depth $W, L, D$, we have new dimensions of $D + \Delta W, \, L + \Delta L, \, D + \Delta D$ after a small change in temperature. We can define the linear expansion coefficient (a material property) $\alpha_L$ based on these dimensions and the change in temperature:
+\[
+    \alpha_L \Delta T = \frac{\Delta L}{L} = \frac{\Delta W}{W} = \frac{\Delta D}{D}
+\]
+
+If we consider the area instead, we have the area expansion coefficient:
+\[
+    \frac{\Delta A}{A} = \alpha_A \Delta T \approx 2 \alpha_L \Delta T
+\]
+
+The latter approximation can be derived as follows. Consider one dimension, i.e. $L$:
+\[
+    \frac{\Delta}{L} = \alpha_L \Delta T
+\]
+\[
+    \implies \Delta L = L \alpha_L \Delta T
+\]
+
+So:
+\[
+    L_\text{new} = L + \Delta L = L \left(1 + \alpha_L \Delta T\right)
+\]
+
+Pairing this with width to find an area (of a face):
+\[
+    W_\text{new} = W + \Delta W = W \left(1 + \alpha_L \Delta T\right)
+\]
+\[
+    A_\text{old} = L \times W
+\]
+\[
+    A_\text{new} = L_n \times W_n
+\]
+\[
+    A_n = LW \left(1 + \alpha_L \Delta T\right)^2
+\]
+\[
+    = LW \left(1 + 2 \alpha_L \Delta T + \alpha_L^2 \Delta T^2\right)
+\]
+
+For a small change in temperature, the second order term is very small, hence:
+\[
+    \frac{\Delta(LW)}{LW} \approx 2 \alpha_L \Delta T
+\]
+
+The linear expansion coefficient has units of $\si{\kelvin^{-1}}$.
+
+\subsection{Thermal Stress}
+Consider a rod fixed between two immovable walls. The rod attempts to expand, but is fixed. This provides a thermal stress on the wall. If the rod has cross-sectional area $A$ and Young Modulus $Y$, the thermal stress is given by:
+\[
+    \frac{F}{A} = Y \alpha_L \Delta T
+\]
+
+This is why bridges etc need to have thermal expansion joints, otherwise they would buckle/break under this thermal stress.
+
+\subsection{Lennard Jones and Thermal Expansion}
+% TODO AFTER I'VE COME BACK TO LENNARD JONES

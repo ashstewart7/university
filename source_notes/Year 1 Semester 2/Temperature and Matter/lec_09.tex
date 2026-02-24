@@ -21,26 +21,27 @@ The internal energy of the gas is dependant on the velocities of the molecules, 
 \end{tcolorbox}
 
 \vspace{0.5cm}
-
-\textbf{Boyle's Law: } ``The absolute pressure exerted by a given mass of an ideal gas is inversely proportional to the volume is occupies, if the temperature and amount of gas remain unchanged within a closed system.''
-
+\begin{tcolorbox}
+    \textbf{Boyle's Law: } ``The absolute pressure exerted by a given mass of an ideal gas is inversely proportional to the volume is occupies, if the temperature and amount of gas remain unchanged within a closed system.''
+\end{tcolorbox}
 Effectively:
 \[
     P \propto \frac{1}{V}
 \]
 
+\begin{tcolorbox}
 \textbf{Charles' Law: } ``When the pressure of a sample of an ideal gas is held constant, the Kelvin temperature and volume will be in direct proportion.''
-
+\end{tcolorbox}
 Effectively:
 \[
     T \propto V
 \]
-
+\begin{tcolorbox}
 \textbf{Ideal Gas Law: } Since $P \propto \frac{1}{V}$ and $T \propto V$, we have: $PV = kT$, where $k$ varies with context, for example when considering moles:
 \[
     \boxed{PV = nRT}
 \]
-Where $n$ is the number of moles and $R = 8.314$ is the gas constant. %TODO UNITS
+Where $n$ is the number of moles and $R = 8.314 \text{J} \text{mol}^{-1} \text{K}^{-1}$ is the gas constant.
 
 
 Or for molecules:
@@ -48,11 +49,16 @@ Or for molecules:
     \boxed{PV = Nk_b T}
 \]
 Where $N = N_a n$ is the number of molecules, and $k_b = R/N_a$ is the Boltzmann Constant.
+\end{tcolorbox}
 
 This is called an equation of state and allows us to describe the gas' state macroscopically. We generally express this on a P/V diagram, where each point on the plot represents a specific gas state. If we keep the amount of gas present constant, we can use any two of the variables to determine the third.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec09-01.png}
+     \caption{}
+\end{figure}
 
-%TODO PV CURVE PLOT
 
 \subsection{Joule's Second Law}
 Consider a system with a box divided in two. An ideal gas is contained in the leftmost half, and the rightmost half is a vacuum. We separate the two with a divider constituting an impermeable membrane.
@@ -85,14 +91,25 @@ This means that there is no dependence on volume for internal energy, hence $U$ 
 
 This is easier at higher temperatures, as a high temperature leads to high kinetic energies, so the interatomic forces becomes less significant and easier to disregard in reality.
 
-%TODO GRAPH
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec09-02.png}
+     \caption{}
+\end{figure}
+
 We see here that it the ideal gas law becomes a better approximation has we increase temperature, and a worse and worse approximation as pressure increases. 
 
 From a LJP perspective, increasing the pressure decreases the average distance between gas molecules. This means that the potential between gas molecules is no longer negligible, and the assumption of zero potential no longer holds.
 
-If we increase pressure even further, the force becomes repulsive and $PV/nRT$ returns to being positive. At higher temperatures, this little dip isn't observed.
+If we increase pressure even further, the force becomes repulsive and $PV/nRT$ returns to being positive. At higher temperatures, this little dip isn't observed as a higher kinetic energy makes any interatomic forces relatively more negligible.
 
-%TODO GRAPH
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec09-03.png}
+     \caption{}
+\end{figure}
+
+
 At low pressure or high temperature, the ideal gas law is a good assumption as:
 \begin{itemize}
     \item At low pressure, interatomic spacing is large enough to disregard interatomic forces.
@@ -102,7 +119,12 @@ At low pressure or high temperature, the ideal gas law is a good assumption as:
 We deal solely with Maxwell-Boltzmann gases in this source that follow classical laws. We also have Fermi and Bose gases (made entirely of fermions and bosons respectively), but they're quantum mechanical, exotic and outside of this course.
 
 \subsection{Changing Energies}
-%TODO GRAPH
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec09-01.png}
+     \caption{}
+\end{figure}
+
 Say we want to go from $T_1$ to $T_2$. We need to change the internal energy of the gas somehow. We have two general ways to change this:
 \begin{itemize}
     \item Add heat to the system by transferring heat to the gas at a constant volume.
@@ -131,8 +153,9 @@ In the opposite case considering work done by the gas, conservation of energy sa
 \]
 
 \subsection{Mass Drop Experiment}
-% TODO GRAPH
 The falling mass spins the paddles in the water, the work as potential energy is converted to kinetic energy raising the temperature of the water. 
+
+This tells us that mechanical work done and heat energy must be related in some manner.
 
 \section{1st Law of Thermodynamics}
 The change in internal energy of a system, $\Delta U$ is increased with increasing heat transfer into the system, $Q_\text{in}$ and work done on the system, $W_\text{on}$:

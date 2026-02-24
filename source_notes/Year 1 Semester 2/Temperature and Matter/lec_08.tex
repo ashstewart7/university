@@ -1,2 +1,104 @@
 % !TeX root = main.tex
-\lecture{1}{Tue 20 Jan 2026 12:00}{}
+\lecture{8}{Thu 12 Feb 2026 13:00}{Thermodynamics I}
+
+\section{Temperature Scales II}
+In order to measure temperature, we need to define a quantity which directly depends on temperature - ideally linearly.
+
+We can't measure temperature directly, we need this extra intermediary quantity. For example, thermometers use volume and measure the volume of a known quantity of a substance which behaves nicely at known temperatures.
+
+This means that:
+\[
+    T + T_0 + k \frac{x - x_0}{x_0}
+\]
+
+Where $T_0$ is a calibration point, at which point our quantity has value $x_0$. For the celsius scale, we use $T_0 = 0\si{\degreeCelsius}$ and we choose a value for the constant $k$ such that when water boils, $T = 100\si{\degreeCelsius}$.
+
+However, $PV = nRT$ says that this is dependant on pressure too which isn't ideal, as for different pressures the relationship between volume and temperature differ and our scale is only consistent for a single pressure\dots.
+
+Instead of using the boiling/freezing point of water at $1$ATM has our calibration point, we can use the ``triple point'' of water. This point only happens at a single pressure/volume, so is more consistent:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec08-01.png}
+     \caption{}
+\end{figure}
+
+Alternatively, we could use the technique employed by the Kelvin scale and use absolute zero as our calibration point. Regardless of pressure/volume/amount of substance (provided its kept constant), they will all reach absolute zero at exactly the same theoretical temperature. We can therefore calibrate our scale off of this point.
+
+\section{Thermodynamics}
+\begin{tcolorbox}
+    \textbf{Thermodynamics: } The science of the relationship between heat, work, temperature and energy. Thermodynamics broadly deals with the transfer of energy from one place/form to another. Heat is a form of energy corresponding to a definite amount of mechanical work.
+\end{tcolorbox}
+
+\subsection{What is heat?}
+Heat is measure of thermal energy transfer between two systems. This shouldn't be confused with the colloquial understanding of heat i.e. being hot or cold, which is relative.
+
+\subsection{Systems}
+A system is a part of the universe we are investigating or discussing eg a room, bottle, galaxy etc. We often consider the ideal physics case of a closed system where the system doesn't exchange any heat with outside the system however this is not realistic.
+
+We often discuss systems comprised of a container of some kind of fluid which either closed (with a lid) or open (no lid). 
+
+We can consider two types of walls:
+\begin{itemize}
+    \item Adiabatic walls: No heat transfer possible (does not exist in practice).
+    \item Diathermal walls: Heat transfer is possible through the wall.
+\end{itemize}
+\subsection{Thermal Equilibrium}
+A system is in thermal equilibrium if it has a constant energy density throughout, so the system is in internal thermal equilibrium.
+
+Two systems are in thermal equilibrium if there is no net transfer of heat energy between them. There will be some amount of heat transfer between both systems, and thermal equilibrium does not mean that there is no exchange of heat energy between the two. Some of the particles in one part of the system may statistically have higher energy and exchange energy, but there is no \emph{net} transfer.
+
+Consider some gas in a piston with volume, pressure and temperature $V_I, P_I, T_I$. As we pull out the piston, the volume of the gas changes and we have a new final temperature volume (and as pressure/volume are related to pressure), pressure and temperature $V_F, P_F, T_F$.
+
+This does not happen instantly and there will be some time required to reach thermal equilibrium (a few seconds) after we have finished pulling out the system.
+
+We can bring a system in contact with another system, i.e. placing a rubber duck (system B) in a bath (system A) or the ocean (system C). Which of these two pairs (A and B vs C and B) will thermalise first? While the duck will reach the temperature of the water faster when in the ocean than the bath, thermal equilibrium requires the entire system to thermalise. Therefore, as the ocean has much higher volume it takes longer for the ocean to entirely thermalise to the newer duck-adjusted temperature.
+
+\section{Definitions}
+\begin{itemize}
+    \item \textbf{Isothermal: } A change to a system which takes place at a \textbf{constant temperature}.
+    \item \textbf{Isobaric: } A change to a system which takes place at a \textbf{constant pressure}.
+    \item \textbf{Isochoric: } A change to a system which takes place at a \textbf{constant volume}.
+    \item \textbf{Adiabatic: } A change to a system which takes place \textbf{without transfer of heat}. Temperature may change, but heat cannot enter or leave the system.
+\end{itemize}
+
+\section{Heat Capacity}
+What is the relationship between heat energy $\Delta Q$ transferred to a system and the corresponding increase in system temperature $\Delta T$? This is given by:
+\[
+    \Delta Q = C \Delta T
+\]
+
+Where $C$ is the heat capacity in J/K, hence:
+\[
+    C = \frac{dQ}{dT}
+\]
+
+$C$ varies with the amount of material, so we additionally define specific and molar heat capacity:
+\begin{itemize}
+    \item Specific Heat Capacity $J/kgK$: $C = mc$
+    \item Molar Heat Capacity $J/molK$: $C = nc$
+\end{itemize}
+
+A higher heat capacity means a smaller increase in temperature for a given heat (i.e. more energy required to raise the temperature of the system by some amount).
+
+To make things more difficult, heat capacity also varies with the system temperature. We also need to specify whether we are measuring isobaric or isochoric, as these will give different values:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/lec08-02.png}
+     \caption{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/lec08-03.png}
+     \caption{}
+\end{figure}
+
+Notably, isobaric heat capacity is mostly constant around the standard values of liquid water at standard temperature:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec08-04.png}
+     \caption{}
+\end{figure}
+
+It is therefore not unreasonable to treat heat capacity as a constant in some circumstances, provided we state this as an assumption and justify it.
+
