@@ -12,6 +12,7 @@ main.pdf
 *.xdv
 *.pyc
 *.png:Zone.Identifier
+/%OUTDIR%
 
 # Editor and linux stuff
 /scripts/pycache/

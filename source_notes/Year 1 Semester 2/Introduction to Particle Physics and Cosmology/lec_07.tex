@@ -29,7 +29,7 @@ In order to match the observed motion, we still need epicycles in this initial v
 This was the foundation of modern astronomy, and lead to:
 \begin{itemize}
     \item Kepler discovering elliptical orbits. This got rid of the need for epicentres and described the motion of planets with the data collected at the time.
-    \item Galilei discovering the moons of Jupiter and phases of Venus. Before Galilei, these telescopes were not sufficiently powerful to observe these phases.
+    \item Galilei discovering the moons of Jupiter and phases of Venus. Before Galilei, these telescopes were not sufficiently powerful to observe these phases. The existence of these moons provided additional evidence for the heliocentric system as we now had a celestial body which did not orbit the Earth. This suggested that the Earth wasn't special, which was one of the beliefs that drove the geocentric model.
     \item Newton's theory of universal gravity in 1678.
 \end{itemize}
 
@@ -37,15 +37,87 @@ This theory, and the implications it had on humanity's role in the universe was 
 
 This was a better way to think about the solar system (which was about the limit of what was practically observable). Copernicus therefore needed to provide evidence to justify this. These later from Kepler, Galilei and Newton acted as this evidence.
 
-\subsection{From Herschel to Hubble}
-In order to go from scales on a solar system level to a universal level, we need more powerful measurement equipment to be able to gather as much data as possible. William and Caroline Herschel pioneered this by creating the most powerful telescopes to date in 1877.
+\section{From Herschel to Hubble}
+In order to go from scales on a solar system level to a cosmological level, we need more powerful measurement equipment to be able to gather as much data as possible on much larger scales. William and Caroline Herschel pioneered this by creating the most powerful telescopes to date in 1877.
 
-They probed deeper and deeper past the solar system, in an attempt to work out whether or not there was some kind of edge to the universe. They discovered diffuse objects (``nebulae'') beyond the milky way, and (as did Charles Messier) started to build up a catalogue of objects in the universe.
+They probed deeper and deeper past the solar system, into the ``deep sky''. They investigated the contents of the Milky Way to build a catalogue of objects and try to find the edge of the galaxy. 
+
+This was in an attempt to work out whether or not there was some kind of edge to the universe. They discovered diffuse objects (``nebulae'') beyond the milky way, and began to be able to resolve individual stars with improved technology.
+
+This lead to the question of whether these nebulae (named ``island galaxies'' at the time) belong as components of the milky way or existed in their own right as galaxies. 
 
 \subsection{Shapley-Curtis Debate}
-%TODO
+In the 1920s, the ``Great Debate of Astronomy'' investigated whether these spiral shape nebulae were small object on the outskirts of the Milky Way (advocated for by Harlow Shapley) or were independent small galaxies outside the gravitational attraction of the MIlky Way (advocated for by Heber Curtis).
 
+In 1924, Edwin Hubble established that these bright nebulae were not part of the Milky Way and were instead of extragalactic origin. This told us that the observable universe extended beyond the Milky Way.
 
+He discovered Cepheid Variable Stars, which are stars of periodic varying brightness. The period of pulsation is linked to intrinsic luminosity, and they act as distance indicators based on the perceived brightness and period on Earth.
 
+These observations estimated the distance of these CVSes away from the Earth, and proved that they were too distant to sit within the Milky Way. This profoundly changed our understanding of the scale of brightness.
 
+These CVSes are called ``standard candles'' which are astronomical objects with known intrinsic luminosity, $M$. We observe some different apparent brightness $m$, and can measure the pulsation period to determine the actual intrinsic luminosity.
+
+Using $M$ (determined from period) and $m$ (measured) directly, we can use this formula:
+\[
+    5 \log D = m - M - 10
+\]
+\[
+    \implies D = 10^{(m - M - 10) / 5}
+\]
+
+This made it apparent that these distances were much larger than our understanding of the size of the Milky Way, by in excess of 2 orders of magnitude. 
+
+We can also know the intrinsic luminosity of a Type 1a supernovae, when a star explodes and collapses into a white dwarf.
+
+\subsection{Cosmic Ladder}
+We can form the ``Cosmic Distance Ladder''. Since traditional distance measurements become infeasible as scales get larger, we need to use different ranges for different distances. For example:
+\begin{itemize}
+    \item Cepheid Variable Stars are not that bright, so stop being useful at longer ranges.
+    \item Supernovae are brighter, so stay useful for longer.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec07-02.png}
+     \caption{The Cosmic Distance Ladder}
+\end{figure}
+
+\section{Expansion of the Universe}
+In 1929, Hubble analysed the emission spectra of galaxies. As a source moves, wavelengths (hence the positions of spectral lines) are impacted by redshift:
+
+\[
+    z = \frac{\lambda_o - \lambda_e}{\lambda_e} \approxeq \frac{v}{c} \qquad \text{approximation valid for non-relativistic limits.}
+\]
+
+From this, noting the changes of the spectral lines vs known non-redshifted calibration points on earth allowed for the velocity of each galaxy to be determined.
+
+Plotting $v$ against $r$ yields a straight line, suggesting $v \propto r$. Hence galaxies further away are moving faster. The sign of the redshift (i.e. is it indeed redshift and not blueshift) confirms that they are moving away from us.
+
+This is very strong evidence that the universe is not static and is actually expanding. This gives us a dramatically new understanding of the universe, where it grows in size as time goes on.
+
+\section{Key Observations}
+We have a number of key objectives, and want to build a theory that fits these and makes predictions. Most of these observations are made using electromagnetic radiation, although additional information is provided by particle physics (and more recently gravitational wave astronomy).
+
+Some of these key observations are:
+\begin{itemize}
+    \item The universe is expanding (Hubble).
+    \item There is an abundance of light elements (nucleosynthesis).
+    \item Large-scale structure (LSS).
+    \item Cosmic microwave background (CMB).
+    \item Galaxy rotation curves (implying the existence of dark matter).
+    \item Acceleration of the rate of expansion of the universe (dark energy).
+\end{itemize}
+
+\subsection{Nucleosynthesis}
+Stars are very good and producing heavy elements via nuclear fusion. Here, stars start with lighter elements (H, He) and fuse upwards through increasing mass numbers up to Iron. Heavier elements require a stellar explosion to form.
+
+It turns out that young stars have an abundance of light elements. These start from gas clouds that have collapsed gravitationally. In this very early stage, they started out with some contamination of heavier lighter elements (Helium isotopes and other Hydrogen isotopes) and couldn't just start with Hydrogen. They need some of these other elements to kickstart the process.
+
+There has to be some process that took place before stars were formed that provided these elements to kickstart star formation. Stars could not have formed without this.
+
+Theorists (George Gamov 1948) hypothesised reversing the expanding universe, i.e. stepping back in time to a much smaller, denser, hotter early universe. This would have formed a plasma-like state which could have provided these elements.
+
+Nuclear fusion requires a very large energy, i.e. nuclear binding energy for these interactions is $\sim 1$MeV. This plasma state lasted about 3 minutes, and allows for the formation up to Hydrogen-4. Heavier elements are still formed in stars.
+
+\subsection{Large Scale Structure}
 

@@ -1,0 +1,109 @@
+% !TeX root = main.tex
+\lecture{12}{Thu 26 Feb 2026 13:00}{Heat Transfer}
+\section{Thermal Transport}
+\begin{tcolorbox}
+    \textbf{Newton's Law of Cooling:} ``The rate of heat loss of a body is directly proportional to the difference in the temperatures between the body and the environment''
+\end{tcolorbox}
+
+There are three means of thermal transport:
+\begin{itemize}
+    \item \textbf{Conduction:} Heat is transmitted directly from one material to an adjoining material (or across parts of the same material) if there is a temperature difference between the two. There is no movement of the material.
+    \item \textbf{Convection: } Movement of particles through a substances (often particles that comprise a fluid) that transport their heat energy along with them.
+    \begin{itemize}
+        \item The Archimedes principle describes buoyancy based on the material's density $\rho$, $g$ and the volume of the the fluid displaced by the object, $V$:
+        \[
+            F_b = \rho g V
+        \]
+
+        \item In convection, heating a particle causes an increase in bond size (by the LJP), hence the density decreases. This causes it to displace gas of a larger density, hence it rises.
+    \end{itemize}
+    \item \textbf{Radiation: }  Emission of electromagnetic radiation by all bodies which have heat (i.e. all bodies full stop), depending on their temperature.
+    
+\end{itemize}
+
+\subsection{Heat Baths}
+A heat bath is an object with a sufficiently large heat capacity, $C$ such that a large change in its heat energy will result in a negligible change in temperature.
+
+For example, a hot object placed in a very large bath of water (i.e. a whole swimming pool), or a building placed on a planet.
+
+\section{Conduction}
+Suppose we have a small uniform rod of length $L$ and cross-sectional area $A$ linking two heat baths. The rod is conducting and the heat baths have temperature $T_1, T_2$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec12-01.png}
+     \caption{}
+\end{figure}
+
+Eventually, we reach a ``steady state'' where all points on the road have a $Q$ which does not change with time.
+
+\[
+    \frac{dQ}{dt} = \dot{Q} = \text{constant}, \qquad \forall \text{x along rod (in steady state)}
+\]
+
+What does this value of $\dot{Q}$ depend on? For a small section $dx$ of the rod:
+\begin{itemize}
+    \item Temperature change of the small section, $dT$.
+    \item Cross-sectional area of the rod $A$.
+    \item The ``thermal conductivity'' of the rod, $\kappa$\footnote{We also have another very similar quantity labelled $K$ which will be covered later and may be a source of confusion}. It has units $\si{W \si{m^{-1} K^{-1}}}$.
+\end{itemize}
+
+Putting these together gives us Fourier's Law:
+\[
+    \dot{Q} = - \kappa A \frac{dT}{dX}
+\]
+
+As $T_2$ is hotter, the flow of heat is from right to left. Therefore until thermalisation occurs, temperature increases from left to right across the rod ($\frac{dT}{dx} > 0$). However, the heat flow is in the opposite direction from right to left, hence the negative sign in the formula for $\dot{Q}$.
+
+We want to show that $\frac{dT}{dx} = \frac{T_2 - T_1}{L}$:
+\begin{align*}
+    \dot{Q} &= - \kappa A \frac{dT}{dX} \\
+    \frac{dT}{dx} &= - \frac{\dot{Q}}{\kappa A} \\
+    -\int \frac{\dot{Q}}{\kappa A} dx &= \int dT \\
+    -\int_0^L \frac{\dot{Q}}{\kappa A} &= \int_{T_1}^{T_2} dT \\
+    - \frac{\dot{Q}}{\kappa A} \left[x\right]_0^L &= T_2 - T_1 \\
+    \frac{dT}{dx} &= \frac{T_2 - T_1}{L}
+\end{align*}
+
+\subsection{Thermal Conductivity}
+A higher value of $\kappa$ means a material is more thermally conductive, for example:
+\begin{itemize}
+    \item Diamond (natural): $\kappa = 2200 \si{W m^{-1} K^{-1}}$.
+    \item Copper: $\kappa = 400 \si{W m^{-1} K^{-1}}$.
+    \item Air: $\kappa = 0.02 \si{W m^{-1} K^{-1}}$.
+    \item Aerogel: $\kappa = 0.003 \si{W m^{-1} K^{-1}}$.
+\end{itemize}
+
+Diamond is highly thermally conductive due to high frequency vibrations (``phonons'') being able to propagate through the material as a result of its rigidity.
+
+There are two sources of heat conductivity, one being as a result of electrons and one as a result of phonons.
+\begin{itemize}
+    \item Inside the material, we have two bands - valence and conduction. These bands are a thick collection of many energy levels very close together. As the Pauli exclusion principle says that no two electrons can share a quantum number, each level must shift infinitesimally to not overlap. The levels within each band are so close that we treat electron as being able to move freely between them.
+    \item The valence band is where electrons are still bound to an atom, the conduction band is where they are bound to the material as a whole and are free to move through the material.
+    \item For an insulator, the difference between the two bands is $\sim 10 \si{eV}$. This represents a very small proportion of particles with sufficient energy and results in very little thermal excitation (hence little thermal conduction). As an electron is excited, it leaves a hole behind (that we treat as a particle $h^+$ for ease). We treat this hole as being able to move (as electrons themselves move).
+    \item For an electron to fall back to the valence band, it must fall into a hole. In an insulator the conduction band is effectively empty. For a semiconductor, this gap is more like $\sim 1$eV, so a much higher number of electrons can jump, but this is still temperature dependant.
+    \item In metals, the conduction and valence bands have little to no gap. Therefore, all electrons are free conduction electrons.
+\end{itemize}
+
+Diamonds sit on the boundary between being an insulator and a semiconductor. They work by phonons. As we heat a material, bonds in the material vibrate. As diamond is very rigid, vibrating one bond causes a ripple effect - effectively an wave of excitation (where one of these waves is called a phonon). This phonon propagation causes the transfer of vibrations hence the transfer of heat energy.
+
+\subsection{Thermal Properties}
+We can also define the:
+\begin{itemize}
+    \item Thermal Resistivity: $\rho = 1/\kappa$.
+    \item Thermal Conductance $K = \kappa A / L$. \footnote{This is the aforementioned annoying symbol overlap between $\kappa$ and K}
+    \item Thermal Resistance: $R = L / (\kappa A)$.
+\end{itemize}
+
+This are the heat analogues of the equivalent terms for electrical conductance in a circuit.
+
+Annoyingly, thermal conductivity also varies with temperature\dots It also does so in a really weird way depending on the material:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec12-02.png}
+     \caption{$\kappa$ for various materials, as a function of temperature.}
+\end{figure}
+
+This comes from phonon excitation and electron excitation being two different competing process that both have different degrees of contribution at different temperatures.
+
+This means that Newton's Law of Cooling no longer holds for $\kappa = f(T)$, as the proportionality no longer holds\dots

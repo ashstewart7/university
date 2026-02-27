@@ -1,0 +1,172 @@
+% !TeX root = main.tex
+\lecture{11}{Tue 24 Feb 2026 11:00}{Special Relativity III: Lorentz Transformations}
+
+Recap of the first two relativity lectures:
+\begin{itemize}
+    \item Recap from Semester 1 Special Rel:
+    \begin{itemize}
+        \item Background
+        \item Einstein's postulates.
+        \item Time dilation.
+        \item Lorentz contraction.
+    \end{itemize}
+    \item Galilean transformations and when they fail.
+    \item Lorentz transformations for space and time.
+\end{itemize}
+
+\section{Galilean vs. Lorentz Transformations}
+In a standard setup with two frames, $\Sigma$ and $\Sigma^\prime$, where $\Sigma^\prime$ moves with speed $v$ relative to $\Sigma$.
+
+In $\Sigma$, we have coordinates $(x, y, t)$, in $\Sigma^\prime$ we have coordinates $(x^\prime, y^\prime, ^\prime)$.
+
+In a Galilean transformations, we kept time invariant across both frames, so $t = t^\prime$. This lead to $x^\prime = x - vt \implies u^\prime = u - v$ but raised a contradiction with the speed of light as observers in different frames would take two measurements of the speed of light.
+
+In the second lecture, we consider the speed of light as being invariant across all frames instead of time to resolve the contradiction. This gave us the Lorentz Transformations:
+\[
+    x^\prime = \gamma(x - vt)
+\]
+\[
+    t^\prime = \gamma \left( t = \frac{xv}{c^2}\right)
+\]
+
+Where $y = y^\prime$, $z=^\prime$.
+
+As we cannot use $u^\prime = u - v$ due to the contradiction with the speed of light, we in this lecture will consider:
+\begin{itemize}
+    \item Lorentz transformations for velocity.
+    \item Space-time, Lorentz invariance, causality.
+\end{itemize}
+
+\section{Lorentz Transformation for Velocity}
+We can revisit the question from the first lecture, but in the Lorentz transformation perspective rather than a Galilean perspective.
+
+Again, we have our two standard frames $\Sigma, \Sigma^\prime$. An object is moving with speed $u^\prime$ in frame $\Sigma^\prime$. We want to find an expression for the velocity of the object as viewed from $\Sigma$, given by $u$. The prime frame moves at speed $v$ wrt the rest frame and the objects motion is entirely along the $x$ acis.
+
+By definition, we have:
+\[
+    u = \frac{dx}{dt} = \frac{dx}{dt^\prime} \frac{dt^\prime}{dt} = \frac{\left(\frac{dx}{dt^\prime}\right)}{\left(\frac{dt^\prime}{dt}\right)} \tag{1}
+\]
+
+And:
+\[
+    \frac{dx}{dt^\prime} = \gamma \left(\frac{dx^\prime}{dt^\prime} + v\right) = \gamma(y^\prime + v) \tag{2}
+\]
+\[
+    \frac{dt}{dt^\prime} = \gamma \left(1 + \frac{v}{c^2} \frac{dx^\prime}{dt^\prime}\right) = \gamma \left(1 + \frac{u^\prime v}{c^2}\right) \tag{3}
+\]
+
+And substituting (3) and (2) into (1):
+\[
+    u = \frac{\cancel{\gamma} (u^\prime + v)}{\cancel{\gamma} \left(1 + \frac{u^\prime v}{c^2}\right)} \implies \boxed{u = \frac{u^\prime + v}{1 + \frac{u^\prime v}{c^2}}}
+\]
+
+To get the reverse transformation, we invoke forward-backward symmetry, i.e. swap $x \to x^\prime$, $t\to t^\prime$ etc, where $v \to -v^\prime$:
+\[
+    u^\prime = \frac{u-v}{1 - \frac{uv}{c^2}}
+\]
+
+\subsection{Limiting Cases}
+Firstly, we'll look at the non-relativistic case, i.e. where $u, v \ll c$:
+\[
+    u = \frac{u^\prime+v}{1 + \frac{u^\prime v}{c^2}} = \frac{u^\prime + v}{1 + \text{small}} \approx u^\prime + v
+\]
+
+This is the classical Galilean approach, which is what we'd expect for non-relativistic behaviour.
+
+What about an ultra-relativistic limit where $u, u^\prime \to c$ with $v \ll c$. Now we have:
+\[
+    u = \frac{u^\prime + \text{small}}{1 + \text{small}} \approx u^\prime
+\]
+
+As the speed of light is invariant, speeds close to the speed of light do not change between reference frames.
+
+\subsection{Example}
+An observer on a rocket sees a second rocket moving away from them at $v_1 = 0.8c$. Another observer on a planet sees the first rocket moving at $0.7c$. Assuming all motion is in the same direction, how fast does the planetary observer see the second rocket?
+
+\begin{itemize}
+    \item From $\Sigma^\prime$ (the first rockets rest frame), the second rocket moves with $0.8c$.
+    \item From $\Sigma$ (the planetary rest frame), the first rocket moves with $0.7c$, and the second rocket moves with some unknown speed $u$.
+\end{itemize}
+
+We apply the formula:
+\[
+    u = \frac{u^\prime + v}{1 + \frac{u^\prime v}{c^2}}
+\]
+
+In $\Sigma^\prime$, $u^\prime = 0.8c$. The two frames move with relative velocity equal to the change in speed of the first rocket from $\Sigma \to \Sigma^\prime$: $v = 0.7c$.
+
+In frame $\Sigma$ we are tying to do:
+\[
+    u = \frac{0.8c + 0.7c}{1 + \frac{0.8c \times 0.7c}{c^2}}
+\]
+\[
+    = \frac{1.5c}{1.56} = 0.96c
+\]
+
+\section{Space-Time and Lorentz Invariants}
+From length contraction and time dilation, we can see that in special relativity, intervals in time and space are not fixed but vary from frame-to-frame.
+
+This means that the order of events may even be different for different observers. 
+
+There are some quantities however which are invariant across frames, such as the speed of light. One of these is space-time.
+
+\subsection{Space-Time Invariance}
+As usual, we have $\Sigma$ and $\Sigma^\prime$ with relative speed $v$. The axes of these frames coincide at $t = 0, x =0$ and $t^\prime = 0, x^\prime = 0$.
+
+At $t=t^\prime=0$, there is a flash of light at the origin which propagates isotropically.
+
+% TOOD DIAGRAM
+
+In $\Sigma$, the light forms a spherical shell of radius $\Delta r$ at time $\Delta t$, and in $\Sigma^\prime$ it reaches a radial distance $\Delta r^\prime$ at time $\Delta t^\prime$. 
+
+After time $\Delta T$ in $\Sigma$ we have $\Delta r = c \delta T$. Similarly in $\Sigma^\prime$ we have $\Delta r^\prime = c \Delta t^\prime$.
+
+Squaring these we have:
+\[
+    \left(\Delta r\right)^2 = c^2 \Delta t^2 = \Delta x^2 + \Delta y^2 + \Delta z^2
+\]
+\[
+    \left(\Delta r^\prime\right)^2 = c^2 \Delta t^{\prime 2} = \Delta x^{\prime 2} + \Delta y^{\prime 2} + \Delta z^{\prime 2}
+\]
+
+Hence:
+\[
+    c^2 \Delta t - \Delta x^2 - \Delta y^2 - \Delta z^2 = 0 = c^2 \Delta t^{\prime 2} - \Delta x^{\prime 2} - \Delta y^{\prime 2} - \Delta z^{\prime 2}
+\]
+
+This means that, \textbf{for light}:
+\[
+    c^2 \Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 = 0 
+\]
+
+We call this quantity $\Delta s^2$:
+
+What about for objects moving at a speed less than the speed of light? We want to apply the Lorentz transformations to $\Delta s{^\prime 2}$ (again treating the ``boost'' as being in $x$):
+
+\begin{align*}
+    \Delta s^{\prime 2} &= c^{\prime 2} \Delta t^{\prime 2} - \Delta x^{\prime 2} - \Delta y^{\prime 2} - \Delta z^{\prime 2} \\
+    &= c^2 \gamma^2 \left(\Delta t - \frac{v}{c^2} \Delta x\right)^2 - \gamma^2 \left(\Delta x - v \Delta t\right)^2 - \Delta y^2 - \Delta z^2\\
+    &= c^2 \gamma^2 \left(\Delta t^2 + \frac{v^2}{c^4} \Delta x^2 - 2 \frac{v}{c^2} \Delta t \Delta x\right) - \gamma^2 \left(\Delta x^2 + v^2 \Delta t^2 - 2v \Delta x \Delta t\right) - \Delta y^2 - \Delta z^2 \\
+    &= \Delta t^2 \left(c^2 \gamma^2 - v^2 \gamma^2\right) + \Delta x^2 \left(\frac{v^2 \gamma^2}{c^2}- \gamma^2\right) + \Delta t \Delta x \left(-2v \gamma^2 + 2v \gamma^2\right) - \Delta y^2 - \Delta z^2\\
+    &= \Delta t^2 \gamma^2 \left(c^2 - v^2\right) + \Delta x^2 \gamma^2 \left(\frac{v^2}{c^2} - 1\right) - \Delta y^2 - \Delta z^2 \\
+    &= \Delta t^2 \frac{c^2 - v^2}{1 - \frac{v^2}{c^2}} + \Delta x^2 \frac{(\frac{v^2}{c^2}) - 1}{1 - \frac{v^2}{c^2}} - \Delta y^2 - \Delta z^2 \\
+    \Delta s^{\prime 2} &= \boxed{c^2 \Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 = \Delta s^2}
+\end{align*}
+
+
+Hence $\Delta s^2$ is invariant under the Lorentz transformations regardless of speed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
