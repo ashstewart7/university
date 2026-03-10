@@ -1,0 +1,87 @@
+% !TeX root = main.tex
+\lecture{15}{Tue 10 Mar 2026 12:00}{Statistical Physics II: The Atmosphere}
+
+\section{The Atmosphere}
+The very outer part of the atmosphere, from $90$km to $350$km is the ionosphere. This acts as a mirror which reflects EM radiation 
+
+% TODO some waffle.
+
+\subsection{Isothermal Model of the Atmosphere}
+Consider an observer sitting in the troposphere above the earth, looking at a small cuboidal slice of the troposphere.
+
+We will assume that:
+\begin{itemize}
+    \item The atmosphere is isothermal. In reality, increasing height reduces temperature by approx. $10$K per km.
+    \item The atmosphere is solely comprised of an ideal gas. At the low pressure scales relevant for the atmosphere, this is a reasonable assumption.
+    \item The earth is flat\footnote{Oh dear\dots}. Technically, assume that we we consider small enough heights and cross-sectional areas that we can disregard the curvature of the earth.
+    \item The atmosphere is stationary and is therefore in mechanical equilibrium. This can be a good approximation depending on weather conditions.
+\end{itemize}
+
+The slab of atmosphere we're considering has area $A$, height $dh$ and sits at height $h$ above the surface of the earth. From the ideal gas state equation:
+\[
+    PV = nRT = N k_B T
+\]
+\[
+    \implies P = \frac{N}{V} k_B T
+\]
+\[
+    P = \rho_N k_B T
+\]
+
+Where $\rho_N$ is number density. %TODO.
+
+The slab of atmosphere has two forces acting upon it, a force due to pressure and a force due to gravity. As we assume that slice is in mechanical equilibrium, we can equate these forces.
+
+At the top of the slab, force due to gravity has a larger magnitude than the bottom, hence force due to pressure must also be larger at the top of the slab. As we consider a slice of infinitesimal height, we need not integrate and can just consider both values.
+
+This gives us:
+\[
+    \text{force due to gravity } = \text{ force due to pressure}
+\]
+\[
+    mg \rho_N V = A \rho(h) - A \rho(h + dh)
+\]
+\[
+    mg \rho_N V = -d \rho(h) A
+\]
+\[
+    mg \rho_N \times dh \times A = - d \rho(h) A
+\]
+\[
+    mg \rho_N \times dh =  -d \rho(h)
+\]
+\[
+    \frac{d \rho(h)}{dh} - mg \rho(N)
+\]
+\[
+    \int d \rho(h) = - \int mg \rho_N dh
+\]
+
+And considering number density in the density integral, as %TODO
+\[
+    \int_{\rho(0)}^{\rho(h)} \frac{1}{\rho_N} d \rho(h) = - \int_{0}^{h} mg dh
+\]
+
+And substituting $dp = d \rho_N k_B T$ to give a LHS integral entirely in number density:
+\[
+    \int_{\rho_N(0)}^{\rho_N(h)} \frac{k_B T}{\rho_N} d \rho_N = -mgh    
+\]
+\[
+    \int_{\rho_N(0)}^{\rho_N(h)} \frac{k_B T}{\rho_N} d \rho_N = -\frac{mgh}{k_B T}   
+\]
+\[
+    \left[\ln \left(\rho_N\right)\right]^{\rho_N(h)}_{\rho_N(0)} = -\frac{mgh}{k_B T}   
+\]
+\[
+    \frac{\rho_N(h)}{\rho_N(0)} = \exp \left(- \frac{mgh}{k_B T}\right) \implies \boxed{\rho_N(h) = \rho_N(0) \exp \left(- \frac{mgh}{k_B T}\right)}
+\]
+
+
+
+
+
+
+
+
+
+

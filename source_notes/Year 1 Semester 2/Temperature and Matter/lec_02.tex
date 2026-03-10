@@ -1,2 +1,77 @@
 % !TeX root = main.tex
-\lecture{1}{Tue 20 Jan 2026 12:00}{}
+\lecture{2}{Thu 22 Jan 2026 13:00}{Matter II}
+
+\section{Atomic Sizes}
+As we increase proton number, we might expect that the atomic radius increases (as there's physically more stuff). We might expect that adding more electrons would expect a corresponding increase in the atomic radius to fit these extra electrons.
+
+This doesn't actually prove to be true, and atomic size and properties are generally determined by the outermost electrons, and atomic radius stays mostly constant.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-01.png}
+     \caption{Variation of Atomic Radius with Atomic Number}
+\end{figure}
+
+We do see a large increase in atomic radius for the group one metals, where the outermost electron is very weakly attracted to the nucleus (is easily ionised). For an exam, we can consider atomic radius to be approximately $10^{-10}$.
+
+We see a similar trend when considering ionisation energy (the energy required to remove the outermost electron):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-02.png}
+     \caption{}
+\end{figure}
+
+This is approximately the same for the all atomic numbers, with the exception of noble gases (which are extremely difficult to ionise as a result of having full capacity outer shells).
+
+This doesn't apply however to the nuclear radius, $R$, as the nucleus is compressed to a much higher degree, so there's not space to fit additional nucleons without increasing radius. For atomic radius $A$, and modelling the nucleus as a sphere, we get:
+\[
+    R = r_0 A^{\frac{1}{3}}
+\]
+
+Where $r_0 = 1.2 \times 10^{-15}m = 1.2 \si{\femto\metre}$ is a constant.
+
+\section{Atomic Masses}
+Given the extremely small mass scales, we generally give masses of atoms or molecules in terms of atomic mass units, amu, where:
+\[
+    1 \text{amu} = 1.66 \times 10^{-27} \si{\kilo\gram}
+\]
+
+This is defined as $1/12$th the mass of a Carbon-12, ${}^{12} C$ atom. The atomic mass of Carbon-12 is thus $12$amu, however a proton and neutron each have mass $1.007$amu and $1.009$amu respectively. Why is there a discrepancy if we add the masses of the individual nucleons?
+
+This is because, when combining these nucleons into a nucleus, some of this mass is converted into energy. This is called ``binding energy'' and is used to hold the nucleus together.
+
+\subsection{Moles}
+A mole ($\si{\mole}$) is an SI base unit used to described the amount of a substance. 1 mole of a substance is defined by Avagadro's number, $N_A = 6.022 \times 10^{23}$, where one mole has $N_A$ atoms/molecules. We again use Carbon 12, as 12 grams of Carbon-12 has $N_A$ atoms.
+
+We further have:
+\[
+    \text{amount, mol} = \frac{N}{N_A}
+\]
+\[
+    \text{amount, mol} = \frac{\text{Mass}}{Atomic Mass}
+\]
+
+For gasses, one mole occupies exactly $22.4$L or $22.4\si{dm^3}$ at standard temperature and pressure ($0\si{\degreeCelsius}$, $10^5\si{Pa} = 1\si{atm}$), regardless of the gas in consideration.
+
+\section{Rayleigh's Oil Drop Measurement}
+Rayleigh conducted an experiment where he took a large volume of water, and placed a drop of olive oil (of known volume $V$) on top. He postulated that, due to the nature of olive oil being long-chained hydrocarbons, the oil would spread out perfectly thinly, and produce a layer exactly one atom tall.
+
+He said that this would form a circular layer of radius $R$ and height $d$. If we take the film to be a cylinder (and $d$ is too small to measure directly), we can measure $R$ and use the known volume to determine $d$:
+\[
+    V = \pi R^2 d \implies d = \frac{V}{\pi R^2}
+\]
+
+When he carried this out, he determined the atomic radius \footnote{Strictly, an upper limit for the radius}, as $\sim 1 \si{nm}$, i.e. being one order of magnitude out. This wasn't bad for how rudimentary the experiment was!
+
+\section{Latent Heat}
+We know that there has to be some kind of force between two atoms. If we consider a diatomic molecule, separating these atoms from each other to infinity requires some amount of energy $\epsilon$. Because there are two atoms, the work done per atom is $\epsilon / 2$.
+
+Lets consider a more complex example with many more atoms (i.e. converting a solid to liquid):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-03.png}
+     \caption{}
+\end{figure}
+
+In this case, extracting the red atom from all its $12$ nearest neighbours will take $12 \epsilon / 2$. We should additionally consider the $6$ next nearest neighbours and so and so on. Each increase in distance has a decrease

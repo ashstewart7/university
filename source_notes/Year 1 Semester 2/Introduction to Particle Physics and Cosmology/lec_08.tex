@@ -1,0 +1,148 @@
+% !TeX root = main.tex
+\lecture{8}{Mon 02 Mar 2026 12:00}{}
+
+\section{Equation of Motion for the Universe}
+
+\textbf{Goal: } To derive an equation of motion for the dynamics of the Universe.
+
+\textbf{Assumptions: }
+
+\begin{itemize}
+    \item We will assume Newtonian Gravity.
+    \item We will assume The Cosmological Principle holds on the scales we're considering.
+    \item We will assume uniform expansion.
+    \item We will assume no dissipation. This means that total energy for a particle of mass $m$ will be conserved.
+    \item As a result of these assumptions, we wil be using comoving coordinates.
+\end{itemize}
+
+We'll be using a non-vectorised form of the comoving coordinates:
+\[
+    \boxed{r(t) = a(t) x}
+\]
+
+Assume at some time $t_1$ we have some spherical volume of radius $r(t_1)$, containing mass $M$. As time progresses and the universe expands, this radius will increase. This is given by some generic $r(t)$ and volume $V(t)$
+
+As a result of our assumptions, we assume that we have uniform mass density given by $\rho(t)$ for some $t$:
+\[
+    \rho(t) = \frac{M}{V(t)}
+\]
+
+Consider a particle of mass $m$ on the boundary of our initial $t_1$ universe. This particle will have some gravitational potential energy, and some kinetic energy as it moves on expansion:
+\[
+    \text{total energy } = \text{potential energy } + \text{ kinetic energy}
+\]
+\[
+    U = V + T
+\]
+
+For potential energy:
+\[
+    V = \frac{-G Mm}{r(t)} = - \frac{4 \pi}{3} Gm \rho (t) r^2(t) \qquad \text{ assuming a spherical universe.}
+\]
+
+For kinetic energy:
+\[
+    T = \frac{1}{2} m v^2 = \frac{1}{2}m \left(\frac{dr(t)}{dt}\right)^2 = \frac{1}{2} m \dot{r}^2
+\]
+
+Hence for total energy:
+\[
+    U = T+V =\frac{1}{2} m \dot{r}^2 - \frac{4 \pi}{3} Gm \rho (t) r^2(t)
+\]
+
+In doing this, we've had to implicitly assume that we can treat the mass $M$ distributed throughout the sphere as if it were a point mass at the centre of the sphere. This gives us an ordinary differential equation in terms of $r(t)$.
+
+\subsection{Comoving Coordinates}
+We now want to transform this into comoving coordinates.
+
+\[
+    \dot{r(t)} = \frac{d}{dt} \left(a(t) x\right) \dot{a}(t) x
+\]
+
+\[
+    \implies U = \frac{-4 \pi}{3} Gm \rho(t) a^2(t) x^2 + \frac{1}{2}m \dot{a}^2(t) x^2
+\]
+
+\[
+    \frac{2 U}{ma^2(t) x^2} = \left(\frac{\dot{a}(t)}{a(t)}\right)^2 - \frac{8 \pi G}{3} \rho(t)
+\]
+
+Let $\frac{2U}{mx^2} \equiv - kc^2$, hence\footnote{This seems very random, but all we are doing is setting a constant equal to another constant, so it does work!}:
+\[
+    \boxed{\left(\frac{\dot{a}(t)}{a(t)}\right)^2 =  \frac{8 \pi G}{3} \rho(t) - \frac{kc^2}{a(t)^2}}
+\]
+
+This is called the Friedmann Equation. This is now an ODE in terms of scale factor and not in terms of radius. Before we can solve it however, we need to deal with the $\rho(t)$ term.
+
+Considering the second term, we have:
+\[
+    [k] = \frac{1}{L^2}
+\]
+
+This $k$ has different implications on the geometry of the universe, and we consider 3 cases:
+\begin{itemize}
+    \item $k=0$: A flat universe.
+    \item $k>0$: A positive-curvature 
+\end{itemize}
+%TODO
+
+Current observations suggest that our universe is very close to the $k=0$ case, so we will disregard the second term in first year cosmology.
+
+\subsection{The Fluid Equation}
+In order to solve the Friedmann Equation, we need to build something to describe $\rho (t)$, called the ``fluid equation''. We will assume the following:
+\begin{itemize}
+    \item We will assume that the universe is a perfect/ideal fluid. This means that it is characterised by a density $\rho$ and an isotropic pressure $p$.
+    \item We will assume that the 1st Law of Thermodynamics holds:
+    \[
+        dE = p dV + TdS
+    \]
+    \item We will assume that the process is adiabatic, $dS = 0$.
+\end{itemize}
+
+Considering a comoving unit volume, where:
+\[
+    x = 1 \implies r(t) = a(t)
+\]
+
+Hence:
+\[
+    V(t) = \frac{4 \pi}{3} a^3(t)
+\]
+
+The internal energy of our fluid is given by:
+\[
+    E = mc^2 = \frac{4 \pi}{3} \rho(t) a^3(t) c^2
+\]
+\[
+    \frac{dE}{dt} = \frac{4 \pi}{3} c^2 \frac{d}{dt} \left(\rho(t) a^3(t)\right)
+\]
+\[
+    = \frac{4 \pi c^2}{3} \left(\dot{\rho}(t) a^3(t) +\rho(t) 3a^2(t) \dot{a}(t)\right)
+\]
+
+And:
+\[
+    \frac{dV}{dt} = \frac{4 \pi}{3} a^3 (T) = \frac{4 \pi}{3} 3a^2(t) \dot{a}(t)
+\]
+
+Hence:
+\[
+    \frac{4 \pi c^2}{3} \left(\dot{\rho}(t) a^3(t) +\rho(t) 3a^2(t) \dot{a}(t)\right) + p 4 \pi a^2 t \dot{a}(t) = 0
+\]
+\[
+    \dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \left(\rho (t)\frac{p}{c^2}\right) = 0
+\]
+This is now much easier to solve!
+
+
+
+
+
+
+
+
+
+
+
+
+

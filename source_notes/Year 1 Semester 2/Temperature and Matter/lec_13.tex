@@ -1,0 +1,235 @@
+% !TeX root = main.tex
+\lecture{13}{Tue 03 Mar 2026 12:00}{}
+
+Recap from last lecture
+\begin{itemize}
+    \item Three methods of heat transport: conduction, convection and radiation.
+    \item Fourier's Law:
+    \[
+        \dot{Q} = - \kappa A \frac{dT}{dx}
+    \]
+    \item We can show that: 
+    \[
+        \frac{dT}{dx} = \frac{T_2 - T_1}{L}
+    \]
+    \item Conduction determined by two distinct physical processes that transfer heat:
+    \begin{itemize}
+        \item Movement of electrons.
+        \item Photon transfer.
+    \end{itemize}
+    \item Thermal resistivity, thermal conductance and thermal resistance, acting as analogues of their electrical equivalents.
+\end{itemize}
+
+\section{Conduction II}
+\subsection{Combinations of Thermal Resistances}
+A derivation of why isn't examinable (but is shown in the non-assessed problems), but we have the same rules for Thermal Resistances as we do in electrical resistances:
+\begin{itemize}
+    \item Thermal resistances add in series, $R_T = R_1 + R_2 + \cdots R_n$.
+    \item Thermal resistances add in inverse when in parallel $1/R_T = 1/R_1 + 1/R_2 + \cdots + 1/R_n$.
+\end{itemize}
+
+\subsection{Example: Pipe Lagging}
+Consider a solid copper pipe of radius $r_0$, initial temperature $T_0$ and length $L$. We surround this pipe with insulation of initial temperature $T_1$ and resulting in a new radius $r_1$. The insulation has $\kappa = 0.05 \si{W m^{-1} K^{-1}}$ and the system is in a steady state. 
+
+We start from Fourier's law:
+\[
+    \dot{Q} = - \kappa A \frac{dT}{dr}
+\]
+
+As the pipe is a cylinder:
+\[
+    \dot{Q} = - \kappa (2 \pi r l) \frac{dT}{dr}
+\]
+\[
+    - \int_{r_0}^{r_1} \frac{\dot{Q}}{2 \kappa \pi r l} =- \int _{T_0}^{T_1} dT
+\]
+\[
+    \int_{r_1}^{r_0} \frac{\dot{Q}}{2 \kappa \pi l} \frac{dr}{r} = \int_{T_1}^{T_0} dT
+\]
+\[
+    \frac{\dot{Q}}{2 \kappa \pi l} \left[\ln r\right]^{r_1}_{r_0} = \left[T\right]^{T_0}_{T_1}
+\]
+\[
+    \frac{\dot{Q}}{2 \kappa \pi l} \ln \left(\frac{r_0}{r_1}\right) = T_0 - T_1
+\]
+\[
+    \dot{Q} = (T_0 - T_1) \frac{2 \kappa \pi l}{\ln (r_1/r_0)}
+\]
+
+\section{Convection}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec13-01.png}
+     \caption{}
+\end{figure}
+
+Consider a fluid suspended between two plates, distance $L$ apart. The upper plate $T_C$ is colder than the lower plate, $T_H$. 
+
+What governs whether or not convection can occur (and to what extent)?
+\begin{itemize}
+    \item Buoyancy of the fluid $\beta = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_P$
+    \item The thermal conductivity, $\kappa$.
+    \item The viscosity of the fluid, $\eta$.
+\end{itemize}
+
+To decide whether or not convection can occur, we use the Rayleigh number:
+\[
+    R_A = \frac{\rho L^3 (\beta \left\{T_H - T_C\right\})g}{\eta \alpha}
+\]
+Where:
+\[
+    \alpha = \frac{\kappa}{\rho C_P}
+\]
+
+If $R_a > 1,000$ then convection occurs laminarly, and if $R_a > 100,000$ then convection occurs turbulently convection does not occur $R_A < 1,000$. Laminar flow is simple, predictable and consistent flow (i.e. straight out of a well made tap). Turbulent flow is much more complex and is pseudorandom. We can predict statistical effects, but turbulent flow is too complex to predict accurately to a very low level.
+
+The details of convection (except for the basic concept) are not examinable.
+
+\section{Thermal Radiation}
+All bodies emit EM radiation characteristic of the object temperature (and not the temperature of the surroundings). The frequency is temperature dependant. We often use infrared (i.e. thermal imaging) as the frequencies are emitted by an object around the temperature of a human body are IR.
+
+A black body perfectly emits and absorbs radiation of all wavelengths, without any reflection. A while body, on the other hand, perfectly reflects all incident light. A black body in thermal equilibrium with surroundings emits exactly the same power spectrum as it absorbs.
+
+Classical mechanics predicts the Rayleigh-Jeans law for emission:
+\[
+    u(\lambda, T) = \frac{8 \pi k_B T}{\lambda^4}
+\]
+Where $u$ is power emitted per unit area, $T$ is temperature and $\lambda$ is the wavelength of emitted light. As this is inversely proportional to lambda, this causes the UV catastrophe, where $u \to \infty$ as $\lambda \to 0$. Max Plank developed an improved version\footnote{See QM1}.
+\[
+    u(\lambda, T) = \frac{8 \pi h c}{\lambda^5} \frac{1}{\exp{\left(\frac{hc}{\lambda k_B T}\right)} - 1}
+\]
+
+We can characterise non-black bodies by the emissivity, $\epsilon$, the fraction of the black body spectrum which it absorbs. This gives $\epsilon = 1$ for a true black body and $\epsilon = 0$ for a true white body.
+
+\section{Wein's Approximation}
+We want to determine the maximum of the spectrum, to find the wavelength corresponding to the maximal power output.
+
+\[
+    u(\lambda, T) = \frac{8 \pi h c}{\lambda^5} \frac{1}{\exp{\left(\frac{hc}{\lambda k_B T}\right)} - 1}
+\]
+
+Letting $a = \frac{hc}{\lambda k_B T}$:
+\begin{align*}
+    \frac{1}{\lambda} &= \frac{k_B T}{hc} a\\
+    \implies \frac{1}{\lambda^5} &= \left(\frac{k_B T}{hc}\right)^5 a^5\\
+    \implies \frac{8 \pi hc}{\lambda^5} &= 8 \pi hc \left(\frac{k_B T}{hc}\right)^5 a^5
+\end{align*}
+
+And:
+\begin{align*}
+    \frac{1}{\exp{\left(\frac{hc}{\lambda k_B T}\right)} - 1}
+    &= \frac{1}{\exp(a) - 1}
+\end{align*}
+
+\[
+    \frac{\partial a}{\partial \lambda}
+    =
+    \frac{-hc}{\lambda^2 k_B T}
+    =
+    - \frac{1}{\lambda}\frac{hc}{\lambda k_B T}
+    =
+    -\frac{a}{\lambda}
+\]
+
+Hence:
+\[
+    u(\lambda, T)
+    =
+    \underbrace{8 \pi hc \left(\frac{k_B T}{hc}\right)^5}_{\text{constant } = C}
+    a^5 \times \frac{1}{\exp(a) - 1}
+\]
+
+\[
+    u(\lambda, T) = \frac{C a^5}{e^a - 1}
+\]
+
+\[
+    \frac{\partial u}{\partial \lambda}
+    =
+    \frac{\partial a}{\partial \lambda}
+    \frac{d}{da}
+    \left[
+        \frac{C a^5}{e^a - 1}
+    \right]
+\]
+
+\[
+    =
+    \frac{-a}{\lambda}
+    \frac{d}{da}
+    \left[
+        \frac{C a^5}{e^a - 1}
+    \right]
+\]
+
+Using the quotient rule:
+
+\[
+    \frac{d}{da}
+    \left[
+        \frac{C a^5}{e^a - 1}
+    \right]
+    =
+    \frac{5C a^4 (e^a - 1) - C a^5 e^a}{(e^a - 1)^2}
+\]
+
+Therefore:
+
+\[
+    \frac{\partial u}{\partial \lambda}
+    =
+    \frac{-a}{\lambda}
+    \left[
+        \frac{5C a^4 (e^a - 1) - C a^5 e^a}{(e^a - 1)^2}
+    \right]
+\]
+Solving for the maxima:
+\[
+    \frac{\partial u}{\partial \lambda} = 0
+\]
+
+\[
+    -a \left(5Ca^4(e^a - 1) - Ca^5 e^a\right) = 0
+\]
+
+As $C$ is a non-zero constant:
+
+\[
+    -a \left(5a^4(e^a - 1) - a^5 e^a\right) = 0
+\]
+
+As $a \neq 0$:
+
+\[
+    5a^4(e^a - 1) - a^5 e^a = 0
+\]
+
+Dividing by $a^4$:
+
+\[
+    5(e^a - 1) - a e^a = 0
+\]
+
+\[
+    5e^a - 5 - a e^a = 0
+\]
+\[
+    (5 - a)e^a = 5
+\]
+
+Solving numerically:
+
+\[
+    a \approx 4.965
+\]
+\[
+    a = \frac{hc}{\lambda k_B T}
+\]
+\[
+    \lambda_{\max} T = \frac{hc}{k_B a}
+\]
+
+Finally:
+\[
+    \lambda_{\max} T \approx 2.898 \times 10^{-3} \, \mathrm{m\,K}
+\]

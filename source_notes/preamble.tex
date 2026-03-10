@@ -31,6 +31,15 @@
 \usepackage{fancyhdr}
 \usepackage[breakable]{tcolorbox}
 \usepackage{todonotes}
+\let\saveddot\dot%chktex 14
+\let\savebar\bar%chktex 14
+\usepackage{accents}
+\let\mathdot\saveddot
+\let\dot\mathdot%Fix the accents package breaking dot
+\let\bar\savebar
+
+\renewcommand{\hat}[1]{\accentset{\wedge}{#1}}
+\renewcommand{\dot}[1]{\mathdot{#1}}
 
 \newcommand\N{\mathbb{N}}
 \newcommand\R{\mathbb{R}}
