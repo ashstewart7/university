@@ -1,176 +1,198 @@
 % !TeX root = main.tex
-\lecture{9}{Tue 17 Feb 2026 11:00}{Special Relativity I: Foundations and Time Dilation}
+\lecture{9}{Thu 19 Feb 2026 15:00}{Special Relativity II: Length Contraction}
+\section{Proving Length Contraction}
 
-\section{Introduction}
-In this lecture:
-\begin{itemize}
-    \item Recap from CMR1
-    \item Einstein's two postulates
-    \item Time dilation
-    \item Galilean Transformations
-\end{itemize}
+Consider a horizontal laser cavity. We fire a laser from the left of the cavity (point A) to the right of the cavity (point B). The laser bounces off a mirror at point B and bounces back.
 
-Crucially, there are no special or absolute frames of reference - laws of motion are only sensible when we consider a frame of reference. The only slightly special frame is the one in which we are currently stationary.
-
-Special relativity provides a theory of relative motion between inertial frames of reference. An inertial frame is one which is not accelerating relative to the other frames being considered.
-
-\section{Frames of Reference}
-
-We will generally consider two related frames of reference, denoted $\Sigma$ and $\Sigma^\prime$. $\Sigma$ is our ``stationary'' frame, i.e the frame taken by an observer sat on earth. $\Sigma^\prime$ is our ``moving frame'', relative to the stationary observer and is moving with constant speed $v$.
-
-Coordinates in the stationary frame are $(x, y, z, t)$, while in the moving frame they add a prime, so are given by: $(x', y', z', t')$.
-
-We want to compare observations of position/experience of time/velocity in the moving frame with observations of the same categories in the stationary frame.
-
-The frame in which an object is stationary is denoted its rest frame $\Sigma_0$.
-
-\section{Galilean Transformations}
-\paragraph{``Galilean Invariance'':} The laws of physics are invariant in all inertial (non-accelerating) frames.
-
-\paragraph{``Galilean Transformation'':} Time is invariant and universal in all frames.
-
-In Classical Mechanics, we treat time as invariant, but this stops being true in special relativity. We can transform between frames in such a manner that time is kept constant, this is a Galilean Transformation, but this is not true by default.
-
-Consider our two reference frames $\Sigma$ and $\Sigma^\prime$, where the latter moves with speed $v$ relative to the former. Our coordinates in $(x, y)$ become coordinates in $(x^\prime, y^\prime)$.
-
-An object moves at speed $u^\prime$ in the x-direction in reference frame $\Sigma^\prime$. If we assume that time is invariant (as we're still currently doing classical physics without having introduced special relativity), then:
+The cavity has length $L_0$ as measured in the rest frame $\Sigma_0$. In this frame:
 \[
-    t = t^\prime
+    t_0 - \frac{2L_0}{c}, \qquad \text{Where $t_0$ is the time taken for the A->B->A journey in $\Sigma_0$}
 \]
 
-And as the motion is entirely in the x-axis:
+Now suppose the cavity moves at speed $v$ relative to a stationary observer in a different frame ($\Sigma$).
+
+The observer sees the cavity as having length $L$, how long does the A->B->A journey take as observed by a stationary observer in $\Sigma$.
+\[
+    t = t_{A \to B} + t_{B \to A}
+\]
+
+The cavity is moving away from the observer, so the laser beam doesn't just travel $L$ when going from $A \to B$. It must travel $L$ plus the distance the whole cavity has moved away in this time (as $B$ is moving away from the pulse). This extra distance is $vt_{A \to B}$, hence the distanced travelled when going from A to B is $L+ vt_{A \to B}$.
+
+As $c$ is constant in all frames, we can say:
+\[
+    c = \frac{L + vt_{A \to B}}{t_{A \to B}}
+\]
+\[
+    t_{A \to B} (c - v) = L
+\]
+\[
+    t_{A \to B} = \frac{L}{c - v}
+\]
+
+And now on the return journey from $B \to A$, as it travels back towards $A$, the cavity is moving in the same direction as the light, so $A$ ``catches up'' to the pulse and results in a smaller required distance to be travelled, $L - vt_{B \to A}$
+\[
+    c = \frac{L - vt_{B \to A}}{t_{B \to A}} \implies t_{B \to A} = \frac{L}{c+v} 
+\]
+
+And returning to the total time:
+\[
+    t = t_{A \to B} + t_{B \to A}
+\]
+\[
+    t = \frac{L}{c - v} + \frac{L}{c + v}
+\]
+\[
+    = L \left(\frac{1}{c - v} + \frac{1}{c + v}\right)
+\]
+\[
+    = L \left(\frac{c + v + c - v}{(c-v)(c+v)}\right)
+\]
+\[
+    = L \frac{2c}{c^2 - v^2}
+\]
+\[
+    = \frac{2L}{c} \frac{c^2}{c^2 - v^2}
+\]
+\[
+    = \frac{2L}{c} \frac{1}{1 - \frac{v^2}{c^2}}
+\]
+\[
+    = \frac{2L}{c} \gamma^2
+\]
+
+We now apply time dilation, which says that $t = \gamma t_0$, hence:
+\[
+    \gamma t_0 = \frac{2L}{c} \gamma^2
+\]
+\[
+    t_0 = \frac{2L}{c} \gamma
+\]
+
+From the rest frame, we know that $t_0 = 2L_0 / c$, so:
+\[
+    \frac{2L_0}{c} = \frac{2L \gamma}{c}
+\]
+
+\[
+    L_0 = L \gamma
+\]
+
+As $\gamma > 1, \, \forall (u < c)$, the proper length measured from the rest frame will always be greater than the length measured by an observer, hence length is contracted for a moving object. 
+
+\section{Example}
+In a particle accelerator, protons are accelerated to a measly $0.9c$. These protons pass through a tunnel of length $2 \si{km}$ as viewed from the a laboratory rest frame at the accelerator.
+
+Recall that:
+\[
+    t = \gamma t_0
+\]
+\[
+    L = \frac{L_0}{\gamma}
+\]
+\[
+    \gamma = \frac{1}{\sqrt{1 - \beta^2}}, \qquad \text{where: } \beta = u/c
+\]
+
+
+\subsection{How long would the journey take, according to the rest frame?}
+Viewed in the lab frame, and $v = d/t$ so:
+\[
+    t = \frac{2 \times 10^3 \si{m}}{0.9 \times 3 \times 10^8} = 7.4 \times 10^{-6}\si{s} = 7.4 \si{\micro \second}
+\]
+
+No relativity needed! 
+
+\subsection{How long would the journey take, according to the proton's frame?}
+We do need to consider relativity here, and use time dilation:
+\[
+    t = \gamma t_0
+\]
+
+\[
+    \gamma = \frac{1}{\sqrt{1 - 0.9^2}} = 2.3
+\]
+
+\[
+    t = \gamma t_0 \implies t_0 = \frac{t}{\gamma} = \frac{7.4 \si{\micro s}}{2.3} = 3.2 \si{\micro\second}
+\]
+
+\subsection{How long is the tunnel, according to the proton's frame?}
+The rest frame now corresponds to the tunnel. It has proper length in its rest frame of $2 \si{\kilo \metre}$.
+
+As viewed by the protons in their rest frame, it is the tunnel that is moving and is rushing towards them at $0.9c$. This is therefore a length contraction problem.
+
+\[
+    L = \frac{L_0}{\gamma} = \frac{2 \si{km}}{2.3} = 870 \si{m}
+\]
+
+\subsection{Checking Values}
+To check, we can reuse $v = d/t$ but this time in the proton rest frame.
+
+\[
+    d = 870\si{m}, \quad t = 3.2 \times 10^{-6} \si{s}
+\]
+
+Hence
+\[
+    v = \frac{870 \si{m}}{3.2 \times 10^{-6} \si{s}} = 2.7 \times 10^8 \si{\metre\second^{-1}} = 0.9c \text{ as required!}
+\]
+
+\section{Example II: Cosmic Rays}
+The highest energy cosmic rays are protons with massive energies $E \sim 10^{20} \si{eV}$, compared to the LHC with $E \sim 10^{12} \si{eV}$
+
+This corresponds to a $\gamma = 10^{11}$, and our galaxy is $\sim 10^{20}$m across. \footnote{$\gamma = E/mc^2$ - will be expanded on in later lectures.}
+
+As viewed on earth, these cosmic protons travel at $v \approx c$, hence,
+\[
+    t \approx \frac{d}{v} \approx \frac{10^{20}}{3 \times 10^8} = 3 \times 10^{11} \si{s} \approx 10^4 \si{ years}
+\]
+
+As viewed by the protons:
+\[
+    t_0 = \frac{t}{\gamma} = \frac{3 \times 10^{11}}{10^{11}} \approx 3 \si{s}
+\]
+
+Which is starkly different!
+
+\section{Lorentz Transformations}
+In general, transforming between coordinates in two different frames can get extremely messy, more than can easily be handed in simple applications of length contraction or time dilation.
+
+The Lorentz Transformations provide a general set of coordinate transformations between $\Sigma$ and $\Sigma^\prime$, i.e. $(x, y, z, t) \to (x^\prime, y^\prime, z^\prime, t^\prime)$.
+
+These transformations must be:
+\begin{enumerate}
+    \item Symmetric about a change in sign of $u$, i.e. the transformation from $\Sigma \to \Sigma^\prime$ with $u$ and the transformation from $\Sigma^\prime \to \Sigma$ with $-u$ must be the same.
+    \item They must be linear as otherwise a constant speed in one would not be constant in the other (and therefore not inertial frames).
+    \item If relative velocity is only in the $x$ direction, the transformations must be independent of $y$ and $z$.
+\end{enumerate}
+
+These transformations are (assuming motion only in $x$):
+\[
+    x = \gamma (x^\prime + v t^\prime)
+\]
 \[
     y = y^\prime
 \]
-
-After time $t$:
 \[
-    x = x^\prime + \text{distance moved by $\Sigma^\prime$ in time $t$ relative to $\Sigma$}
+    z = z^\prime
 \]
 \[
-    x = x^\prime + vt
+    t = \gamma \left(t^\prime + \frac{x^\prime v}{c^2}\right)
 \]
 
-The object velocity is defined as:
+And:
 \[
-    u = \frac{dx}{dt} = \frac{d}{dt} \left(x^\prime + vt\right)
-\]
-\[
-    = \frac{dx^\prime}{dt} + v = u^\prime + v
-\]
-
-This holds if any only if time is the quantity we treat as being invariant. This agrees with our classical understanding.
-
-\subsection{Where does this break down?}
-
-Lets assume that the moving object is a photon, moving in $\Sigma^\prime$ with velocity $c^\prime$, hence, according to the previous derivation:
-\[
-    c = c^\prime + v
-\]
-
-Therefore observers in different frames will measure different values for the speed of light\dots oh no!
-
-If we assume Galilean invariance, the laws of physics are the same in all reference frames, and yet the speed of light is included as a constant in many laws (i.e. electromagnetism). Therefore observers must measure the same speed of light in all reference frames.
-
-This is a contradiction - we cannot assume that both time and the laws of physics are invariant.
-
-\subsection{Experimental Verification}
-The earth travels around the sun extremely quickly, and the sun is travelling even faster around the galactic centre. Therefore, the earth is moving in space. 
-
-If Galilean relativity is correct, we would measure the speed of light in one direction as $c + u$ and measure the speed of light in the other direction as $c - u$. 
-
-This was tested by the Michelson-Morley experiment, where incoming light was split by a half-silvered mirror. Half the light travels in one direction, and half the light is split off by $90^\circ$. They reflect off a pair of mirrors and are recombined in a splitter to be observed.
-
-If the speed of light was different in different directions, the two beams would be out of phase and we would observe an interference pattern on combination. We would expect to see phase difference that varies with time, i.e. turning from destructive to constructive etc.
-
-This was not observed and the interference pattern generated was constant. Therefore, the results showed no variation in the speed of light.\footnote{This is the same idea used in the LIGO experiment to discover gravitational waves, except this was used to show that the path length changed, and not the speed of light. If the path lengths changed, this was due to a gravitational wave (ripple in space time) propagating to the earth and interfering with the measurement.}
-
-\section{The Solution - Einstein's Special Relativity}
-To fix this contradiction, Einstein came up with two postulates:
-\begin{enumerate}
-    \item The laws of physics are the same in any inertial frame of reference.
-    \begin{itemize}
-        \item This is the same as Galilean invariance and is easily believable.
-    \end{itemize}
-    \item The speed of light is constant in every frame of reference.
-    \begin{itemize}
-        \item This was revolutionary and is much less intuitive.
-    \end{itemize}
-\end{enumerate}
-
-The last postulate is difficult to understand intuitively, but makes everything work if we accept it as true!
-
-\subsection{Proving Time Dilation}
-
-Consider an observer on the earth in frame $\Sigma$. This observer watches two rockets both travelling side by side away from the earth in the x-direction with speed $v$. They are both travelling in $x$, with a constant y-difference $y_0$ between them.
-
-Suppose the upper rocket A fires a laser beam directly at B (i.e. directly in the y-direction downwards).
-
-\textbf{Frame $\Sigma$: }
-This is the rest frame of the earth (and the observer on earth) with coordinates $(x, y)$.
-
-\textbf{Frame $\Sigma^\prime$: }
-This is the rest frame of the rockets, with coordinates $(x^\prime, y^\prime)$.
-
-In the rockets rest frame $\Sigma^\prime$, the rockets are stationary and the time taken for a laser pulse to travel between them is:
-\[
-    t_0 = \frac{y_0}{c}
-\]
-
-Or equivalently:
-\[
-    y_0 = c t_0
-\]
-
-In the earth's rest frame $\Sigma$, the observer on the earth doesn't just see the light travelling in the y-direction. It also sees the light moving in the x-direction, as the whole $\Sigma^\prime$ frame containing the rockets relativistically move away.
-
-Effectively, we have:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/lec09-01.png}
-     \caption{}
-\end{figure}
-
-
-B moves distance $x$ horizontally while it waits for the laser to hit it, and the length of the path of the laser beam in time $t$ is given by $D$. If the time taken for light to reach B in $\Sigma$ is $t$, then:
-\[
-    D = ct
-\]
-As the speed of light is constant in all frames. As the rockets are moving away:
-\[
-    x = vt
-\]
-
-This gives us a Pythagorean triangle, where:
-\[
-    D^2 = x^2 + y^2 = x^2 + y_0^2
-\]
-And substituting in:
-\[
-    c^2 t^2 = v^2t^2 + c^2 t_0^2
+    x^\prime = \gamma (x- v t)
 \]
 \[
-    t^2 (c^2 - v^2) = t_0^2 c^2
+    y^\prime = y
 \]
 \[
-    t = t_0 \sqrt{\frac{c^2}{c^2 - v^2}}
+    z^\prime = z
 \]
-
-Dividing through by $c_2$:
 \[
-    t = t_0 \sqrt{\frac{1}{1 - \frac{v^2}{c^2}}}
+    t^\prime = \gamma \left(t - \frac{x v}{c^2}\right)
 \]
 
-Or:
-\[
-    t = t_0 \gamma, \qquad \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
-\]
+We do not need to know the derivations, but do need to know the results.
 
-$\gamma > 1$ for all object speeds that don't exceed the speed of light (which is required), so the time observed in the frame $\Sigma$ is longer than the ``proper time'' observed by the rocket.
-
-\section{The Twin Paradox}
-Consider two twins, an astronaut and a physics professor. The astronaut goes on a long trip close to the speed of light and reunites with his brother. Which brother is older?
-
-Special relativity says that because there is no absolute frame of reference, the brother travelling away also sees the same problem in reverse, i.e. he sees the physics professor brother travelling away in the opposite direction at equal and opposite speed, i.e. they are the same age.
-
-In practice, the astronaut is non-inertial and special rel isn't sufficient, so we can't solve it directly.

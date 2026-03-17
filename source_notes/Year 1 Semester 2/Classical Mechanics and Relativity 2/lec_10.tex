@@ -1,198 +1,170 @@
 % !TeX root = main.tex
-\lecture{10}{Thu 19 Feb 2026 15:00}{Special Relativity II: Length Contraction}
-\section{Proving Length Contraction}
+\lecture{10}{Tue 24 Feb 2026 11:00}{Special Relativity III: Lorentz Transformations}
 
-Consider a horizontal laser cavity. We fire a laser from the left of the cavity (point A) to the right of the cavity (point B). The laser bounces off a mirror at point B and bounces back.
+Recap of the first two relativity lectures:
+\begin{itemize}
+    \item Recap from Semester 1 Special Rel:
+    \begin{itemize}
+        \item Background
+        \item Einstein's postulates.
+        \item Time dilation.
+        \item Lorentz contraction.
+    \end{itemize}
+    \item Galilean transformations and when they fail.
+    \item Lorentz transformations for space and time.
+\end{itemize}
 
-The cavity has length $L_0$ as measured in the rest frame $\Sigma_0$. In this frame:
+\section{Galilean vs. Lorentz Transformations}
+In a standard setup with two frames, $\Sigma$ and $\Sigma^\prime$, where $\Sigma^\prime$ moves with speed $v$ relative to $\Sigma$.
+
+In $\Sigma$, we have coordinates $(x, y, t)$, in $\Sigma^\prime$ we have coordinates $(x^\prime, y^\prime, ^\prime)$.
+
+In a Galilean transformations, we kept time invariant across both frames, so $t = t^\prime$. This lead to $x^\prime = x - vt \implies u^\prime = u - v$ but raised a contradiction with the speed of light as observers in different frames would take two measurements of the speed of light.
+
+In the second lecture, we consider the speed of light as being invariant across all frames instead of time to resolve the contradiction. This gave us the Lorentz Transformations:
 \[
-    t_0 - \frac{2L_0}{c}, \qquad \text{Where $t_0$ is the time taken for the A->B->A journey in $\Sigma_0$}
-\]
-
-Now suppose the cavity moves at speed $v$ relative to a stationary observer in a different frame ($\Sigma$).
-
-The observer sees the cavity as having length $L$, how long does the A->B->A journey take as observed by a stationary observer in $\Sigma$.
-\[
-    t = t_{A \to B} + t_{B \to A}
-\]
-
-The cavity is moving away from the observer, so the laser beam doesn't just travel $L$ when going from $A \to B$. It must travel $L$ plus the distance the whole cavity has moved away in this time (as $B$ is moving away from the pulse). This extra distance is $vt_{A \to B}$, hence the distanced travelled when going from A to B is $L+ vt_{A \to B}$.
-
-As $c$ is constant in all frames, we can say:
-\[
-    c = \frac{L + vt_{A \to B}}{t_{A \to B}}
-\]
-\[
-    t_{A \to B} (c - v) = L
-\]
-\[
-    t_{A \to B} = \frac{L}{c - v}
-\]
-
-And now on the return journey from $B \to A$, as it travels back towards $A$, the cavity is moving in the same direction as the light, so $A$ ``catches up'' to the pulse and results in a smaller required distance to be travelled, $L - vt_{B \to A}$
-\[
-    c = \frac{L - vt_{B \to A}}{t_{B \to A}} \implies t_{B \to A} = \frac{L}{c+v} 
-\]
-
-And returning to the total time:
-\[
-    t = t_{A \to B} + t_{B \to A}
+    x^\prime = \gamma(x - vt)
 \]
 \[
-    t = \frac{L}{c - v} + \frac{L}{c + v}
-\]
-\[
-    = L \left(\frac{1}{c - v} + \frac{1}{c + v}\right)
-\]
-\[
-    = L \left(\frac{c + v + c - v}{(c-v)(c+v)}\right)
-\]
-\[
-    = L \frac{2c}{c^2 - v^2}
-\]
-\[
-    = \frac{2L}{c} \frac{c^2}{c^2 - v^2}
-\]
-\[
-    = \frac{2L}{c} \frac{1}{1 - \frac{v^2}{c^2}}
-\]
-\[
-    = \frac{2L}{c} \gamma^2
+    t^\prime = \gamma \left( t = \frac{xv}{c^2}\right)
 \]
 
-We now apply time dilation, which says that $t = \gamma t_0$, hence:
+Where $y = y^\prime$, $z=^\prime$.
+
+As we cannot use $u^\prime = u - v$ due to the contradiction with the speed of light, we in this lecture will consider:
+\begin{itemize}
+    \item Lorentz transformations for velocity.
+    \item Space-time, Lorentz invariance, causality.
+\end{itemize}
+
+\section{Lorentz Transformation for Velocity}
+We can revisit the question from the first lecture, but in the Lorentz transformation perspective rather than a Galilean perspective.
+
+Again, we have our two standard frames $\Sigma, \Sigma^\prime$. An object is moving with speed $u^\prime$ in frame $\Sigma^\prime$. We want to find an expression for the velocity of the object as viewed from $\Sigma$, given by $u$. The prime frame moves at speed $v$ wrt the rest frame and the objects motion is entirely along the $x$ acis.
+
+By definition, we have:
 \[
-    \gamma t_0 = \frac{2L}{c} \gamma^2
-\]
-\[
-    t_0 = \frac{2L}{c} \gamma
-\]
-
-From the rest frame, we know that $t_0 = 2L_0 / c$, so:
-\[
-    \frac{2L_0}{c} = \frac{2L \gamma}{c}
-\]
-
-\[
-    L_0 = L \gamma
-\]
-
-As $\gamma > 1, \, \forall (u < c)$, the proper length measured from the rest frame will always be greater than the length measured by an observer, hence length is contracted for a moving object. 
-
-\section{Example}
-In a particle accelerator, protons are accelerated to a measly $0.9c$. These protons pass through a tunnel of length $2 \si{km}$ as viewed from the a laboratory rest frame at the accelerator.
-
-Recall that:
-\[
-    t = \gamma t_0
-\]
-\[
-    L = \frac{L_0}{\gamma}
-\]
-\[
-    \gamma = \frac{1}{\sqrt{1 - \beta^2}}, \qquad \text{where: } \beta = u/c
-\]
-
-
-\subsection{How long would the journey take, according to the rest frame?}
-Viewed in the lab frame, and $v = d/t$ so:
-\[
-    t = \frac{2 \times 10^3 \si{m}}{0.9 \times 3 \times 10^8} = 7.4 \times 10^{-6}\si{s} = 7.4 \si{\micro \second}
-\]
-
-No relativity needed! 
-
-\subsection{How long would the journey take, according to the proton's frame?}
-We do need to consider relativity here, and use time dilation:
-\[
-    t = \gamma t_0
-\]
-
-\[
-    \gamma = \frac{1}{\sqrt{1 - 0.9^2}} = 2.3
-\]
-
-\[
-    t = \gamma t_0 \implies t_0 = \frac{t}{\gamma} = \frac{7.4 \si{\micro s}}{2.3} = 3.2 \si{\micro\second}
-\]
-
-\subsection{How long is the tunnel, according to the proton's frame?}
-The rest frame now corresponds to the tunnel. It has proper length in its rest frame of $2 \si{\kilo \metre}$.
-
-As viewed by the protons in their rest frame, it is the tunnel that is moving and is rushing towards them at $0.9c$. This is therefore a length contraction problem.
-
-\[
-    L = \frac{L_0}{\gamma} = \frac{2 \si{km}}{2.3} = 870 \si{m}
-\]
-
-\subsection{Checking Values}
-To check, we can reuse $v = d/t$ but this time in the proton rest frame.
-
-\[
-    d = 870\si{m}, \quad t = 3.2 \times 10^{-6} \si{s}
-\]
-
-Hence
-\[
-    v = \frac{870 \si{m}}{3.2 \times 10^{-6} \si{s}} = 2.7 \times 10^8 \si{\metre\second^{-1}} = 0.9c \text{ as required!}
-\]
-
-\section{Example II: Cosmic Rays}
-The highest energy cosmic rays are protons with massive energies $E \sim 10^{20} \si{eV}$, compared to the LHC with $E \sim 10^{12} \si{eV}$
-
-This corresponds to a $\gamma = 10^{11}$, and our galaxy is $\sim 10^{20}$m across. \footnote{$\gamma = E/mc^2$ - will be expanded on in later lectures.}
-
-As viewed on earth, these cosmic protons travel at $v \approx c$, hence,
-\[
-    t \approx \frac{d}{v} \approx \frac{10^{20}}{3 \times 10^8} = 3 \times 10^{11} \si{s} \approx 10^4 \si{ years}
-\]
-
-As viewed by the protons:
-\[
-    t_0 = \frac{t}{\gamma} = \frac{3 \times 10^{11}}{10^{11}} \approx 3 \si{s}
-\]
-
-Which is starkly different!
-
-\section{Lorentz Transformations}
-In general, transforming between coordinates in two different frames can get extremely messy, more than can easily be handed in simple applications of length contraction or time dilation.
-
-The Lorentz Transformations provide a general set of coordinate transformations between $\Sigma$ and $\Sigma^\prime$, i.e. $(x, y, z, t) \to (x^\prime, y^\prime, z^\prime, t^\prime)$.
-
-These transformations must be:
-\begin{enumerate}
-    \item Symmetric about a change in sign of $u$, i.e. the transformation from $\Sigma \to \Sigma^\prime$ with $u$ and the transformation from $\Sigma^\prime \to \Sigma$ with $-u$ must be the same.
-    \item They must be linear as otherwise a constant speed in one would not be constant in the other (and therefore not inertial frames).
-    \item If relative velocity is only in the $x$ direction, the transformations must be independent of $y$ and $z$.
-\end{enumerate}
-
-These transformations are (assuming motion only in $x$):
-\[
-    x = \gamma (x^\prime + v t^\prime)
-\]
-\[
-    y = y^\prime
-\]
-\[
-    z = z^\prime
-\]
-\[
-    t = \gamma \left(t^\prime + \frac{x^\prime v}{c^2}\right)
+    u = \frac{dx}{dt} = \frac{dx}{dt^\prime} \frac{dt^\prime}{dt} = \frac{\left(\frac{dx}{dt^\prime}\right)}{\left(\frac{dt^\prime}{dt}\right)} \tag{1}
 \]
 
 And:
 \[
-    x^\prime = \gamma (x- v t)
+    \frac{dx}{dt^\prime} = \gamma \left(\frac{dx^\prime}{dt^\prime} + v\right) = \gamma(y^\prime + v) \tag{2}
 \]
 \[
-    y^\prime = y
-\]
-\[
-    z^\prime = z
-\]
-\[
-    t^\prime = \gamma \left(t - \frac{x v}{c^2}\right)
+    \frac{dt}{dt^\prime} = \gamma \left(1 + \frac{v}{c^2} \frac{dx^\prime}{dt^\prime}\right) = \gamma \left(1 + \frac{u^\prime v}{c^2}\right) \tag{3}
 \]
 
-We do not need to know the derivations, but do need to know the results.
+And substituting (3) and (2) into (1):
+\[
+    u = \frac{\cancel{\gamma} (u^\prime + v)}{\cancel{\gamma} \left(1 + \frac{u^\prime v}{c^2}\right)} \implies \boxed{u = \frac{u^\prime + v}{1 + \frac{u^\prime v}{c^2}}}
+\]
+
+To get the reverse transformation, we invoke forward-backward symmetry, i.e. swap $x \to x^\prime$, $t\to t^\prime$ etc, where $v \to -v^\prime$:
+\[
+    u^\prime = \frac{u-v}{1 - \frac{uv}{c^2}}
+\]
+
+\subsection{Limiting Cases}
+Firstly, we'll look at the non-relativistic case, i.e. where $u, v \ll c$:
+\[
+    u = \frac{u^\prime+v}{1 + \frac{u^\prime v}{c^2}} = \frac{u^\prime + v}{1 + \text{small}} \approx u^\prime + v
+\]
+
+This is the classical Galilean approach, which is what we'd expect for non-relativistic behaviour.
+
+What about an ultra-relativistic limit where $u, u^\prime \to c$ with $v \ll c$. Now we have:
+\[
+    u = \frac{u^\prime + \text{small}}{1 + \text{small}} \approx u^\prime
+\]
+
+As the speed of light is invariant, speeds close to the speed of light do not change between reference frames.
+
+\subsection{Example}
+An observer on a rocket sees a second rocket moving away from them at $v_1 = 0.8c$. Another observer on a planet sees the first rocket moving at $0.7c$. Assuming all motion is in the same direction, how fast does the planetary observer see the second rocket?
+
+\begin{itemize}
+    \item From $\Sigma^\prime$ (the first rockets rest frame), the second rocket moves with $0.8c$.
+    \item From $\Sigma$ (the planetary rest frame), the first rocket moves with $0.7c$, and the second rocket moves with some unknown speed $u$.
+\end{itemize}
+
+We apply the formula:
+\[
+    u = \frac{u^\prime + v}{1 + \frac{u^\prime v}{c^2}}
+\]
+
+In $\Sigma^\prime$, $u^\prime = 0.8c$. The two frames move with relative velocity equal to the change in speed of the first rocket from $\Sigma \to \Sigma^\prime$: $v = 0.7c$.
+
+In frame $\Sigma$ we are tying to do:
+\[
+    u = \frac{0.8c + 0.7c}{1 + \frac{0.8c \times 0.7c}{c^2}}
+\]
+\[
+    = \frac{1.5c}{1.56} = 0.96c
+\]
+
+\section{Space-Time and Lorentz Invariants}
+From length contraction and time dilation, we can see that in special relativity, intervals in time and space are not fixed but vary from frame-to-frame.
+
+This means that the order of events may even be different for different observers. 
+
+There are some quantities however which are invariant across frames, such as the speed of light. One of these is space-time.
+
+\subsection{Space-Time Invariance}
+As usual, we have $\Sigma$ and $\Sigma^\prime$ with relative speed $v$. The axes of these frames coincide at $t = 0, x =0$ and $t^\prime = 0, x^\prime = 0$.
+
+At $t=t^\prime=0$, there is a flash of light at the origin which propagates isotropically.
+
+In $\Sigma$, the light forms a spherical shell of radius $\Delta r$ at time $\Delta t$, and in $\Sigma^\prime$ it reaches a radial distance $\Delta r^\prime$ at time $\Delta t^\prime$. 
+
+After time $\Delta T$ in $\Sigma$ we have $\Delta r = c \delta T$. Similarly in $\Sigma^\prime$ we have $\Delta r^\prime = c \Delta t^\prime$.
+
+Squaring these we have:
+\[
+    \left(\Delta r\right)^2 = c^2 \Delta t^2 = \Delta x^2 + \Delta y^2 + \Delta z^2
+\]
+\[
+    \left(\Delta r^\prime\right)^2 = c^2 \Delta t^{\prime 2} = \Delta x^{\prime 2} + \Delta y^{\prime 2} + \Delta z^{\prime 2}
+\]
+
+Hence:
+\[
+    c^2 \Delta t - \Delta x^2 - \Delta y^2 - \Delta z^2 = 0 = c^2 \Delta t^{\prime 2} - \Delta x^{\prime 2} - \Delta y^{\prime 2} - \Delta z^{\prime 2}
+\]
+
+This means that, \textbf{for light}:
+\[
+    c^2 \Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 = 0 
+\]
+
+We call this quantity $\Delta s^2$:
+
+What about for objects moving at a speed less than the speed of light? We want to apply the Lorentz transformations to $\Delta s{^\prime 2}$ (again treating the ``boost'' as being in $x$):
+
+\begin{align*}
+    \Delta s^{\prime 2} &= c^{\prime 2} \Delta t^{\prime 2} - \Delta x^{\prime 2} - \Delta y^{\prime 2} - \Delta z^{\prime 2} \\
+    &= c^2 \gamma^2 \left(\Delta t - \frac{v}{c^2} \Delta x\right)^2 - \gamma^2 \left(\Delta x - v \Delta t\right)^2 - \Delta y^2 - \Delta z^2\\
+    &= c^2 \gamma^2 \left(\Delta t^2 + \frac{v^2}{c^4} \Delta x^2 - 2 \frac{v}{c^2} \Delta t \Delta x\right) - \gamma^2 \left(\Delta x^2 + v^2 \Delta t^2 - 2v \Delta x \Delta t\right) - \Delta y^2 - \Delta z^2 \\
+    &= \Delta t^2 \left(c^2 \gamma^2 - v^2 \gamma^2\right) + \Delta x^2 \left(\frac{v^2 \gamma^2}{c^2}- \gamma^2\right) + \Delta t \Delta x \left(-2v \gamma^2 + 2v \gamma^2\right) - \Delta y^2 - \Delta z^2\\
+    &= \Delta t^2 \gamma^2 \left(c^2 - v^2\right) + \Delta x^2 \gamma^2 \left(\frac{v^2}{c^2} - 1\right) - \Delta y^2 - \Delta z^2 \\
+    &= \Delta t^2 \frac{c^2 - v^2}{1 - \frac{v^2}{c^2}} + \Delta x^2 \frac{(\frac{v^2}{c^2}) - 1}{1 - \frac{v^2}{c^2}} - \Delta y^2 - \Delta z^2 \\
+    \Delta s^{\prime 2} &= \boxed{c^2 \Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 = \Delta s^2}
+\end{align*}
+
+
+Hence $\Delta s^2$ is invariant under the Lorentz transformations regardless of speed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

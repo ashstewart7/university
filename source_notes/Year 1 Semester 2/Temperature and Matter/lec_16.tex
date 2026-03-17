@@ -1,0 +1,73 @@
+% !TeX root = main.tex
+\lecture{16}{Thu 12 Mar 2026 13:00}{}
+
+\section{Atmosphere Continued}
+
+We have established that the number density (number of fluid molecules per unit volume), at height 0, $\rho_N(0)$ can be related to atmospheric pressure by:
+\[
+    \rho_N(0) = \frac{P_\text{atmospheric}}{k_B T}
+\]
+
+To determine the total number of gas molecules in the slab of atmpshere with cross-sectional area $A$, we can integrate across all $h$:
+\[
+    N = A \int_{0}^{\infty} \rho_N(h) \, dh
+\]
+\[
+    = A \int_{0}^{\infty} \rho_N(0) \exp\left(- \frac{mgh}{k_B T}\right) \, dh
+\]
+\[
+    = A \rho_N(0) \int_{0}^{\infty} \exp\left(- \frac{mgh}{k_B T}\right) \, dh
+\]
+\[
+    = A \rho_N(0) \left[- \frac{k_B T}{mg} \exp \left(- \frac{mhg}{k_B T}\right)\right]_0^\infty
+\]
+\[
+    = A \rho_N(0) \frac{k_B T}{mg}
+\]
+
+Hence:
+\[
+    \rho_N(0) = \frac{Nmg}{A k_B T}
+\]
+
+And using:
+\[
+    h_0 = \frac{k_B T}{mg}
+\]
+\[
+    \rho_N(0) = \frac{N}{A h_0}
+\]
+
+This gives us that the %TODO
+$\rho_N(0)$ is the average number density of the slab of atmopshere between $h = 0$, $h = h_0$.
+
+We further define a new quantity:
+\[
+    Pr(h) = \frac{A \rho_N(h)}{N}
+\]
+
+Which gives the contribution from a sinle gas molecule.
+
+\subsection{Probability Normalisation}
+We start from:
+\[
+    Pr(h) = \frac{A \rho_N(h)}{N}
+\]
+\[
+    h_0 \frac{k_B T}{mg}
+\]
+\[
+    \rho_N(h) = \rho_N(0) \exp(-mgh / k_B T)
+\]
+\[
+    a %TODO
+\]
+
+
+\section{Boltzmann Factors}
+\textcolor{red}{This is on the exam.} We have the quantity $mgk / k_B T$, which is dimensionless. What does this quantity actually mean? $mgh$ is a term for the potential energy (gravitational in this example), $k_B T$ is the thermal energy
+
+
+
+
+
