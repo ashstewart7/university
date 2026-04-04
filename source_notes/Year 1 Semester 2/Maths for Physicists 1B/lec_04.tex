@@ -1,0 +1,131 @@
+% !TeX root = main.tex
+\lecture{4}{Wed 28 Jan 2026 11:00}{Partial Differentiation IV: Total Time Derivative and Multivariate Taylor Series}
+
+\section{Total Time Derivative}
+Consider a fluid with a velocity field:
+\[
+    \underline{v}(x, y, z, t) = v_x(x, y, z, t) \hat{\imath} + v_y(x, y, z, t) \hat{\jmath} + v_z(x, y, z, t) \hat{k}
+\]
+
+We could follow a small piece of this fluid, and use Newton's Second Law, per unit volume. This gives mass per unit volume (i.e. density) times acceleration. Assuming a non-compressible fluid with constant density:
+
+\[
+    \underline{f} = \rho \frac{d \underline{v}}{dt}
+\]
+
+Where $\underline{f}$ is force per unit volume. Beginning by considering acceleration in only the x direction, there is two sources of time dependence. One from the fluid element itself moving, and one from the velocity of the piece changing with time.
+
+This gives the total acceleration as:
+\[
+    \frac{d v_x}{dt} = \frac{\partial v_x}{\partial x} \frac{dx}{dt} + \frac{\partial v_x}{\partial y} \frac{dy}{dt} + \frac{\partial v_x}{\partial z} \frac{dz}{dt} + \frac{\partial v_x}{\partial t}
+\]
+\[
+    = v_x \frac{\partial v_x}{\partial x} + v_y \frac{\partial v_x}{\partial y} + v_z \frac{\partial v_x}{\partial z} + \frac{\partial v_x}{\partial t}
+\]
+
+We can simplify this with nabla:
+\[
+    \frac{d v_x}{dt} = \left(v_x \frac{\partial}{\partial x} + v_y \frac{\partial}{\partial y} + v_z \frac{\partial}{\partial z} \right) v_x + \frac{\partial v_x}{\partial t} = \left(\underline{v} \cdot \underline{\nabla}\right) v_x + \frac{\partial v_x}{\partial t}
+\]
+
+The total time derivative or advective derivative is given by:
+\[
+    \frac{d \underline{u}}{dt} = \left(\underline{v} \cdot \nabla\right) \underline{u} + \frac{\partial \underline{u}}{\partial t}
+\]
+
+Where the first term gives the contribution from the element of fluid moving from the fluid flow pattern and the second term gives the contribution from the pattern itself changing.
+
+The first term is called the advective term. A fluid element will accelerate even in a constant velocity field, because the velocity changes at it moves through the field.
+
+The advective term is non-linear in the velocity field, which makes fluid mechanics difficult to solve.
+
+\section{Multivariate Taylor Series}
+For a single variable, we want to expand a function $f(x)$ around a point $x = a$ in a series of powers of $h$, where $h = x - a$:
+
+\[
+    f(a + h) = c_0 + c_1 h + c_2 h^2 + \cdots = \sum_{m=0}^{\infty} c_m h^m
+\]
+
+We find $c_m$ by differentiating m times wrt h and setting $h = 0$:
+\[
+    f^m(a) = m! c_m \implies c_m = \frac{f^m (a)}{m!}
+\]
+
+Hence:
+\[
+    f(a+h) = f(a) + hf^\prime(a) + \frac{h^2}{2!} f^{\prime\prime} (a) + \cdots = \sum_{m=0}^{\infty} \frac{h^m}{m!} f^m(a)
+\]
+
+Or in operator form:
+\[
+    f(a+h) = \exp \left[h \frac{\partial}{\partial x}\right] f(a)
+\]
+
+Noting that the exponential arises due to the Taylor series for the exponential function:
+\[
+    e^x = 1 + u + \frac{u^2}{2!} + \cdots = \sum_{m=0}^{\infty} \frac{u_m}{m!}
+\]
+
+\[
+    \begin{aligned}
+    f(a+h) &= \left. f(x) \right|_{x=a} \\
+    &+ \left. h \frac{d}{dx} f(x) \right|_{x=a} \\
+    &+ \left. \frac{h^2}{2!} \frac{d^2}{dx^2} f(x) \right|_{x=a} \\
+    &\vdots \\
+    &= \left. \left[ 1 + h \frac{d}{dx} + \frac{h^2}{2!} \frac{d^2}{dx^2} + \frac{h^3}{3!} \frac{d^3}{dx^3} \cdots \right] f(x) \right|_{x=a} \\
+    &= \left. \exp \left[ h \frac{d}{dx} \right] f(x) \right|_{x=a}
+\end{aligned}
+\]
+
+
+\subsection{Multiple Variables}
+We want to expand a function $f(x, y)$ around the point $(x, y) = (a, b)$ as a power series.
+
+This will take the form:
+\[
+    f(a+h, b+k) = c_{00} + c_{10} h + c_{01}k + c_{20} h^2 + c_{11}hk + c_{02}k^2 + \cdots \sum_{m=0}^{\infty} \sum_{n=0}^{\infty} c_{mn} h^m k^n
+\]
+
+We complete the same process to find coefficients, to find $c_{mn}$ we differentiate $m$ times wrt $k$, and $n$ times wrt $h$ and set $h = k = 0$ to get:
+
+\[
+    \frac{\partial^{m+n}}{\partial x^m \partial y^n} (a,b) = m!n!c_{mn}
+\]
+
+Hence:
+\[
+    f(a + h, b + k) = \sum_{m=0}^{\infty} \sum_{n=0}^{\infty} \frac{h^m k^n}{m!n!} \frac{\partial^{m+n} f}{\partial x^m \partial y^n} (a, b)
+\]
+
+
+Again in operator form this gives:
+\[
+    \exp \left[h \frac{\partial}{\partial x}\right] \exp \left[k \frac{\partial}{\partial y}\right] f(x, y) \biggr\rvert_{x=a, y=b}
+\]
+
+\subsection{Generalising to Many Variables}
+Consider a function of $p$ variables $(x_1, x_2, \ldots, x_p)$:
+
+\[
+    f(a_1 + h_1, \ldots, a_p + h_p) = \sum_{n_1 = 0}^{\infty} \sum_{n_2 = 0}^{\infty} \cdots \sum_{n_p = 0}^{\infty} c_{n_1 n_ 2 \ldots n_p} h_1^{n_1} h_2^{n_2} \cdots h_p^{n_p}
+\]
+
+Again to find the coefficients we differentiate $n_1$ times wrt $h_1$, $n_2$ times wrt $h_2$ etc. We set $h_1 = h_2 = \cdots = h_p = 0$ to get:
+
+\[
+    n_1! n_2! \cdots n_p! c_{n_1 n_2 \ldots n_p} = \frac{\partial^{n_1 + n_2 + \cdots + n_p} f}{\partial x_1^{n_1} \partial x_2^{n_2} \cdots \partial x_p^{n_p}} (a_1, \ldots, a_p)
+\]
+
+Hence:
+\[
+    f(a_1 + h_1, \ldots, a_p + h_p) = \sum_{n_1 = 0}^{\infty} \cdots \sum_{n_p = 0}^{\infty} \frac{h_1^{n_1} \cdots h_p^{n_p}}{n_1! \cdots n_p!} \frac{\partial^{n_1 + \cdots + n_p} f}{\partial x_1^{n_1} \cdots \partial x_p^{n_p}} (a_1, \ldots, a_p)
+\]
+
+In compact vector notation, where $\underline{h} = (h_1, \ldots, h_p)$, this is:
+\[
+    f(\underline{a} + \underline{h}) = \exp \left[\sum_{i=1}^{p} h_i \frac{\partial}{\partial x_i}\right] f(\underline{a})
+\]
+
+\[
+    f(\underline{a} + \underline{h}) = \exp \left[ \underline{h} \cdot \underline{\nabla} \right] f(\underline{a})
+\]

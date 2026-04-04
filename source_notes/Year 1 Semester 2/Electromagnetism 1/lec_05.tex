@@ -1,0 +1,157 @@
+% !TeX root = main.tex
+\lecture{5}{Thu 02 Feb 2026 11:00}{Electric Fields IV: Gauss Examples and Electric Potential}
+
+\section{Non-Conducting Infinite Charged Parallel Plates}
+Consider two non-conducting infinite planes of charge with charge density $\sigma$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec05-01.png}
+     \caption{}
+\end{figure}
+
+We have derived that the surface charge from the LHS plate gives field:
+\[
+    \underline{E}_L = \frac{\sigma}{2 \epsilon_0} \underline{\hat{x}}
+\]
+
+The RHS plate gives:
+\[
+    \underline{E}_R = \frac{- \sigma}{2 \epsilon_0} \underline{\hat{n}} = \frac{\sigma}{2 \epsilon_0} \hat{\underline{x}}
+\]
+
+Where n is the unit vector normal to the RHS surface. By superposition, the total field between the plates is:
+\[
+    \underline{E} = \underline{E}_L + \underline{E}_R = \frac{\sigma}{\epsilon_0} \underline{\hat{x}}
+\]
+
+This is exactly the same as for two conducting plates, per last lecture.
+
+\subsection{Back to Conducting Plates}
+Consider two oppositely charged conducting plates a long way apart. They have charges on each surface.
+
+As the two plates move closer together, their E-fields attract the charges on each other. This causes movement of the charges, until all the charges move towards the front faces. This causes the effective surface charge density to double, hence:
+
+\[
+    E = \frac{\sigma_i}{\epsilon_0} + \frac{\sigma_i}{\epsilon_0} = \frac{2 \sigma_i}{\epsilon_0} = \frac{\sigma}{\epsilon_0}
+\]
+
+Where $\sigma_i$ is the initial charge densities on the surface of each plate, and $\sigma$ is the final charge density effective on the inner surfaces. There is therefore no charges (and hence $E = 0$) on the outer surfaces. Note that this is only true when the plates have equal and opposite charge densities.
+
+\section{Work Done by an E-Fields}
+Consider a particle moving in an E-field. Across some infinitesimal distance $\delta \underline{l}$, over which the particle experiences force $\underline{F}$, the infinitesimal element of work done is:
+\[
+    \delta W = \underline{F} \cdot \delta \underline{l}
+\]
+
+As the E-field by definition carries units of force per unit charge, the force is given by:
+\[
+     \delta W = q \underline{E} \cdot \delta \underline{L}
+\]
+
+The work done by an E-field represents a decrease in electric potential energy, $\delta U = - \delta W$:
+\[
+    \delta U = - q \underline{E} \cdot d \underline{L}
+\]
+
+If the charge is positive, $\delta U$ is negative and energy decreases. If the charge is negative, $\delta U$ is positive and energy increases.
+
+If the E-field varies wrt space, and the particle moves from point A to point B, we need to integrate to find the total change:
+
+\[
+    U_B - U_A = -q \int_{a}^{b} \underline{E} \cdot d\underline{l}
+\]
+
+We want to be able to define this on a per unit charge basis.
+
+\begin{tcolorbox}
+    $V$ is the potential energy of the system \emph{per unit charge}.
+
+    \[
+        V = \frac{U}{q}
+    \]
+
+    \[
+        V_b - V_A = - \int_{a}^{b} \underline{E} \cdot d \underline{l}
+    \]
+
+    It is a property of a point everywhere in an E-field. \textbf{It is a scalar}. The units are Joules per Coulomb, i.e. Volts.
+\end{tcolorbox}
+
+The electric potential at distance $r$ from a point charge $q$ is:
+
+\[
+    \underline{E} = \frac{q}{4 \pi \epsilon_0 r^2} \underline{r}
+\]
+
+\[
+    V(\infty) - V(r) = - \int_{\infty}^{r} \underline{E} \cdot d \underline{r} = \frac{q}{4 \pi \epsilon_0 r}
+\]
+
+This is the Coulomb potential, which can be positive or negative (as $q$ can be positive or negative).
+
+As it's potential per unit charge, the $U$ of a charge $q_0$ at distance $r$ from charge $q$ is:
+\[
+    U(r) = V(r)q = \frac{1}{4 \pi \epsilon_0} \frac{q q_0}{r}
+\]
+And:
+\[
+  F = - \frac{dU(r)}{dr} = \frac{1}{4 \pi \epsilon_0} \frac{q q_0}{r^2}
+\]
+
+\section{Multiple Charges}
+
+What if we have multiple charges? We simply sum across them:
+
+\[
+    V = \frac{1}{4 \pi \epsilon_0} \sum_{i} \frac{q_i}{r_i}
+\]
+
+Where $r_i$ is the distance from the ith charge $q_i$ to the point at which we're evaluating the potential.
+
+\section{Electric Potential Difference}
+The electric potential difference (AKA voltage) between two points is:
+\[
+    V_B - V_A = \frac{U_B - U_A}{q} = - \int_{a}^{b} \underline{E} \cdot d \underline{l}
+\]
+
+We can use this to get that Newtons per Coulomb and Volts per Metre are dimensionally equivalent units, and we commonly use the latter for describing electric fields.
+
+\section{E-Field Lines}
+The lines of an E-field trace the path that a positive test charge would follow under the action of the electrostatic force. If the positive test charge were released, it would accelerate along the field lines, from high potential to low potential.
+
+We commonly overlay perpendicular (to $\underline{E}$) lines on a field diagram, representing surfaces where $V$ is a constant. These are called equipotentials and are always perpendicular to $\underline{E}$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/lec05-02.png}
+     \caption{}
+\end{figure}
+
+\section{E from V}
+Because V is a scalar quantity, its often easier to calculate than E. There are some cases where its therefore easiest to find V and use this to determine E. We start from:
+\[
+    V = - \int \underline{E} \cdot d \underline{l}
+\]
+
+And differentiate both sides:
+\[
+    \underline{E} = - \left(\frac{\partial V}{\partial x} \hat{\imath} + \frac{\partial V}{\partial y} \hat{\jmath} + \frac{\partial V}{\partial z} \hat{k} \right) = - \underline{\nabla} V
+\]
+
+Or in polar coordinates:
+\[
+    \underline{E} = - \left(\frac{\partial V}{\partial r} \hat{r} + \frac{1}{r} \frac{\partial V}{\partial \theta} \hat{\theta}\right)
+\]
+Where the $1/r$ term arises to ensure dimensional correctness. Often, we have nice examples where we're only dealing with the radial component, so have:
+
+\[
+    E(r) = -\frac{dV}{dr} \hat{r} = \frac{q}{4 \pi \epsilon_0 r^2} \hat{r}
+\]
+
+\section{Conservatism}
+The $\underline{E}$-field is a conservative field. This means that if the charge returns to its original position, regardless of the route taken, no net work is done:
+\[
+    \oint \underline{E} \cdot d \underline{l} = 0
+\]
+
+This equivalently means that the change in potential between two points is the same whichever path between the two points is taken.

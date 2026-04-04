@@ -1,106 +1,180 @@
 % !TeX root = main.tex
-\lecture{15}{Mon 09 Mar 2026 11:00}{Ampere's Law}
+\lecture{4}{Mon 29 Jan 2026 11:00}{Electric Fields IV: Gauss' Law Examples}
 
-\section{Biot-Savat: Complex Loops Continued}
-Continuing from the end of last lecture, we found by symmetry that the $yz$ components cancel, leaving only an $x$ component for any point $P$ along the x-axis.
+\section{Solid Sphere with Non-Uniform Charge}
+What if we have a solid sphere with distributed charge where the charge distribution is a function of radius?
+
+\[
+    \rho(r) = \rho_0 r
+\]
+
+Where $r_0$ is a constant (note: does not have dimensions of charge density).
+
+
+We now have:
+\[
+    Q_\text{enclosed} = \int_0^r \rho(r) dV
+\]
+
+Hence:
+\[
+    \int_{S} \underline{E} \cdot d \underline{S} = \frac{1}{\epsilon_0} \int_0^r \rho(r) dV
+\]
+
+We divide the sphere into thin shells of infinitesimal thickness $\delta r$. The volume of each shell is:
+\[
+    \delta V = 4 \pi r^2 \delta r
+\]
+
+Hence:
+\[
+    Q_\text{enclosed} = \int_{0}^{r} \rho(r) \, dV = \int_{0}^{r} \rho_0 r 4 \pi r^2 \, dr
+\]
+\[
+    = 4 \pi \rho_0 \int_{0}^{r} r^3 \, dr = \pi \rho_0 r^4
+\]
+
+Using Gauss' law:
+\[
+    \int_S \underline{E} \cdot d \underline{S} = \frac{\pi \rho_0 r^4}{\epsilon_0}
+\]
+
+Considering the LHS and using symmetry:
+\[
+    \int_S \underline{E} \cdot d \underline{S} = \int_S E dS = E \int_S dS = E 4 \pi r^2
+\]
+
+Hence:
+\[
+    4 \pi E r^2 = \frac{\pi \rho_0 r^4}{\epsilon_0}
+\]
+\[
+    \implies E = \frac{\rho_0 r^2}{4 \epsilon_0}
+\]
+
+\section{E-Field Inside Uniform Charged Shell}
+We've already done this with solid angles, but it becomes much easier with Gauss' law. Since the Gauss surface sits inside the shell, none of the charged distributed across the shell is inside the surface. Therefore, $Q_\text{enclosed} = 0 \implies E = 0$
+
+\section{E-Fields in Conductors}
+A simple model of a conductor is where each atom has a free valance electron which is free to move throughout the conductor, in vast quantities.
+
+If you place a conductive box inside a conductor, the electrons want to travel against the field. This leaves a positively charged nuclei, which drift in the opposite direction.
+
+This causes the outside of the metal box to pick up a small charge, creating its own electric field which opposes the initial field. This continues until it perfectly cancels out the initial field, leaving no resultant field inside a conductor. 
+
+This is called a ``Faraday Cage'' and can be used to shield the interior of the conducting box from the E-field, i.e. to protect sensitive electronics.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/lec14-07.png}
+    \includegraphics[width=0.75\textwidth]{figures/lec04-01.png}
      \caption{}
 \end{figure}
+
+
+\section{Infinite Charged Sheet}
+\subsection{Non-Conducting Sheet}
+
+Consider an infinitely large plane of surface charge density $\sigma$. As the sheet is infinitely large, there's no edge effects and the E-field exists exclusively $\perp$ to the surface of the sheet.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/lec15-01.png}
+    \includegraphics[width=0.75\textwidth]{figures/lec04-02.png}
      \caption{}
 \end{figure}
 
-Taking magnitudes (and noting that $\hat{r}$ is a unit vector):
+We can therefore take a cylindrical Gauss surface, and the only E-field will exist normally to the end circular faces (of cross-sectional area $A$). Hence, $\underline{E}$ and $d \underline{S}$ are parallel, and:
+
 \[
-    \delta B = \frac{\mu_0 I}{4 \pi r^2} \delta l
+    \int_S \underline{E} \cdot d \underline{S} = E \int_S dS 
 \]
 
-
-Resolving into the x-direction, we get that:
+So:
 \[
-    \delta B_{x} = \frac{\mu_0 I}{4 \pi r^2} \delta l \cos \theta \tag{1}
-\]
-
-And as we have a right angled triangle:
-\[
-    r^2 + a^2 + x^2 \tag{2}
+    E \int_S dS = \frac{Q_\text{enclosed}}{\epsilon_0}
 \]
 \[
-    \cos \theta = \frac{a}{r} \implies \cos \theta = \frac{a}{\left(a^2 + x^2\right)^{(1/2)}} \tag{3}
-\]
-
-Inserting 2 and 3 into 1:
-\[
-    \delta B_x = \frac{\mu_0 I}{4 \pi} \times \frac{a}{\left(a^2 + x^2\right)^{(3/2)}} \delta l
+    E \left(2A\right) = \frac{\sigma A}{\epsilon_0}
 \]
 \[
-    B_x = \frac{\mu_0 I}{4 \pi} \times \frac{a}{\left(a^2 + x^2\right)^{(3/2)}} \oint \delta l
+    \implies E = \frac{\sigma}{2 \epsilon_0}
 \]
-\[
-    B_x = \frac{\mu_0 I}{4 \pi} \times \frac{a}{\left(a^2 + x^2\right)^{(3/2)}} 2 \pi a
-\]
-\[
-    B_x = \frac{\mu_0 I}{2} \frac{a^2}{\left(a^2 + x^2\right)^{(3/2)}}
-\]
-
-Taking limits, we can observe that at the centre of the loop (where $x=0$):
-\[
-    B_0 =  \frac{\mu_0 I}{2} \frac{a^2}{\left(a^2\right)^{(3/2)}}= \frac{\mu_0 I}{2a}
-\]
-
-And when $x\gg a$, we have:
-\[
-    B_x = \frac{\mu_0 I a^2 }{2x^3}
-\]
-
-However, we can simplify using the magnetic dipole moment $\mu_m = I \times \text{area} = I \pi a^2$, hence:
-\[
-    B_x = \frac{\mu_0}{4 \pi} \frac{2 \mu_m}{x^3}
-\]
-
-This is strikingly similar for the expression for an electric dipole:
-\[
-    E_x = \frac{1}{4 \pi \epsilon_0} \frac{2p}{x^3}
-\]
+As previously derived! Again, this works for a finite plane where the plane is much larger (relatively) than the distance from the plane, so edge effects cn be disregarded.
 
 
-\section{E- and B-Fields}
-We have already determined the following, for E- and B-fields respectively:
+\subsection{Conducting Sheet}
+As the sheet is now conducting, there is no E-field inside the conductor, and charge is distributed to build up a charge density ($\sigma$) on both surfaces of the sheet.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec04-03.png}
+     \caption{}
+\end{figure}
+
+Applying Gauss' law gives:
 \[
-    \int_S \underline{E} \cdot d \underline{S} = \frac{Q}{\epsilon_0} \tag{E}
+    EA = \frac{\sigma A}{\epsilon_0}
 \]
 \[
-    \int_S \underline{B} \cdot d \underline{S} = 0 \tag{B}
+    \implies E = \frac{\sigma}{\epsilon_0}
 \]
 
-We also know that the E-field is conservative, hence no work is done if a charge returns to its original position:
+Which is a factor of two different from the non-conducting case. Note that this doesn't arise because we only took a Gauss surface on one side. If we took a Gauss surface through the sheet (in the same manner as the non-conducting case), we would have two sets of charge distributed, one on each side, both with charge density $\sigma$. We would therefore have:
 \[
-    \oint \underline{E} \cdot d \underline{l} = 0
+    E (2A)  = \frac{2 \sigma A}{\epsilon_0}
 \]
+Which yields the same result.
 
-Is there an equivalent of this for B-fields?
+\section{E-Field Between Charged Conducting Plates}
+Consider a capacitor-like setup with two parallel charged metal plates.
 
-Consider a circular path of a B-field created around an infinite line of current at radial distance $r$. By symmetry, $\underline{B}$ and $d \underline{l}$ are parallel, and are constant for a fixed $r$. Hence:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec04-04.png}
+     \caption{}
+\end{figure}
+
+While a full derivation will be covered later, the E-field given by this is the same as for an infinite sheet:
+
 \[
-    \oint \underline{B} \cdot d \underline{l} = \oint B dl = B \oint dL = B 2 \pi r
+    E = \frac{\sigma}{\epsilon_0}
 \]
 
-We have also determined that:
+\section{Infinite Line of Charge}
+Consider an infinitely long line charge, of charge density $\lambda$. As its infinitely long, there's no edge effects and the electric field must be radial.
+
+We can place a cylindrical Gaussian surface where the axis is parallel to the line, of length $L$ and radius $r$.
+
+Since the field is radial, it acts in the same direction as the normal vector to the cylinder surface. By symmetry, the E-field is constant for fixed radius, so:
+
 \[
-    B = \frac{\mu_0 I}{2 \pi r} \implies \oint \underline{B} \cdot d \underline{l} = B 2 \pi r = \frac{\mu_0 I}{2 \pi r} \times 2 \pi r = \mu_0 I
+    \int_S \underline{E} \cdot d \underline{S} = E \int_S dS = E (2 \pi r L)
 \]
 
-
-This gives us Ampere's Law:
 \[
-    \boxed{\oint \underline{B} \cdot d \underline{l} = \mu_0 I_\text{enclosed}}
+    \frac{Q_\text{enclosed}}{\epsilon_0} = \frac{\lambda L}{\epsilon_0}
 \]
 
-\subsection{Example}
-Consider a long solid cylinder carrying a uniformly distributed current. The cylinder has radius $R$ and length
+Hence:
+\[
+    E(2 \pi r L) = \frac{\lambda L}{\epsilon_0}
+\]
+\[
+    E = \frac{\lambda}{2 \pi \epsilon_0 r}
+\]
+
+\section{No Contained Charge}
+
+What if the Gaussian surface sits within an E-field, but the charged creating the field is not enclosed in the surface?
+
+This could be thought of as implying by Gauss' law that:
+
+\[
+    \oint \underline{E} \cdot d \underline{S} = O
+\]
+\[
+    \implies E = 0 ?
+\]
+
+But this is not the case. Here, the symmetry that we've relied upon isn't here, as $E \not\parallel dS$ and is not constant around the surface. Hence, we can't nicely simplify the problem and the first integral becomes unsolvable (by us).
+
+If the charge falls outside of the Gauss surface, the net flux through the surface is zero.

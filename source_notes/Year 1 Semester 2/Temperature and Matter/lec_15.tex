@@ -25,20 +25,20 @@ We will assume that:
 
 The slab of atmosphere we're considering has area $A$, height $dh$ and sits at height $h$ above the surface of the earth. From the ideal gas state equation:
 \[
-    PV = nRT = N k_B T
+    PV = \underbrace{nRT}_\text{moles} = \underbrace{N k_B T}_\text{particles}
 \]
 \[
     \implies P = \frac{N}{V} k_B T
 \]
 \[
-    P = \rho_N k_B T
+    \implies P = \rho_N k_B T
 \]
 
-Where $\rho_N$ is number density, $\rho_N = N/V$, the number of molecules per unit volume.
+Where $\rho_N = N/V$ is number density, and is defined as the number of molecules per unit volume.
 
 The slab of atmosphere has two forces acting upon it, a force due to pressure and a force due to gravity. As we assume that slice is in mechanical equilibrium, we can equate these forces.
 
-At the bottom of the slab, force due to gravity has a larger magnitude than the bottom, hence force due to pressure must also be larger at the bottom of the slab. As we consider a slice of infinitesimal height, we need not integrate and can just consider both values.
+The pressure is going to vary across the slab. Force due to pressure increases the further down into the atmosphere you go. As the slab is in mechanical equilibrium, the force due to gravity must also vary across the slab in the opposite manner.********
 
 This gives us:
 \[

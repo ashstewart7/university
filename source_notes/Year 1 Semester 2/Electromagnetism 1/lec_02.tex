@@ -1,0 +1,177 @@
+\lecture{2}{Thu 22 Jan 2026 11:00}{Electric Fields II: Field Lines and Continuous Charges}
+
+\section{Field Lines}
+To visualise a field, we draw field lines. These are drawn so that the tangent of these lines at any point in spaces gives the direction of $\underline{E}$ at that point.
+
+The lines point radially outwards from a positive charge, and radially towards a negative charge. The density of these lines is proportional to the magnitude of $\underline{E}$, but the absolute number of lines doesn't convey much.
+
+Field lines must start at a positive charge and end on a negative charge. They are continuous and can never cross each other, they only start/stop at charges or proceed to infinity.
+
+\section{Continuous Charge Distributions}
+What do we do if we have a charge which isn't a point particle? 
+\begin{itemize}
+    \item We break the object up into a distribution of infinitesimal point charges.
+    \item We treat each piece as a point charge and add up the separate $\underline{E}$ fields across an integral.
+    \item This gets messy for anything non-trivial, resulting in a complex 3D integral often requiring computational techniques.
+\end{itemize}
+
+Charges can be distributed across an object in a number of ways:
+\begin{itemize}
+    \item Charge per unit length across a line, given by $\lambda$:
+    \[
+        q = \int \lambda dl
+    \]
+    \item Charge per unit area across a surface area, given by $\sigma$:
+    \[
+        q = \int \sigma dA
+    \]
+
+    \item Charge per unit volume, given by $\rho$:
+    \[
+        q = \int \rho dV
+    \]    
+\end{itemize}
+
+\section{Example: E-Field from a Line of Charge}
+Consider an E-field from a line of length $2L$, measured at a point along the midpoint's perpendicular. This point sits $x$ length units along the perpendicular.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-01.png}
+     \caption{}
+\end{figure}
+
+We consider some element of charge $\delta Q = \lambda \delta y$ along the line at y. There are two components to the E-field, one pointing in the positive x direction and one in the negative y direction.
+
+When we consider all of the $\delta Q$s along the length of the charged rod, each point on the positive y-axis along the length will have a corresponding point on the negative y-axis. These two points will have equal and opposite magnitude, so $E_y = 0$ by symmetry. There is therefore no resultant $y$ component and the final field will point along $\hat{x}$.
+
+For some infinitesimal $\delta q$ generically along the line of charge:
+\[
+    \delta E_x = \frac{\delta q}{4 \pi \epsilon_0 r^2} \cos \alpha \tag{1}
+\]
+
+And for each $\delta Q$:
+\[
+    \delta Q = \lambda \delta y \tag{2}
+\]
+
+And from trig:
+\[
+    r^2 = y^2 + x^2 \tag{3}
+\]
+\[
+    \cos \alpha = \frac{x}{r} \tag{4}
+\]
+
+Substituting 2, 3, 4 into 1:
+
+\[
+    \delta E_x = \frac{\lambda \delta y}{4 \pi \epsilon_0} \frac{x}{\left[y^2 + x^2\right]^{3/2}}
+\]
+
+Hence:
+\[
+    E_x = \frac{\lambda x}{4 \pi \epsilon 0} \int_{-L}^{L} \frac{1}{\left[y^2 + x^2\right]^{3/2}} \, dy
+\]
+
+To solve this, we would use the standard integral given in the question. Alternatively, if a standard integral isn't given in the question we could express in the integral in terms of $\alpha$ and integrate from the minimum to maximum alpha.
+
+\subsection{Example Part B: The Easier Route}
+As before:
+\[
+    \delta E_x = \frac{\lambda \delta y}{4 \pi \epsilon_0 r^2} \cos \alpha \tag{1}
+\]
+\[
+    \cos \alpha = \frac{x}{r} \implies r = \frac{x}{\cos \alpha} \tag{2}
+\]
+
+And:
+\[
+    \tan \alpha = \frac{y}{x} \implies y = x \tan \alpha \tag{3}
+\]
+
+As:
+\[
+    \frac{d}{d \alpha} \tan \alpha = \frac{1}{\cos^2 \alpha}
+\]
+We have:
+\[
+    \delta y = \frac{x \delta \alpha}{\cos^2 \alpha} \tag{4}
+\]
+
+Hence:
+\[
+    \delta E_x = \frac{\lambda}{4 \pi \epsilon_0} \underbrace{\frac{x \delta x}{\cos^2 \alpha}}_\text{$\delta y$} \underbrace{\frac{\cos^2 \alpha}{x^2}}_\text{$1/r^2$} \cos \alpha
+\]
+\[
+    = \frac{\lambda}{4 \pi \epsilon_0 x} \cos \alpha
+\]
+
+Which is much easier to integrate from the minimum to maximum values of $\alpha$.
+
+\[
+    E_x = \frac{\lambda}{4 \pi \epsilon_0 x} \int_{\alpha_\text{min}}^{\alpha_\text{max}} \cos \alpha \, d \alpha
+\]
+
+And from the geometry of the problem:
+\[
+    \alpha_\text{max} = \arctan \left(\frac{L}{x}\right) \qquad \alpha_\text{min} = - \arctan \left(\frac{L}{x}\right)
+\]
+
+Which is easy to integrate.
+
+If the problem was setup such that the rod was infinitely long, then:
+\[
+    E_x = \frac{\lambda}{4 \pi \epsilon_0 x} \int_{-\pi / 2}^{\pi / 2} \cos \alpha \, d \alpha
+\]
+\[
+    E_x = \frac{\lambda}{2 \pi \epsilon_0 x}
+\]
+
+This is approximately true for the case where $x \ll L$.
+
+\section{Example: Ring of Charge}
+
+Consider a ring of charge with radius $a$. We step out some perpendicular constant distance $x$ from the centre of the ring to point $P$. What is the resultant field at $P$?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec02-02.png}
+     \caption{}
+\end{figure}
+
+The ring has total charge $Q$, distributed with charge per unit length $\lambda$.
+
+Again, we can use symmetry. For every point on the ring, there will be a point one diameter away creating an equal and opposite $\delta E$. Hence, the $y$ and $z$ components cancel leaving only $E_x$, pointing in the $\hat{x}$ direction. 
+
+\[
+    E_y = E_z = 0 \text{ by symmetry}
+\]
+
+We have:
+\[
+    \delta E_x = \frac{\delta q}{4 \pi \epsilon_0 r^2} \cos \theta
+\]
+\[
+    \cos \theta = \frac{x}{y}
+\]
+\[
+    r = \sqrt{a^2 + x^2}
+\]
+
+Hence:
+\[
+    \delta E_x = \frac{\delta q}{4 \pi \epsilon_0} \frac{x}{\left[a^2 + x^2\right]^{3/2}}
+\]
+
+Here, a and x are constants, so the only variable we can integrate across is $\delta q$:
+\[
+    E_x = \frac{x}{4 \pi \epsilon_0} \frac{1}{\left[a^2 + x^2\right]^{3/2}} \int dq
+\]
+\[
+    = \frac{x Q}{4 \pi \epsilon_0} \frac{1}{\left[a^2 + x^2\right]^{3/2}}
+\]
+
+
+
+

@@ -1,34 +1,40 @@
 % !TeX root = main.tex
-\lecture{16}{Thu 12 Mar 2026 13:00}{}
+\lecture{16}{Thu 12 Mar 2026 13:00}{Statistical Physics III: Atmosphere and Boltzmann Factors}
+
+Recap from last lecture:
+\begin{itemize}
+    \item We derived:
+    \[
+        \rho_N(h) = \rho_N(0) \exp \left(- \frac{mgh}{k_B T}\right)
+    \]
+    \[
+        P(h) = P(0) \exp \left(- \frac{mgh}{k_B T}\right)
+    \]
+    
+    To give the number density and pressure as an exponential function of height in the atmosphere.
+
+    \item Since $mgh / k_B T$ is being passed into an exponential, it must be dimensionless. Hence $k_B T / mg$ must have dimensions of $h$. 
+    \item This leads to the scale height $h_0$ where $P(h_0) = P(0) / e $
+\end{itemize}
+
 
 \section{Atmosphere Continued}
 
-We have established that the number density (number of fluid molecules per unit volume), at height 0, $\rho_N(0)$ can be related to atmospheric pressure by:
+We have established that the number density (number of fluid molecules per unit volume), at height 0, $\rho_N(0)$ can be related to atmospheric pressure ($P_\text{at} = P(0)$) by:
 \[
     \rho_N(0) = \frac{P_\text{atmospheric}}{k_B T}
 \]
 
-To determine the total number of gas molecules in the slab of atmpshere with cross-sectional area $A$, we can integrate across all $h$:
-\[
-    N = A \int_{0}^{\infty} \rho_N(h) \, dh
-\]
-\[
-    = A \int_{0}^{\infty} \rho_N(0) \exp\left(- \frac{mgh}{k_B T}\right) \, dh
-\]
-\[
-    = A \rho_N(0) \int_{0}^{\infty} \exp\left(- \frac{mgh}{k_B T}\right) \, dh
-\]
-\[
-    = A \rho_N(0) \left[- \frac{k_B T}{mg} \exp \left(- \frac{mhg}{k_B T}\right)\right]_0^\infty
-\]
-\[
-    = A \rho_N(0) \frac{k_B T}{mg}
-\]
-
-Hence:
-\[
-    \rho_N(0) = \frac{Nmg}{A k_B T}
-\]
+To determine the total number of gas molecules in the slab of atmosphere with cross-sectional area $A$, we can integrate number density across all $h$:
+\begin{align*}
+    N &= A \int_{0}^{\infty} \rho_N(h) \, dh \\
+    &= A \int_{0}^{\infty} \rho_N(0) \exp\left(- \frac{mgh}{k_B T}\right) \, dh \\
+    &= A \rho_N(0) \int_{0}^{\infty} \exp\left(- \frac{mgh}{k_B T}\right) \, dh \\
+    &= A \rho_N(0) \left[- \frac{k_B T}{mg} \exp \left(- \frac{mhg}{k_B T}\right)\right]_0^\infty \\
+    &= -A \rho_N(0) \frac{k_B T}{mg} \left[0 - 1\right] \\
+    N &= A \rho_N(0) \frac{k_B T}{mg} \\
+    \implies \rho_N(0) &= \frac{Nmg}{A k_B T}
+\end{align*}
 
 And using:
 \[
@@ -38,15 +44,14 @@ And using:
     \rho_N(0) = \frac{N}{A h_0}
 \]
 
-This gives us that the %TODO
-$\rho_N(0)$ is the average number density of the slab of atmopshere between $h = 0$, $h = h_0$.
+This has a physical definition, being the average number density of the slab of atmosphere between $h = 0, h = h_0$
 
 We further define a new quantity:
 \[
-    Pr(h) = \frac{A \rho_N(h)}{N}
+    \Pr(h) = \frac{A \rho_N(h)}{N}
 \]
 
-Which gives the contribution from a sinle gas molecule.
+Which gives the probability of (for a particle) finding it at height $h$
 
 \subsection{Probability Normalisation}
 We start from:
@@ -54,20 +59,21 @@ We start from:
     Pr(h) = \frac{A \rho_N(h)}{N}
 \]
 \[
-    h_0 \frac{k_B T}{mg}
+    h_0 = \frac{k_B T}{mg}
 \]
 \[
     \rho_N(h) = \rho_N(0) \exp(-mgh / k_B T)
 \]
+
+Hence:
 \[
-    a %TODO
+    \Pr(h) = \frac{A}{N} \times \frac{N}{A h_0} \exp(-mhg / k_B T)
 \]
+\[
+    \Pr(h) = \frac{mg}{k_B T} \exp(-mhg / k_B T)
+\]
+
 
 
 \section{Boltzmann Factors}
 \textcolor{red}{This is on the exam.} We have the quantity $mgk / k_B T$, which is dimensionless. What does this quantity actually mean? $mgh$ is a term for the potential energy (gravitational in this example), $k_B T$ is the thermal energy
-
-
-
-
-

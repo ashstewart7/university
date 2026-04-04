@@ -1,0 +1,222 @@
+\lecture{3}{Thu 22 Jan 2026 11:00}{Electric Fields III: More Continuous Charges and Gauss' Law}
+
+\section{Example: Large Circular Plane}
+Consider a large circular plane with uniform charge density $\sigma$. We step out some distance $x$ along the axis perpendicular to the plane, through its centre, to point $P$.
+
+The plane has radius $R$ and total charge $Q$. What is the magnitude and direction of the electric field at $P$?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-01.png}
+     \caption{}
+\end{figure}
+
+
+Using the same logic as for the ring last lecture, we can see that:
+\[
+    E_y = E_z = 0 \text{ by symmetry}
+\]
+
+So the final E-field lies entirely in the direction of $\hat{x}$.
+
+We want to divide the final E-field into an infinite number of thing rings, each at radius $r$ with infinitesimal thickness $\delta r$. We can then integrate across all rings to determine the total E-field.
+
+The distance between $P$ and $O$ is $x$, the distance between $O$ and the charge element is $r$, and the distance between $P$ and the charge element is $d$.
+
+From the previous example (in an exam question we would have to do this too), we have:
+
+\[
+    \delta E_\text{ring} = \frac{Q_\text{ring}}{4 \pi \epsilon_0} \frac{x}{\left[r^2 + x^2\right]^{(3/2)}}
+\]
+
+
+\[
+    Q_\text{ring} = \sigma \times 2 \pi r \delta r
+\]
+
+Hence:
+\[
+    \delta E_\text{ring} = \frac{\sigma r \delta r}{2 \epsilon_0} \frac{x}{\left(r^2 + x^2\right)^{(3/2)}}
+\]
+
+Noting that $r = x \tan \theta$, where $\theta$ is the angle between $d$ and $x$:
+\[
+    \delta r = \frac{x}{\cos^2 \theta} d \theta
+\]
+\[
+   \implies \cos \theta = \frac{x}{d} = \frac{x}{\left[r^2 + x^2\right]^(1/2)}
+\]
+\[
+    \frac{1}{\left[r^2 + x^2\right]^{(3/2)}} = \frac{\cos^3 \theta}{x^3}
+\]
+
+Substituting these in:
+\[
+    \delta E_\text{ring} = \frac{\sigma}{2 \epsilon_0} \underbrace{\left(\frac{x \sin \theta}{\cos \theta}\right)}_{r} \underbrace{\frac{x \delta \theta}{\cos^2 \theta}}_{\delta r} \times x \times \frac{\cos^3 \theta}{x^3}
+\]
+Which simplifies down to:
+\[
+    \frac{\sigma}{2 \epsilon_0} \sin \theta \delta \theta
+\]
+
+Which is again nice and simple to integrate. Integrating across all $\theta$:
+
+\[
+    E_\text{disc} = \frac{\sigma}{2 \epsilon_0} \int_{0}^{\theta_\text{max}} \sin \theta \, d \theta
+\]
+
+Where $\theta_\text{max} = \arctan(R/x)$. If we wanted a full infinite plane, we could get this as $R \to \infty$:.
+
+\[
+    \theta_\text{max} = \pi/2
+\]
+\[
+    E = \frac{\sigma}{2 \epsilon_0} \int_{0}^{\pi/2} \sin \theta d \theta
+\]
+\[
+    \implies E = \frac{\sigma}{2 \epsilon_0}
+\]
+
+Similar to the ring, this is approximately true for a finite plane where $x \ll R$. This is interesting because it implies that (for close distances, where $x \ll R$ still holds), the electric field is constant with respect to distance.
+
+\section{E-Field in a Hollow Sphere}
+Consider a hollow sphere with uniform charged shell density $\sigma$. Consider an arbitrary point $P$ inside this spherical shell.
+
+We can use solid angles here, which are effectively three dimensional angles. This is still dimensionless, but is given by a subtended area divided by the radius squared:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-02.png}
+     \caption{}
+\end{figure}
+
+While a traditional angle is $\theta = \text{ arc length } / \text{ radius }$ in units of radians, the $A/r^2$ for solid angles has units of Steradians, Sr. 
+
+The total surface area of a sphere is $4 \pi r^2$, so the total solid angle in all direction is $4 \pi$.
+
+As we have defined the two cones to subtend the same solid angle at $P$, their areas scale as the square of their radii:
+\[
+    \frac{\Delta a_2}{\Delta a_1} = \frac{r_2^2}{r_1^2}
+\]
+
+Hence:
+\[
+    \frac{\Delta q_2}{\Delta q_1} = \frac{\sigma \Delta a_2}{\sigma \Delta a_1} = \frac{r_2^2}{r_1^2}
+\]
+
+The ratio of the two electric fields from each area is given by:
+\[
+    \frac{E_2}{E_1} = \frac{\Delta q_2 / r_2^2}{\Delta q_1 / r_1^2} = \frac{\Delta q_2}{\Delta q_1} \frac{r_1^2}{r_2^2} = 1
+\]
+
+This means that the total E-field at $P$, and indeed at any point inside the hollow sphere, is zero.
+
+\section{Electric Flux}
+Electric flux is effectively the amount of E-field passing across a surface. It is defined in terms of a normal unit vector perpendicular to the surface, $\hat{n}$.
+
+We get an expression for flux by multiplying the field strength by the area ``seen'' by the field. This is given by $A \cos \theta$ and for a constant E-field on a flat surface:
+
+\[
+    \text{flux } = \Phi_E = AE \cdot \hat{n} = EA \cos \theta
+\]
+
+More generally:
+\[
+    \Phi_E = \int \underline{E} \cdot \hat{n} dS = \int \underline{E} \cdot d \underline{S}
+\]
+
+Where $dS$ is an element of surface area.
+
+\section{Gauss' Law}
+Consider an imaginary closed surface, of any shape. Inside this surface contains a charge $q$.
+
+The E-field at some element of this surface at distance $r$ from the charge is given by:
+\[
+    \underline{E} = \frac{q}{4 \pi \epsilon_0 r^2} \hat{r}
+\]
+
+The flux out of this area element is:
+\[
+    d \Phi = \underline{E} \cdot d \underline{S} = \underline{E} \cdot \hat{n} dS = E \cos \theta dS
+\]
+Hence:
+\[
+    d \Phi = \frac{q}{4 \pi \epsilon_0 r^2} \cos \theta dS = \frac{q }{4 \pi \epsilon_0} \frac{\cos \theta dS}{r^2} = \frac{q}{4 \pi \epsilon_0} d \Omega
+\]
+
+Where $\Omega$ is the solid angle.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-03.png}
+     \caption{}
+\end{figure}
+
+The total flux is therefore:
+\[
+    \Phi_E = \frac{q}{4 \pi \epsilon_0} \int_S d \Omega = \frac{q }{4 \pi \epsilon_0} 4 \pi = \frac{q}{\epsilon_0}
+\]
+
+Note that the proof/derivation is not needed, as solid angles are off-spec. Only the final result is needed.
+
+
+This gives us Gauss' Law:
+
+\begin{tcolorbox}
+    The net electric flux of $\underline{E}$ out of \emph{any} closed surface, enclosing a total charge of $Q_\text{enclosed}$ is:
+
+    \[
+        \Phi_E = \int_S \underline{E} \cdot d \underline{S} = \frac{Q_\text{enclosed}}{\epsilon_0}
+    \]
+    
+    Where $Q_\text{enclosed} = \sum_{i} q_i$ for discrete charges or $Q_\text{enclosed} = \int_V \rho dV$ for distributed charge.
+\end{tcolorbox}
+
+This becomes incredibly useful for problems where there is symmetry.
+
+\subsection{Example: Solid Sphere of Uniform Charge Density}
+Consider a sphere of radius $R$ with charge $Q$ distributed uniformly. We want to find the E-field inside the sphere, and the E-field outside the sphere.
+
+We will set up an imaginary spherical Gauss surface of radius $r$ and use symmetry:
+\[
+    \int_S \underline{E} \cdot d \underline{s} = \frac{Q_\text{enclosed}}{\epsilon_0}
+\]
+
+\textbf{Outside the Sphere: $r > R$}
+
+The E-field from a sphere and the normal vector of the surface are both radial. Hence, they are parallel. This means that $\theta = 0$ and:
+\[
+    \underline{E} \cdot d \underline{S} = E dS
+\]
+
+Since the sphere is symmetrical, the E-field at a constant $r$ must be constant anywhere around the sphere. Hence, $E$ is constant and can be pulled out of the integral:
+
+\[
+    E \int_S dS = \frac{q_\text{enclosed}}{\epsilon_0}
+\]
+\[
+    E \left(4 \pi r^2\right) = \frac{q_\text{enclosed}}{\epsilon_0}
+\]
+\[
+    E = \frac{Q}{4 \pi \epsilon_0 r^2}
+\]
+
+Which is Coulomb's law! Lets now consider the E-field inside the sphere.
+
+\textbf{Inside the Sphere: $r < R$}
+
+\[
+    \int_S \underline{E} \cdot d \underline{S} = \frac{q_\text{enclosed}}{\epsilon_0}
+\]
+
+As before, the LHS is $E 4 \pi r^2$. The RHS is now different, as a smaller volume of charge is enclosed by the Gauss surface. This new charge is given by the total charge times the ratio of the Gauss surface volume to the total volume:
+\[
+    \frac{q_\text{enclosed}}{\epsilon_0} = \frac{1}{\epsilon_0} \left(\frac{Q r^3}{R^3}\right)
+\]
+
+Hence:
+\[
+    E 4 \pi r^2 = \frac{Qr^3}{\epsilon_0 R^3}
+\]
+\[
+    \implies E = \frac{Q r}{4 \pi \epsilon_0 R^3}
+\]

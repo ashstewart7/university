@@ -1,2 +1,168 @@
 % !TeX root = main.tex
-\lecture{1}{Tue 20 Jan 2026 12:00}{}
+\lecture{3}{Tue 27 Jan 2026 12:00}{Matter III: Lennard-Jones Potential}
+
+\section{Potential Distance Plots}
+If the values of the constants $A, B$ are known, the general form of a Lennard-Jones potential plot is:
+
+
+\[
+    V_\text{LJ} = \underbrace{\frac{A}{r^{12}}}_\text{+ so repulsive} - \underbrace{\frac{B}{r^6}}_\text{- so attractive}
+\]
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-01.png}
+     \caption{}
+\end{figure}
+
+The potential is at some baseline minimum value $-\epsilon$ at distance $r_0$.
+
+For our LJP force, we require:
+\begin{itemize}
+    \item Repulsive at very short distances (smaller than interatomic spacing).
+    \item Attractive force for intermediate distances (larger than interatomic spacing).
+    \item No force as $r \to \infty$.
+    \item The atoms equilibrium point is roughly the size of the interatomic spacing in liquids and solids.
+\end{itemize}
+
+In order to describe this more effectively, we need to find expressions for $A$, $B$. We do this based on the earlier initial conditions of $V_{LJ} = -\epsilon$ at $r = r_0$
+
+\section{Deriving A and B}
+At the equilibrium point $r = r_0$, we have:
+\[
+    V_{LJ} = -\epsilon
+\]
+\[
+    F = 0
+\]
+
+We can get an expression for force by $F = - dV/dr$:
+\[
+    F = - \left(- \frac{12 A}{r^{13}} + \frac{60}{r^7}\right) = \frac{12A}{r^13} - \frac{6B}{r^7}
+\]
+
+At equilibrium:
+\[
+    F = 0 = \frac{12A}{r_0^{13}} - \frac{6B}{r_0^7}
+\]
+
+Disregarding trivial case where $r_0 = 0$, as there cannot be any atoms in this case. Therefore, $r_0 \neq 0$:
+\[
+    12A = 6Br_0^6
+\]
+\[
+    \frac{2A}{B} = r_0^6 \implies r_0 = \sqrt[6]{\frac{2A}{B}}
+\]
+
+And considering potential at equilibrium:
+\[
+    -\epsilon = \frac{A}{r_0^{12}} - \frac{B}{r_0^6}
+\]
+\[
+    \implies -\epsilon = \frac{A}{\left(\frac{2A}{B}\right)^2} - \frac{B}{\left(\frac{2A}{B}\right)}
+\]
+\[
+    \implies - \epsilon = \frac{B^2}{4A} - \frac{B^2}{2A}
+\]
+\[
+    \epsilon = \frac{B^2}{2A} - \frac{B^2}{4A} = \frac{B^2}{4A}
+\]
+
+Putting it all together:
+\[
+    \epsilon = \frac{B^2}{4A} \tag{1}
+\]
+\[
+    r_0^6 = \frac{2A}{B} \tag{2}
+\]
+
+Hence:
+\[
+    \frac{2A}{r_0^6} = B \implies \epsilon = \frac{(2A)^2 / (r_0^6)^2}{4A} 
+\]
+\[
+    A = \epsilon r_0^{12}
+\]
+\[
+  B  = 2 \epsilon r_0^6  
+\]
+
+So the final functional form of the LJP is:
+\[
+    V_{LJ} = \epsilon \left[\left(\frac{r_0}{r}\right)^{12} - 2 \left(\frac{r_0}{r}\right)^6\right]
+\]
+
+Sometimes in textbooks we see:
+\[
+    V_{LJ} = 4 \epsilon \left[\left(\frac{\sigma}{r}\right)^{12} - 2 \left(\frac{\sigma}{r}\right)^6\right]
+\]
+
+Here, $\sigma$ is the distance where potential is zero, rather than $r_0$ being the distance where force is zero (potential is $- \epsilon$).
+
+\section{Full LJP}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-02.png}
+     \caption{The full LJP and the two contributing forces}
+\end{figure}
+
+This gives us the overall LJP that satisfies our three requirements:
+\begin{itemize}
+    \item At distances below $r_0$, the Pauli Exclusion Principle force dominates, causing net repulsion.
+    \item As $r \to \infty$, both components (and the overall potential) tend to zero.
+    \item At distances above, but close to $r_0$, the Van der Waal's force dominates, causing net attraction.
+\end{itemize}
+
+Where $r/r_0 = 1$, we have a stable equilibrium position, needing $-V(r_0) = -\epsilon = U_0$ to break these apart.
+
+\subsection{Implications of LJP}
+Consider a two dimensional atomic lattice:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec03-03.png}
+     \caption{}
+\end{figure}
+
+The central atom sits in a potential well of approximate depth $N \epsilon$, where N is the number of nearest neighbours. In the equilibrium position, all of these atoms are separated by a distance $r = r_0$.
+
+The next nearest neighbours and beyond do contribute, but to a much smaller degree. It's not zero, but the next nearest neighbours have approximate potential $\epsilon / 30$.
+
+We have:
+\[
+    V_{LJ} = \epsilon \left[\left(\frac{r_0}{r}\right)^{12} - 2 \left(\frac{r_0}{r}\right)^6\right]
+\]
+
+Hence, using $F(r) = - \frac{dV(r)}{dr}$:
+\[
+    F(r) = 12 \epsilon \left(\frac{r_0^{12}}{r^{13}} - \frac{r_0^6}{r^7}\right)
+\]
+
+This has a very similar form to the potential:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-04.png}
+     \caption{}
+\end{figure}
+
+Just noting that while potential is $-\epsilon$ at $r_0 = r$, the force is zero.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-05.png}
+     \caption{}
+\end{figure}
+
+\subsection{Empirical Data}
+The LJP provides a surprisingly accurate model for the genuine empirically measured data:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec03-06.png}
+     \caption{}
+\end{figure}
+
+It does have limitations though:
+\begin{itemize}
+    \item The fact its an infinite range potential means it's very computationally expensive to calculate. We need to truncate the potential once it shrinks below a value below which its negligible.
+    \item For large molecules (such as an amino acid), they are often too large. The distance between the centres of adjacent molecules is too large for the LJP as LJP assumes that they are effectively point like. Amino acids can have forces all the way along their chains and this is not well modelled by the LJP.
+\end{itemize}

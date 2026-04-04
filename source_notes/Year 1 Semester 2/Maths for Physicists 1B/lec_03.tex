@@ -1,2 +1,197 @@
 % !TeX root = main.tex
-\lecture{3}{Fri 23 Jan 2026 12:00}{Partial Differentiation III}
+\lecture{3}{Fri 23 Jan 2026 12:00}{Partial Differentiation III: Directional Derivatives and Gradients}
+
+\section{Directional Derivatives and Gradients}
+Consider a scalar field $f(\underline{r}) = f(x, y, z)$. We can define derivatives along the x, y, z planes respectively:
+\[
+    \frac{\partial f}{\partial x} \qquad \frac{\partial f}{\partial y} \qquad \frac{\partial f}{\partial z}
+\]
+
+Here, x, y, z aren't inherently special, they just form the standard basis we generally take. What if we want to compute the derivative at a point $\underline{r}$ with respect to a generic unit vector, $\hat{n}$, i.e. $\frac{\partial f}{\partial \hat{n}}$?
+
+At our point $\underline{r}$, we are distance $\epsilon$ away from the direction formed by the $\hat{n}$ vector.
+
+\[
+    \frac{\partial f}{\partial \hat{n}} = \lim_{\epsilon \to 0} \frac{f(\underline{r} + \epsilon \hat{n}) - f(\underline{r})}{\epsilon}
+\]
+
+This is a general form, called the directional derivative, giving the rate of change of the function in the direction $\hat{n}$. If we take the unit vector $\hat{n}$ to be $\hat{x}, \hat{y}, \hat{z}$ etc, this gives the standard derivatives in these directions.
+
+If we know the derivatives in the x, y, z directions (or in any three directions which form an orthonormal basis), we can calculate the gradient of the function in any arbitrary direction.
+
+\[
+    \frac{\partial f}{\partial n} = \lim_{\epsilon \to 0} \frac{f(x + \epsilon n_x, y + \epsilon n_y, z + \epsilon n_z) - f(x, y, z)}{\epsilon}
+\]
+\[
+    = \frac{df}{d \epsilon} (x + \epsilon n_x, y + \epsilon n_y, z + \epsilon n_z ) \biggr\rvert_{\epsilon = 0}
+\]
+
+This is just the chain rule:
+\[
+    = \frac{\partial f}{\partial x} \frac{d}{d \epsilon} (x + \epsilon n_x) + \frac{\partial f}{\partial y} \frac{d}{d \epsilon} (y + \epsilon n_y) + \frac{\partial f}{\partial z} \frac{d}{d \epsilon} (z + \epsilon n_z)
+\]
+\[
+    = n_x \frac{\partial f}{\partial x} + n_y \frac{\partial f}{\partial y} + n_Z \frac{\partial f}{\partial z}
+\]
+
+Suppose we set $\hat{n}$ along x:
+\[
+    \hat{n} = \hat{\imath} \implies n_x = 1, n_y = 0, n_z = 0
+\]
+\[
+    \frac{\partial f}{\partial n} = \frac{\partial f}{\partial x}
+\]
+
+As expected!
+
+It might be noticed that the expression is just a scalar product:
+\[
+    n_x \frac{\partial f}{\partial x} + n_y \frac{\partial f}{\partial y} + n_Z \frac{\partial f}{\partial z} = \hat{n} \cdot \underline{\nabla} f
+\]
+
+\subsection{The Gradient}
+This $\nabla$ ``nabla'' is called the gradient operator, it is the vector whose components are the partial derivatives in each direction:
+\[
+    \underline{\nabla} f \equiv \frac{\partial f}{\partial x} \hat{x} + \frac{\partial f}{\partial y} \hat{y} + \frac{\partial f}{\partial z} \equiv \underline{\text{grad}}(f)
+\]
+
+We can also think of it as a general operator:
+\[
+    \underline{\nabla} \equiv \frac{\partial}{\partial x} \hat{x} + \frac{\partial}{\partial y} \hat{y} + \frac{\partial}{\partial z} \hat{z}
+\]
+
+The directional derivative $\partial f /\partial n$ has the maximum magnitude when $\hat{n} \parallel \underline{\nabla}f$. The direction of $\underline{\nabla} f$ is the direction in which $f$ increases most rapidly, and the magnitude is this maximum rate of increase.
+
+\subsection{Example}
+Suppose we have a particle moving in one dimension. Newton's second law says:
+\[
+    m \frac{d^2 x}{dt^2} = F
+\]
+
+Assuming that the motion arises from a conservative force, the force is defined as:
+\[
+    F = -\frac{dV}{dx}
+\]
+
+Substituting this into Newton's law, we obtain the equation of motion:
+\[
+    m \frac{d^2 x}{dt^2} + \frac{dV}{dx} = 0
+\]
+
+We want to show that energy is conserved here. We know that total energy is:
+\[
+    E = \frac{1}{2}mv^2 + V(x(t)) = \frac{1}{2}m \left(\frac{dx}{dt}\right)^2 + V(x(t))
+\]
+
+To show that total energy is constant, differentiate with respect to $t$:
+\[
+    \frac{dE}{dt} = \frac{d}{dt} \left[ \frac{1}{2}m \left(\frac{dx}{dt}\right)^2 + V(x(t)) \right]
+\]
+
+Using the chain rule:
+\[
+    \frac{dE}{dt} = m \frac{dx}{dt} \frac{d^2 x}{dt^2} + \frac{dV}{dx} \frac{dx}{dt}
+\]
+
+Factoring out the velocity:
+\[
+    \frac{dE}{dt} = \frac{dx}{dt} \left[m \frac{d^2 x}{dt^2} + \frac{dV}{dx}\right]
+\]
+
+Using the equation of motion, the bracketed term is zero:
+\[
+    \frac{dE}{dt} = \frac{dx}{dt} \left[ 0 \right] = 0
+\]
+
+Therefore, $E$ is does not change wrt time so is conserved.
+
+\subsection{Example in 3D}
+In 3D, we consider the components of force in each direction, again a conservative force (i.e. the electric field):
+
+\[
+    m \frac{d^2 x}{dt^2} = F_x = -\frac{\partial V}{\partial X} \implies F_x + V_x = 0
+\]
+\[
+    m \frac{d^2 y}{dt^2} = F_y = - \frac{\partial V}{\partial y} \implies F_y + V_y = 0
+\]
+\[
+    m \frac{d^2 z}{dt^2} = F_z = - \frac{\partial V}{\partial z} \implies F_z + V_z = 0
+\]
+
+Here, total energy is given by:
+\[
+    E(t) = \frac{1}{2}m \left[\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2\right] + V(x(t), y(t), z(t))
+\]
+\[
+    \frac{dE}{dt} = m \frac{dx}{dt} \frac{d^2 x}{dt^2} + m \frac{dy}{dt} \frac{d^2 y}{dt^2} + m \frac{dz}{dt} \frac{d^2 z}{dt^2} + \frac{\partial V}{\partial x} \frac{dx}{dt} + \frac{\partial V}{\partial y} \frac{dy}{dt} + \frac{\partial V}{\partial z} \frac{dz}{dt}
+\]
+
+This gives:
+\[
+    \frac{dx}{dt} \left[m \frac{d^2 x}{dt^2} + \frac{\partial V}{\partial x}\right] + \frac{dy}{dt} \left[m \frac{d^2 y}{dt^2} + \frac{\partial V}{\partial y}\right] + \frac{dz}{dt} \left[m \frac{d^2 z}{dt^2} + \frac{\partial V}{\partial z}\right] = 0
+\]
+\[
+    \frac{\partial x}{\partial t} \left[F_x + V_x\right] + \frac{\partial y}{\partial t} \left[F_y + V_y\right] + \frac{\partial z}{\partial t} \left[F_z + V_z\right] = 0
+\]
+
+
+This is zero as each of the bracketed terms is zero by N2L. We've done this laboriously component wise, but we can use the gradient to do it all at once:
+
+\[
+    m \frac{d \underline{r}}{dt} \cdot \frac{d^2 \underline{r}}{dt^2} + \underline{\nabla} V \cdot \frac{d \underline{r}}{dt} 
+\]
+
+Etc.
+
+\subsection{Numerical Example}
+Given $f(x, y, z) = x^3 y^2 z$. Find the rate of increase at $(1, 1, 1)$ in the direction given by $\hat{\imath} + 2 \hat{\jmath} + 2 \hat{k}$.
+
+\[
+    \underline{\nabla} f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right) = (3x^2y^2z, 2x^3yz, x^3y^2) = (3, 2, 1) \text{ at } \underline{r} = (1, 1, 1)
+\]
+
+And the direction is:
+\[
+    n = (1, 2, 2)
+\]
+
+However this does not have unit length, hence:
+\[
+    \hat{n} = \frac{1}{\sqrt{1^2 + 2^2 + 2^2}} (1, 2, 2) = \frac{1}{3}(1, 2, 2)
+\]
+
+So:
+\[
+    \frac{\partial f}{\partial n} = \underline{\nabla}f \cdot \hat{n} = \frac{1}{3} (3, 2, 1) \cdot (1, 2, 2) = \frac{1}{3}(3 + 4 + 2) = 3
+\]
+
+\section{Gradient and Vector Fields}
+We can also use Nabla on a vector field $\underline{E} = E_x \hat{\imath} + E_y \hat{\jmath} + E_z \hat{k}$.
+
+We have two possible ways of doing this, using the scalar product or the vector product. $\underline{\nabla} \cdot \underline{E}$ is called the divergence and $\underline{\nabla} \times \underline{E}$ is called the curl.
+
+\subsection{Divergence}
+\[
+    \underline{\nabla} \cdot \underline{E} = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \cdot \left(E_x \hat{\imath} + E_y \hat{\jmath} + E_z \hat{k} \right)
+\]
+\[
+    = \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}
+\]
+
+This does have a geometric interpretation. Consider a small volume and calculate the flux of the field through that volume. The divergence gives the flux per unit volume.
+
+\subsection{Curl}
+\[
+    \underline{\nabla} \times \underline{E} = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times \left(E_x \hat{\imath} + E_y \hat{\jmath} + E_z \hat{k} \right) = \det \begin{bmatrix}
+        \hat{\imath} & \hat{\jmath} & \hat{k} \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        E_x & E_y & E_z
+    \end{bmatrix}
+\]
+\[
+    = \left(\frac{\partial E_z}{\partial y} - \frac{\partial E_y}{\partial z}\right) \hat{\imath} + \left(\frac{\partial E_x}{\partial z} - \frac{\partial E_z}{\partial x}\right) \hat{\jmath} + \left(\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}\right) \hat{k}
+\]
+
+In a static steady state, the curl of the electric field is zero.
+
+The proper study of gradient, divergence and curl is a second year topic (vector analysis). It's needed in Maxwell's equations for electromagnetism.
