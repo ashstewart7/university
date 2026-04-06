@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{5}{Tue 14 Oct 2025 12:00}{The Tau Incident and Special Relativity I}
+\lecture{5}{Tue 14 Oct 2025 12:00}{Special Relativity I: The Tau Incident and Special Rel Intro}
 
 In this lecture:
 \begin{itemize}
@@ -101,6 +101,25 @@ The distance travelled over some time $\tau$ is $\frac{1}{2} a_0 \tau^2$. Note t
 This is where we described a particle's position not in terms of unit vectors $\hat{e}_x, \hat{e}_y, \hat{e}_z$ and instead using polar form $\hat{e}_\theta$ and $\hat{e}_r$.
 
 Consider a particle in circular motion (i.e. a child on a merry-go-round). Lets say the child wants to accelerate their motion, we want to keep the distance from the origin constant (or the child would fly off!) while increasing the speed around the circle. Doing this with the former notation would change the coefficients all three unit vectors, while using the latter notation allows us to express it as only a single constant multiplied by the unit vector changing unit vector.
+
+\section{Frames of Reference}
+``Observer'' represents a frame of reference. The way that one person sees the world (in terms of relative positions and velocities) is different to how another person may see the world. We observe the same core physics, but need to do coordinate translations to go from one reference frame to another.
+
+Say we have two reference frames, $A$ and $B$. We can represent the translation from A to B as a vector, denoted $\vec{r}$. Some vector $\vec{b_B}$ in B's frame of reference is therefore equal to:
+\[
+    \vec{b_B} = \vec{r} + \vec{b_A}
+\]
+
+Assume that the frames are moving with a constant uniform velocity $u$ with respect to reach other:
+\[
+    \frac{d}{dt}(\vec{b_B}) = \frac{d}{dt}(\vec{r}) + \frac{d}{dt}(\vec{b_A})
+\]
+
+\[
+    \vec{v_b} = \frac{d \vec{r}}{dt} + \vec{v}_r = u + \vec{v}_r
+\]
+
+This is known as the ``Galilean Transformation''.
 
 \section{Special Relativity}
 We will cover:

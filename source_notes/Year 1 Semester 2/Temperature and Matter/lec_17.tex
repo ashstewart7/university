@@ -8,11 +8,11 @@ Recap from last lecture:
     \item We can predict the likelihood of a given energy state begin populated for a system (discrete or continuous) with the Boltzmann factor.
     \item For a two level system with $E_1 < E_0$ we have:
     \[
-        Pr\left(E_i\right) = \frac{\exp\left(\frac{-E_i}{k_B T}\right)}{\exp\left(\frac{-E_0}{k_B T}\right) + \exp\left(\frac{-E_1}{k_B T}\right)}
+        \Pr\left(E_i\right) = \frac{\exp\left(\frac{-E_i}{k_B T}\right)}{\exp\left(\frac{-E_0}{k_B T}\right) + \exp\left(\frac{-E_1}{k_B T}\right)}
     \]
-    \item For a system with $N$ levels, we have:
+    \item While not explicitly covered last lecture, this trivially generalises to a system with $N$ levels:
     \[
-        Pr\left(E_i\right) = \frac{\exp\left(\frac{-E_i}{k_B T}\right)}{\sum_{j=0}^{N-1} \exp\left(\frac{-E_j}{k_B T}\right)}
+        \Pr\left(E_i\right) = \frac{\exp\left(\frac{-E_i}{k_B T}\right)}{\sum_{j=0}^{N-1} \exp\left(\frac{-E_j}{k_B T}\right)}
     \]
 \end{itemize}
 
@@ -53,31 +53,101 @@ Our other assumptions are:
 \section{Model of Ideal Gas}
 We can split the velocity of a gas into three cartesian coordinates by adding in quadrature:
 \[
-    v = \sqrt{v_x^2 + v_y^2 + v_x^2}
+    v = \sqrt{v_x^2 + v_y^2 + v_z^2}
 \]
 
 By assumption 6, we assume that all of these components are effectively equal, so we can consider the x-direction alone initially (and extrapolate out).
 
 We want to consider the probability of having a velocity somewhere between $v_x$ and $v_x + dx$.
 \[
-    \Pr(v_x \to v_x + dx) = \int_{v_x}^{v_x + dx} \Pr(v+x) \, dv_x
+    \Pr(v_x \to v_x + dx) = \int_{v_x}^{v_x + dx} \Pr(v_x) \, dv_x
 \]
 \[
-    = \int_{v_x}^{v_x + dx} C \exp\left(- \frac{-0.5 m v_x^2}{k_B T}\right) \, dv_x
+    = \int_{v_x}^{v_x + dx} C \exp\left(- \frac{0.5 m v_x^2}{k_B T}\right) \, dv_x
 \]
 
-And using the standard integral: $\int_{\infty}^{\infty} e^{-ax^2} \, d = \sqrt{\pi / a}$:
+And using the standard integral: $\int_{-\infty}^{\infty} e^{-ax^2} \, dx = \sqrt{\pi / a}$, we have:
 
-%TODO
+\[
+    \int_{-\infty}^{\infty} C \exp \left(- \frac{mv_x^2}{2k_B T}\right) \, dv_x = 1
+\]
+\[
+    \implies C \sqrt{\frac{\pi}{a}} = 1
+\]
+
+And as $a = m/2k_BT$:
+\[
+    C \sqrt{\frac{2 \pi k_B T}{m}} = 1
+\]
+\[
+    \implies C = \sqrt{\frac{m}{2 \pi k_B T}}
+\]
+
+And as the Boltzmann factor for this x-directional motion is $\exp \left(mv_x^2 / 2k_B T\right)$:
+\[
+    \Pr(v_x) = C \exp \left(\frac{mv_x^2}{2k_B T}\right)
+\]
+We finally have:
+\[
+    \Pr(v_x) = \sqrt{\frac{m}{2 \pi k_B T}} \exp \left(- \frac{0.5m v_x^2}{k_B T}\right)
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec17-01.png}
+     \caption{}
+\end{figure}
+
+As we're experiencing random gas motion, the distribution is centred on 0, as velocity can be positive or negative.
+
+As we increase the temperature, we increase the chance of occupying higher energy states (i.e. higher $v_x$).
+
+This distribution has no degeneracies, as there's only one way for a particle to have a specific $v_x$, which is by travelling at that value. It either has a specified velocity, or it simply doesn't.
+
+\subsection{3D Model}
+Now we have a single component:
+\[
+        \Pr(v_x) = \sqrt{\frac{m}{2 \pi k_B T}} \exp \left(- \frac{0.5m v_x^2}{k_B T}\right)
+\]
+
+We can extend this to 3D:
+\[
+    \Pr(v) = \Pr(v_x) \Pr(v_y) \Pr(v_z)
+\]
+\[
+    \Pr(v) = \left(\frac{m}{2 \pi k_B T}\right)^{(3/2)} \exp \left(- \frac{0.5m (v_x^2 + v_y^2 + v_z^2)}{k_B T}\right)
+\]
 
 \subsection{Density of States}
 While we had no degeneracies in each component direction, we do have degeneracies for $v$ itself. For example, $v^2 = 100$ could mean that x, y are zero and $z = 10$, or any other number of combinations.
 
-We therefore want to define the degeneracies as a function of $v$. As a model, consider a grid of infinitesimally small dots in 2D (but for the actual application we would want a 3D model). For some radius, we can count the number of dots which are present on the circumference:
+We therefore want to define the degeneracies as a function of $v$. As a model, consider a grid of infinitesimally small dots in 2D (but for the actual application we would want a 3D model).
 
-%TODO
+Our final velocity in 2D is $v^2 = v_x^2 + v^2_y$, so if each axis represents possible values for $v_x$ and $v_y$, $v$ is given as the circumference of a circle with radius $v$. The density of states $g(v) dv$ is given as the ring formed between $v$ and $v + dv$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec17-02.png}
+     \caption{}
+\end{figure}
+
+
+In 2D, the degeneracy is therefore given by:
+\[
+    g(v) dv = 2 \pi v dv
+\]
+
+In 3D, rather than a ring this would be a spherical shell surface:
+\[
+    g(v) dv = 4 \pi v^2 dv
+\]
 
 Applying this to the Maxwell-Boltzmann distribution, we obtain:
+\[
+    \Pr(v) = 4 \pi \left(\frac{m}{2 \pi k_B T}\right)^{3/2} v^2 \exp\left(- \frac{m(v_x^2 + v_y^2 + v_z^2)}{2 k_B T}\right) \qquad \text{where: } v \neq 0
+\]
+
+And as $v^2 = v_x^2 + v_y^2 + v_z^2$:
 \[
     \Pr(v) = 4 \pi \left(\frac{m}{2 \pi k_B T}\right)^{3/2} v^2 \exp\left(- \frac{mv^2}{2 k_B T}\right) \qquad \text{where: } v \neq 0
 \]

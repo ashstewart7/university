@@ -1,9 +1,9 @@
 % !TeX root = main.tex
-\lecture{17}{Tue 25 Nov 2025 12:00}{Gravitation}
+\lecture{17}{Tue 25 Nov 2025 12:00}{Mechanics XIII: Gravitation}
 \section{Gravitation}
-Consider two particles, with masses $m_1$ and $m_2$ at distance $\vec{r}$. We know there is an attractive force between the two masses:
+Consider two particles, with masses $m_1$ and $m_2$ at distance $\pmb{r}$. We know there is an attractive force between the two masses:
 \begin{equation}
-    \vec{F} = -G \frac{m_1 m_2}{r^2} \hat{e}_r
+    \pmb{F} = -G \frac{m_1 m_2}{r^2} \hat{e}_r
 \end{equation}
 \[
     G = 6.67 \times 10^{-11} m^3/kg/s^2
@@ -13,11 +13,11 @@ Consider two particles, with masses $m_1$ and $m_2$ at distance $\vec{r}$. We kn
 \begin{itemize}
     \item ``Long Range'' force. A force will exist between any two masses anywhere in the universe, regardless of distance and cannot be cancelled. Negligible at large distances, as force quickly tends to zero as distance increases - but never zero.
     \item Weak.
-    \item $\vec{F} \propto \frac{1}{r^2}$
+    \item $\pmb{F} \propto \frac{1}{r^2}$
 \end{itemize}
 
 \subsection{Mass Caveats}
-While we don't practically make a distinction between them, $m$ in gravity refers to `gravitational mass', $m_g$, while mass in Newton's Second Law $\vec{F} = m \vec{a}$ is `inertial mass', $m_i$.
+While we don't practically make a distinction between them, $m$ in gravity refers to `gravitational mass', $m_g$, while mass in Newton's Second Law $\pmb{F} = m \pmb{a}$ is `inertial mass', $m_i$.
 
 Einstein's Equivalence Principle says that they're equal, i.e:
 \[
@@ -27,7 +27,7 @@ Einstein's Equivalence Principle says that they're equal, i.e:
 Why `they could be different but they fundamentally are not' is important is beyond me, but it's in the lecture so here it goes\ldots
 
 \section{Freefall}
-Consider an object of mass $m$ at height $h$ from the ground. It has force:
+Consider an object of mass $m$ at height $h$ from the ground. It has force by N2L:
 \[
     F = mg
 \]
@@ -36,28 +36,125 @@ And potential energy:
     \Delta U(h) = mgh
 \]
 
-However this first expression looks quite different to our definition of force.
+However this first expression looks quite different to our definition of force that we defined previously? This expression only holds when the object is close to the earth's surface, i.e. for distances where we can approximate $g$ as being constant. In practice, $g$ varies with height, requiring the full equation for large distances. We will derive this later.
+
 \subsection{Derivation}
 Gravitational force is conservative, and there is a potential energy at all points in the gravitational field, associated with this force. 
 
 Give two bodies, $M$ and $m$. $m$ is moved away from $M$ from $r_1$ to $r_2$ along the radial direction (preserving angle, i.e. moving only in $\hat{e}_r$).
 
 \[
-    \vec{F} = -G \frac{Mm}{r^2} \hat{e}_r
+    \pmb{F} = -G \frac{Mm}{r^2} \hat{e}_r
 \]
 
 This is the negative gradient of the potential (as potential is area under a force curve):
 \[
-    \vec{F} = -\nabla U = - \frac{dU}{dr} \hat{e}_r
+    \pmb{F} = -\nabla U = - \frac{dU}{dr} \hat{e}_r
 \]
 \[
-    \vec{F}dr = -dU \hat{e}_r
+    \pmb{F}dr = -dU \hat{e}_r
 \]
 
 The work done from $r_1$ to $r_2$ is:
 \[
-    w_{1 \to 2} = \int_{r_1}^{r_2} \vec{F} \cdot \hat{e}_r \, dx
+    w_{1 \to 2} = \int_{r_1}^{r_2} \pmb{F} \cdot \hat{e}_r
+\]
+\[
+    = - \int_{r_1}^{r_2} \frac{GMm}{r^2} \hat{e}_r \cdot d \pmb{r}
+\]
+\[
+    = \int_{r_1}^{r_2} \frac{GMm}{r^2} \, dr
+\]
+\[
+    = - \left[- \frac{GMm}{r_2} - \left(- \frac{GMm}{r_1}\right)\right]
+\]
+\[
+    = - \left[U(r_2) - U(r_1)\right]
 \]
 
+Where:
+\[
+    U(r) = - \frac{GMm}{r}
+\]
+\[
+    | \pmb{F} | = \frac{GMm}{r^2}
+\]
+
+
+\section{Potential Distance Graphs}
+If we plot potential against distance, we see asymptotic behaviour like this:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec17-01.png}
+     \caption{}
+\end{figure}
+
+Lets consider the Earth specifically:
+\[
+    M_\oplus \approx 6 \times 10^{24} \si{kg}
+\]
+\[
+    R_\oplus \approx 6000 \si{km}
+\]
+
+So potential becomes:
+\[
+    U(r) = - \frac{GM_\oplus m}{r}
+\]
+
+We implicitly assume that the Earth is a perfect sphere with homogeneous mass density, and we're considering some $r > R_\oplus$.
+
+Assume we have an object in two possible positions, $r = R_\oplus$ and $r = R_\oplus + h$. We want to compute:
+\[
+    \Delta U = U(R_\oplus + h) - U(R_\oplus)
+\]
+\[
+    = - \frac{GM_\oplus m}{R_\oplus + h} - \left(- \frac{G M_\oplus m}{R_\oplus}\right)
+\]
+\[
+    = \frac{GM_\oplus m}{R_\oplus} \left[\frac{1}{1 + \frac{h}{R_\oplus}} + 1\right] \tag{1}
+\]
+
+We can now use the fact that $h \ll R_\oplus \implies h/R_\oplus \ll 1$. We can therefore do a Taylor expansion:
+\[
+    \left(1 + \frac{h}{R_\oplus}\right)^{-1} = 1 - \frac{h}{R_\oplus} + \cdots
+\]
+\[
+    \implies \text{Eqn }(1) \approx \frac{G M_\oplus m}{R_\oplus} \left[- \left(1 - \frac{h}{R_\oplus}\right)+ 1\right]
+\]
+
+Hence:
+\[
+    U \approx \frac{GM_\oplus m}{R_\oplus} \frac{h}{R_\oplus}
+\]
+\[
+    = \frac{GM_\oplus m h}{R_\oplus^2}
+\]
+
+Assuming the distances involved are small relative to the radius of the earth, we have defined:
+\[
+    G \frac{M_\oplus}{R_\oplus^2} = g \approx 9.81 \si{m/s}
+\]
+\[
+    \implies U = mgh
+\]
+
+\section{Escape Velocities}
+Consider a planet of mass $M$ and radius $R$. We want to escape the gravitational hold of this planet - what velocity do we need to be able to do so?
+
+Formally, we know that we never leave the gravitational field of a planet unless the distance is infinite. We want to be able to use some velocity to (theoretically) get to infinity and escape the field.
+
+Our spacecraft's total energy is:
+\[
+    E = \frac{1}{2}mv^2 - \frac{GMm}{r} = \text{constant}
+\]
+
+If we have the perfect amount of energy, kinetic energy at infinity will be equal to zero:
+\[
+    0 = \frac{1}{2}m v_\text{escape}^2 - \frac{GMm}{R}
+\]
+\[
+    v_\text{escape} = \frac{2GM}{R}
+\]
 
 

@@ -19,10 +19,9 @@ Recap from last lecture:
 
 
 \section{Atmosphere Continued}
-
-We have established that the number density (number of fluid molecules per unit volume), at height 0, $\rho_N(0)$ can be related to atmospheric pressure ($P_\text{at} = P(0)$) by:
+We have established that the number density (number of fluid molecules per unit volume), at height 0, $\rho_N(0)$ can be related to atmospheric pressure ($P(0)$) by:
 \[
-    \rho_N(0) = \frac{P_\text{atmospheric}}{k_B T}
+    \rho_N(0) = \frac{P(0)}{k_B T}
 \]
 
 To determine the total number of gas molecules in the slab of atmosphere with cross-sectional area $A$, we can integrate number density across all $h$:
@@ -44,19 +43,19 @@ And using:
     \rho_N(0) = \frac{N}{A h_0}
 \]
 
-This has a physical definition, being the average number density of the slab of atmosphere between $h = 0, h = h_0$
+This has a physical interpretation. If you took all $N$ molecules and distributed them in a volume $Ah_0$, i.e. our slab of cross-sectional area $A$ with $h = h_0$, the average density of this would be equal to $\rho_N(0)$. This defines $h_0$ additionally as the average height of an equivalent uniform atmosphere with the same number of molecules.
 
 We further define a new quantity:
 \[
     \Pr(h) = \frac{A \rho_N(h)}{N}
 \]
 
-Which gives the probability of (for a particle) finding it at height $h$
+Which gives the probability of (for a given specific particle) finding it at height $h$
 
-\subsection{Probability Normalisation}
+\subsection{Probability and Normalisation}
 We start from:
 \[
-    Pr(h) = \frac{A \rho_N(h)}{N}
+    \Pr(h) = \frac{A \rho_N(h)}{N}
 \]
 \[
     h_0 = \frac{k_B T}{mg}
@@ -65,7 +64,10 @@ We start from:
     \rho_N(h) = \rho_N(0) \exp(-mgh / k_B T)
 \]
 
-Hence:
+And substitute our previous results for $\rho_N(0)$ and $\rho_N(h)$ in:
+\[
+    \Pr(h) = \frac{A}{N} \times \rho_N(0) \exp(-mgh / k_B T)
+\]
 \[
     \Pr(h) = \frac{A}{N} \times \frac{N}{A h_0} \exp(-mhg / k_B T)
 \]
@@ -73,7 +75,131 @@ Hence:
     \Pr(h) = \frac{mg}{k_B T} \exp(-mhg / k_B T)
 \]
 
+As this is a probability, we need to check that it is normalised:
+\[
+    \int_{0}^{\infty} \Pr(h) \, dh
+\]
+\[
+    = \int_{0}^{\infty} \frac{A \rho_N(h)}{N} \, dh
+\]
+\[
+    \frac{A}{N}\int_{0}^{\infty} \rho_N(h) \, dh
+\]
+\[
+    \int_{0}^{\infty} \Pr(h) \, dh = \frac{1}{N} \left(A \int_{0}^{\infty} \rho_N(h) \, dh \right)
+\]
 
+And as previously derived:
+\[
+    A \int_{0}^{\infty} \rho_N(h) \, dh = N
+\]
+
+So:
+
+\[
+        \int_{0}^{\infty} \Pr(h) \, dh = \frac{1}{N} \left(A \int_{0}^{\infty} \rho_N(h) \, dh \right) = \frac{N}{N} = 1
+\]
+
+So $\Pr(h)$ is normalised, as required!
 
 \section{Boltzmann Factors}
-\textcolor{red}{This is on the exam.} We have the quantity $mgk / k_B T$, which is dimensionless. What does this quantity actually mean? $mgh$ is a term for the potential energy (gravitational in this example), $k_B T$ is the thermal energy
+\textcolor{red}{This is on the exam.} We have the quantity $mgh / k_B T$, which is dimensionless. What does this quantity actually physically mean? $mgh$ is a term for the potential energy (gravitational here), and $k_B T$ is a term for thermal energy.
+
+Boltzmann factors describe the probabilities of measuring a given energy state in a system. In general form:
+\[
+    \Pr(E_i) \propto \exp \left(-\frac{E_i}{k_B T}\right)
+\]
+
+This is true for all energy states, i.e. a mass on a spring oscillating in SHM has:
+\[
+    \Pr(\text{state where extension is } x) \propto \exp \left(-\frac{0.5kx^2}{k_B T}\right)
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec16-01.png}
+     \caption{}
+\end{figure}
+
+From this figure, we can see that higher temperatures have a higher probability of observing higher energy states, which makes sense. We can use this to describe continuous energy distributions, or discrete ones (i.e. energy levels in atoms).
+
+The integral across all energy states must be equal to one.
+
+\section{Example: Simple Quantum System}
+Consider a simple atom with two energy levels $E_0$ and $E_1$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec16-02.png}
+     \caption{}
+\end{figure}
+
+What is the probability of finding the atom at energy state $E_0$?
+\[
+    \Pr(E_0) \propto \exp \left(- \frac{E_0}{k_B T}\right)
+\]
+
+Or adding a constant of proportionality:
+\[
+    \Pr(E_0) = C \exp \left(- \frac{E_0}{k_B T}\right)
+\]
+
+And if both energy states have the same constant of proportionality, which is true here:
+\[
+    \Pr(E_1) = C \exp \left(- \frac{E_1}{k_B T}\right)
+\]
+
+Since the probability must be normalised across all states:
+\[
+    \Pr(E_0) + \Pr(E_1) = 1
+\]
+\[
+    C \exp \left(- \frac{E_0}{k_B T}\right) + C \exp \left(- \frac{E_1}{k_B T}\right) = 1
+\]
+\[
+    1 = C \left(\exp \left(- \frac{E_0}{k_B T}\right) + \exp \left(- \frac{E_1}{k_B T}\right)\right)
+\]
+\[
+    C = \frac{1}{\exp(-E_0/k_B T) + \exp(-E_1 / k_B T)}
+\]
+
+Is the constant of proportionality here. Hence:
+\[
+    \Pr(E_1) = \frac{\exp(-E_1 / k_B T)}{\exp(-E_0/k_B T) + \exp(-E_1 / k_B T)}
+\]
+\[
+    \Pr(E_0) = \frac{\exp(-E_0 / k_B T)}{\exp(-E_0/k_B T) + \exp(-E_1 / k_B T)}
+\]
+
+We can now do a bit of a maths trick:
+\[
+    \Pr(E_1) = \frac{\exp(-E_1 / k_B T)}{\exp(-E_0/k_B T) + \exp(-E_1 / k_B T)} \times \frac{e^{E_1 / k_B T}}{e^{E_1 / k_B T}}
+\]
+\[
+    \frac{1}{\exp \left(\frac{E_1 - E_0}{k_B T}\right) + 1}
+\]
+
+Which lets us start considering limits. If we consider the limit as $T \to 0$:
+\[
+    \Pr(E_1) \to 0 \text{ and } \Pr(E_0) \to 1
+\]
+The maths is unpleasant, but we can take it as given! This implies that in the low temperature limit, the atom always sits in the non-excited state.
+
+What about the high temperature limit? We begin with a Taylor expansion:
+\[
+    \Pr(E_1) \approx \frac{1}{1 + (E_1 - E_0)/k_B T + 1}
+\]
+
+Now as $T \to \infty$:
+\[
+    \Pr(E_1) \to \frac{1}{1 + 0 + 1} \implies \Pr(E_1) \to \frac{1}{2} \text{ and } \Pr(E_0) \to \frac{1}{2}
+\]
+
+So in the high temperature limit, we end up with an even distribution between the two states.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec16-03.png}
+     \caption{}
+\end{figure}
+
+\section{Negative Temperatures}

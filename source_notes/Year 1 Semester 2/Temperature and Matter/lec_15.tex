@@ -38,7 +38,7 @@ Where $\rho_N = N/V$ is number density, and is defined as the number of molecule
 
 The slab of atmosphere has two forces acting upon it, a force due to pressure and a force due to gravity. As we assume that slice is in mechanical equilibrium, we can equate these forces.
 
-The pressure is going to vary across the slab. Force due to pressure increases the further down into the atmosphere you go. As the slab is in mechanical equilibrium, the force due to gravity must also vary across the slab in the opposite manner.********
+The pressure is going to vary across the slab. Force due to pressure increases the further down into the atmosphere you go. This means the bottom face of the slab experiences a higher pressure than the top face. Since the slab is in mechanical equilibrium, the force due to gravity must balance the net upwards pressure force.
 
 This gives us:
 \[
@@ -79,6 +79,37 @@ And substituting $dp = d \rho_N k_B T$ to give a LHS integral entirely in number
     \left[\ln \left(\rho_N\right)\right]^{\rho_N(h)}_{\rho_N(0)} = -\frac{mgh}{k_B T}   
 \]
 \[
-    \frac{\rho_N(h)}{\rho_N(0)} = \exp \left(- \frac{mgh}{k_B T}\right) \implies \boxed{\rho_N(h) = \rho_N(0) \exp \left(- \frac{mgh}{k_B T}\right)}
+    \frac{\rho_N(h)}{\rho_N(0)} = \exp \left(- \frac{mgh}{k_B T}\right) \implies {\rho_N(h) = \rho_N(0) \exp \left(- \frac{mgh}{k_B T}\right)}
 \]
 
+The contents of the exponential have to be unitless, and they are because they're both units of energy. The upper gives gravitational energy, the lower gives thermal energy and the contents of the exponential depends on the ratio between the two of them.
+
+This gives the final result:
+\[
+    \boxed{\rho_N(h) = \rho_N(0) \exp \left(- \frac{mgh}{k_B T}\right)}
+\]
+ 
+And as $P = \rho_n k_B T$:
+\[
+    {P(h) k_B T = P(0) k_B T \exp \left(- \frac{mgh}{k_B T}\right)}
+\]
+\[
+    \implies \boxed{P(h) = P(0) \exp \left(- \frac{mgh}{k_B T}\right)}
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec15-02.png}
+     \caption{}
+\end{figure}
+
+\subsection{Scale Height}
+As $mgh / k_B T$ must be dimensionless, $mg / k_B T$ must have units of $h$. We call this the scale height, $h_0$. This is the height at which $P(h_0) = P(0) e^{-1}$, i.e. the point at which pressure drops off by a factor of $1/e$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec15-03.png}
+     \caption{Example Scale Heights}
+\end{figure}
+
+This helps answer the question ``if someone coughs on a desk, are other people in the room safe from Covid?''. This implies yes, as the scale heigh is much larger than anyone is likely to be above a desk. This isn't true for all viruses however, i.e. the $50$cm scale height for the smallest known virus.

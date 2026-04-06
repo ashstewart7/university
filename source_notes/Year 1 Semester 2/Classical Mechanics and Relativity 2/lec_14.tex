@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{13}{Tue 10 Mar 2026 11:00}{Special Relativity V: }
+\lecture{14}{Tue 10 Mar 2026 11:00}{Special Relativity V: Relativistic Mechanics}
 
 Recap of last lecture:
 \begin{itemize}
@@ -8,3 +8,54 @@ Recap of last lecture:
     \item Ensuring that this new model does not violate causality.
     \item Simultaneity.
 \end{itemize}
+
+\section{Relativistic Momentum}
+We generally use:
+\[
+    \pmb{p} = m \pmb{v}
+\]
+
+But this is just an approximation for $v \ll c$. This would:
+\begin{itemize}
+    \item Allow $v>c$ for an object with sufficient momentum.
+    \item Not allow massless objects like photons to have any momentum, but we know this is true.
+    \item Is not obviously conserved.
+\end{itemize}
+
+Instead, we (proof non-examinable) use:
+\[
+    p = \gamma m v
+\]
+
+This is the ``true'' expression for momentum, but for small speeds it collapses nicely to $p = mv$ as $\gamma \to 1$ so we don't notice in standard mechanics.
+
+This doesn't resolve the issue with massless photons yet, but does fix the first point!
+
+\section{Relativistic Kinetic and Total Energy}
+By definition, we have:
+\[
+    F = \frac{dp}{dt}
+\]
+
+Now, momentum has an extra factor of $\gamma$. Suppose we have a massive object which is initially stationary. We apply a force to that object, in order to give it a kinetic energy. This KE is denoted $K_A$ at the point where it reaches speed $v_A$ under the effect of the force. We assume that all work done is entirely transferred to kinetic energy stores.
+
+\[
+    K_A = \int_{0}^{A} F \, dx = \int_{0}^{A} \frac{dp}{dt} \, dx
+\]
+
+And we can use the chain rule to say:
+\[
+    dx = \frac{dx}{dt} dt \implies K_A = \int_{0}^{A} \frac{dp}{dt} \frac{dx}{dt} \, dt \tag{1}
+\]
+
+We can also say that:
+\[
+    \frac{d}{dt} \left(pv\right) = p \frac{dv}{dt} + v \frac{dp}{dt}
+\]
+
+So in eqn. 1 we have:
+\[
+    K_A = \int_{0}^{A} \left[\frac{d}{dt} (pv)\right] - p \frac{dv}{dt} \, dt
+\]
+
+

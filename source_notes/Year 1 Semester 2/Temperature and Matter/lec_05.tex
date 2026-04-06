@@ -1,2 +1,100 @@
 % !TeX root = main.tex
-\lecture{1}{Tue 20 Jan 2026 12:00}{}
+\lecture{5}{Tue 03 Feb 2026 12:00}{Matter V: Stress, Strain and Young's Modulus}
+
+\section{Definitions}
+Consider a wire of length $L$ and cross-sectional area $A$. We apply some force $F$ to the material, causing it to stretch from $L$ to $L + \Delta L$.
+
+Stress is the force applied per unit area on a material, $\si{kg m^{-1} s^{-2}}$ and strain is the fractional change in length: $\Delta L / L$.
+
+The Young Modulus is the ratio of the two:
+\[
+    Y = \frac{\text{stress}}{\text{strain}} = \frac{F / A}{\Delta L / L} = \frac{F L}{\Delta L A}
+\]
+and has units of pressure (Pascals). Different materials have different Young Moduli as inherent material properties.
+
+\section{Stress/Strain Graphs}
+We can consider a plot of stress against strain:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-01.png}
+     \caption{}
+\end{figure}
+
+The leftmost region is where stress and strain are proportional, i.e:
+\[
+    \frac{F}{A} \propto \frac{\Delta L}{L}
+\]
+\[
+    F \propto \Delta L
+\]
+As $A$ and $L$ are constants. Any changes here are reversible, i.e. a rubber band.
+
+\[
+    F = k \Delta L = kx
+\]
+
+Past a certain extension, we encounter plastic (non-reversible) extension. This is where we've passed the limit of proportionality. There are a few important points here:
+\begin{itemize}
+    \item Strain hardening. We apply a force to the object to extend it to its ultimate extension. This means that we can include it in i.e. machinery without worrying about smaller forces regularly encountered causing extensions.
+    \item Necking, where an increase in length causes a decrease in cross-sectional area (as the total volume is held constant)
+    \item Once we get past the strain hardening point, tiny defects cause non-linear necking. A weaker area decreases the cross-sectional area more significantly. This lower $A$ causes the effect to be more significant, and leads to the area becoming thinner and thinner until it fractures.
+\end{itemize}
+
+\section{Other Elastic Moduli}
+\subsection{Shear Modulus}
+
+For Young's Modulus, we're explicitly considering that the force acts in the direction of the extension. We can have other elastic moduli (still defined as stress over strain) depending on the configuration of the force.
+
+For example, applying a tangential force gives the shear modulus:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-02.png}
+     \caption{}
+\end{figure}
+
+The shear stress remains as $F/A$ and the sheer strain is $\Delta x / l$. The sheer modulus is shear stress/shear strain.
+
+\subsection{Bulk Modulus}
+The bulk modulus is for objects deformed under a uniform pressure, for example compressing a liquid from some volume $V_0$ down to a compressed volume $V_0 - \Delta V$.
+
+The bulk stress is the compressing pressure, $F/A$ and the bulk strain is $\Delta V / V_0$.
+
+So the Bulk Modulus is:
+
+\[
+    \frac{P}{(Delta V / V_0)} = \frac{P V_0}{\Delta V}
+\]
+
+Or (using the ideal gas equation we'll encounter later):
+\[
+    B = -V_0 \frac{dp}{dV}
+\]
+
+This is comparable for solids and liquids. We also define the compressibility as the inverse of the bulk modulus.
+
+\subsection{Poisson's Ratio}
+Applying a stress to a force in one axis causes compression in this direction, but expansion in the other:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-03.png}
+     \caption{}
+\end{figure}
+
+This ratio is given by Poisson's Ratio (unitless):
+
+\[
+    \nu = \frac{\text{transverse strain}}{\text{longitudinal strain}}
+\]
+
+\section{Material Values}
+All of these moduli have varying values as inherent metal properties:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec05-04.png}
+     \caption{Elastic Moduli Values}
+\end{figure}
+
+Note that while the Young and Bulk Modulus values are generally similar, the sheer modulus is often 2-3x smaller.
+

@@ -1,0 +1,158 @@
+% !TeX root = main.tex
+\lecture{10}{Thu 05 Mar 2026 14:00}{Cosmology IV: Friedmann Equation, Hubble and Redshift Combined}
+
+We have the Friedmann Equation from last lecture:
+\[
+    \boxed{\left(\frac{\dot{a}(t)}{a(t)}\right)^2 =  \frac{8 \pi G}{3} \rho(t) - \frac{kc^2}{a(t)^2}}
+\]
+
+Where $a(t)$ is the scale factor relating the comoving scaled coordinates to the initial coordinate system. As observations suggest our universe has little to no curvature, hence $k \approx 0$, we will generally ignore the second term at this level.
+
+We also have the fluid equation:
+\[
+    \boxed{\dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \left(\rho(t) + \frac{p(t)}{c^2}\right) = 0}
+\]
+
+\section{Acceleration Equation}
+We want some kind of equation to describe the acceleration of the scale factor, i.e $\ddot{a}(t)$.
+
+We can get this through a combination of:
+\begin{enumerate}
+    \item The Friedmann Equation $\to$ differentiate it with respect to time.
+    \item Simplify with the fluid equation.
+    \item Use the Friedmann equation again to get the acceleration equation in the form:
+    \[
+        \frac{\ddot{a}(t)}{a(t)} = \frac{- 4 \pi G}{3} \left(\rho(t) + \frac{3p}{c^2}\right)
+    \]
+\end{enumerate}
+
+Note the sign here, if the contents of the brackets are positive, then there's an overall global negative sign, which suggests that the whole expression is negative. This suggests that the rate of universal expansion is slowing\dots\, this contradicts observations.
+
+For now, we accept this, but we'll make a modification to the Friedmann equation to correct for this next week.
+
+\subsection{Hubble and Friedmann}
+How is Hubble's observation and Friedmann's equation connected?
+
+We have the Friedmann eqn:
+\[
+    \left(\frac{\dot{a}(t)}{a(t)}\right)^2 =  \frac{8 \pi G}{3} \rho(t) - \frac{kc^2}{a(t)^2}
+\]
+
+And Hubble's observation:
+\[
+    \pmb{v}_h = H \cdot \pmb{r}
+\]
+
+Where $\pmb{v}_h$ represents the radial recessional velocity only, excluding peculiar motion. But we want to find a form of the Hubble observation which includes a term in $a$. We consider the recessional velocity, starting from our definition of comoving coordinates:
+\[
+    \pmb{r}(t) = a(t) \pmb{x}
+\]
+\[
+    \pmb{v}_H = \frac{d \pmb{r}}{dt} = \dot{a}(t) \pmb{x} = \dot{a}(t) \frac{\pmb{r}(t)}{a(t)} = \frac{\dot{a}(t)}{a(t)} \pmb{r}(t)
+\]
+
+And comparing with Hubble's law gives:
+\[
+    H(t) \cdot \pmb{r} = \frac{\dot{a}(t)}{a(t)} \pmb{r}
+\]
+
+\[
+    H(t) = \frac{\dot a(t)}{a(t)}
+\]
+
+While commonly called the Hubble Constant, because it's constant wrt space, it's a function of time which means it's not a constant and is properly referred to as the Hubble Parameter. $H_0$ is $H(t = t_0)$ where $t_0$ denotes right now.
+
+\section{Expansion and Redshift}
+Consider two galaxies separated by a (cosmologically) small distance $dr$. A photon is emitted at one galaxy with $\lambda_\text{em}$ and travels towards an observer on the second galaxy.
+
+According to Hubble's law, there will be a small recessional velocity between the two (disregarding peculiar velocity):
+\[
+    dv = H\, dr = \frac{\dot{a}(t)}{a(t)}\, dr
+\]
+
+The very small change in wavelength will be:
+\[
+    d\lambda = \lambda_\text{obs} - \lambda_\text{em}
+\]
+And in the non-relativistic limit:
+\[
+    \frac{d\lambda}{\lambda_\text{em}} \approx \frac{dv}{c}
+\]
+
+The time $dt$ for the photon to travel distance $dr$ is:
+\[
+    dt = \frac{dr}{c}
+\]
+
+Hence, substituting $dr = c\, dt$:
+\[
+    \frac{d\lambda}{\lambda_\text{em}} = \frac{dv}{c} = \frac{\dot{a}(t)}{a(t)} \frac{dr}{c} = \frac{\dot{a}(t)}{a(t)}\, dt = \frac{1}{a}\frac{da}{dt}\, dt
+\]
+\[
+    \frac{d\lambda}{\lambda_\text{em}} = \frac{da}{a}
+\]
+
+This is a separable differential equation. Integrating both sides from emission to observation:
+\[
+    \int_{\lambda_\text{em}}^{\lambda_\text{obs}} \frac{d\lambda}{\lambda} = \int_{a_\text{em}}^{a_\text{obs}} \frac{da}{a}
+\]
+\[
+    \ln\left(\frac{\lambda_\text{obs}}{\lambda_\text{em}}\right) = \ln\left(\frac{a_\text{obs}}{a_\text{em}}\right)
+\]
+\[
+    \implies \boxed{\lambda \propto a}
+\]
+
+This means that, as the universe expands, the wavelength of these photons changes as well.
+
+Going back to the definition of $z$:
+\[
+    1 + z = \frac{\lambda_\text{obs}}{\lambda_\text{em}} = \frac{a(t_\text{obs})}{a(t_\text{em})}
+\]
+
+Effectively, photons have their wavelength stretched proportional to the scale factor of the universes growth between emission and observation. As the universe grows, wavelengths become stretched and energy decreases.
+
+\section{Simple Cosmological Models}
+In order to solve the Friedmann equation, we make assumptions about the contents and geometry of the universe, i.e. $\rho(t)$ and $k$.
+
+For our universe, where $k \approx 0$, we assume $k = 0$ at a first year level as this is what is currently favoured by observations. We assume a flat universe.
+
+For relativistic particles, we have (and will investigate in more depth in future lectures):
+\[
+    p = \frac{\rho c^2}{3}
+\]
+
+If we assume non-relativistic particles, we have:
+\[
+    p = 0
+\]
+
+In practice, we'd use a model that combines these, however in order to get something we can easily solve analytically at our level, we assume that one is true. We start with a flat, matter-dominated universe. This means that the $\rho$ we're considering is associated with non-relativistic particles.
+
+If we go back to the fluid equation:
+\[
+    \dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \left(\rho(t) + \frac{p(t)}{c^2}\right) = 0
+\]
+It now becomes:
+\[
+    \dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \rho(t) = 0
+\]
+This can be manipulated to get to:
+\[
+    \frac{1}{a^3(t)} \frac{d}{dt} \left(\rho(t) a^3(t)\right) = 0
+\]
+
+And hence:
+\[
+    \rho(t) a^3(t) = \text{const.}
+\]
+\[
+    \rho(t) = \frac{\text{const.}}{a^3(t)}
+\]
+
+To find this constant, we need to use boundary conditions. We say that the scale factor at the current epoch is equal to one, to normalise. Hence: $a_0 \equiv a(t_0) = 1$.
+
+We therefore call the density at the current epoch $\rho_0$, and this gives the final form:
+\[
+    \rho(t)  = \frac{\rho_0}{a^3(t)}
+\]

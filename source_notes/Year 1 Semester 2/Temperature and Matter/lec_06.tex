@@ -1,2 +1,149 @@
 % !TeX root = main.tex
-\lecture{1}{Tue 20 Jan 2026 12:00}{}
+\lecture{6}{Thu 05 Feb 2026 13:00}{Matter VI: LJF Meets Young Modulus and Breaking Materials}
+
+\section{Young's Modulus Meets Lennard-Jones}
+On a microscopic scale, applying a linear force extends the distance between neighbouring atoms:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-01.png}
+     \caption{}
+\end{figure}
+
+The mean interatomic distance changes from $r_0 \to r_0 + dr$ for an infinitesimal force $dF$. Near the equilibrium point, where the material is in the elastic region, we expect the extension $dr \propto dF$, as in this region $\Delta L \propto F$.
+
+Going back to the Lennard-Jones Force, we have a small region around the equilibrium point:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-02.png}
+     \caption{}
+\end{figure}
+
+If we zoomed into this region, we would see it is approximately linear:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-03.png}
+     \caption{}
+\end{figure}
+
+Hence, around $r_0$, $dF/dr$ is constant. Going back to Young's Modulus, we have:
+
+\[
+    Y = \frac{\text{stress}}{\text{strain}} = \frac{F/A}{\delta Y / Y}
+\]
+
+Here, the force is just $dF$. The area this force is acting over (microscopically) is actually a square, as the material is a cubic lattice, $A = (r_0 + dr)^2$. Hence stress is:
+\[
+    \text{stress} = -\frac{dF}{(r_0 + dr)^2}
+\]
+
+The negative sign compensates for the fact that the LJF opposes the deformation (is negative under tension), ensuring the stress and strain have the same sign and their ratio is positive.
+
+\[
+    \text{strain} = \frac{dr}{r_0}
+\]
+\[
+    \implies Y = -\frac{\left( \frac{dF}{(r_0 + dr)^2}\right)}{\left(\frac{dr}{r_0}\right)}
+\]
+\[
+    = -\frac{dF r_0}{dr (r_0 + dr)^2}
+\]
+
+We take the quadratic to first order, assuming $dr \ll r_0$:
+
+\[
+    = - \frac{1}{r_0} \frac{dF}{dr}\biggr\rvert_{r = r_0}
+\]
+
+As force is $- dV / dr$ we can show that:
+\[
+    Y = \frac{1}{r_0} \frac{d^2 V}{dr^2} \biggr\rvert_{r = r_0}
+\]
+
+And using the definition:
+\[
+    V = \epsilon \left(\frac{r_0^{12}}{r^{12}} - 2 \frac{r_0^6}{r^6}\right)
+\]
+Hence:
+\[
+    F = - \frac{dV}{dr} = -\epsilon \left(\frac{12r_0^{12}}{r^{13}} - 12 \frac{r_0^6}{r^7}\right) = \epsilon \left(12 \frac{r_0^6}{r^7} - 12\frac{\epsilon_0^{12}}{r^{13}}\right)
+\]
+\[
+    Y = - \frac{dF}{dr} = \frac{d^2 V}{dr^2} = \epsilon \left(\frac{156r_0^{12}}{r^{14}} - \frac{84 r_0^6}{r^8}\right)_{r = r_0}
+\]
+\[
+    Y = \frac{156 \epsilon}{r_0^2} - \frac{84 \epsilon}{r_0^2} = \boxed{\frac{72 \epsilon}{r_0^2}}
+\]
+
+This provides a microscopic definition of the Young's Modulus to complement our previous macroscopic definition.
+
+\section{Breaking Materials}
+Materials break when the attractive force between atoms is less than the force applied to the material. This occurs when:
+\[
+    \frac{dF}{dr} = 0 \implies F = F_\text{max}
+\]
+
+If we pull continuously with a force greater than $F_\text{max}$ we will pull atoms apart and break the material. The maximum definable stress is based on the maximum attractive LJF over the area of a single molecule:
+
+\[
+    \text{Breaking Stress} = \frac{F_\text{max}}{r^2_0}
+\]
+
+\subsection{Deriving $r$ at $F_\text{max}$}
+
+$F_\text{max}$ occurs where $\frac{dF}{dr} = 0$. Using the earlier result:
+\[
+    F(r) = 12\epsilon \left(\frac{r_0^{12}}{r^{13}} - \frac{r_0^6}{r^7}\right)
+\]
+\[
+    \frac{dF}{dr} = 12\epsilon \left(-\frac{13r_0^{12}}{r^{14}} + \frac{7r_0^6}{r^{8}}\right) = 0
+\]
+\[
+    \frac{7r_0^6}{r^8} = \frac{13r_0^{12}}{r^{14}} \implies 7r^6 = 13r_0^6
+\]
+\[
+    \implies \boxed{r = \sqrt[6]{\frac{13}{7}}\, r_0}
+\]
+
+\subsection{Finding $F_\text{max}$}
+
+Substituting $r^6 = \frac{13}{7}r_0^6$ into $F(r)$. Simplifying each term:
+\[
+    \frac{r_0^{12}}{r^{13}} = \frac{1}{r}\cdot\left(\frac{r_0^6}{r^6}\right)^2 = \frac{1}{r}\cdot\frac{49}{169}, \qquad
+    \frac{r_0^{6}}{r^{7}} = \frac{1}{r}\cdot\frac{r_0^6}{r^6} = \frac{1}{r}\cdot\frac{7}{13}
+\]
+\[
+    F_\text{max} = \frac{12\epsilon}{r}\left(\frac{49}{169} - \frac{91}{169}\right) = -\frac{504\epsilon}{169\,r}
+\]
+
+Substituting $r = \left(\frac{13}{7}\right)^{1/6} r_0$:
+\[
+    \implies \boxed{|F_\text{max}| = \frac{504\epsilon}{169\,r_0}\left(\frac{7}{13}\right)^{1/6} \approx \frac{2.69\,\epsilon}{r_0}}
+\]
+
+\subsection{Breaking Stress}
+Hence the breaking stress is:
+\[
+    BS = \frac{F_\text{break}}{A} = \frac{F_\text{max}}{r_0^2}
+\]
+Macroscopically and microscopically.
+
+\section{Fractures}
+Say your material has some tiny imperfection of depth $d$ and width $2r$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-04.png}
+     \caption{}
+\end{figure}
+
+This causes stress to increase by a factor of:
+\[
+    \left(1 + 2 \sqrt{\frac{d}{r}}\right)
+\]
+
+The breaking force decreases with increasing $d$, which makes sense as a deeper groove will cause a much smaller cross sectional area and a larger stress.
+
+The breaking force increases with a decreasing $r$, where grooves on atomic length scales wide causes a huge increase in the stress.
+
+

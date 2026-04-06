@@ -113,3 +113,52 @@ I.e. $\Delta t < \frac{v}{c^2} \Delta x$ or $c \Delta t < \frac{v}{c} \Delta x$.
 
 Which is the square root of a negative number, hence this gives a space-like interval. This means that while we can define two points in space-time where two observers will disagree about their order, the space-time invariant is imaginary hence these events cannot be causally linked. This means that observers disagreeing on event order does not break causality.
 
+\section{Simultaneity}
+Consider a relativistic ladder passing through a stationary garage. The ladder's proper length is longer than the proper length of the garage, so the ladder could not fit inside the garage if both were stationary.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{figures/lec12-03.png}
+     \caption{}
+\end{figure}
+
+However, viewed from the rest frame of the garage, the ladder is length contracted. From this frame, the ladder can momentarily (before smashing into the back door) fit entirely in the garage and it would even be possible to briefly close the front door.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{figures/lec12-04.png}
+     \caption{}
+\end{figure}
+
+From the ladder's rest frame however, the garage is length contracted and not the ladder. Therefore, from this frame, there's no possible way to fit the ladder into the garage.
+
+How can it simultaneously be possible and impossible depending on the rest frame being considered?
+
+\subsection{Problem}
+Let the ladder have proper length $l_0^L = 20$m and the garage have proper length $l_0^G = 10$m. The ladder moves at $0.9$c wrt the garage.
+
+\[
+    \gamma = \frac{1}{\sqrt{1 - \beta^2}} = \frac{1}{\sqrt{1-0.9^2}} \approx 2.29
+\]
+
+In the garage's rest frame, the ladder length is $L^L = \frac{20}{2.29} = 8.7$m. So, from the garage's POV, the ladder fits!
+
+We now consider the length of the garage from the ladder's rest frame: $L^G = \frac{10}{2.29} = 4.4$m, so from the ladder's POV, the ladder cannot fit! This creates a paradox.
+
+\subsection{Solution}
+We can resolve this problem because the concept of simultaneity is frame dependant. There are two things that happened here:
+
+\begin{itemize}
+    \item A. The front of the ladder reached the back garage door (the first figure)
+    \item B. The back of the ladder reaches the front garage door.
+\end{itemize}
+
+We've been assuming that these events occur at exactly the same time, simultaneously, but this isn't the case.
+
+The time taken between these events has to obey a Lorentz transformation. If they are the same in some frame (i.e. the garage, for the ladder to fit perfectly inside), then $\Delta t_{AB} = 0$. In the rest frame of the ladder:
+
+$$
+\Delta t_{AB}^\prime = \gamma \left(\Delta t_{AB} - \frac{v}{c^2} \Delta x_{AB}\right) = \frac{\gamma v}{c^2} \Delta x_{AB} \not = 0
+$$
+
+Hence, if the garage perceives the events as being simultaneous, they cannot be observed as being simultaneous in the ladder's frame.
