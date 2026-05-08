@@ -1,0 +1,87 @@
+% !TeX root = main.tex
+\lecture{4}{03 Feb 2026 11:00}{Mechanics IV: Perp Axes, Radius of Gyration and Angular Momenta}
+
+\section{Perpendicular Axis Theorem}
+This only applies in flat 2D objects, or objects which can be approximated as them, for example a pancake or a coin. Suppose the object sits in the XY plane. The perpendicular axis theorem says that the moment of inertia about the z-axis is:
+\[
+    I_z = I_x + I_z
+\]
+
+For rotation in the x-axis:
+\[
+    I_x = \sum_i m_i y^2_i
+\]
+
+And in the y:
+\[
+    I_y = \sum_i m_i x^2_i
+\]
+
+By Pythag:
+\[
+    r_i^2 = x^2 + y^2_i
+\]
+\[
+    \implies \sum_i m_i x_i^2 + \sum_i y_i^2 = \sum m_i r_i^2
+\]
+\[
+    I_y + I_x = I_z
+\]
+
+\subsection{Spinning a Coin}
+Consider spinning a coin vertically on a table. Suppose the coin spins about the y-axis (vertical) and the z-axis is the axis of symmetry. 
+
+By symmetry, $I_x = I_y = I_\text{end}$. By the perpendicular axes theorem, $I_x + I_y = 2 I_\text{end} = I_z$.
+
+Hence:
+\[
+    2 I_\text{end} = I_z = \frac{MR^2}{2} \implies I_\text{end} = \frac{MR^2}{4} 
+\]
+
+\section{Radius of Gyration}
+The radius of gyration, $K$ is the effective radius at which we could locate all of the mass of an extended body to get the same moment of inertia about an axis passing through the CoM.
+
+It is defined by:
+\[
+    I_0 = M K^2 \implies K = \sqrt{\frac{I_0}{M}}
+\]
+
+We know that $I_z = \frac{1}{2}MR^2$ and by the definition of the radius of gyration:
+\[
+    I_z = MK^2
+\]
+
+Hence:
+\[
+    \frac{1}{2}MR^2 = MK^2 \implies K^2 = R^2 / 2
+\]
+
+\section{Angular Momentum}
+We have defined angular momentum as:
+\[
+    \vec{L} =\vec{r} \wedge \vec{p}
+\]
+
+Angular momentum, just like linear momentum, is conserved. ``Conserved'' means that it is not time dependant, i.e.:
+\[
+    \frac{d \vec{L}}{dt} = 0
+\]
+
+\[
+    \frac{d \vec{L}}{dt} = \frac{d \vec{r}}{dt} \times \vec{p} + \vec{r} \times \frac{d \vec{p}}{dt}
+\]
+\[
+    = \vec{v} \times \vec{p} + \vec{r} \times \vec{F}
+\]
+\[
+    = \vec{v} \times m\vec{v} + \vec{r} \times \vec{F}
+\]
+\[
+    = 0 + \vec{r} \times \vec{F}
+\]
+
+This second term is torque. There is always a centripetal force for circular motion, so $| \vec{F} |  = 0$ does not hold. However, as $\vec{r}$ and $\vec{F}$ are in the same direction, this term does become zero. Accordingly, angular momentum is conserved under radially inwards (central) forces.
+
+And since $\vec{r}$ is defined around a specific origin point, angular momentum is defined about a point in space and varies from point to point.
+
+

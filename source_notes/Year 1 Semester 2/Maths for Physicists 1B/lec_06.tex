@@ -1,88 +1,30 @@
 % !TeX root = main.tex
-\lecture{6}{Fri 30 Jan 2026 12:00}{Partial Differentiation VI: 3D Stationary Points}
+\lecture{6}{Fri 30 Jan 2026 12:00}{Partial Differentiation VI: Lagrange Mulipliers}
 
-\section{2D Recap}
-In 2D, a stationary point of a function $f(x)$ occurs at $x = a$ where $f(x)$ is neither increasing or decreasing such that $f^\prime(a) = 0$.
+Note: Lecture began with a continuation of 3D stationary points, which I've bundled under last lectures notes to not interrupt the derivation.
 
-Consider the Taylor series about $x = a$, where $f^\prime(a) = 0$:
 
+\section{Lagrange Multipliers}
+Suppose we wanted to minimise a function $f(x, y) = x^2 + y^2$ subject to a constraint, i.e. saying $x + y = 1$ (and therefore excluding the $(0, 0)$ trivial case).
+
+While we could do this by writing $y = 1-x$, substituting and minimising solely in terms of $x$, there is a more sophisticated method that becomes useful in more complex cases where the constraint is not invertable.
+
+We consider the function:
 \[
-    f(a+h) = f(a) + h f^\prime(a) + \frac{h^2}{2!} f^{\prime\prime} (a) + \cdots = f(a) + \frac{h^2}{2!} f^{\prime\prime} (a) + \cdots
+    F(x, y, \lambda) = x^2 + y^2 + \lambda(x + y - 1)
 \]
 
-If $f^{\prime\prime} (a) > 0$, the function looks like $+h^2$ near the stationary point. This gives us a minima. If the second derivative is negative the function looks like $-h^2$, giving a maximum point.
+And minimise with respect to all three variables. When this happens, $F(x, y,\lambda) = f(x, y)$ at the minimised point.
 
-If the second derivative is zero, we need to find the first non-zero derivative $f^n{(a)} \neq 0$ where $n > 2$.
-\begin{itemize}
-    \item If $n = 2k + 1$ (odd), the function looks like $\pm h^{2k + 1}$ near the stationary point. This results in a point of inflexion.
-    \item If $n = 2k$ (even) and $f^{2k}(a) > 0$, the function looks like $+ h^{2k}$ near the stationary point so that we have a minimum.
-    \item If $n = 2k$ (even) and $f^{2k}(a) < 0$, the function looks like $- h^{2k}$ near the stationary point so that we have a maximum.
-\end{itemize}
+Generally, to find the extrema of $f(x_1, x_2, \ldots, x_n)$ subject to $p$ constraints $g_i(x_1, x_2, \ldots, x_n) = 0$, where $p<n$, we introduce a new function of $n+p$ variables:
 
-\section{Stationary Points of Several Variables}
-\subsection{Two Variables}
-Consider a function $f(x, y)$ at a point $(a, b)$. For a stationary point to occur here, the function must be flat in all directions at that point, so all the partial derivatives must be zero:
 \[
-    f_x(a, b) = f_y(a, b) = 0
+    F(x_1, x_2, \ldots, x_n, \lambda_1, \lambda_2, \ldots, \lambda_p) = f(x_1, x_2, \ldots, x_n) + \sum_{i=1}^{p} \lambda_i g_i(x_1, x_2, \ldots, x_p)
 \]
 
-To classify it, we again consider the Taylor series:
+We then extremise $F$ wrt all $n+p$ variables. Extremising with respect to $\lambda_i$ enforces the constraint:
 \[
-    f(a+h, b+k) \approx f(a, b) + \frac{1}{2} \left(Ah^2 + 2Bhk + Ck^2\right)
-\]
-Where $A = f_{xx}(a, b)$, $B = f_{xy}(a,b)$ and $C = f_{yy}(a,b)$. We can then complete the square:
-
-\[
-    Ah^2 + Bhk + Ck^2 = A \left(h + \frac{B}{A}k\right)^2 + \left(C - \frac{B^2}{A}\right)k^2
+    F_{\lambda_i} = g_i(x_1, x_2, \ldots, x_n) = 0
 \]
 
-\begin{itemize}
-    \item For the stationary point to be a minimum, we need $A > 0$ and $C - B^2 / A = AC - B^2 > 0$.
-    \item For a maximum, we need $A < 0$ and $C-B^2/A = AC-B^2 < 0$.
-    \item For a saddle point, with a minimum in one direction and a maximum in the other, we need $A$ and $C - B^2/A$ to be oppositely signed. This corresponds to the case where $AC - B^2 > 0$.
-\end{itemize}
-
-Considering the second derivatives directly:
-\begin{itemize}
-    \item For a minimum we need $f_{xx} > 0$ and the Hessian determinant must be positive:
-    \[
-        \Delta = \det H = \det \begin{bmatrix}
-            f_{xx} & f_{xy} \\
-            f_{yx} & f_{yy}
-        \end{bmatrix} > 0
-    \]
-
-    \item For a maximum, we need $f_{xx} < 0$ and the Hessian determinant must be positive:
-    \[
-        \Delta = \det H = \det \begin{bmatrix}
-            f_{xx} & f_{xy} \\
-            f_{yx} & f_{yy}
-        \end{bmatrix} > 0
-    \]
-    
-    \item For a saddle point, we need the Hessian determinant to be negative:
-    \[
-        \Delta = \det H = \det \begin{bmatrix}
-            f_{xx} & f_{xy} \\
-            f_{yx} & f_{yy}
-        \end{bmatrix} < 0
-    \] 
-\end{itemize}
-
-\subsection{Generalising To 3D}
-For a function $f(x, y, z)$ to have a stationary point at point $(a, b, c)$, it must be flat in all directions around that point. Therefore, all the first derivatives must be zero:
-
-\[
-    f_x(a, b, c) = f_y(a, b, c) = f_z(a, b, c) = 0
-\]
-
-The Taylor Series about the point $(a, b, c)$ is:
-\[
-    f(a+h, b+k, c+l) \approx f(a, b, c) + \frac{1}{2} \left(Ah^2 + 2Bhk + 2Chl+Dk^2 + 2Ekl + Fl^2\right)
-\] 
-
-Where $A = f_{xx}, B = f_{xy}, C = f_{xz}, D = f_{yy}, E = f_{yz}, F = f_{zz}$. Again we complete the square:
-
-\[
-    A \left(h + \frac{B}{A}k + \frac{C}{A}l\right)^2 + \left(D - \frac{B^2}{A}\right)k^2 + 2 \left(E - \frac{BC}{A}\right)kl + \left(F - \frac{C^2}{A}\right)l^2
-\]
+So the the lambda term ends up dropping out and $F$ and $f$ have the same numerical value at extrema.

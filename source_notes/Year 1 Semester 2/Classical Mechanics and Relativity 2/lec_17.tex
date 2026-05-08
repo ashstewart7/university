@@ -1,0 +1,74 @@
+% !TeX root = main.tex
+\lecture{17}{Tue 24 Mar 2026 11:00}{Special Relativity VII: Kinematics Examples, Doppler and Natural Units}
+
+\section{Example I}
+As viewed in a lab frame, a cosmic ray proton of energy $E_p$ hits a stationary proton. What is the minimim threshold energy of $E_p$ that allows the reaction:
+\[
+    p + p \to p + p + \pi
+\]
+
+To take place, given $m_p = 938 \si{MeV / c^2}$ and $m_\pi = 104 \si{MeV / c^2}$?
+
+Let the cosmic ray proton be proton one with $E_p, p_p$ and the stationary proton be proton 2 with $m_p$.
+
+We can consider energy and momentum in the lab frame, initially (before the collision):
+
+\[
+    \left(\Sigma E\right)_\text{initial}^\text{lab} = E_p + M_p c^2 \qquad \text{and} \qquad \left(\Sigma p\right)_\text{initial}^\text{lab} = p_p \tag{1}
+\]
+
+For a threshold energy, the produced particles have no relative motion (i.e. at rest in the centre of mass frame). This means that all available relativistic energy goes into particle production with no excess.
+
+Hence in the centre of mass frame finally, we have two stationary protons and one stationary pion. This is the lowest energy state we can have in the centre of mass frame, with all these particles still existing.
+
+\[
+    \left(\Sigma E\right)^\text{CMS}_\text{final} = (2 m_p + m_\pi) c^2 \qquad \text{and} \qquad \left(\Sigma p\right)^\text{CMS}_\text{final} = 0 \tag{2}
+\]
+
+We can then apply the energy momentum invariant:
+\[
+    s = \left[\left(\Sigma E\right)^2 - \left(\Sigma p\right)^2\right]_\text{final}^\text{lab} = \left[\left(\Sigma E\right)^2 - \left(\Sigma p\right)^2\right]_\text{CMS}^\text{final} \tag{3}  
+\]
+
+Inserting 1, 2 into 3:
+
+\[
+    \left(E_p + m_p c^2\right)^2 - p_p^2c^2 = \left(2 m_p + m_\pi\right)^2 c^4
+\]
+\[
+    \implies E_p^2 + m_p^2 c^4 + m_p c^2 E_p - p_p^2 c^2 = \left(2 m_p + m_\pi\right)^2 c^4
+\]
+
+For a single particle, $E_p^2 - p_p^2 c^2 = m_p^2 c^4$, hence:
+\[
+    2 m_p^2 c^4 + 2 m_p c^2 E_p = \left(2 m_p + m_\pi\right)^2 c^4
+\]
+\[
+    E_p = \frac{\left(2 m_p + m_\pi\right)^2 c^4 - 2 m_p^2 c^4}{2 m_p c^2}
+\]
+
+And we have known masses $m_p, m_\pi$ hence (noting that the masses are in units energy per speed of light squared, so the $c$s cancel out):
+\[
+    E_p = \frac{\left(2 \times 938 + 104\right)^2-2\times 938^2}{2 \times 938} = 1228 \si{MeV}
+\]
+
+\section{Example II}
+In an LHC experiment, a $B_0$ meson ($b \bar{d}$) with mass $5 \si{GeV / c^2}$ is produced in a lab frame momentum of $50 \si{GeV / c^2}$. The meson has proper decay time $2 \times 10^{-12}$s. How far does the experiment observe the meson fly before decay?
+
+\section{Relativistic Longitudinal Doppler Effect}
+We want to build an analogue for the sonic doppler effect for light. This is especially important in astronomy, i.e. tracking the movement of cosmic spectral lines to determine speeds of distant sources.
+
+We will only considerer the longitudinal effect, i.e. the movement of bodies directly towards or away from an observer in their line of sight. We will not (yet) consider transverse effects in this course.
+
+This comes from two components:
+\begin{itemize}
+    \item The standard doppler effect (as for sonic waves).
+    \item Relativistic time dilation.
+\end{itemize}
+
+
+
+
+
+
+

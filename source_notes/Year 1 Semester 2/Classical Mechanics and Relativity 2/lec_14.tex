@@ -45,7 +45,7 @@ Now, momentum has an extra factor of $\gamma$. Suppose we have a massive object 
 
 And we can use the chain rule to say:
 \[
-    dx = \frac{dx}{dt} dt \implies K_A = \int_{0}^{A} \frac{dp}{dt} \frac{dx}{dt} \, dt \tag{1}
+    dx = \frac{dx}{dt} dt \implies K_A = \int_{0}^{A} \frac{dp}{dt} \frac{dx}{dt} \, dt = \int_{0}^{A} \frac{dp}{dt} v \, dt \tag{1}
 \]
 
 We can also say that:
@@ -53,9 +53,128 @@ We can also say that:
     \frac{d}{dt} \left(pv\right) = p \frac{dv}{dt} + v \frac{dp}{dt}
 \]
 
-So in eqn. 1 we have:
+So substituting this into eqn. 1 we have:
 \[
-    K_A = \int_{0}^{A} \left[\frac{d}{dt} (pv)\right] - p \frac{dv}{dt} \, dt
+    K_A = \int_{0}^{A} \left[\frac{d}{dt} (pv) - p \frac{dv}{dt}\right] \, dt
+\]
+\[
+    K_A = \int_{0}^{A} \frac{d}{dt} \left(pv\right) \, dt - \int_{0}^{A} p \frac{dv}{dt} \, dt
+\]
+\[
+    K_A = \left[pv\right]_0^A - \int_{0}^{A} p \, dv
+\]
+\[
+    K_A = \gamma m V_a \cdot V_a - \int_{0}^{v_a} \gamma m v \, dv
+\]
+\[
+    K_A = \gamma mv^2 - m \int_{0}^{v_A} v \left(1 - \frac{v^2}{c^2}\right)^{-1/2} \, dv
 \]
 
+Note that:
+\[
+    \frac{d}{dv} \left(\left[1 - \frac{v^2}{c^2}\right]^{+1/2}\right) = \frac{1}{2} \left(1 - \frac{v^2}{c^2}\right)^{-1/2} \left(- \frac{2v}{c^2}\right) = \frac{-v}{c^2} \left(1 - \frac{v^2}{c^2}\right)^{-1/2}
+\]
 
+Hence:
+\[
+    K_A = \gamma m v_A^2 = m \left[-c^2 \left(1 - \frac{v^2}{c^2}\right)^{+1/2}\right]_0^{v_A}
+\]
+\[
+    K_A = \gamma mv_A^2 + m c^2 \left(\left[1 - \frac{v_A^2}{c^2}\right]^{+1/2} - 1\right)
+\]
+\[
+    K_A = \gamma mv_A^2 + mc^2 \left(\frac{1}{\gamma} - 1\right)
+\]
+
+And multiplying through by gamma to allow factorisation:
+\[
+    K_A = \gamma mv_A^2 + \gamma mc^2 \left(1 - \frac{V_A^2}{c^2}\right) - mc^2
+\]
+\[
+    K_A = \gamma mv_A^2 + \gamma mc^2 - \gamma mv_A^2 - mc^2s
+\]
+\[
+    \boxed{K_A = mc^2 \left(\gamma - 1\right)}
+\]
+
+This gives the kinetic energy of an object with speed $v_A$ with $\gamma$ as standard. This yields the low energy limit $K = mv^2 / 2$ as $V_A / c \to 0$ as expected. Einstein suggested the breakdown of this into two terms:
+\[
+    (\gamma - 1) mc^2 = \gamma \underbrace{mc^2}_\text{total energy} - \underbrace{mc^2}_\text{mass energy}
+\]
+
+For almost all purposes, and all purposes in this course, we will refer to the total energy and not the overall total energy:
+\[
+    E_\text{tot} = E \gamma m c^2
+\]
+This is not Lorentz invariant, but is conserved in decays/collisions etc.
+
+\section{Forces}
+By definition we have:
+\[
+    \vec{F} = \frac{d \vec{p}}{dt} = \frac{d}{dt} \left(\gamma m v\right)
+\]
+
+This can be performed to show that:
+\[
+    F = \gamma^3 ma
+\]
+
+As $\gamma \to \infty$ as $v \to c$, it gets harder and harder to accelerate a particle as the particle becomes ultra-relativistic.
+
+\section{Lorentz Transformations for Energy and Momentum}
+There are equivalent transformations for energy and momentum. It turns out than we can use exactly the same Lorentz transformations if we make the following substitutions:
+
+\[
+    \left[ct, x, y, z\right] \to \left[\frac{E}{c}, p_x, p_y, p_z\right]
+\]
+
+This ``grouping three coordinates with another quantity'' is broadly called a 4-vector.
+
+Where we previously had:
+\[
+    x = \gamma \left(x^\prime + vt^\prime\right) \quad , \quad t = \gamma \left(t^\prime + \frac{v}{c^2}x^\prime\right)
+\]
+
+We now substitute $x \to p_x$, $ct \to E/c \implies t \to E/c^2$:
+\[
+    p_x = \gamma \left(p_x^\prime + v \frac{E^\prime}{c^2}\right)
+\]
+\[
+    \frac{E}{c^2} = \gamma \left(\frac{E^\prime}{c^2} + \frac{v}{c^2} p_x^\prime\right) \implies E = \gamma \left(E^\prime + v p_x\right)
+\]
+
+And to transform backwards we use the same logic of replacing all the primed variables with unprimed variables and reverse the sign of the speed. We rarely use this in practice. Instead, we want to find an energy-momentum quantity which is Lorentz Invariant.
+
+\section{Energy-Momentum Invariant}
+Recall that:
+\begin{itemize}
+    \item $p = \gamma mv$
+    \item Instead of kinetic energy we use total energy $E = E_\text{tot} = \gamma mc^2 = \text{KE} - \text{mass energy}$
+\end{itemize}
+
+We want to continue using $(t, x) \to \left(\frac{E}{c^2}, p_x\right)$. Using the space-time invariant, we have:
+\[
+    c^2 t^2 - x^2 - y^2 - z^2
+\]
+Is the energy-momentum invariant simply the space-time invariant but with the energy/momentum transformations?
+\[
+    E^2 - (p_x^2 - p_y^2 - p_z^2)c^2
+\]
+This is just a postulate, but does turn out to be a Lorentz invariant. To check its true, we can substitute:
+\[
+    E^2 - p^2 c^2 = \gamma m^2 c^4 - \gamma^2 m^2 v^2 c^2
+\]
+\[
+    = \gamma^2 m^2 c^2 \left(c^2 - v^2\right) = \frac{m^2 c^2 \left(c^2 - v^2\right)}{1 - \frac{v^2}{c^2}} = \frac{m^2 c^2 \left(c^2 - v^2\right)}{1/c^2 (c^2 - v^2)}
+\]
+
+Hence:
+\[
+    E_\text{tot} - p^2 c^2 = m^2 c^4
+\]
+As the mass is a constant between frames, as is the speed of light, this is invariant between different frames.
+
+This gives us the invariant:
+\[
+    \boxed{E^2 = m^2 c^4 + \vec{p}^2 c^2}
+\]

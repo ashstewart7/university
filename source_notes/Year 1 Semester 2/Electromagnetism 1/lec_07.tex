@@ -1,0 +1,86 @@
+% !TeX root = main.tex
+\lecture{7}{Mon 10 Feb 2026 12:00}{Electrostatics VII: Electric Dipoles}
+
+\section{Using Potential to Determine E}
+Consider two charges $Q$ with distance $L$ between them. The potential at some generic $x$ is:
+
+\[
+    V(x) = \frac{Q}{4 \pi \epsilon_0 x} + \frac{Q}{4 \pi \epsilon_0 (L  -x)}
+\]
+\[
+    \pmb{E} = - \nabla V = - \frac{dV}{dx} \hat{\pmb{x}}
+\]
+\[
+    = \left(\frac{Q}{4 \pi \epsilon_0 x^2} - \frac{Q}{4 \pi \epsilon_0 (L - x)^2}\right) \hat{\pmb{x}}
+\]
+
+At the middle point $x = L/2$:
+\[
+    V(x = L/2) = \frac{Q}{4 \pi \epsilon_0 L/2} + \frac{Q}{4 \pi \epsilon_0 (L - L/2)}
+\]
+\[
+    \pmb{E}(x = L/2) = \frac{Q}{4 \pi \epsilon_0 L^2/4} - \frac{Q}{4 \pi \epsilon_0 (L^2 / 4)} = 0
+\]
+
+\section{Potential from a Ring}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec07-01.png}
+     \caption{}
+\end{figure}
+
+A ring-shaped conductor of radius $a$ carries a total charge $Q$ uniformly distributed around it. Find the potential, and hence the electric field, at point $P$.
+
+Consider some small element of charge $\delta Q$, at distance $r = \sqrt{a^2 + x^2}$ from $P$.
+
+\[
+    \delta V = \frac{\delta Q}{4 \pi \epsilon_0 r} = \frac{\delta Q}{4 \pi \epsilon_0 (a^2 + x^2)^{1/2}}
+\]
+
+We can then integrate, noting that $a, x$ are both constants:
+\[
+    V = \frac{1}{4 \pi \epsilon_0 (a^2 + x^2)^{1/2}} \oint dQ
+\]
+\[
+    = \frac{Q}{4 \pi \epsilon_0 (a^2 + x^2)^{1/2}}
+\]
+
+And then to find $\pmb{E}$, noting that $\pmb{E} = - \nabla V$ (and that the derivatives in the z, y directions are zero):
+\[
+    \pmb{E} = - \frac{\partial V}{\partial x} \pmb{\hat{x}} = - \frac{Q}{4 \pi \epsilon_0} \left(- \frac{1}{2} 2x (a^2 + x^2)^{-3/2}\right)
+\]
+\[
+    = \frac{Qx}{4 \pi \epsilon_0 \left(a^2 + x^2\right)^{-3/2}} \hat{\pmb{x}}
+\]
+
+\section{Electric Dipoles}
+Consider two charges $+q$ and $-q$, separated by a distance $a$. This forms an electric dipole. This has an associated quantity given the electric dipole moment:
+\[
+    \pmb{p} = q \pmb{a}
+\]
+We define this vector to point against the \pmb{E}-field, i.e. pointing from the negative towards the positive charge.
+
+Many molecules naturally form dipoles. Because water is not vertically symmetric, it causes a difference between the effective positive charge from the two hydrogens and the net negative charge from the oxygen. 
+
+This makes it an excellent solvent and is used in heating food via microwaves. Because the distance is very small, it gives a very small value of $p = 6.1 \times 10^{-30}$Cm per molecule.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/lec07-02.png}
+     \caption{}
+\end{figure}
+
+For a dipole, the potential is given by:
+\[
+    V_p \approx \frac{p \cos \theta}{4 \pi \epsilon_0 r^2}
+\]
+\[
+    \pmb{E} \approx \frac{2 p \cos \theta}{4 \pi \epsilon_0 r^3} \hat{\pmb{r}} + \frac{p \sin \theta}{4 \pi \epsilon_0 r^3} \hat{\pmb{\theta}}
+\]
+For $r \gg a$ and where $\theta$ is defined as the angle between $\pmb{r}$ and the positive charge.s
+
+
+
+
+
+

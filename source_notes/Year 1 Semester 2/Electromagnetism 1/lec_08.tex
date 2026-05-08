@@ -1,0 +1,113 @@
+% !TeX root = main.tex
+\lecture{8}{Thu 12 Feb 2026 11:00}{Electrostatics VIII: Electric Dipoles in E-Fields}
+
+In this lecture:
+\begin{itemize}
+    \item Electric dipoles in uniform external E-fields:
+    \begin{itemize}
+        \item Torque
+        \item Potential energy
+        \item Work done
+        \item Right-hand rule
+        \item Examples
+    \end{itemize}
+\end{itemize}
+
+ 
+\section{Torque}
+Consider a dipole in a uniform external E-field:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/lec08-01.png}
+     \caption{}
+\end{figure}
+
+As the two charges have equal and opposite forces applied by the field, they do not have a net force. The torque $\pmb{\tau}$ rotates the whole couple.
+
+The magnitude of this torque is given by:
+\[
+    | \pmb{\tau} | = Fd
+\]
+
+Were $F$ is one of the two forces and $d$ is the perpendicular distance. This is given by:
+\[
+    \tau = | \pmb{\tau} | = Fd = qEd = qE a \sin \theta = pE \sin \theta
+\]
+
+In vector form its given as a cross product:
+\[
+    \pmb{\tau} = \pmb{r} \wedge \pmb{F} = q \pmb{a} \wedge \pmb{E} = \pmb{p} \wedge \pmb{E}
+\]
+
+\section{Potential Energy}
+The electric potential at the positive charge be $V_+$ and hence the electric potential energy is $qV_+$, and likewise $V_-$ and $qV_-$ at the negative charge.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec08-02.png}
+     \caption{}
+\end{figure}
+
+
+The net potential energy on the system is therefore given by:
+\[
+    U = q(V_+ - V_-) = -q \int_{0}^{d} \pmb{E} \cdot \, d \pmb{x}
+\]
+\[
+    = - qEd
+\]
+\[
+    = -qE a \cos \theta = -qa E \cos \theta = -p E \cos \theta
+\]
+Hence in vector notation:
+\[
+    U = - \pmb{p} \cdot \pmb{E}
+\]
+
+\subsection{Directionality}
+What is the direction of this setup:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec08-03.png}
+     \caption{}
+\end{figure}
+
+Here, as the dipole is aligned with the field, there's no movement. This (as p goes from the negative to positive charge) is the lowest potential energy configuration. The opposite, with p antialigned to the field would still have zero torque, but is the maximum potential energy configuration.
+
+\subsection{Microwaves}
+Dipoles explain how microwave ovens work. For foods containing water, the alternating electric field causes the water molecule's dipole to align itself with the E-field. 
+
+Alternating the microwaves cause the water molecules to oscillate in phase. They gain kinetic energy, so heat.
+
+This works for microwaves because a wavelength too low would cause too little a rate of oscillation and a wavelength too high would oscillate the direction of the E-field before the water dipoles have time to fully align. Microwaves fit this region.
+
+\section{Work Done}
+Over some infinitesimal change in angular displacement, $\delta \theta$:
+\[
+    \delta W = \tau \delta \theta
+\]
+
+And takes place in the direction which minimises the angle, hence:
+\[
+    \tau = - pE \sin \theta \implies \delta W = -p E \sin \theta \delta \theta
+\]
+
+So, over a displacement from $\theta_1$ to $\theta_2$:
+\[
+    W = \int dW = \int_{\theta_1}^{\theta_2} -pE \sin \theta \, d \theta
+\]
+\[
+    W = pE \cos \theta_2 - pE \cos \theta_1 = -(U_2 - U_1) = U_1 - U_2
+\]
+
+
+\section{Direction of Torque}
+We can use the Right Hand Rule to determine the direction of the torque:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec08-04.png}
+     \caption{}
+\end{figure}
+
+Here, $\pmb{a}$ represents $\pmb{p}$ and $\pmb{b}$ represents $\pmb{E}$.
+

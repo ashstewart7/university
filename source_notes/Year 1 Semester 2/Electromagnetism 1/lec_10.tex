@@ -1,0 +1,180 @@
+% !TeX root = main.tex
+\lecture{10}{Thu 19 Feb 2026 11:00}{Electrostatics X: Dielectrics}
+
+\section{Energy Density}
+Consider a parallel plate capactitor We have previously determined that:
+\[
+    U = \frac{1}{2}CV^2
+\]
+
+And that:
+\[
+    C = \frac{Q}{V} = \frac{\epsilon_0 A}{d}
+\]
+\[
+    V = Ed
+\]
+
+Hence:
+\[
+    U = \frac{1}{2} \frac{\epsilon_0 A}{d} E^2 d^2 = \frac{1}{2} A d \epsilon_0 E^2
+\]
+
+Noting that $Ad$ is just the volume of the gap, we have that the energy per unit volume is given by:
+\[
+    \boxed{u_E = \frac{1}{2} \epsilon_0 E^2}
+\]
+this gives the energy density of an electric field (for any E-field in a vacuum).
+
+\section{Force Per Capacitor Plates}
+Again for a parallel plate capacitor, we want to find the attractive force between the plates. Integrating coulombs law directly would be overly messy, so we use the definition:
+\[
+    U = - \int \pmb{F} \cdot d \pmb{x}
+\]
+
+Where $x$ is the axis between the plates. Hence $F = -du/dx$:
+\[
+    U(x) = Ax \epsilon_0 E^2
+\]
+\[
+    F = - \frac{1}{2} A \epsilon_0 E^2
+\]
+
+Using the definition:
+\[
+    E = \frac{\sigma}{\epsilon_0} = \frac{Q}{A \epsilon_0}
+\]
+\[
+    \implies F = - \frac{1}{2} A \epsilon_0 \left(\frac{Q}{A \epsilon_0}\right)^2
+\]
+\[
+    F = - \frac{1}{2} QE
+\]
+
+And as the force is negatively signed, that confirm that it is attractive.
+
+\section{Dielectrics}
+\begin{tcolorbox}
+    \textbf{What is a dielectric?}
+
+    In a perfect conductor, there's a large quantity of free charges. Under an applied E-field, these charges move rapidly along the direction of the field.
+
+    \vspace{2mm}
+
+    A dielectric is a poor conductor where free charge is negligible. When an E-field is applied, the charges in the atom are displaced, while remaining bound to the atom. This is called polarisation.
+\end{tcolorbox}
+
+They are placed between the plates of a capacitor to keep the charged surfaces physically separated and to raise the capacitance. For EMI (and EMII) we only consider well behaved dielectrics which follow the acronym ``HILS''
+\begin{itemize}
+    \item Homogeneous.
+    \item Isotropic, same in all directions hence $P \parallel E$.
+    \item Linear, $P \propto E$.
+    \item Stationary, no moving parts. 
+\end{itemize}
+
+\section{Polarisation}
+Polarisation is the effect of an E-field on a dielectric to pull the positively charged nucleus in one direction and the negatively charged electron cloud in the other. The electron cloud and the nucleus remain bound.
+
+The E-field slightly pulls the nucleus in the direction of the E-field and the electron cloud against it. This creates a dipole moment in the direction of the E-field. This polarisation creates an E-field which acts in the opposite direction to the E-field, cancelling a small part of it.
+
+All of these dipoles align and act together oppositely to the E-field. This reduces the field in the electric.
+
+If the dielectric has $N$ dipoles, we define the total polarisation as:
+\[
+    \pmb{P} = N \pmb{p} = Nq \pmb{a}
+\]
+The field inside the dielectric is less than the external applied field.
+
+Consider a large dielectric block placed into a field. While the block remains neutral, the polarisation causes a small depletion region, approximately the width of the dipoles at each end of the block (width $a$). One end of the block becomes depleted of negative charges and one end positive charges.
+
+The charge on the surface (surface area $S$) is given by:
+\[
+    \text{surface charge } = \text{ volume of depleted region } \times \text{ molecular density } \times \text{charge per molecule} = (aS)Nq
+\]
+
+However we've already defined $P = Nqa$, so the surface charge on the RHS (for a right to left E-field) is:
+\[
+    q_r = PS
+\]
+And the LHS:
+\[
+    q_l = - PS
+\]
+
+Hence the surface charge density is given by $\sigma_i \pm P$.
+
+If we add a dielectric to a capacitor between the plates, the dielectric surface with negative surface charge is in contact with the capacitor plate of positive surface charge. The two E-fields partially cancel and, while the net E-field still points in the same direction (positive plate to negative plate) it has a smaller magnitude.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec10-02.png}
+     \caption{}
+\end{figure}
+
+Considering the positive plate, the net surface charge is $\sigma - \sigma_i$. With no dielectric, the E-field is:
+\[
+    E_0 = \frac{\sigma}{\epsilon_0}
+\]
+With the dielectric:
+\[
+    E = \frac{\sigma - \sigma_i}{\epsilon_0} = \frac{\sigma - P}{\epsilon_0}
+\]
+
+For a well-behaved dielectric, the polarisation is proportional to the electric field $P \propto E$, hence the polarisation must be some constant times the electric field:
+\[
+    \pmb{P} = \chi_E \epsilon_0 E
+\]
+Where $\chi_E \epsilon_0$ is the constant of proportionality and $\epsilon_0$ is included to make sure that $\chi_E$ is dimensionless. $\chi_E$ is defined as the susceptibility.
+
+We therefore have:
+\[
+    \epsilon_0 E = \sigma - P
+\]
+\[
+    \epsilon_0 E = (\epsilon_0 E_0) - (\chi_E \epsilon_0 E)
+\]
+\[
+    \epsilon_0 E = \epsilon_0 E_0 - \chi_E \epsilon_0 E
+\]
+\[
+    \boxed{(1 + \chi_E) \epsilon_0 E = \epsilon_0 E_0}
+\]
+
+We define another dimensionless constant, the relative permittivity (AKA the dielectric constant):
+\[
+    \epsilon_r = (1 + \chi_E)
+\]
+\[
+    \implies \epsilon_r \epsilon_0 E = \epsilon_0 E_0
+\]
+
+The E-field in the dielectric is:
+\[
+    E = \frac{E_0}{\epsilon_r}
+\]
+
+From Gauss' law we have:
+\[
+    E = \frac{\sigma}{\epsilon_r \epsilon_0} = \frac{Q}{\epsilon_r \epsilon_0 A}
+\]
+\[
+    V = V_+ - V_- = Ed = \frac{Qd}{\epsilon_0 \epsilon_r}
+\]
+\[
+    \implies C = \frac{Q}{V} = \frac{\epsilon_0 \epsilon_r A}{d}
+\]
+Since $\epsilon_r > 1$, this increases the capacitance. We can modify Gauss' law for a well behaved dielectric:
+
+\[
+    \int_S \pmb{E} \cdot d \pmb{S} = \frac{Q_\text{enc}}{\epsilon_r \epsilon_0}
+\]
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec10-03.png}
+     \caption{Typical Values for $\epsilon_r$}
+\end{figure}
+
+
+

@@ -1,0 +1,102 @@
+% !TeX root = main.tex
+\lecture{2}{Thu 22 Jan 2026 15:00}{Mechanics II: Continuous Mass and Angular Momentum}
+
+\section{Updated CoM for Continuous Mass}
+We can update:
+\[
+    M = \sum_i m_i \qquad \to \qquad M = \int dm = \int \rho(\vec{r}) dV
+\]
+
+Hence our centre of mass becomes:
+\[
+    M \vec{R} = \sum_i \vec{r_i} m_i \qquad \to \qquad M \vec{R} = \int \vec{r} dm = \int \vec{r} \rho(\vec{r}) dV 
+\]
+
+This point is effectively the point at which you could hold an object and it would balance with no motion. It does not always lie within the object itself however, i.e. for a doughnut, the centre of mass lies within the middle of the hole.
+
+We can also generally use symmetry, as the CoM lies on the axes (or planes) of symmetry. For example, for a homogeneous sphere, the CoM lies at the centre of the sphere, as infinitely many planes of symmetry intersect at this point.
+
+\section{Example: Inhomogeneous Rod}
+Consider a cylindrical rod of length $L$ and cross-sectional area $A$ with a density that varies across its length as $\rho(x) = Cx^2$. The axis of the rod is along the $x$-axis, with faces at $x = 0, x=L$
+
+We immediately know that the CoM lies on the $x$-axis by symmetry.
+
+Our mass elements are infinitesimal slices from $x$ to $x + dx$. We have a volume element:
+\[
+    dv = A dx
+\]
+and hence a mass element:
+\[
+    dm = \rho dv = CAx^2 dx
+\]
+
+Therefore:
+\[
+    M = \int_0^L ACx^2 dx = AC \left[\frac{x^3}{x}\right]_0^L = \frac{ACL^3}{3}
+\]
+
+And to get the CoM:
+\[
+    M R = \int_0^L x dm = \int_0^L x CAx^2 dx = AC \int_0^L x^3 dx = AC \left[\frac{x^4}{4}\right]_0^L = \frac{ACL^4}{4}
+\]
+Hence the centre of mass is:
+\[
+    R = \frac{M R}{M} = \frac{ACL^4/4}{ACL^3/3} = \frac{3L}{4}
+\]
+
+\section{Example: Homogeneous Hemisphere}
+Consider a homogeneous hemisphere of radius $R$ with its flat face on the $xy$-plane and the centre point of the hypothetical full sphere at the origin.
+
+By symmetry, the CoM lies on the $z$-axis. We can take a mass element as a thin disc of radius $r$ and thickness $dz$ at height $z$. The mass of this disc is:
+\[
+    dm = \rho \pi r^2 dz
+\]
+However we need to know $r$ as a function of $z$ to be able to integrate. By Pythag. we have:
+\[
+    r^2 + z^2 = R^2 \qquad \to \qquad r^2 = R^2 - z^2
+\]
+Hence:
+\[
+    dm = \rho \pi (R^2 - z^2) dz
+\]
+\[
+    \implies M = \int dm = \int_0^R \rho \pi (R^2 - z^2) dz = \rho \pi \left[R^2 z - \frac{z^3}{3}\right]_0^R = \frac{2}{3} \rho \pi R^3
+\]
+
+We now have:
+\[
+    M z_\text{COM} = \int_0^R z dm = \int_0^R z \rho \pi (R^2 - z^2) dz = \rho \pi \left[\frac{R^2 z^2}{2} - \frac{z^4}{4}\right]_0^R = \frac{1}{4} \rho \pi R^4
+\]
+Hence:
+\[
+    z_\text{COM} = \frac{M z_\text{COM}}{M} = \frac{1/4 \rho \pi R^4}{2/3 \rho \pi R^3} = \frac{3R}{8}
+\]
+
+\section{Angular Momentum}
+Consider an object with momentum $\vec{p}$ moving relative to an origin $O$, at distance $\vec{r}$. This object is defined to have angular momentum relative to the origin of:
+\[
+    \vec{L}(0) = \vec{r} \times \vec{p} = \vec{r} \wedge \vec{p}
+\]
+
+For an extended system, we have:
+\[
+    \vec{L}(0) = \sum_{_i} \vec{r_i} \times \vec{p_i}
+\]
+
+Noting that any applied force will change the angular momentum. This becomes reasonably simple if we assume that the force is applied such that only the magnitude of the momentum changes, preserving the orientation. 
+
+We therefore restrict the rotational motion to be parallel to a plane, i.e. the $xy$-plane. In this case, the axis of rotational motion is parallel to the z-axis.
+
+For example, consider an object rotating in the xy-plane with tangential velocity $v$. The axis of rotation is the z-axis. The object makes varying angle $\theta$ with the x-axis. 
+
+The object makes some $d \theta$, and rotational $dl$. We hence have:
+\[
+    \vec{v} = \frac{d \vec{l}}{dt}
+\]
+
+Or:
+\[
+    v = \frac{dl}{dt} = \frac{rd \theta}{dt} = r \dot{\theta}
+\]
+We define the angular velocity $\omega$ as $\omega = \dot{\theta}$.
+

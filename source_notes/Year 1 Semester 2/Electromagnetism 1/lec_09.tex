@@ -1,0 +1,170 @@
+% !TeX root = main.tex
+\lecture{9}{Mon 16 Feb 2026 11:00}{Electrostatics IX: Capacitance}
+
+\section{Earthing}
+Consider two spheres, one of radius $a$ with no charge and a smaller sphere with radius $b$ and charge $q$.
+
+If we take the two spheres and place them in contact with each other, they will share a potential as some charge from the charged sphere is transferred to the previously uncharged sphere.
+
+This implies that (dropping the $1/4 \pi \epsilon_0$ from both sides):
+\[
+ \frac{q_a}{a} = \frac{q_b}{b}
+\]
+
+And the total charge must be conserved, hence:
+\[
+    q = q_a + q_b
+\]
+\[
+    \frac{q_a}{a} = \frac{q_b}{b}= \frac{q - q_a}{b} \implies (a+b)q_a = aq
+\]
+
+Hence:
+\[
+    q_a = \frac{aq}{a+b} \approx q \text{ for: } a \gg b
+\]
+
+So, under the same $a \gg b$ condition, $q_b \approx 0$. Effectively, touching a smaller charged sphere to a (much) bigger uncharged sphere distributes the whole charge so finely across the whole system that it is effectively zero.
+
+Formally, earthed isolated bodies share their charge with the earth, and in doing so effectively lose that change. The bodies and earth acquire a common potential, called the zero of potential. Even though the earth gains some charge, the potential of the earth does not change because $a$ is so large.
+
+\section{Capacitance}
+Playing a charge $Q$ on a conductor alters the conductor's potential by $V \propto Q$. We define the capacitance $C$ of the conductor by the equation:
+\[
+    \boxed{C = \frac{Q}{V}}
+\]
+
+It has units of Coulombs per Volt, aka the Farad. Anything that can hold a charge has an associated capacitance, not just a capacitor.
+
+For example, an isolated conducting sphere of radius $R$ with charge $Q$ has:
+\[
+    V = \frac{Q}{4 \pi \epsilon_0 R} \implies C = \frac{Q}{V} = 4 \pi \epsilon_0 R
+\]
+Capacitance is an inherent property of the material/physical setup, so shouldn't have $Q$ or $V$ in its expression.
+
+In order to get a capacitance of a single farad, you'd need a sphere of $R = 9 \times 10^9$m, this is more than $1,000$x the that of the earth. Common lab capacitors use picofarads to microfarads.
+
+
+\subsection{Capacitors}
+A capacitor is a system designed to store charge (therefore energy) by separately storing positive and negative charges.
+
+Suppose some negligible charge $\delta q$ between the two conductors, whilst they are at a potential difference $V_q$. The work done here is:
+\[
+    \delta W = \delta q V_q
+\]
+
+We cannot simply integrate this however, as treating $V_q$ as a constant assumes that transferred quantity of charge is negligible and does not impact the overall potential difference. This is not true for non-infinitesimal charges. We cannot therefore say $W = \int_{0}^{Q} V_q \, dq$
+
+We instead rearrange:
+\[
+    q = C V_q \implies dq = C dV_q
+\]
+And substitute for $dq$:
+\[
+    W = C \int_{0}^{V} V_q \, dq = \frac{1}{2}CV^2
+\]
+This gives the total energy stored in a capacitor:
+\[
+    U = \frac{1}{2}CV^2 \qquad \left(= \frac{1}{2}QV = \frac{1}{2}\frac{Q^2}{C}\right)
+\]
+
+\section{Calculating Capacitance}
+The general procedure for determining the capacitance of a system is:
+\begin{enumerate}
+    \item Use Gauss' Law to determine the electric field as a function of Q.
+    \item Integrate to get potential difference.
+    \item Use $C = Q/V$.
+    \item Done!
+\end{enumerate}
+
+\subsection{Parallel Plate Capacitor}
+We ignore edge effects here and assume we can treat them like infinite plates with a perfectly perpendicular and uniform electric field. This approximation holds where the side lengths of the capacitor are sufficiently larger than the distance between them. 
+
+We have two parallel plates, each of area $A$, with separation $d$. By Gauss' law:
+\[
+    E = \frac{\sigma}{\epsilon_0} = \frac{Q}{\epsilon_0 A}
+\]
+
+As this is constant between the plates, the potential difference is simple to calculate:
+\[
+    V = - \int_{d}^{0} \pmb{E} \cdot \, d \pmb{x} = Ed = \frac{qE}{\epsilon_0 A}
+\]
+We integrate against the field to ensure a positively signed answer, but given we only care about a magnitude we could simply do the opposite and drop the negative sign (noting why in an exam).
+
+Therefore:
+\[
+    \boxed{C = \frac{Q}{V} = \frac{\epsilon_0 A}{d}}
+\]
+
+\subsection{Long Cylindrical Capacitor}
+An example is a co-axial cable, with an inner and an outer conductor, separated radially with a dielectric (next lecture) between them:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec08-05.png}
+     \caption{}
+\end{figure}
+
+Here, we consider some length of the cable $L$. The inner core has charge per unit length $+\lambda$ and the outer core has $- \lambda$. We want to think about the capacitance per unit length, as in a data transmission cable this is related to the data loss.
+
+We assume the cable is infinite to disregard length effects. The inner core has radius $r_a$ and the outer conductor radius $r_b$.
+
+We use a cylindrical Gaussian surface of length $l$ and radius $R$. The RHS of Gauss's law gives:
+\[
+    \frac{Q_\text{enc}}{\epsilon_0} = \frac{\lambda l}{\epsilon_0}
+\]
+
+And the electric field is constant and radial ($\perp$ to the Gauss surface) so the LHS is:
+\[
+    \int \pmb{E} \cdot d \pmb{s} = E 2 \pi l
+\]
+
+Hence:
+\[
+    E = \frac{\lambda}{\epsilon_0 2 \pi r}
+\]
+\[
+    \pmb{E} = \frac{\lambda}{\epsilon_0 2 \pi r} \pmb{\hat{r}}
+\]
+
+Therefore the potential difference is:
+\[
+    V = - \int_{r_b}^{r_a} \pmb{E} \cdot \, d \pmb{r} = - \frac{\lambda}{2 \pi \epsilon_0} \left[\ln r\right]_{r_b}^{r_a}
+\]
+
+And swapping the bounds to clear the negative and get magnitude only:
+\[
+    V = \frac{\lambda}{2 \pi \epsilon_0} \ln \left(\frac{r_b}{r_a}\right)
+\]
+
+Hence capacitance per unit length is:
+\[
+    C = \frac{Q}{V} = \frac{\lambda}{V} = \frac{2 \pi \epsilon_0}{\ln(r_b / r_a)}
+\]
+
+
+\subsection{Concentric Spheres}
+A spherical capacitor has two spherical conductors, an inner sphere with radius $r_a$ and surface charge density $+q$ and an outer sphere with $-q$ and $r_b$. We place a spherical Gaussian surface concentric to these spheres, and between them.
+
+Applying Gauss' law (as previously done for a sphere) we get:
+\[
+    \pmb{E} = \frac{Q}{4 \pi \epsilon_0 r^2} \hat{r}
+\]
+
+Hence potential difference is:
+\[
+    V = - \int_{r_b}^{r_a} \pmb{E} \cdot \, d \pmb{r}
+\]
+\[
+    = - \frac{Q}{4 \pi \epsilon_0} \int_{r_b}^{r_a} \frac{1}{r^2} \, dr = \frac{Q}{4 \pi \epsilon_0} \left(\frac{1}{r_a} - \frac{1}{r_b}\right)
+\]
+\[
+    = \frac{Q}{4 \pi \epsilon_0} \frac{(r_b - r_a)}{r_a r_b}
+\]
+\[
+    \implies \boxed{C = \frac{Q}{V} = \frac{4 \pi \epsilon_0 r_a r_b}{r_b - r_a}}
+\]
+
+Note that the single sphere case defined earlier is effectively just a generalisation of this case where the outer sphere goes off to infinity, i.e. $r_b \to \infty$.
+
+
+

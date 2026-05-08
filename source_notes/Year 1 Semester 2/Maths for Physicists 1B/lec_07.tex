@@ -1,0 +1,179 @@
+% !TeX root = main.tex
+\lecture{7}{Wed 04 Feb 2026 11:00}{Partial Differentiation VII: Statistical Mechanics}
+
+Recap of the last (two) lecture(s):
+\begin{itemize}
+    \item To classify the stationary points of a function with $n$ variables, we form the Hessian matrix $H_{ij} = f_{x_ix_j}$.
+    \item From the top-left corner of this matrix, we form 1x1, 2x2 etc determinants. These are called the leading minors.
+    \begin{itemize}
+        \item If these are all positive, the point is a maximum.
+        \item If they alternate in sign, we have a minimum.
+        \item If anything else, we have a saddle point.
+    \end{itemize}
+    \item To extremise $f(x_1, x_2, \ldots, x_n)$ subject to $p$ constraints $g_i(x_1, x_2, \ldots, x_n) = 0$, we introduce a new function of $n+p$ variables:
+    \[
+        F(x_1, x_2, \ldots, x_n, \lambda_1, \lambda_2, \ldots, \lambda_p) = f(x_1, x_2, \ldots, x_n) + \sum_{i=1}^{p} \lambda_i g_i(x_1, x_2, \ldots, x_p)
+    \]
+    \item We then extremise $F$ wrt all $n+p$ variables. Extremising with respect to $\lambda_i$ enforces the constraint:
+    \[
+        F_{\lambda_i} = g_i(x_1, x_2, \ldots, x_n) = 0  
+    \]
+    \item So the the lambda term ends up dropping out and $F$ and $f$ have the same numerical value at extrema.
+\end{itemize}
+
+\section{Statistical Mechanics}
+Consider a system containing $N$ atoms. Each atom has $p$ energy levels, $\epsilon_1, \epsilon_2, \ldots, \epsilon_p$.
+
+Suppose there are $n_1$ atoms in state $\epsilon_1$, $n_2$ in state $\epsilon_2$, $\ldots$, $n_p$ in state $\epsilon_p$.
+
+This gives us two constraints:
+\begin{itemize}
+    \item The total number of atoms in the system is constant:
+    \[
+        \sum_{i=1}^{p} n_i = N
+    \]
+    \item The total energy $E$ of the system is conserved:
+    \[
+        \sum_{i=1}^{p} n_i \epsilon_i = E
+    \]
+\end{itemize}
+
+The entropy of the system is defined as:
+\[
+    S = k_B \ln W(n_1, n_2, \ldots, n_p)
+\]
+
+Where $W(\dots)$ represents the number of ways to put $n_1$ atoms in state $\epsilon_1$ etc. We want to maximise this function subject to the two constraints. We assume that the atoms are indistinguishable.
+
+The $W$ function is given by the multinomial:
+\[
+    W(n_1, n_2, \ldots, n_p) = \frac{N!}{n_1! n_2! \cdots n_p!}
+\]
+
+As, if all the atoms were in different energy levels, there would be $N!$ ways of doing so. However, the $n_1$ atoms occupying state $\epsilon_1$ can be rearranged freely, with no actual change to the system. We have therefore overcounted by a factor of $n_1!$, so divide this out. Et cetera for each energy level.
+
+From this:
+\[
+    \ln W = \ln N! - \ln n_1! - \ln n_2! - \cdots - \ln n_p!
+\]
+
+And:
+\[
+    \ln n! = \ln 1 + \ln 2 + \cdots + \ln n
+\]
+\[
+    \approx \int_{1}^{n} \ln x \, dx
+\]
+\[
+    = \left[x \ln x - x\right]^n_1 = n \ln n - n
+\]
+Disregarding the lower bound as we assume that $n \gg 1$. This is called Stirling's approximation. We therefore have:
+\[
+    \ln W = \left(N \ln N - N\right) - \sum_{i=1}^{p} (n_1 \ln n_1 - n_1)
+\]
+
+
+We are therefore looking to maximise:
+\[
+    F(\{n_i\}; \lambda_1, \lambda_2) = k_B \ln W + \lambda_1 \left(N - \sum_{i=1}^{p} n_i\right) + \lambda_2 \left(E - \sum_{i=1}^{p} n_i \epsilon_i\right)
+\]
+
+And extremising wrt $n_i$ gives:
+\[
+    \frac{\partial F}{\partial n_i} = -k_B \ln n_1 - \lambda_1 - \lambda_2 \epsilon_i = 0
+\]
+\[
+    n_i = \exp \left(-\frac{\lambda_1 + \lambda_2 \epsilon_i}{k_B}\right)
+\]
+
+Or:
+\[
+    n_i = \frac{1}{z} \exp \left(- \frac{\lambda_2 \epsilon_i}{k_B}\right)
+\]
+
+where $z = \exp(-\lambda_i / k_B)$. The $\lambda_2$ has a physical meaning where $\lambda_2 = 1/T$.
+
+We could also divide $n_1 / N$ to get the probability of finding a given atom in a given state:
+\[
+    p_i = \frac{1}{Z} \exp \left(- \frac{\lambda_2 \epsilon_i}{k_B}\right) \qquad \text{where: } Z = \exp(-\lambda_i / k_B) / N
+\]
+\[
+    \sum_{i}^{} p_i = 1
+\]
+
+The normalisation constant $Z$ is known as the partition function. The formulae for ${p_i}$ gives the Boltzmann distribution.
+
+\section{Statistical Entropy}
+We have:
+\[
+    \frac{S}{k_B} = \ln W = \ln N! - \sum_{i}^{} \ln n_i!
+\]
+\[
+    \approx (N \ln N - N) - \sum_i \left(n_i \ln n_i - n_i\right)
+\]
+\[
+    = (N \ln N - N) - \sum_i \left(n_i \ln n_i\right) + N
+\]
+\[
+    =( N \ln N) - \sum_i \left(n_i \ln n_i\right)
+\]
+\[
+    = \sum_i (n_i) \ln N -  \sum_i \left(n_i \ln n_i\right)
+\]
+\[
+    = \sum_i \left(n_i \ln N - n_i \ln n_i\right)
+\]
+\[
+    = \sum_i \left(n_i \ln \frac{N}{n_i}\right)
+\]
+\[
+    = -\sum_i \left(n_i \ln \frac{n_i}{N}\right)
+\]
+
+And multiplying through by $N/N$, we get:
+\[
+    = - \sum_i \left(\frac{N n_i}{N} \ln \frac{n_i}{N}\right)
+\]
+\[
+    = - N \sum_i \frac{n_i}{N} \ln \frac{n_i}{N}
+\]
+\[
+   {\frac{S}{k_B} = - N \sum_i p_i \ln p_i}
+\]
+
+Hence the entropy per atom in units of $k_B$ is:
+\[
+    \boxed{\frac{S}{N k_B} = - \sum_i p_i \ln p_i}
+\]
+
+his is known as the statistical entropy of the probability distribution $\{p_i\}$.
+
+For a continuous distribution:
+\[
+    \frac{S}{N k_B} = - \int p(x) \ln p(x) dx
+\]
+
+\section{Getting an Actual Value}
+We have (again considering per atom entropy):
+
+\[
+    p_i = \frac{1}{Z} \exp \left(- \frac{\lambda_2 \epsilon_i}{k_B}\right) = \frac{1}{Z} \exp \left(- \frac{\epsilon_i}{k_B T}\right)
+\]
+
+\begin{align*}
+    S &= -k_B \sum_i p_i \ln p_i \\
+      &= -k_B \sum_i p_i \left[ -\ln Z - \frac{\epsilon_i}{k_B T} \right] \\
+      &= k_B \sum_i p_i \ln Z + k_B \sum_i p_i \frac{\epsilon_i}{k_B T} \\
+      &= k_B \ln Z \sum_i p_i + \frac{1}{T} \sum_i p_i \epsilon_i
+\end{align*}
+
+The second sum is just average energy, which is the internal energy $U$.
+\[
+    S = k_B \ln Z + \frac{U}{T} 
+\]
+\[
+    \implies U - TS = k_B T \ln Z = F
+\]
+
+Where ``F'' is called the Helmholtz Free Energy and the equation linking F and the partition function Z is called the bridge equation.
+

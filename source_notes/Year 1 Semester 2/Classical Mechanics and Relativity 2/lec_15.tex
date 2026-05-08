@@ -1,74 +1,189 @@
 % !TeX root = main.tex
-\lecture{IDK}{Tue 24 Mar 2026 11:00}{Special Relativity VII: Kinematics Examples, Doppler and Natural Units}
+\lecture{15}{Thu 12 Mar 2026 15:00}{Special Relativity VI: EM Invariant and CoM Frame}
 
-\section{Example I}
-As viewed in a lab frame, a cosmic ray proton of energy $E_p$ hits a stationary proton. What is the minimim threshold energy of $E_p$ that allows the reaction:
+\section{Energy-Momentum Invariant}
 \[
-    p + p \to p + p + \pi
+    \boxed{E^2 - \vec{p}^2 c^2 = m^2 c^4}
 \]
 
-To take place, given $m_p = 938 \si{MeV / c^2}$ and $m_\pi = 104 \si{MeV / c^2}$?
+In the low energy limit, $p \to c$ and hence $E \to mc^2$. Here, mass energy dominates.
 
-Let the cosmic ray proton be proton one with $E_p, p_p$ and the stationary proton be proton 2 with $m_p$.
-
-We can consider energy and momentum in the lab frame, initially (before the collision):
-
+In the ultra-relativistic limit, $E^2 = p^2 c^2 \to E = pc$. For a photon, $E = hv$ hence:
 \[
-    \left(\Sigma E\right)_\text{initial}^\text{lab} = E_p + M_p c^2 \qquad \text{and} \qquad \left(\Sigma p\right)_\text{initial}^\text{lab} = p_p \tag{1}
+    hv = pc \implies p = \frac{hv}{c} = \frac{h}{\lambda}
 \]
+Which is de Broglie's law.
 
-For a threshold energy, the produced particles have no relative motion (i.e. at rest in the centre of mass frame). This means that all available relativistic energy goes into particle production with no excess.
-
-Hence in the centre of mass frame finally, we have two stationary protons and one stationary pion. This is the lowest energy state we can have in the centre of mass frame, with all these particles still existing.
-
-\[
-    \left(\Sigma E\right)^\text{CMS}_\text{final} = (2 m_p + m_\pi) c^2 \qquad \text{and} \qquad \left(\Sigma p\right)^\text{CMS}_\text{final} = 0 \tag{2}
-\]
-
-We can then apply the energy momentum invariant:
-\[
-    s = \left[\left(\Sigma E\right)^2 - \left(\Sigma p\right)^2\right]_\text{final}^\text{lab} = \left[\left(\Sigma E\right)^2 - \left(\Sigma p\right)^2\right]_\text{CMS}^\text{final} \tag{3}  
-\]
-
-Inserting 1, 2 into 3:
-
-\[
-    \left(E_p + m_p c^2\right)^2 - p_p^2c^2 = \left(2 m_p + m_\pi\right)^2 c^4
-\]
-\[
-    \implies E_p^2 + m_p^2 c^4 + m_p c^2 E_p - p_p^2 c^2 = \left(2 m_p + m_\pi\right)^2 c^4
-\]
-
-For a single particle, $E_p^2 - p_p^2 c^2 = m_p^2 c^4$, hence:
-\[
-    2 m_p^2 c^4 + 2 m_p c^2 E_p = \left(2 m_p + m_\pi\right)^2 c^4
-\]
-\[
-    E_p = \frac{\left(2 m_p + m_\pi\right)^2 c^4 - 2 m_p^2 c^4}{2 m_p c^2}
-\]
-
-And we have known masses $m_p, m_\pi$ hence (noting that the masses are in units energy per speed of light squared, so the $c$s cancel out):
-\[
-    E_p = \frac{\left(2 \times 938 + 104\right)^2-2\times 938^2}{2 \times 938} = 1228 \si{MeV}
-\]
-
-\section{Example II}
-In an LHC experiment, a $B_0$ meson ($b \bar{d}$) with mass $5 \si{GeV / c^2}$ is produced in a lab frame momentum of $50 \si{GeV / c^2}$. The meson has proper decay time $2 \times 10^{-12}$s. How far does the experiment observe the meson fly before decay?
-
-\section{Relativistic Longitudinal Doppler Effect}
-We want to build an analogue for the sonic doppler effect for light. This is especially important in astronomy, i.e. tracking the movement of cosmic spectral lines to determine speeds of distant sources.
-
-We will only considerer the longitudinal effect, i.e. the movement of bodies directly towards or away from an observer in their line of sight. We will not (yet) consider transverse effects in this course.
-
-This comes from two components:
+This quantity is:
 \begin{itemize}
-    \item The standard doppler effect (as for sonic waves).
-    \item Relativistic time dilation.
+    \item Invariant between all inertial frames.
+    \item Conserved before and after a reaction.
+    \item Applicable to a single particle in which point $m$ is the mass of the particle.
+    \item Also applicable to a system of particles. We define a new quantity:
+    \[
+        s = \left(\sum E\right)^2 - \left(\sum \vec{pc}\right)^2
+    \]
 \end{itemize}
 
+\section{Centre of Mass (Momentum) Frame}
+We often want to consider a system of multiple particles. The centre of mass frame (CMS frame) is the frame in which the system has no net momentum. If we have two particles in this system colliding head on, they may have different masses and energies but have equal and opposite momenta. 
 
+The quantity:
+\[
+    s = \left(\sum E\right)^2 - \left(\sum \vec{pc}\right)^2
+\]
+Now reduces to:
+\[
+    \sigma E = \sqrt{s}
+\]
+Where $\sqrt{s}$ is called the centre of mass energy. It is the total energy of all particles when evaluated in the CMS frame. Since it's invariant, it's equal to this same number when evaluated in any frame, before or after the collision.
 
+\section{Example: LHC}
+In the lab frame of the LHC, protons of energy of $7 \si{TeV} = 7 \times 10^{12}\si{eV}$ collide head on.
 
+\subsection{Q1. What is the centre of mass energy $\sqrt{s}$ in this collision?}
+Here, the lab frame and the centre of mass frame turn out as being the same frame. The total energy therefore is simply $14 \times 10^12 \si{eV}$
 
+\subsection{Q2. What is the maximum mass $m_x$ of the new particle $X$ that could be produced in this collision?}
+We are working in the lab frame. Initially we have:
+\[
+    \left(\sum E\right)^\text{lab}_\text{initial} = 14 \si{TeV} \quad , \quad \left(\sum pc\right)^\text{lab}_\text{initial} = 0
+\]
 
+And finally, assuming that all energy is transferred to particle production:
+\[
+    \left(\sum E\right)^\text{lab}_\text{final} = m_x c^2
+\]
+\[
+    \left(\sum pc\right)^\text{lab}_\text{final} = 0
+\]
 
+And by invariance:
+\[
+    14 \si{TeV} = m_x c^2 \implies m_x = \frac{14 \si{TeV}}{c^2}
+\]
+
+\subsection{Q3 Assume we now have a fixed target collider where a moving proton hits a stationary proton in the lab frame. How much energy would this moving proton need to maintain the came CMS frame energy.}
+
+As we now have a fixed target collider the laboratory frame appears different. We want to keep the same $\sqrt{s}$ hence the CMS frame is the same.
+
+In the lab frame, we have a proton moving with some energy and momentum $E_p, \vec{p}_p$ colliding with proton 2 which only has mass energy $m_p$. \emph{What $E_p$ do we require to keep $\sqrt{s} = 14 \si{TeV}$}?
+
+Applying the invariant:
+\[
+    s = \left(\sum E\right)^2 - \left(\sum pc\right)^2
+\]
+
+The lab frame and the CMS frame are no longer the same. Initially in the lab frame we have:
+\[
+    \left(\sum E_\text{initial}^\text{lab}\right) = E_p + m_p c^2 \quad,\quad \left(\sigma pc\right)^\text{lab}_\text{initial} = \vec{p}_p c
+\]
+
+Inserting them into the invariant with the known value:
+\[
+    \left(14 \si{TeV}\right)^2 = (E_p + m_p c^2)^2 - p_p c^2
+\]
+\[
+    \implies 196 \si{TeV^2} = E_p^2 + m_p^2 c^4 + 2 m_pc^2E_p - p_p^2 c^2
+\]
+
+And applying the invariant $E_p^2 - p_p^2 c^2 = m_p^2 c^4$ for the single particle:
+\[
+    \implies 196 \si{TeV^2} = 2 m_p^2 c^4 + 2m_p E_p c^2 = 2 m_p c^2 \left(m_p c^2 + E_p\right)
+\]
+
+As we're in an an ultra-relativistic limit, we neglect the negligibly small mass energy. This gives:
+\[
+    E_p = \frac{196 \si{TeV}^2}{2 m_p c^2}
+\]
+
+This gives:
+\[
+    E_p = 98 \times \frac{\left(10^3 \si{GeV}\right)}{GeV} \approx 100,000 \si{TeV}
+\]
+Which is stupidly larger. This is why a colliding beam collider is generally preferable for high energy cases compared to a fixed-target collider.
+
+\subsection{Q4}
+Suppose the particle $X$ given in Q2 turns out to be real. This particle decays into two components:
+\begin{itemize}
+    \item A new particle Y with mass $10\si{TeV / c^2}$.
+    \item A massless photon.
+\end{itemize}
+
+What is the momentum of the photon in the lab frame? Initially in the lab frame, which is the CMS frame given the equal and opposite momenta, we only have a stationary particle $X$ with $m_x = 14 \si{TeV/c^2}$.
+
+Finally, in the lab(/CMS) frame we have:
+\begin{itemize}
+    \item The photon with $p_\gamma, E_\gamma$.
+    \item Particle Y with $p_y, E_y, m_y = 10 \si{TeV/c^2}$
+\end{itemize}
+
+By the definition of being in the CMS frame, the total momentum must be zero. Therefore, taking magnitudes:
+\[
+    p_Y = p_\gamma = p
+\]
+
+We apply the invariant:
+\[
+    E^2 = p^2 c^2 = m^2 c^4
+\]
+to the photon and the Y-particle. For the photon this gives:
+\[
+    E_\gamma^2 - p_\gamma^2 c^2 = 0 \implies E_\gamma = pc \tag{1}
+\]
+
+Less trivially for the Y-particle, this gives:
+\[
+    E_Y^2 - p_Y^2 c^2 - m_y^2 c^4
+\]
+
+As the two momenta have equal magnitudes:
+\[
+    E_Y^2 - E_\gamma^2 = m_y^2 c^4 \tag{2}
+\]
+
+We can now conserve total energy before and after the decay:
+\[
+    m_x c^2 = E_y + E_\gamma
+\]
+
+And eliminating $E_Y$ gives:
+\[
+    m_xc^2 = (m_xc^2 - E_\gamma) + E_\gamma
+\]
+
+Substituting $E_Y = m_xc^2 - E_\gamma$ into (2):
+\[
+    (m_xc^2 - E_\gamma)^2 - E_\gamma^2 = m_y^2c^4
+\]
+
+Expanding the left hand side:
+\[
+    m_x^2c^4 - 2m_xc^2E_\gamma + E_\gamma^2 - E_\gamma^2 = m_y^2c^4
+\]
+
+The $E_\gamma^2$ terms cancel:
+\[
+    m_x^2c^4 - 2m_xc^2E_\gamma = m_y^2c^4
+\]
+
+Rearranging for $E_\gamma$:
+\[
+    2m_xc^2E_\gamma = m_x^2c^4 - m_y^2c^4 = (m_x^2 - m_y^2)c^4
+\]
+\[
+    E_\gamma = \frac{(m_x^2 - m_y^2)c^4}{2m_xc^2} = \frac{(m_x^2 - m_y^2)c^2}{2m_x}
+\]
+
+Since $E_\gamma = pc$ from (1), we divide both sides by $c$:
+\[
+    \boxed{p = \frac{(m_x^2 - m_y^2)c}{2m_x}}
+\]
+
+Substituting $m_x = 14\,\si{TeV/c^2}$ and $m_y = 10\,\si{TeV/c^2}$:
+\[
+    p = \frac{\left((14)^2 - (10)^2\right)\si{TeV}^2/c^4 \cdot c}{2 \times 14\,\si{TeV}/c^2} = \frac{(196 - 100)}{28}\,\si{TeV}/c = \frac{96}{28}\,\si{TeV}/c
+\]
+\[
+    p = \frac{24}{7}\,\si{TeV}/c \approx 3.43\,\si{TeV}/c
+\]

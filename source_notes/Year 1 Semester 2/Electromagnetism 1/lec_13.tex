@@ -1,0 +1,121 @@
+% !TeX root = main.tex
+\lecture{13}{Mon 02 Mar 2026 11:00}{Magnetism II: Magnetic Force and Dipoles}
+
+Last lecture:
+\begin{itemize}
+    \item Definition of current.
+    \item Current density.
+    \item Magnetic force on a moving charge.
+    \item Lorentz force: $\vec{F} = q \left(\vec{E} + \vec{v} \wedge \vec{B}\right)$
+\end{itemize}
+
+This lecture:
+\begin{itemize}
+    \item Special cases of the magnetic force.
+    \item Force on a current carrying conductor.
+    \item Current loops and magnetic dipoles.
+    \begin{itemize}
+        \item Torque on an electric dipole in a B-field.
+        \item Potential energy of a magnetic dipole in a B-field.
+    \end{itemize}
+\end{itemize}
+
+\section{Direction of B-Field}
+\begin{itemize}
+    \item When a B-field is going into the page, we represent it with crosses $\otimes$.
+    \item When a B-field is coming out of the page, we represent it with dots $\odot$.
+    \item This is like the back/front of a dart, when the dart is going into the page we see the cross of feathers, and when the dart is coming out of the page we see the dot of the tip.
+\end{itemize}
+
+\subsection{$\vec{V} \perp \vec{B}$}
+When the velocity of the charge is perpendicular to the magnetic field, the force is given by:
+\[
+    F = qvB
+\]
+
+This force, perpendicular to both the velocity and the magnetic field,acts as a centripetal force, and hence the charge moves in a circle. We can equate the magnetic force to the general centripetal force for circular motion:
+\[
+    qvB = \frac{mv^2}{r}
+\]
+\[
+    \therefore r = \frac{mv}{qB} = \frac{p}{qB}
+\]
+This gives us the radius of the circular motion, and this holds for relativistic particles too, as a $\gamma$ factor would appear in both the denominator and numerator, and hence cancel out.
+
+This also gives us:
+\[
+    \frac{qB}{m} = \frac{v}{r} = \omega
+\]
+Where $\omega$ is the angular velocity of the circular motion. Hence the frequency is:
+\[
+    f = \frac{\omega}{2 \pi} = \frac{qB}{2 \pi m}
+\]
+
+\subsection{$\vec{v}$ makes an angle $\theta$ with $\vec{B}$}
+When the velocity of the charge makes an angle $\theta$ with the magnetic field, we can resolve the velocity the two components $v \sin \theta$ and $v \cos \theta$. The $v \sin \theta$ component contributes to the magnetic force, while the other component moves the charge along the magnetic field.
+
+This gives a helical path:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec13-02.png}
+     \caption{}
+\end{figure}
+
+Along the x-direction, the motion is clockwise for a negative charge and anticlockwise for positive.
+
+The ``cyclotron angular frequency'' is given by:
+\[
+    \omega = \frac{qB}{m}
+\]
+
+\section{Force on a Current Carrying Conductor}
+We have established that the magnetic force on a single charge is:
+\[
+    \vec{F} = q \vec{v} \wedge \vec{B}
+\]
+
+If the conductor has cross sectional area $A$, length $l$ and $N$ charge carriers, give by:
+\[
+    N = n A l
+\]
+Where $n$ is the number of charge carriers per unit volume. The total force is:
+\[
+    F = Nq \vec{v} \wedge \vec{B} = -n A l q \vec{v} \wedge \vec{B}
+\]
+
+We've defined current as $I = nqAv$, hence we can write the force as:
+\[
+    F = l \vec{I}  \wedge \vec{B}
+\]
+
+Conventionally, however, we write the length as a vector $\vec{l}$, which points in the direction of the current, and has magnitude equal to the length of the conductor. We therefore consider the magnitude of current:
+\[
+    F = I \vec{l} \wedge \vec{B}
+\]
+
+For currents (and only currents) we can use the left hand rule ``FBI''. The thumb points in the direction of the force, the index finger points in the direction of the magnetic field, and the middle finger points in the direction of the current.
+
+\section{Force on a Non-Straight Wire}
+If the conductor isn't straight, we consider individual length elements of the conductor:
+\[
+    \delta \vec{F} = I \delta \vec{l} \wedge \vec{B}
+\]
+The total force is given by integrating:
+\[
+    \vec{F} = I \int_a^b d \vec{l} \wedge \vec{B}
+\]
+
+\section{Current Loops}
+A current loop is known as a magnetic dipole. The magnetude of the magnetic dipole moment is given by:
+\[
+    \mu = I \times A
+\]
+Where $A$ is the area of the loop. To get a direction, we express the area as a vector $\vec{A} = A \vec{n}$, where $\vec{n}$ is a unit vector perpendicular to the plane of the loop. The direction of $\vec{n}$ is given by the right hand rule: if the fingers of the right hand curl in the direction of the current, then the thumb points in $\vec{n}$.
+
+Hence:
+\[
+    \vec{\mu} = I \vec{A}
+\]
+With units of $\si{\ampere \metre^2}$. A current loop produces a magnetic field similar to that of a bar magnetic. 
+
+If the current loop is in a B-field, there is no net torque or force. 

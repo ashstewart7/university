@@ -1,0 +1,87 @@
+% !TeX root = main.tex
+\lecture{1}{Tue 20 Jan 2026 11:00}{Mechanics I: Rigid Bodies}
+
+\begin{tcolorbox}
+    \textbf{Recommended Course Text}
+
+    \vspace{2mm}
+
+    Introduction to Classical Mechanics, Oxford University Press
+\end{tcolorbox}
+
+\section{Rotational Mechanics}
+We've been introduced to a number of equations for translational mechanics such as:
+\[
+    F = ma
+\]
+\[
+    W = \int \vec{F} \cdot d\vec{r}
+\]
+\[
+    K = \frac{1}{2}mv^2
+\]
+
+In simple cases that we'll deal with on this course, these all have equivalent formulae for rotational mechanics. Instead of position $r$, we have angle $\theta$. Instead of velocity $v$, we have angular velocity $\omega$. Instead of acceleration $a$, we have angular acceleration $\alpha$. Instead of mass $m$, we have moment of inertia $I$. Instead of force $F$, we have torque $\tau$. Etc\dots
+
+The main goal is to discover alternative formulae for rotational quantities, and to understand how they relate to the translational ones.
+
+\section{Centre of Mass}
+We can consider two possible cases:
+\begin{enumerate}
+    \item A single point like object, such as a particle.
+    \item An extended object, such as a rod or a disc, made up of many particles.
+\end{enumerate}
+
+Given a system of $i$ discrete masses, $m_i$, located at positions $\vec{r}_i$, the centre of mass $\vec{R}$ is given by:
+\[
+    M \vec{R} = \sum_i m_i \vec{r}_i    
+\]  
+Where $M = \sum_i m_i$ is the total mass. For every component mass $m_i$, we consider two types of net forces acting upon it:
+\begin{itemize}
+    \item Internal forces, $\vec{f}_i^\text{int}$.
+    \item External forces, $\vec{f}_i^\text{ext}$.
+\end{itemize}
+
+The internal forces are those exerted by other masses in the system, and the external forces are those exerted by objects outside the system. Hence:
+\[
+\vec{f}_i^\text{int} = \sum_{j \neq i} \vec{f}_{ij}
+\]
+
+We want to consider how an object moves, and if we assume the object has a constant mass and is rigid (does not deform) then we can consider the motion of the centre of mass.
+\[
+M \ddot{\vec{R}} = \sum_i m_i \ddot{\vec{r}}_i = \sum_i m_i \vec{a}_i = \sum_i \left(\vec{f}_i^\text{int} + \vec{f}_i^\text{ext}\right)
+\]
+
+\[
+= \sum_i \left( \sum_{j \neq i} \vec{f}_{ij} + \vec{f}_i^\text{ext} \right)
+\]
+
+\[
+= \sum_i \sum_{j \neq i} \vec{f}_{ij} + \sum_i \vec{f}_i^\text{ext}
+\]
+
+However, if one internal mass exerts a force on another, then the second mass exerts an equal and opposite force on the first. Hence, the internal forces all nicely cancel out:
+\[
+\sum_i \sum_{j \neq i} \vec{f}_{ij} = 0
+\]
+
+\[
+M \vec{\ddot{R}} = \sum_i \vec{f}_i^\text{ext} = \vec{F}^\text{ext}
+\]
+This is the analogue of Newton's 2nd Law but for a non-point-like object. For a rigid body, the centre of mass moves as if the entirety of the object's mass were concentrated at that point and all external forces were applied at that point.
+
+For a rigid body, we can break down the motion into two components:
+\begin{itemize}
+    \item Translational motion of the centre of mass.
+    \item Rotational motion about the centre of mass (in the centre of mass frame)
+\end{itemize}
+
+\section{Continuous Objects}
+However, many extended objects can be thought of as having a continuous distribution of mass, rather than being made up of finite discrete masses. 
+
+We define the density $\rho(\vec{r})$, such that $\rho(\vec{r}) dV$ is the mass contained in an infinitesimal volume element $dV$ around the point $\vec{r}$. While a point is massless, a small volume can contain a mass, albeit a tiny mass element. We can therefore get the total mass by integrating across all of these mass elements (effectively, we just swap sums for integrals).
+
+Note that:
+\[
+    dV = dx \, dy \, dz \equiv d^3 \vec{r}
+\]

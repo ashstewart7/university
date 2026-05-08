@@ -1,0 +1,310 @@
+% !TeX root = main.tex
+\lecture{11}{Mon 23 Feb 2026 11:00}{Electrostatics XI: Revision}
+
+\section{Example I}
+Two point charges $+Q$ and $-Q$ are at $(x, y)$ coordinates $(-2a, 0)$ and $2a, 0$ respectively. 
+
+What is the potential at $(2a, 3a)$? We work out the contributions in potential from each charge and sum them.
+
+For the positive charge:
+\[
+    V = \frac{Q}{4 \pi \epsilon_0 \sqrt{(3a)^2 + (4a)^2}} = \frac{Q}{4 \pi \epsilon_0 5a}
+\]
+
+And the negative charge:
+\[
+    V = -\frac{Q}{4 \pi \epsilon_0 3a}
+\]
+
+Hence the total:
+\[
+    V_T = \frac{Q}{4 \pi \epsilon_0 a} \left[\frac{1}{5} - \frac{1}{3}\right]
+\]
+\[
+    = - \frac{Q}{4 \pi \epsilon_0 a} \frac{2}{15}
+\]
+
+What is the work done to move the charge from $(-2a, 3a)$ to $(-2a, -3a)$?
+
+\[
+    W = q \Delta V
+\]
+
+Where the initial potential is:
+\[
+    V(-2a, 3a) = \frac{Q}{4 \pi \epsilon_0 (3a)} - \frac{Q}{4 \pi \epsilon_0 (5a)}
+\]
+\[
+    = \frac{Q}{4 \pi \epsilon_0 a} \frac{2}{15}
+\]
+
+And the final potential is:
+\[
+    V(-2a, -3a) = \frac{Q}{4 \pi \epsilon_0 (5a)} - \frac{Q}{4 \pi \epsilon_0 (3a)}
+\]
+\[
+    = - \frac{Q}{4 \pi \epsilon_0 a} \frac{2}{15}
+\]
+
+Hence the work is given by:
+\[
+    W = q \Delta V = q \left( V(-2a, 3a) - V(-2a, -3a) \right)
+\]
+\[
+    = q \left( \frac{Q}{4 \pi \epsilon_0 a} \frac{2}{15} - \left(- \frac{Q}{4 \pi \epsilon_0 a} \frac{2}{15} \right) \right)
+\]
+\[
+    = \frac{4qQ}{15 \cdot 4 \pi \epsilon_0 a}
+\]
+\[
+    = \frac{qQ}{15 \pi \epsilon_0 a}
+\]
+
+Since we're going from a higher potential to a lower potential, the work done is positive, as expected. This corresponds to work being done \emph{by} the electric field.
+
+\section{Example II}
+An infinitely long hollow cylinder has internal radius $R_1$ and external radius $R_2$. For $R_1 < r < R_2$, the cylinder has charge density $\rho(r) =\rho_0 r$, and for $r < R_1$ and $r > R_2$, $\rho(r) = 0$.
+
+\begin{enumerate}
+    \item Show that the total charge $Q$ per unit length of the cylinder is:
+\[
+    Q = \frac{2}{3} \pi \rho_0 \left(R_2^3 - R_1^3\right)
+\]
+    \item Calculate the electric field at radius $r$ for:
+    \begin{enumerate}
+        \item $r > R_2$
+        \item $R_1 < R < R_2$
+    \end{enumerate}
+    Expressing in terms of $r$ and $\rho_0$.
+
+    Sketch a graph to show how the field varies with $r$.
+    
+    \item Use the previous result to derive an expression for $V(r)$ for $r < R_2$
+\end{enumerate}
+
+\textbf{Answer 1}
+
+Consider a cylindrical shell at radius $r$ and thickness $\delta r$. Because the shell has infinitesimal thickness, we assume that charge density is constant throughout.
+\[
+    \delta Q = \rho_0 r \times 2 \pi r dr \times L
+\]
+And at unit length $L = 1$
+\[
+    \delta Q = \rho_0 r \times 2 \pi r dr
+\]
+
+Hence we can integrate for the total charge:
+\[
+    Q = \int_{R_1}^{R_2} \rho_0 2 \pi r^2 \, dr
+\]
+\[
+    = 2 \pi \rho_0 \left(\frac{R_2^3}{3} - \frac{R_1^3}{3}\right)
+\]
+
+Hence:
+\[
+    Q = \frac{2}{3} \pi \rho_0 \left(R_2^3 - R_1^3\right)
+\]
+
+\textbf{Answer 2}
+
+We use a cylindrical Gaussian surface of radius $r$. Ignoring edge effects, the electric field is constant on the surface and directed radially outwards. Hence $\vec{E}$ and $d \vec{S}$ are parallel, and we can write:
+\[
+    \int_S \vec{E} \cdot d \vec{S} = \frac{Q_\text{enc}}{\epsilon_0}
+\]
+\[
+    ES = \frac{Q_\text{enc}}{\epsilon_0}
+\]
+
+Initially taking it outside the cylinder, $r > R_2$:
+\[
+    \text{LHS} = 2 \pi r L E
+\]
+\[
+    \text{RHS} =\frac{1}{\epsilon_0} \frac{2}{3} \pi \rho_0 \left(R_2^3 - R_1^3\right)
+\]
+\[
+\implies E = \frac{\rho_0}{3 \epsilon_0} \frac{R_2^3 - R_1^3}{r} \text{ radially}
+\]
+
+For $R_1 < r < R_2$:
+\[
+    \text{LHS} = 2 \pi r L E
+\]
+
+The RHS contains a smaller volume of charge, so we integrate up to $r$ instead of $R_2$:
+\[
+    \text{RHS} = \frac{1}{\epsilon_0} \int_{R_1}^r \rho_0 2 \pi r^2 dr
+\]
+\[
+    = \frac{2 \pi \rho_0 L}{3 \epsilon_0} \left(r^3 - R_1^3\right)
+\]
+
+Hence:
+\[
+    2 \pi r L E = \frac{2 \pi \rho_0 L}{3 \epsilon_0} \left(r^3 - R_1^3\right)
+\]
+\[
+    E = \frac{\rho_0}{3 \epsilon_0} \frac{r^3 - R_1^3}{r} = \frac{\rho_0}{3 \epsilon_0} \left(r^2 - \frac{R_1^3}{r}\right) \text{ radially}  
+\]
+
+To sketch, we get:
+\begin{itemize}
+    \item No enclosed charge, hence no field for $r < R_1$.
+    \item Cubic growth from $R_1 < r < R_2$.
+    \item $1/r$ decat $r > R_2$.
+\end{itemize}
+
+\textbf{Answer 3}
+
+For $r > R_2$, we have determined:
+\[
+    E = \frac{\rho_0}{3 \epsilon_0} \frac{R_2^3 - R_1^3}{r}
+\]
+
+So:
+\[
+    V = - \frac{\rho_0}{3 \epsilon_0} (R_2^3 - R_1^3) \int \frac{1}{r} dr
+\]
+\[
+    = - \frac{\rho_0}{3 \epsilon_0} (R^3_2 - R^3_1) \ln r + c
+\]
+
+As this doesn't tend to zero as $r \to \infty$, we cannot determine the constant $c$. We would need a reference point at some finite $r$ to determine $c$, but we don't have that information, so we leave it as is.
+
+\section{Example III}
+A wire is bent into a semicircle of radius $R$. It has uniform charge density $+ \lambda$ per unit length. What is the magnitude and direction of the electric field at the centre of the semicircle?
+
+Because it's not symmetric, we can't use Gauss's law and need to use the integration method. We take a small arc length of the wire $\delta \theta$ subtending a charge $\delta q$. This creates a field at $\delta \theta$ from the horizontal. For each horizontal component in one direction, there is an equal and opposite component in the opposite direction, so the horizontal components cancel out. Hence by symmetry the resultant direction is the negative vertical and we can only consider magnitude.
+
+\[
+    \delta E_y = \frac{\delta Q}{4 \pi \epsilon_0 R^2} = \frac{\lambda \delta L}{4 \pi \epsilon_0 R^2}
+\]
+
+And as the subtended arc length is $\delta L = R \delta \theta$,
+\[
+    \delta E = \frac{\lambda R \delta \theta}{4 \pi \epsilon_0 R^2}
+\]
+\[
+    \delta E = \frac{\lambda \delta \theta}{4 \pi \epsilon_0 R}
+\]
+
+\[
+    \delta E_y = \delta E \sin \theta
+\]
+\[
+    \delta E_y = \frac{lambda}{4 \pi \epsilon_0 R} \sin \theta \delta \theta
+\]
+
+And integrating across the semicircle:
+\[
+    E_y = \int_{0}^{\pi} \frac{\lambda}{4 \pi \epsilon_0 R} \sin \theta \, d \theta
+\]
+\[
+    = \frac{\lambda}{4 \pi \epsilon_0 R} \int_0^\pi \sin \theta \, d \theta
+\]
+\[
+    = \frac{\lambda}{4 \pi \epsilon_0 R} \left[ -\cos \theta \right]_0^\pi
+\]
+\[
+    = \frac{\lambda}{4 \pi \epsilon_0 R} \left( -\cos \pi + \cos 0 \right)
+\]
+\[
+    = \frac{\lambda}{4 \pi \epsilon_0 R} \left( 1 + 1 \right)
+\]
+\[
+    = \frac{\lambda}{2 \pi \epsilon_0 R}
+\]
+
+And the direction is vertically downward (negative y-direction).
+
+\[
+    \vec{E} = \frac{- \lambda}{2 \pi \epsilon_0 R} \hat{y}
+\]
+
+\section{Example IV}
+A ring shaped conductor of radius $a$ carries a total charge $Q$ uniformly distributed around it. The ring is in the $(y, z)$ plane, centred on the origin.
+
+\begin{enumerate}
+    \item Find the potential at a point $P$ on the ring axis at a distance $x$ from the centre of the ring.
+    \item Hence show that the only non-zero component of the E-field at P is along the ring axis and is given by:
+    \[
+        E_x = \frac{Qx}{4 \pi \epsilon_0 (a^2 + x^2)^{3/2}}
+    \]
+    \item If an electron is placed at the centre of the ring and is displaced a small distance $x$ where $x \ll a$. Show that the electron oscillates with a frequency $f$.
+    
+\end{enumerate}
+
+\textbf{Answer 1}
+
+Let $r = \sqrt{a^2 + x^2}$.
+
+\[
+    V = \frac{1}{4 \pi \epsilon_0 r^2} \oint dQ
+\]
+\[
+    = \frac{1}{4 \pi \epsilon_0 r^2} Q
+\]
+\[
+    = \frac{Q}{4 \pi \epsilon_0 \sqrt{a^2 + x^2}}
+\]
+
+\textbf{Answer 2}
+Using $E = - \nabla V$:
+\[
+    \vec{E} = - \nabla V = - \frac{\partial V}{\partial x} \hat{x} - \frac{\partial V}{\partial y} \hat{y} - \frac{\partial V}{\partial z} \hat{z}
+\]
+\[
+    \frac{\partial V}{\partial y} = \frac{\partial V}{\partial z} = 0
+\]
+Hence there is no field in the $y$ and $z$ directions, and the only non-zero component is along the $x$-axis. $E_y = E_z = 0$.
+
+So:
+\[
+    \vec{E} = - \frac{\partial}{\partial x} \left(\frac{Q}{4 \pi \epsilon_0 \sqrt{a^2 + x^2}}\right) \hat{x}
+\]
+\[
+    \vec{E} = \frac{Q}{4 \pi \epsilon_0} \left(- \frac{1}{2} \times 2x (a^2 + x^2)^{-3/2}\right)
+\]
+\[
+    \vec{E} = \frac{Qx}{4 \pi \epsilon_0 (a^2 + x^2)^{3/2}} \hat{x}
+\]
+
+\textbf{Answer 3}
+
+We can rewrite:
+\[
+    E = \frac{Q}{4 \pi \epsilon_0} \frac{x}{a^3 \left(1 + \frac{x^2}{a^2} \right)^{3/2}}
+\]
+
+For $x \ll a$, we can approximate \footnote{Note that if the $x$ term wasn't present in the numerator, we'd have to do a first-order binomial expansion, but as $x$ is present, we can just approximate the denominator to $a^3$.}:
+\[
+    E \approx \frac{Qx}{4 \pi \epsilon_0 a^3}
+\]
+
+And the force is:
+\[
+    \vec{F} = -e \vec{E} = \frac{-e Qx}{4 \pi \epsilon_0 a^3} \hat{x}
+\]
+
+Using $F = ma$:
+\[
+    m \frac{d^2 x}{dt^2} = \frac{-e Qx}{4 \pi \epsilon_0 a^3}
+\]
+\[    \frac{d^2 x}{dt^2} + \frac{e Q}{4 \pi \epsilon_0 m a^3} x = 0
+\]
+This is the equation of a simple harmonic oscillator:
+\[
+    x(t) = x_0 \cos \omega t
+\]
+Where:
+\[    \omega^2 = \frac{e Q}{4 \pi \epsilon_0 m a^3}
+\]
+\[
+    \omega = \sqrt{\frac{e Q}{4 \pi \epsilon_0 m a^3}}
+\]
+
+And finally $\omega = 2 \pi f$:
+\[
+    f = \frac{1}{2 \pi} \sqrt{\frac{e Q}{4 \pi \epsilon_0 m a^3}}
+\]

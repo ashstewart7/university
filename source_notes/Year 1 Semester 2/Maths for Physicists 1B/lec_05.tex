@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{5}{Thu 29 Jan 2026 09:00}{Partial Differentiation V: 3D Stationary Points and Lagrange Multipliers}
+\lecture{5}{Thu 29 Jan 2026 09:00}{Partial Differentiation V: 3D Stationary Points}
 
 \section{2D Recap}
 In 2D, a stationary point of a function $f(x)$ occurs at $x = a$ where $f(x)$ is neither increasing or decreasing such that $f^\prime(a) = 0$.
@@ -177,28 +177,3 @@ And for a maximum:
 \end{itemize}
 
 More generally, for a minimum we need these matrices, called the leading minors of the Hessian, to be positive and for a maximum we need them to alternate in sign.
-
-\section{Lagrange Multipliers}
-Suppose we wanted to minimise a function $f(x, y) = x^2 + y^2$ subject to a constraint, i.e. saying $x + y = 1$ (and therefore excluding the $(0, 0)$ trivial case).
-
-While we could do this by writing $y = 1-x$, substituting and minimising solely in terms of $x$, there is a more sophisticated method that becomes useful in more complex cases where the constraint is not invertable.
-
-We consider the function:
-\[
-    F(x, y, \lambda) = x^2 + y^2 + \lambda(x + y - 1)
-\]
-
-And minimise with respect to all three variables. When this happens, $F(x, y,\lambda) = f(x, y)$ at the minimised point.
-
-Generally, to find the extrema of $f(x_1, x_2, \ldots, x_n)$ subject to $p$ constraints $g_i(x_1, x_2, \ldots, x_n) = 0$, where $p<n$, we introduce a new function of $n+p$ variables:
-
-\[
-    F(x_1, x_2, \ldots, x_n, \lambda_1, \lambda_2, \ldots, \lambda_p) = f(x_1, x_2, \ldots, x_n) + \sum_{i=1}^{p} \lambda_i g_i(x_1, x_2, \ldots, x_p)
-\]
-
-We then extremise $F$ wrt all $n+p$ variables. Extremising with respect to $\lambda_i$ enforces the constraint:
-\[
-    F_{\lambda_i} = g_i(x_1, x_2, \ldots, x_n) = 0
-\]
-
-So the the lambda term ends up dropping out and $F$ and $f$ have the same numerical value at extrema.

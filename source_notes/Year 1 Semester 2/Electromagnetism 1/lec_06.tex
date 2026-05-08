@@ -1,0 +1,83 @@
+% !TeX root = main.tex
+\lecture{6}{Thu 05 Feb 2026 11:00}{Electrostatics VI: Electric Potential Examples}
+
+\section{Potential from Two Charges}
+Consider two charges aligned on the y-axis:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec06-01.png}
+     \caption{}
+\end{figure}
+
+What is the Potential and E-field at some point $P$, and what is the work done moving a charge from horizontal distance $x$ to $2x$?
+
+Let the distance between the charges and $P$ be $r = \sqrt{l^2 + x^2}$. To get the potential at $P$ we can sum the two potentials from $Q_1$ and $Q_2$:
+\[
+    V = \frac{Q}{4 \pi \epsilon_0 r} + \frac{Q}{4 \pi \epsilon_0 r} = \frac{Q}{2 \pi \epsilon_0 r}
+\]
+
+However, the question didn't define $r$ so we need to put it in terms of $x$ and $l$ for a final answer:
+\[
+    V = \frac{Q}{2 \pi \epsilon_0} \frac{1}{\sqrt{l^2 + r^2}}
+\]
+
+As we have $V$, we can get $\pmb{E}$:
+\[
+    \pmb{E} = - \nabla V = - \frac{\partial V}{\partial x} \hat{x} - \frac{\partial V}{\partial y} \hat{y} - \frac{\partial V}{\partial z} \hat{z}
+\]
+
+Since our expression for potential is only in terms of $x$ (and by symmetry):
+\[
+    \frac{\partial V}{\partial y} = \frac{\partial V}{\partial z} = 0
+\]
+
+Hence:
+\[
+    \pmb{E} = -\frac{\partial V}{\partial x} \pmb{\hat{x}}
+\]
+\[
+    = - \frac{Q}{2 \pi \epsilon 0} \left(- \frac{1}{2} 2x \left[l^2 + x^2\right]^{-3/2}\right) \hat{\pmb{x}}
+\]
+\[
+    \pmb{E} = \frac{Q}{2 \pi \epsilon_0} \frac{x}{\left(l^2 + x^2\right)^{3/2}} \hat{\pmb{x}}
+\]
+
+And for work done by the E-field moving charge $q$ from $x \to 2x$, the work done is the change in potential energy.
+
+\[
+    \Delta U = q \Delta V = q \left(U(2x) - U(x)\right)
+\]
+\[
+    \Delta V = \frac{Q}{2 \pi \epsilon_0} \left\{\frac{1}{\left(l^2 + 4x^2\right)^{1/2}} - \frac{1}{\left(l^2 + x^2\right)^{1/2}}\right\}
+\]
+\[
+    \implies \Delta W = -q \Delta V = \frac{Qq}{2 \pi \epsilon_0} \left\{\frac{1}{\left(l^2 + x^2\right)^{1/2}} - \frac{1}{\left(l^2 + x^2\right)^{1/2}}\right\}
+\]
+Note that the negative sign arises because the work is being done by the E-field. If the work was being done on the E-field, the sign would swap.
+
+\section{Infinite Charged Line}
+Consider an infinite line of charge with charge per unit length $\lambda$.
+
+From Gauss' law, we have:
+\[
+    \pmb{E} = \frac{\lambda}{2 \pi \epsilon_0 r} \hat{\pmb{r}}
+\]
+
+\[
+    V = - \int \pmb{E} \cdot d \pmb{r} = \frac{-\lambda}{2 \pi \epsilon_0} \int \frac{dr}{r}
+\]
+\[
+    - \frac{\lambda}{2 \pi \epsilon_0} \ln(r) + c
+\]
+
+This is a bit problematic, as $V \not\to 0$ as $r \to \infty$\dots, we leave it in this form. To get around this, we take some finite reference point which we define to have zero potential and normalise to that. The divergence doesn't break anything, because while it's non-physical, the context of an infinite wire is also non-physical.
+
+We can however consider potential differences. Consider two points, $A$ and $B$.
+\[
+    \Delta V = V_B - V_A = \int_{a}^{b} \frac{\lambda}{2 \pi \epsilon_0} \, \frac{dr}{r}
+\]
+\[
+    = - \frac{\lambda}{2 \pi \epsilon_0} \ln \frac{a}{b}
+\]
+
+If we wanted to normalise, we'd take $b$ as the finite reference point where potential is zero.

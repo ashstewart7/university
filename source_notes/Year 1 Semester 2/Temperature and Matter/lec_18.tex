@@ -1,4 +1,229 @@
 % !TeX root = main.tex
-\lecture{18}{Thu 19 Mar 2026 13:00}{Statistical Physics V}
+\lecture{18}{Thu 19 Mar 2026 13:00}{Statistical Physics V: Maxwell-Boltzmann Distribution}
 
 Recap from last lecture:
+\begin{itemize}
+    \item We derived:
+    \[
+        \Pr(v) = g(v) \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} \exp\left(- \frac{mv^2}{2 k_b T}\right)
+    \]
+
+    \item Where the degeneracy is given by the density of states:
+    \[
+        g(v) = 4 \pi v^2
+    \]
+
+    \item Giving the full Maxwell-Boltzmann distribution:
+    
+    
+\end{itemize}
+
+\section{Using Maxwell-Boltzmann}
+What is the probability of finding a particle with speed in excess of 400m/s?
+
+\[
+    \Pr(v > 400) = \int_{400}^{\infty} \Pr(v) \, dv
+\]
+
+Using this distribution, what is the probability of finding a particle in excess of the speed of light?
+
+\[
+    \Pr(v > c) = \int_{c}^{\infty} \Pr(v) \, dv = \text{non zero}
+\]
+
+Which is non-physical. Luckily, by the time we get close to $c$, the exponential term becomes so so small that the probability is effectively infinitesimal.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/lec18-01.png}
+     \caption{Maxwell-Boltzmann Distribution for $T = 10$K. Note that the value is approaching zero for $v \approx 1000$, let alone $c$.}
+\end{figure}
+
+As the temperature increases, the peak decreases in amplitude and shifts towards higher energy states:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= \textwidth]{figures/lec18-02.png}
+     \caption{}
+\end{figure}
+
+Effectively, the probability of occupying higher energy states increases with increasing temperature. What about changing tem
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec18-03.png}
+     \caption{}
+\end{figure}
+
+This has the opposite effect, which comes from the ratio in the Boltzmann factor. 
+
+\section{Most Probable Speed}
+There are two very distinct components to the MBD, when examined componentwise:
+
+\[
+    \Pr(v) = \underbrace{g(v) \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} v^2}_\text{quadratic term}  \underbrace{\exp\left(- \frac{mv^2}{2 k_b T}\right)}_\text{exponential term}
+\]
+
+This lets us look at the limiting cases:
+\begin{itemize}
+    \item As $v \to \infty$:
+    \[
+        v^2 \to \infty
+    \]
+    \[
+        \exp \left(- \frac{mv^2}{2k_B R}\right) \to 0
+    \]
+
+    Hence $\Pr(\infty) \to 0$. Showing that the product of an infinite limit and the zero limit would require L'Hopital, but effectively the exponential decays faster than the quadratic grows and wins out.
+
+    \item As $v \to 0$:
+    \[
+        v^2 \to \infty \to 0
+    \]
+    \[
+        \exp \left(- \frac{mv^2}{2k_B T}\right) \to 1
+    \]
+
+    Hence $\Pr(0) \to 0$
+\end{itemize}
+
+As we have $\Pr(0) \to 0$ and $\Pr(\infty) \to 0$, this gives us a curve with a central peak, representing the most probable speed. This speed is give by:
+
+\[
+    \frac{d \Pr(v)}{dv} = 0
+\]
+\[
+    \Pr(v) = 4 \pi \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} v^2 \exp\left(- \frac{mv^2}{2 k_b T}\right)
+\]
+
+\[
+    \Pr(v) = 
+        \left[4 \pi \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} \right] \left\{ v^2 \exp\left(- \frac{mv^2}{2 k_b T}\right) \right\}
+\]
+
+And performing the product rule on the second \{\} terms gives:
+\[
+    \frac{d\Pr(v)}{dv} = 4 \pi \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} \left[ 2v \exp\left(- \frac{mv^2}{2 k_b T}\right) \right]+ 4 \pi \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} \left[ v^2 \times \frac{-2mv}{2k_B T} \exp\left(- \frac{mv^2}{2 k_b T}\right) \right] = 0
+\]
+\[
+    \implies \left[4 \pi \frac{m}{2 \pi k_B T}^{3/2} 2v \exp \left(- \frac{mv^2}{2 k_B T}\right)\right] \left[1 - \frac{mv^2}{2k_B T}\right]
+\]
+
+The first term can only equal zero in the trivial cases where $v = 0$ or $v = \infty$. If we only consider non-trivial cases, we're left with:
+
+\[
+    1 - \frac{mv^2}{2k_B T} = 0 \implies v = \sqrt{\frac{2 k_B T}{m}}
+\]
+
+For hydrogen gas at $10$K, this gives us $287$m/s. Does this mean we need to consider supersonic effects (sonic booms) for hotter scenarios?
+
+Luckily, no. With random motion in a gas, there's no obvious direction for pressure to build up in. The effects of gas molecules travelling in lots od different directions cancels itself out nicely.
+
+\section{Averages}
+The average value of $x$ can be written as:
+\begin{itemize}
+    \item $\langle x\rangle$.
+    \item $\bar{x}$.
+    \item $E\{x\}$ or $\mathbb{E} \{x\}$.
+\end{itemize}
+
+We'll use the first notation, and strictly it's given by:
+\[
+    \langle x\rangle = \frac{1}{N} \sum_{i=1}^{N} N_i x_i = \sum_{i=1}^{N} \Pr_i(x_i) x_i
+\]
+If we consider a histogram, i.e. measurements of velocities for particles. If we take the number of bins to infinity, we have:
+\[
+    \langle f(x)\rangle = \int_{0}^{\infty} \Pr(x) f(x) \, dx
+\]
+
+For average \textbf{velocity} we expect a distribution which is symmetric about $0$, so we expect the average velocity to be $0$.
+
+Speed however is given by the Maxwell-Boltzmann distribution and is not symmetric.
+
+\[
+    \Pr(v) = 4 \pi \left(\sqrt{\frac{m}{2 \pi k_B T}}\right)^{(3/2)} v^2 \exp\left(- \frac{mv^2}{2 k_b T}\right)
+\]
+\[
+    \langle v\rangle = \int_{0}^{\infty} v \Pr(v) \, dv
+\]
+
+Letting $a = 4 \pi \left(\frac{m}{2 \pi k_B T}\right)^{3/2}$ and $b = \frac{m}{k_B T}$ gives:
+\[
+    \langle v\rangle = a \int_{0}^{\infty} v^3 e^{-bv^2} \, dv
+\]
+
+And making the substitution $u = v^2 \implies du = 2v dv$:
+\[
+    \langle v\rangle = \frac{a}{2}\int_{0}^{\infty} u e^{-bu} \, du
+\]
+
+Which is integrable by parts:
+\[
+    \langle v\rangle = \frac{a}{2b^2} = \frac{4 \pi \left(\frac{m}{2 \pi k_B T}\right)^{3/2}}{2 \left(\frac{m}{k_B T}\right)^2}
+\]
+\[
+    = \sqrt{\frac{8 k_B T}{\pi m}} = \frac{2}{\sqrt{\pi}} v_\text{most probable}
+\]
+
+This gives an average speed which is just a little higher compared to the most probable speed.
+
+\section{Average Kinetic Energy}
+Since:
+\[
+    \langle E_k\rangle = \frac{1}{2}mv^2 \implies \langle E_k\rangle = \frac{1}{2}m \langle v^2\rangle
+\]
+
+We need $\langle v^2 \rangle$:
+\[
+    \langle v^2 \rangle = \int_{0}^{\infty} v^2 \Pr(v) \, dv = a \int_{0}^{\infty} v^4 e^{-bv^2/2} \, dv
+\]
+
+Where we reuse $a = 4\pi\left(\frac{m}{2\pi k_B T}\right)^{3/2}$ and let $\alpha = \frac{m}{2k_B T}$, so the exponent becomes $-\alpha v^2$:
+
+\[
+    \langle v^2 \rangle = a \int_{0}^{\infty} v^4 e^{-\alpha v^2} \, dv
+\]
+
+We apply Feynman's trick with $n = 2$:
+
+\[
+    \int_{0}^{\infty} e^{-\alpha x^2} x^{2n} \, dx = \frac{1}{2}\left(-\frac{\partial}{\partial \alpha}\right)^n \sqrt{\frac{\pi}{\alpha}}
+\]
+
+\[
+    -\frac{\partial}{\partial \alpha}\sqrt{\frac{\pi}{\alpha}} = \frac{1}{2}\sqrt{\pi}\,\alpha^{-3/2}
+\]
+\[
+    \left(-\frac{\partial}{\partial \alpha}\right)^2\sqrt{\frac{\pi}{\alpha}} = -\frac{\partial}{\partial \alpha}\left[\frac{1}{2}\sqrt{\pi}\,\alpha^{-3/2}\right] = \frac{3}{4}\sqrt{\pi}\,\alpha^{-5/2}
+\]
+
+Hence:
+\[
+    \int_{0}^{\infty} v^4 e^{-\alpha v^2} \, dv = \frac{3}{8}\sqrt{\pi}\,\alpha^{-5/2}
+\]
+
+Substituting back with $\alpha = \frac{m}{2k_B T}$:
+
+\[
+    \langle v^2 \rangle = 4\pi\left(\frac{m}{2\pi k_B T}\right)^{3/2} \cdot \frac{3}{8}\sqrt{\pi} \left(\frac{m}{2k_B T}\right)^{-5/2}
+\]
+
+\[
+    = \frac{3\pi^{3/2}}{2} \cdot \frac{m^{3/2}}{(2\pi)^{3/2}(k_B T)^{3/2}} \cdot \frac{(2k_B T)^{5/2}}{m^{5/2}}
+    = \frac{3}{2} \cdot 2 \cdot \frac{k_B T}{m} = \frac{3k_B T}{m}
+\]
+
+Therefore:
+
+\[
+    \langle E_k \rangle = \frac{1}{2}m\langle v^2 \rangle = \frac{1}{2}m \cdot \frac{3k_B T}{m} = \boxed{\frac{3}{2}k_B T}
+\]
+
+This lets us define the RMS (root mean square) speed:
+\[
+    v_\text{rms} = \sqrt{\langle v^2 \rangle} = \sqrt{\frac{3k_B T}{m}} = \sqrt{\frac{3}{2}}\, v_\text{most probable}
+\]
+
+Summarising the three characteristic speeds of the distribution:
+\[
+    v_\text{most probable} = \sqrt{\frac{2k_B T}{m}} < \langle v \rangle = \sqrt{\frac{8k_B T}{\pi m}} < v_\text{rms} = \sqrt{\frac{3k_B T}{m}}
+\]
