@@ -2,7 +2,7 @@
 \lecture{17}{Tue 24 Mar 2026 11:00}{Special Relativity VII: Kinematics Examples, Doppler and Natural Units}
 
 \section{Example I}
-As viewed in a lab frame, a cosmic ray proton of energy $E_p$ hits a stationary proton. What is the minimim threshold energy of $E_p$ that allows the reaction:
+As viewed in a lab frame, a cosmic ray proton of energy $E_p$ hits a stationary proton. What is the minimum threshold energy of $E_p$ that allows the reaction:
 \[
     p + p \to p + p + \pi
 \]
@@ -53,7 +53,26 @@ And we have known masses $m_p, m_\pi$ hence (noting that the masses are in units
 \]
 
 \section{Example II}
-In an LHC experiment, a $B_0$ meson ($b \bar{d}$) with mass $5 \si{GeV / c^2}$ is produced in a lab frame momentum of $50 \si{GeV / c^2}$. The meson has proper decay time $2 \times 10^{-12}$s. How far does the experiment observe the meson fly before decay?
+In an LHC experiment, a $B_0$ meson ($b \bar{d}$) with mass $5 \si{GeV / c^2}$ is produced in a lab frame momentum of $50 \si{GeV / c^2}$. The meson has proper decay time $t_0 = 2 \times 10^{-12}$s. How far does the experiment observe the meson fly before decay?
+
+Let the range of the $B_0$ in the lab frame be:
+\[
+    d_\text{lab} = v_\text{lab} t_\text{lab}
+\]
+
+There is however a time dilation between the lab frame and the rest frame, hence:
+\[
+    t_\text{lab} = \gamma t_0
+\]
+\[
+    \implies d_\text{lab} = \gamma v_\text{lab} t_0
+\]
+
+To find $\gamma v_\text{lab}$ note that $p_\text{lab} = \gamma m v_\text{lab} \implies \gamma v_\text{lab} = \frac{p_\text{lab}}{m}$. Hence:
+\[
+    d_\text{lab} = \frac{p_\text{lab} t_0}{m}
+\]
+
 
 \section{Relativistic Longitudinal Doppler Effect}
 We want to build an analogue for the sonic doppler effect for light. This is especially important in astronomy, i.e. tracking the movement of cosmic spectral lines to determine speeds of distant sources.
@@ -66,9 +85,19 @@ This comes from two components:
     \item Relativistic time dilation.
 \end{itemize}
 
+The derivation isn't examinable, but the result for a receding source (redshift) is:
+\[
+    f = f_0 \sqrt{\frac{c - v}{c + v}}
+\]
 
+And for an approaching source:
+\[
+    f = f_0 \sqrt{\frac{c + v}{c -v}}
+\]
 
-
-
-
-
+\section{Problem Solving}
+\begin{enumerate}
+    \item The energy-momentum invariant is extremely useful. A lot of problems are solved by equating $E^2 - p^2c^2$ before and after a reaction or a collision.
+    \item If a problem requires finding $\gamma$ or $v \gamma$ it's often useful to use $p = \gamma mv$ or $E = \gamma m v^2$ so solve for them instead of manually faffing with $u$ and $c$.
+    \item Given a rest frame lifetime $t_0$, the range is given by $v \gamma t_0$ or $p t_0 / m$.
+\end{enumerate}

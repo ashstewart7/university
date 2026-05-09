@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\lecture{5}{Mon 00 Jan 1970}{Mechanics V: Rigid Pendula}
+\lecture{5}{Thu 05 Feb 2026 15:00}{Mechanics V: Rigid Pendula}
 
 Reminder, angular momentum:
 \begin{itemize}
@@ -170,31 +170,25 @@ $1b + 2b$ gives:
 \]
 
 \textbf{Case 2: Massive Pulley}
-
 The pulley now has mass $M$. In order to get the pulley moving, there needs to be some kind of net torque on the pulley. This means that the two tensions $T_1$ and $T_2$ can no longer be assumed to be equal.
-
 \[
     \tau = I \ddot{\theta} \equiv I \alpha
 \]
 \[
     \vec{\tau} = \vec{r} \wedge \vec{F} = \vec{R} \wedge (T_2 - T_1)
 \]
-
 Hence:
 \[
     I \alpha = R(T_2 - T_1) \tag{3}
 \]
-
 And as its a uniform disk:
 \[
     I = \frac{MR^2}{2}
 \]
-
 And converting from angular formulae to linear formulae:
 \[
     v = R \omega \implies a = R \alpha
 \]
-
 Inserting these into (3):
 \[
     \frac{MR^2}{2} \frac{a}{R} = R(T_2 - T_1)
@@ -202,25 +196,25 @@ Inserting these into (3):
 \[
     \implies \frac{Ma}{2} = T_2 - T_1 \tag{4}
 \]
-
 And inserting our general equations of motion:
 \[
-     \frac{Ma}{2} = (m_2a + m_2g) - (m_1 a - m_1 g)
+    T_2 = m_2 g - m_2 a, \qquad T_1 = m_1 g + m_1 a
 \]
 \[
-     \frac{Ma}{2} = m_2a + m_2g - m_1 a + m_1 g
+    \frac{Ma}{2} = (m_2 g - m_2 a) - (m_1 g + m_1 a)
 \]
 \[
-    \frac{Ma}{2} = \left(m_2 - m_1\right)a + (m_2 + m_1)g
+    \frac{Ma}{2} = (m_2 - m_1)g - (m_1 + m_2)a
 \]
 \[
-    \frac{Ma}{2} - \left(m_2 - m_1\right)a = (m_2 + m_1)g
+    \frac{Ma}{2} + (m_1 + m_2)a = (m_2 - m_1)g
 \]
 \[
-    a\left(\frac{M}{2} -m_2 - m_1\right) = (m_2 + m_1)g
+    a\left(\frac{M}{2} + m_1 + m_2\right) = (m_2 - m_1)g
 \]
-
-
+\[
+    \boxed{a = \frac{(m_2 - m_1)g}{\frac{M}{2} + m_1 + m_2}}
+\]
 
 
 
