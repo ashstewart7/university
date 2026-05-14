@@ -8,9 +8,31 @@ We have the Friedmann Equation from last lecture:
 
 Where $a(t)$ is the scale factor relating the comoving scaled coordinates to the initial coordinate system. As observations suggest our universe has little to no curvature, hence $k \approx 0$, we will generally ignore the second term at this level.
 
+We also assume:
+\begin{itemize}
+    \item Newtonian Gravity
+    \item Conservation of Energy
+    \item The Cosmological Principle
+\end{itemize}
+
+
 We also have the fluid equation:
 \[
     \boxed{\dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \left(\rho(t) + \frac{p(t)}{c^2}\right) = 0}
+\]
+
+As the universe is not empty, we need to describe how the matter density changes with time. This is the fluid equation. We also need an equation of state, to link the density and the pressure of the fluid.
+
+Depending on the type of material being considered, this may give multiple different equations of state. These are the equations for a matter-dominated (non-relativistic) and a radiation dominated universe (relativistic).
+
+For a matter dominated universe, we have:
+\[
+    p = 0
+\] 
+
+For a radiation dominated universe, we have:
+\[
+    p = \frac{\rho c^2}{3}
 \]
 
 \section{Acceleration Equation}
@@ -31,7 +53,7 @@ Note the sign here, if the contents of the brackets are positive, then there's a
 For now, we accept this, but we'll make a modification to the Friedmann equation to correct for this next week.
 
 \subsection{Hubble and Friedmann}
-How is Hubble's observation and Friedmann's equation connected?
+How are Hubble's observation and Friedmann's equation connected?
 
 We have the Friedmann eqn:
 \[
@@ -121,122 +143,47 @@ We need to build an expression for $\rho$. Ideally, we'd use a mixture model for
 
 For relativistic particles, we have (and will investigate in more depth in future lectures):
 \[
-    p = \frac{\rho c^2}{3}
+    p_t(t) = \frac{\rho c^2}{3}
 \]
 
 If we assume non-relativistic particles, we have:
 \[
-    p = 0
+    p_m(t) = 0
 \]
 
-\subsection{Flat, Matter-Dominated Universe}
+In practice, we don't have to choose between these. A real model of a universe has both present, so we would need to consider a mixture module. This gives us two different contributions, one for matter and one for radiation, $\rho_r(t), \rho_m(t)$.
 
-We start with a flat, matter-dominated universe. This means that the $\rho$ we're considering is associated with non-relativistic particles.
+However, the broader we make our assumptions the more difficult analytical solutions become. We therefore will for now assume that only one of the two holds.
 
-If we go back to the fluid equation:
+\section{Model I: Flat, Matter-Dominated Universe}
+With $k = 0, p=0$ the fluid equation now becomes:
 \[
-    \dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \left(\rho(t) + \frac{p(t)}{c^2}\right) = 0
+    \dot{\rho}(t) = \frac{3 \dot{a}(t)}{a(t)} \rho(t) = 0
 \]
-It now becomes:
-\[
-    \dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \rho(t) = 0
-\]
-This can be manipulated to get to:
+
+This becomes:
 \[
     \frac{1}{a^3(t)} \frac{d}{dt} \left(\rho(t) a^3(t)\right) = 0
 \]
-
+This is directly soluble, hence:
+\[
+    \frac{d}{dt} \left(\rho(t) a^3(t)\right) = 0
+\]
 And hence:
 \[
-    \rho(t) a^3(t) = \text{const.}
-\]
-\[
-    \rho(t) = \frac{\text{const.}}{a^3(t)}
+    \rho(t) = \frac{\text{constant}}{a^3(t)}
 \]
 
-To find this constant, we use the boundary condition that the scale factor at the current epoch is equal to given by one. Hence: $a_0 \equiv a(t_0) = 1$.
-
-We therefore call the density at the current epoch $\rho_0$, and this gives:
+We need to use a boundary condition to solve for the constant. Generally, we define the scale factor at the current epoch as one to normalise.
 \[
-    \rho_m(t)  = \frac{\rho_{m,0}}{a^3(t)}
+    a(t_0) = 1 = a_0
 \]
 
-We now substitute this into the Friedmann equation with $k = 0$:
+This gives us the density at the current epoch as:
 \[
-    \frac{\dot{a}^2}{a^2} = \frac{8\pi G \rho_{m,0}}{3 a^3}
-\]
-\[
-    \dot{a}^2 = \frac{8\pi G \rho_{m,0}}{3}\, a^{-1}
+    \rho(t_0) = \frac{\rho_0}{a^3(t)}
 \]
 
-Taking the positive square root (the universe is expanding):
-\[
-    \frac{da}{dt} = \sqrt{\frac{8\pi G \rho_{m,0}}{3}}\, a^{-1/2}
-\]
+This is a standard volumetric dilution, with the density decreasing as the universe expands. This is as-expected for standard matter particles.
 
-This is a separable ODE. Separating and integrating, with the boundary condition $a = 0$ at $t = 0$:
-\[
-    a^{1/2}\, da = \sqrt{\frac{8\pi G \rho_{m,0}}{3}}\, dt
-\]
-\[
-    \frac{2}{3} a^{3/2} = \sqrt{\frac{8\pi G \rho_{m,0}}{3}}\, t
-\]
-\[
-    a^{3/2} \propto t
-\]
-\[
-    \boxed{a(t) = \left(\frac{t}{t_0}\right)^{2/3}}
-\]
-
-Where we have applied $a(t_0) = 1$.
-
-\subsection{Flat, Radiation-Dominated Universe}
-
-For a radiation-dominated universe, we now use $p = \rho c^2 / 3$. Substituting into the fluid equation:
-\[
-    \dot{\rho}(t) + 3 \frac{\dot{a}(t)}{a(t)} \left(\rho(t) + \frac{\rho(t)}{3}\right) = 0
-\]
-\[
-    \dot{\rho}(t) + 4 \frac{\dot{a}(t)}{a(t)} \rho(t) = 0
-\]
-
-By the same manipulation as before, this is equivalent to:
-\[
-    \frac{1}{a^4(t)} \frac{d}{dt} \left(\rho(t) a^4(t)\right) = 0
-\]
-
-And hence:
-\[
-    \rho_r(t) = \frac{\rho_{r,0}}{a^4(t)}
-\]
-
-The extra power of $a$ compared to the matter case arises because, in addition to the volume dilution, each photon also loses energy as its wavelength is stretched proportional to $a$, as derived above.
-
-Substituting into the Friedmann equation with $k = 0$:
-\[
-    \frac{\dot{a}^2}{a^2} = \frac{8\pi G \rho_{r,0}}{3 a^4}
-\]
-\[
-    \dot{a}^2 = \frac{8\pi G \rho_{r,0}}{3}\, a^{-2}
-\]
-
-Taking the positive square root:
-\[
-    \frac{da}{dt} = \sqrt{\frac{8\pi G \rho_{r,0}}{3}}\, a^{-1}
-\]
-
-Separating and integrating, again with $a = 0$ at $t = 0$:
-\[
-    a\, da = \sqrt{\frac{8\pi G \rho_{r,0}}{3}}\, dt
-\]
-\[
-    \frac{a^2}{2} = \sqrt{\frac{8\pi G \rho_{r,0}}{3}}\, t
-\]
-\[
-    a^2 \propto t
-\]
-\[
-    \boxed{a(t) = \left(\frac{t}{t_0}\right)^{1/2}}
-\]
-
-Note that radiation expands more slowly than matter — the universe grows as $t^{1/2}$ rather than $t^{2/3}$.
+den

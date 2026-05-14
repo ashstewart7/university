@@ -2,3 +2,100 @@
 \lecture{6}{Tue 10 Feb 2026 11:00}{Mechanics VI: Vectors, Moving Axes and Gyroscopes}
 
 \section{Angular Velocity and Momentum as Vectors}
+We define the \emph{angular velocity vector}:
+\[
+    \vec{\omega} = \omega_x \hat{\imath} + \omega_y \hat{\jmath} + \omega_z \hat{k}
+\]
+
+For an object which is rotating in a single plane, the angular velocity vector is perpendicular to the plane, i.e. pointing parallel to the axis of rotation. It's direction can be given by the Right Hand Rule.
+
+We can likewise define the angular momentum vector:
+\[
+    \vec{L} = I \vec{\omega}
+\]
+Where $L_x = I_x \omega_x$ etc. As the moment of inertia is different in each axis (often), $\vec{L}$ and $\vec{\omega}$ may not be parallel.
+
+\section{Torque and Changes in Angular Momentum Direction}
+Torque and angular momentum are fundamentally connected via:
+\[
+    \vec{\tau} = \frac{d \vec{L}}{dt}
+\]
+
+If $\tau$ only has a component which is parallel to $\vec{L}$, only the magnitude of $\vec{L}$ changes with no change in direction.
+
+Likewise if the torque only has a perpendicular component, the direction of $\vec{L}$ changes but not the magnitude.
+
+\section{Flywheels}
+Consider a heavy disk rotating about the horizontal axis, loosely pivoted at $O$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{figures/lec06_01.png}
+     \caption{}
+\end{figure}
+
+If $\omega$ is sufficiently large, the flywheel can stay horizontal instead of drooping downwards. As drawn, the $\vec{\omega}$ vector points directly outwards (leftwards).
+
+The angular momentum vector:
+\[
+    \vec{L} = I_\text{wheel} \vec{\omega}
+\]
+Where $I_\text{wheel}$ is about the axis of rotation.
+\[
+    L = MR^2/2 \omega
+\]
+Which also points directly outwards. The downward force of the weight tries to drag the flywheel downwards. The torque around the origin is:
+\[
+    \vec{\tau} = \vec{r} \wedge \vec{F}
+\]
+This creates a torque acting \emph{into the page}, which causes the whole wheel to rotate horizontally around the origin. This results in the flywheel precessing.
+
+Given a particular angular velocity of the wheel, $\omega$, how quickly does this precession take place? Using $\vec{\tau} = d \vec{L} / dt$, we want to find the angular velocity of the precession, $\Omega$.
+
+From a top-down view, suppose the angular momentum vector at $t$ is $\vec{L(t)}$ and after some small $\Delta t$ it has new angular momentum vector $L(t + \Delta t)$, with the vector $\Delta \vec{L}$ between them. The two angular momentum vectors make an angle $\Delta \phi$.
+
+\[
+    \vec{\tau} = \frac{d \vec{L}}{dt} \approx \frac{\Delta \vec{L}}{\Delta t}
+\]
+
+\[
+    | \Delta L | = |L| \sin \Delta \phi = |L| \Delta \phi \quad \text{for small angles}
+\]
+
+Hence, considering magnitudes:
+\[
+    \tau = \frac{L \Delta \phi}{\Delta t} \tag{1}
+\]
+
+By definition of the precession angular velocity $\Omega$:
+\[
+    \Omega = \frac{d \phi}{dt}
+\]
+Hence from eqn (1):
+\[
+    \Omega \approx \frac{\Delta \phi}{\Delta t} = \frac{\tau}{L}
+\]
+
+We also know that:
+\[
+    L = I_\text{wheel} \omega = \frac{mR^2\omega}{2}
+\]
+And:
+\[
+    \tau = rF = lmg
+\]
+
+Hence:
+\[
+    \Omega = \frac{2 lmg}{\omega mR^2} = \frac{2gl}{\omega R^2}
+\]
+
+\subsection{Why does it not fall over?}
+This demonstrates precession, but doesn't explain why it actually stays up. Are there not still gravitational forces that aren't countered?
+
+\begin{itemize}
+    \item This is not a statics problem. This is a dynamics problem with moving motion that doesn't require balanced forces, as there's a net acceleration and it's not in equilibrium.
+    \item If the wheel tries to fall, the angular momentum vector will change in a direction where there isn't an applied torque. This fails conservation.
+    \item Torques actually do cause motion perpendicular to the direction of the applied force.
+    \item If the wheel isn't spinning fast enough, it will fall.
+\end{itemize}

@@ -1,0 +1,147 @@
+% !TeX root = main.tex
+\lecture{13}{Mon 16 Mar 2026 12:00}{Cosmology VII: Cosmological Constant, CMB and Big Bang Problems}
+
+\section{Cosmological Constant}
+The ``missing piece'' is called the Cosmological Constant $\Lambda$. This allows us to add a third term to the RHS of the Friedmann Equation:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \rho(t) - \frac{kc^2}{a^2(t)} + \frac{\Lambda}{3}
+\]
+
+Why we can do this is summed up by ``general relativity says so''\dots
+
+This extra term allows us to create a static (non-stable) universe with no expansion. This forms an unstable solution where any deviation will trigger a collapse. Different values give different results and we have the conditions $\Lambda \in \R$ and $\Lambda > 0$.
+
+With this added term, a rederivation of the acceleration equation gives:
+\[
+    \frac{\ddot{a}}{a} = - \frac{4 \pi G}{3} \left(\rho(t) + \frac{3p}{c^2}\right) + \frac{\Lambda}{3}
+\]
+
+This first term is negative and the latter is positive, so depending on the value of the cosmological constant. This new term acts against the collapsing gravitational impacts so a sufficiently large constant can prevent this shrink, or even opposite it and cause an acceleration.
+
+We want to model this as being some kind of fluid, and modify our $\rho(t)$ term:
+\[
+    \rho(t) + \rho_m(t) + \rho_r(t) \to \rho(t) + \rho_\Lambda
+\]
+
+We can do so with:
+\[
+    \rho_\Lambda = \frac{\Lambda}{8 \pi G}
+\]
+
+Hence our Friedmann equation becomes:
+\[
+    \left(\frac{\dot{a}}{a}\right) = \frac{8 \pi G}{3} \left(\rho(t) + \rho_\Lambda\right) + \frac{kc^2}{a^2(t)}
+\]
+
+We can use our fluid equation since we model this as a fluid and this causes a pressure term:
+\[
+    p_\Lambda = - c^2 \rho_\Lambda
+\]
+
+This effectively causes a negative pressure. In order to explain this weird repulsive behaviour, it makes sense that the sign of the pressure is flipped to flip the final impact. 
+
+There is however a massive discrepancy (causing an open question) between the order of magnitude of the measured $\Lambda$ versus the predicted one.
+
+As we've defined a density, we can now also define an Omega parameter:
+\[
+    \Omega_\Lambda(t) = \frac{\rho_\Lambda}{\rho_c(t)} = \frac{\Lambda}{8 \pi G} \frac{8 \pi G}{3 H^2(t)} = \frac{\Lambda}{3 H^2(t)}
+\]
+
+Note that the constant is not time dependant, but the omega parameter is due to the hubble parameter.
+
+We can now modify the Friedmann equation to finally say:
+\[
+    \Omega_m(t) + \Omega_r(t) + \Omega_\Lambda(t) + \Omega_k(t) = 1
+\]
+
+\section{Universe Evolution}
+This gives us a new equipartition point with the three fluids (matter, radiation, $\Lambda$). A universe eventually will be dominated by the cosmological constant. Depending on the relative combinations of these parameters, there is many many more possible outcomes for the universe. 
+
+Current best estimates is about $70\%$ cosmological constant contributions and $30\%$ matter and radiation contributions (combined) with no curvature contribution due to a flat universe.
+
+Current estimates give:
+\begin{itemize}
+    \item 5\% baryonic matter.
+    \item 26\% dark matter.
+    \item 69\% dark energy.
+\end{itemize}
+
+This crucially gives $\Omega_0 + \Omega_{\Lambda, 0} \approx 1$, hence we are a critically dense universe (or close to critically dense).
+
+\section{Cosmic Microwave Background}
+\subsection{Why is the Big Bang ``Hot''?}
+The strongest evidence is the Cosmic Microwave Background. This measures an isotropic almost-perfect black body spectrum with a temperature of:
+\[
+    T_0 = 2.7255 \si{K}
+\]
+
+It fits a Plank spectrum almost perfectly. By Wein's law, we can know the temperature based on the energy spectrum distribution and vice-versa.
+
+The radiation density is given by the Stefan-Boltzmann Law:
+\[
+    \epsilon_r \equiv \rho_r c^2 = \alpha T^4
+\]
+where:
+\[
+    \alpha = \frac{\pi^2 k^2 k^4_B}{15 h^3 c^3}
+\]
+With a value given in the formula sheet. Since we know that the $\rho_r$ is related to the scale factor (scaling inversely with the scale factor) hence we know that the temperature has scaled down as the universe expands.
+
+This tells us that:
+\[
+    \rho_r \propto a^{-4} \implies \frac{\alpha T^4}{c^2} \propto a^{-4} \implies \frac{T}{T_0} \propto \frac{1}{a}
+\]
+
+As $a \to 0, T \to \infty$, hence the big bang was extremely hot.
+
+\section{Origins of the CMB}
+If we take a very old time when $a = a_0/1,000,000$, the temperature of the CMB photons is therefore $T(a) = 3,000,000$K.
+
+This gives a mean energy much larger than the ionisation energy of hydrogen. Therefore, the hydrogen atoms could not exist at this epoch. This gave a primordial soup of ionised plasma with nuclei, electrons and photons.
+
+Once the universe cools and expands, the photons are insufficiently energetic and allow the first neutral hydrogen ions to form (recombination). These photons become decoupled, where they can freely travel without interaction and can escape.
+
+We calculate this properly in Y3, but the last scattering (on average) happened when the universe was about 300,000 years old. We cannot electromagnetically see the epochs that precede this, as the photons wouldn't have been able to reach an observer. 
+
+The CMB is extremely important because it provides:
+\begin{itemize}
+    \item Very strong evidence for the big bang.
+    \item Constraints on the density parameters and geometry of the universe.
+    \item Density fluctuations cause under- and over-densities causing ``anisotropies'' which provided the seeds for large scale structure forming.
+\end{itemize}
+
+\section{Problems with the Big Bang}
+
+\begin{itemize}
+    \item Flatness Problem
+    \begin{itemize}
+        \item The current universe is close to being critically dense and hence being flat.
+        \item However the flat universe is unstable, i.e. small perturbations to the total density cause more and more curvature quite quickly.
+        \item As the critical density varies with time and scale factor, the universe initial conditions must have been very very close (even closer) to being a flat universe at the big bang.
+        \item There is no explanation why this should be the case.
+    \end{itemize}
+    \item Monopole Problem
+    \begin{itemize}
+        \item Initially, at very high temperatures, all the forces would have combined into one primordial superforce. 
+        \item All grand unified theories (GUTs) suggest that a magnetic monopole should be able to exist.
+        \item We know that this is not possible.
+    \end{itemize}
+    \item Horizons Problem
+    \begin{itemize}
+        \item The universe is isotropic and homogenous.
+        \item For this to happen, at some time any two sources must have been in causal contact (i.e. able to exchange momentum and energy with each other).
+        \item We\footnote{Physicists in general\dots not \emph{us}} can calculate that this isn't the case.
+    \end{itemize}
+\end{itemize}
+
+\section{Inflation}
+We can fix this by having a very large exponential expansion given by another cosmological constant when the universe was $\sim 10^{-36}$years old.
+
+\vspace{1cm}
+\begin{center}
+    \large \textbf{End of Module.}
+\end{center}
+
+
+ 
+

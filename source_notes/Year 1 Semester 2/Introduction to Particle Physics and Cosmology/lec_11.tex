@@ -1,17 +1,139 @@
 % !TeX root = main.tex
-\lecture{11}{Fri 01 Mar 2026 14:00}{Cosmology V: }
+\lecture{11}{Mon 09 Mar 2026 12:00}{Cosmology V: Cosmological Models}
 
 \section{Cosmological Models}
-For a flat, matter dominated universe:
+
+\subsection{Flat, Matter Only Universe Continued}
+We have the Friedmann equation:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \rho(t)
+\]
+
+And using our equation of state for a matter only universe:
+\[
+    = \frac{8 \pi G}{3} \frac{\rho_0}{a^3}
+\]
+\[
+    \implies \dot{a}^2 = \frac{8 \pi G}{3} \rho_0 \frac{1}{a}
+\]
+\[
+    \implies \dot{a} = \sqrt{\frac{8 \pi G}{3} \rho_0} \sqrt{\frac{1}{a}}
+\]
+
+And hence to get to $a(t)$ we can separate variables:
+\[
+    \int \sqrt{a} da = \sqrt{\frac{8 \pi G}{3} \rho_0} \int dt
+\]
+\[
+    \frac{2}{3}a^{3/2} + C = \sqrt{\frac{8 \pi G \rho_0}{3}} t
+\]
+
+We need a boundary condition to determine the constant. We again say that the scale factor at $t=0$ is zero.
+\[
+    a(t = 0) = 0 \implies C = 0
+\]
+\[
+    a(t) = (6 \pi G \rho_0)^{1/3} t^{2/3}
+\]
+
+And it is common to rewrite this using $a(t_0) \equiv a_0 = 1$. This gives us (by dividing through by $a_0$, as dividing by one changes nothing):
 \[
     a(t) = \left(\frac{t}{t_0}\right)^{2/3}
 \]
+
+This causes power law growth for all $t$.
+
+\section{Flat, Radiation Only Universe}
+Now, we keep $k=0$ but the equation of state is now $p = \rho c^2/3$. The fluid equation now gives us:
 \[
-    \rho_m(t) = \frac{\rho_{m, 0}}{a(t)^3} = \rho_{m, 0} \left(\frac{t_0}{t}\right)^2
+    \dot{\rho} + \frac{3 \dot{a}}{a} \left(\rho + \frac{\rho c^2}{3 c^2}\right) = 0
+\]
+\[
+    \dot{\rho} + \frac{\dot{a}}{a} \left(4 \rho\right) = 0
 \]
 
-This is a universe which only contains non-relativistic particles.
+This is almost directly equivalent to the matter only case, except the factor of 4:
+\[
+    \frac{1}{a^4} \frac{d}{dt} \left(\rho a^4\right) = 0
+\]
 
-For a flat radiation dominated universe which only contains relativistic particles:
+Hence:
+\[
+    \rho(t) = \frac{\rho_0}{a^4(t)}
+\]
 
+This extra factor of $1/a$ causes an apparent loss of energy. This is due to redshift as the universe expands. 
 
+We can express $\rho$ as energy per unit volume:
+\[
+    \rho = \frac{E}{V} = \frac{hv}{V} = \frac{hc}{V \lambda}
+\]
+This gives us the same $1/a^3$ due to volume dilution, but also the extra $1/a$ due to the $1/\lambda$ term as the wavelength of photons becomes stretched out.
+
+As before, we want to solve the Friedmann equation, so we substitute in our new $\rho$:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \frac{\rho_0}{a^4}
+\]
+
+Following the same steps we get:
+\[
+    a(t) = \left(\frac{t}{t_0}\right)^{1/2}
+\]
+
+This is still power law growth, but where the universe grows more slowly compared to the matter-only case.
+
+\section{Mixture Model}
+These two models are unrealistic for a true universe that contains both matter and radiation. We can form a more general $\rho(t)$ which is a sum of the two species.
+
+We still assume a flat $k = 0$ universe. This gives us:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \left(\rho_m(t) + \rho_r(t)\right)
+\]
+
+We can do this by considering limits, i.e. what happens when:
+\begin{itemize}
+    \item $r_m \ll r_r$
+    \item $r_m \gg r_r$
+\end{itemize}
+These are universes that are dominated by one species or the other, but not solely.
+
+\subsection{Case I: $\rho_r \gg \rho_m$}
+Since $\rho(t) = \rho_m(t) + \rho_r(t)$, in this limit it approximates to just the radiation component. When this happens, $a \propto \sqrt{t}$. In this phase where radiation dominates, we have:
+\[
+    \rho_r(t) = \frac{\rho_{r, 0}}{a^4(t)} \implies \rho_r(t) \propto \frac{1}{t^2}
+\]
+
+And hence:
+\[
+    \rho_m(t) = \frac{\rho_{m, 0}}{a^3(t)} \implies \rho_m(t) \propto \frac{1}{t^{3/2}}
+\]
+
+\subsection{Case II: $\rho_m \gg \rho_r$}
+In this limit, the matter component dominates, and we have $a \propto t^{2/3}$. In this phase where matter dominates, we have:
+\[
+    \rho_m(t) = \frac{\rho_{m, 0}}{a^3(t)} \implies \rho_m(t) \propto \frac{1}{t^2}
+\]  
+
+And:
+\[
+    \rho_r(t) \propto \frac{1}{t^{8/3}}
+\]
+
+\subsection{Point of Equipartition}
+At some point in this evolution form a radiation to matter dominated world, there will be some crossover point where $\rho_m = \rho_r$. This is called the point of equipartition.
+
+\section{Curvature - Non-Flat Matter-Only Universe}
+We've already seen what happens with the $k=0$ case of a flat universe. When $k<0$ we have a hyperbolic geometry and $k>0$ spherical geometry (and continue to assume that we are only dealing with a matter only universe)
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \rho_m(t) - \frac{kc^2}{a^2(t)}
+\]
+
+Crucially, is the unbound nature of the expansion wrt time still true for these new geometries?
+
+\textbf{If $k<0$ (Hyperbolic):}
+
+Here, the negative sign of $k$ causes the final second term to be positive. This means that the expansion is still unbound. As:
+\[
+    H^2(t) = \left(\frac{\dot{a}}{a}\right)^2 > 0
+\]
+This causes a larger magnitude of $H^2(t)$ hence the expansion is at a more rapid rate.

@@ -1,2 +1,73 @@
 % !TeX root = main.tex
-\lecture{18}{Thu 26 Mar 2026 15:00}{Mechanics XI: }
+\lecture{18}{Thu 26 Mar 2026 15:00}{Orbits III: Total Orbital Energy and Perturbed Orbits}
+
+\section{Eccentricity}
+We can classify orbits by their eccentricity $\epsilon$:
+\begin{itemize}
+    \item $\epsilon = 0$: Circular orbit.
+    \item $0 < \epsilon < 1$: Elliptical orbit.
+    \item $\epsilon = 1$: Parabolic orbit.
+    \item $\epsilon > 1$: Hyperbolic orbit.
+\end{itemize}
+
+Earth orbits very close to a circular orbit, with $\epsilon \approx 0.017$. Bound comets with very large orbits have $\epsilon$ close to 1. Unbound comets have $\epsilon > 1$.
+
+\section{Total Energy in an Elliptical Orbit w/ $1/r$ Central Potential}
+Consider a planet with mass $m$ orbiting a star with much larger mass $M$, in a $1/r$ central potential.
+
+At perigee, the planet has velocity $v_1$ and away at apogee the planet has velocity $v_2$. The $M \gg m$ condition allows us to neglect motion of the star.
+
+We have total energy:
+\[
+    E_\text{tot} = \frac{1}{2}m \dot{r}^2 + \frac{l^2}{2mr^2} - \frac{k}{r} = \text{const.}
+\]
+
+Noting that $l$ is a constant, and $k = GMm$. As the apogee and perigee are turning points, $\dot{r} = 0$ here. Hence:
+\[
+    E_\text{tot} = \frac{l^2}{mr_1^2} - \frac{k}{r_1} = \frac{l^2}{mr_2^2} - \frac{k}{r_2} \tag{1}
+\]
+\[
+    \frac{l^2}{2m} \left(\frac{1}{r_1^2} - \frac{1}{r_2^2}\right) = k\left( \frac{1}{r_1} - \frac{1}{r_2}\right)
+\]
+\[
+    \frac{l^2}{2m} \left(\frac{r_2^2 - r_1^2}{r_1^2 r_2^2}\right) = k \frac{r_2 - r_1}{r_1 r_2}
+\]
+\[
+    l^2 = 2mk \frac{r_2 - r_1}{r_1 r_1} \frac{r_1^2 r_2^2}{r_2^2 - r_1^2}
+\]
+\[
+    l^2 = \frac{2mk (r_2 - r_1) r_1 r_2}{(r_2 + r_1) (r_2 - r_1)}
+\]
+\[
+    l^2 = \frac{2mk r_1 r_2}{r_1 + r_2} \tag{2}
+\]
+
+Eqn (2) into (1):
+\[
+    E_\text{tot} = \frac{2mk r_1 r_2}{r_1 + r_2} \frac{1}{2mr_1^2} - \frac{k}{r_1} = \text{ \dots for the RHS, but not required.}
+\]
+\[
+    E_\text{tot} = \frac{r_2 K}{(r_1 + r_2) r_1} - \frac{k}{r_1}
+\]
+\[
+    = \frac{k}{r_1} \left(\frac{r_2}{r_1 + r_2} - 1\right)
+\]
+\[
+    = - \frac{k}{r_1 + r_2}
+\]
+
+This finally gives us:
+\[
+    E_\text{tot} = \frac{-k}{2a}
+\]
+Where $a$ is the length of the semimajor axis, and $2a$ is the whole length of the major axis.
+
+\section{Perturbed Orbits}
+An impulsive force is applied for a very short time to create an instantaneous change in velocity $\Delta v$ at some point in the orbit. This changes the total energy of the system, and hence the shape of the orbit.
+
+
+
+
+
+
+

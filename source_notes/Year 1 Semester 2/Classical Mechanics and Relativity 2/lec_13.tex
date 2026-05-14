@@ -1,2 +1,184 @@
 % !TeX root = main.tex
-\lecture{13}{Thu 5 Mar 2026 15:00}{Mechanics IX: }
+\lecture{13}{Thu 5 Mar 2026 15:00}{Orbits I: Formalism of Orbits}
+
+\section{Introduction to Orbits}
+\begin{tcolorbox}
+    \textbf{What is an Orbit?}
+
+    \textbf{Orbit} $\equiv$ motion of an object in a plane (2D only) under the influence of a force. Generally, this is a closed repeating path (especially for this course) but this is not always true.
+\end{tcolorbox}
+
+For orbits, we limit ourselves to forces and potentials which are ``Central Conservative''.
+\begin{itemize}
+    \item Central Forces:
+    \begin{itemize}
+        \item A central force has the form $\underline{F} = f(r) \hat{\underline{r}}$. These forces act only in a radial direction and vary only as a function of radial distance. These forces conserve angular momentum.
+        \item For a central force:
+        \[
+            \underline{F} = f(r) \hat{r} \implies \underline{\tau} = \underline{r} \times \underline{F} = f(r) \underline{r} \times \hat{r} = 0
+        \]
+        Hence there is no torque. Since torque is the derivative of angular momentum, angular momentum is conserved.
+        \item Also, since $\underline{L} = \underline{r} \times \underline{p} = r \times m \dot{\underline{r}}$, $\underline{r} \times \dot{\underline{r}}$ is conserved. As $\underline{r}$ and $\ddot{\underline{r}}$ are both perpendicular to $\underline{L}$, they sit in the same 2D plane.
+        
+        This confirms that the orbits are exclusively 2D planes.
+        
+    \end{itemize}
+    \item Conservative Forces:
+    \begin{itemize}
+        \item A conservative force is one that conserves total energy ($E_k + E_\text{potential}$). The net work done by returning to the start point via a closed path (most orbits) is zero.
+        \[
+            \oint \underline{F} \cdot d \underline{r} = 0
+            \]
+            \item For every conservative force, there exists a scalar potential which satisfies:
+            \[
+                \underline{F} = - \nabla V = - \frac{\partial V}{\partial r}
+            \]
+            We will therefore choose to work with forces and potentials interchangeably. Dealing with potentials is often easier due to them being a scalar.
+    \end{itemize}
+                
+\end{itemize}
+
+This includes all non-dissipative forces, i.e. gravity, electrostatics, the strong nuclear force etc. It excludes dissipative forces where energy is lost, such as friction.
+
+\subsection{Polar Coordinates}
+As we've established that coordinates exist purely in 2D, it makes the most sense to express them in polar coordinates, with the origin at the orbit centre.
+
+Instead of being interested in unit vectors $\hat{x}, \hat{y}$ we're interested in unit vectors $\hat{\underline{r}}$ pointing radially outwards and $\hat{\underline{\theta}}$ pointing tangentially in the positive direction of motion (anticlockwise).
+
+Given an arbitrary point:
+\[
+    (x, y) = (r, \theta)
+\]
+
+We can define:
+\[
+    \underline{r} = r \hat{\underline{r}} \tag{1}
+\]
+
+And:
+\[
+    \boxed{\hat{\underline{r}} = \cos \theta \hat{\underline{x}} + \sin \theta \hat{\underline{y}}}
+\]
+\[
+    \boxed{\hat{\underline{\theta}} = - \sin \theta \hat{\underline{x}} + \cos \theta \hat{\underline{y}}}
+\]
+
+We want to be able to take their time derivatives:
+\[
+    \frac{d \hat{\underline{r}}}{dt} = \frac{d \theta}{dt} \frac{d}{d \theta} \left(\cos \theta \hat{\underline{x}} + \sin \theta \hat{\underline{y}}\right)
+\]
+\[
+    = \dot{\theta} \left(- \sin \theta \hat{\underline{i}} + \cos \theta \hat{\underline{y}}\right)
+\]
+\[
+    \boxed{\implies \frac{d \hat{\underline{r}}}{dt} = \dot{\theta} \hat{\underline{\theta}}} \tag{2}
+\]
+
+By the same logic:
+\[
+    \frac{d \hat{\underline{\theta}}}{dt} = \frac{d \theta}{dt} \frac{d}{d \theta} \left(- \sin \theta \hat{\underline{x}} + \cos \theta \hat{\underline{j}}\right)
+\]
+\[
+    \implies \boxed{\frac{d \hat{\underline{\theta}}}{dt} = - \dot{\theta} \hat{\underline{r}}} \tag{3}
+\]
+
+These let us handle cases where the distances from the axes are changing (i.e. object in an elliptical orbit). The derivation is non-examinable and the results are in the formula sheet.
+
+\section{Motion of an Object in Central Conservative Potential}
+Assume an elliptical orbit. The origin of the coordinate system is at the left focus on the ellipse (the sun) and a planet is in orbit.
+
+The planet sits at varying distance $r$ from the sun and has angle from the positive horizontal $\theta$.
+
+\subsection{Planetary Velocity}
+By definition:
+\[
+    \underline{v} = \dot{\underline{r}} = \frac{d}{dt} \underline{r}= \frac{d}{dt} \left(r \hat{\underline{r}}\right)
+\]
+\[
+    \underline{v} = r \frac{d \hat{\underline{r}}}{dt} + \frac{dr}{dt \hat{\underline{r}}} = r \dot{\theta} \hat{\underline{\theta}} + \dot{r} \hat{\underline{r}}
+\]
+These two components give the tangential and then the radial velocity.
+
+\subsection{Planetary Acceleration}
+To find the acceleration, we take the time derivative again. Because $r, \dot{r}, \dot{\theta}$, and the unit vectors themselves are all functions of time, we use the chain rule with respect to $t$.
+\[
+    \underline{a} = \frac{d}{dt} (\dot{r} \hat{\underline{r}}) + \frac{d}{dt} (r \dot{\theta} \hat{\underline{\theta}})
+\]
+\[
+    \underline{a} = (\ddot{r} \hat{\underline{r}} + \dot{r} \dot{\hat{\underline{r}}}) + (\dot{r} \dot{\theta} \hat{\underline{\theta}} + r \ddot{\theta} \hat{\underline{\theta}} + r \dot{\theta} \dot{\hat{\underline{\theta}}})
+\]
+Substituting the unit vector time derivatives, $\dot{\hat{\underline{r}}} = \dot{\theta} \hat{\underline{\theta}}$ and $\dot{\hat{\underline{\theta}}} = -\dot{\theta} \hat{\underline{r}}$:
+\[
+    \underline{a} = \ddot{r} \hat{\underline{r}} + \dot{r} (\dot{\theta} \hat{\underline{\theta}}) + \dot{r} \dot{\theta} \hat{\underline{\theta}} + r \ddot{\theta} \hat{\underline{\theta}} + r \dot{\theta} (-\dot{\theta} \hat{\underline{r}})
+\]
+And factorising by unit vectors:
+\[
+    \underline{a} = (\ddot{r} - r \dot{\theta}^2) \hat{\underline{r}} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \hat{\underline{\theta}}
+\]
+This gives us a radial component of acceleration and a tangential component of acceleration.
+
+\section{Forces}
+We know that $\underline{F} = m \underline{a}$ must apply, and we can resolve this out into radial and tangential components.
+
+In the radial direction:
+\[
+    f(r) = m \left(\ddot{r} - r \dot{\theta}^2\right) \tag{4}
+\]
+
+As the force is central conservative, there can be no component in the $\hat{\underline{\theta}}$ direction. Hence:
+\[
+    r \ddot{\theta} + 2 \dot{r} \theta = 0 \tag{5}
+\]
+
+\section{Angular Momentum}
+We again know that $\underline{L} = \underline{r} \times \underline{F} = m \underline{r} \times \underline{v}$. Let the modulus of the angular momentum vector being $l = |\underline{L}|$.
+
+Only the tangential component of the velocity has a cross product with the radius, hence we have:
+\[
+    l = mr v_t
+\]
+
+Where $v_t$ is the tangential portion of the velocity. Inserting the tangential velocity:
+\[
+    l = mr \times r \dot{\theta} = mr^2 \dot{\theta}
+\]
+
+As an aside, noting that $dl/dt = mr^2 \ddot{\theta} + 2m r \dot{r} \dot{\theta}$:
+\[
+    \frac{dl}{dt} = mr \left(r \ddot{\theta} + 2 \dot{r} \dot{\theta}\right)
+\]
+
+This is equal to $mr F_T$. We have already shown that $F_T = 0$, hence $l$ is not time dependant, so is conserved.
+
+\section{Total Energy}
+As the field is conservative, it must be a constant equal to the sum of the kinetic and potential components.
+
+\[
+    E = E_k + E_p = \frac{1}{2}m \underline{v}^2 + V(r)
+\]
+
+Where $V(r)$ is the central potential where $\underline{F} = - \frac{\partial V}{\partial r} \underline{\hat{r}}$. Using the known value for velocity:
+\[
+    E = \frac{1}{2}m \left(r \dot{\theta} \hat{\underline{\theta}} + \dot{r} \hat{\underline{r}}\right)^2 + V(r)
+\]
+Noting that a unit vector dotted with themselves is one, and dotted with the (perpendicular) other gives zero:
+\[
+    E = \frac{1}{2}m \left(r^2 \dot{\theta}^2 + \dot{r}^2\right) + V(r)
+\]
+Where all the cross terms become zero. We can eliminate $\dot{\theta}$ by using:
+\[
+    l = mr^2 \dot{\theta} \implies \dot{\theta} = \frac{l}{mr^2}
+\]
+Hence:
+\[
+    E = \frac{1}{2}m \left(r^2 \frac{l^2}{m^2 r^4} + \dot{r}^2\right) + V(r)
+\]
+\[
+    \boxed{E = \frac{1}{2}\frac{l^2}{mr^2} + \frac{1}{2}m \dot{r}^2 + V(r)}
+\]
+
+Note that:
+\begin{itemize}
+    \item The first term is the kinetic energy of the tangential motion. In the case of a circle, this gives $0.5 l^2/I_0 = 0.5 I^2 \omega^2 / I = \frac{1}{2}I \omega^2$ which is as expected.
+    \item The second term is zero for circular motion where the radius is constant.
+\end{itemize}

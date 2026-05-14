@@ -1,0 +1,133 @@
+% !TeX root = main.tex
+\lecture{12}{Thu 12 Mar 2026 14:00}{Cosmology VI: Measurements, Universe Age and Deceleration}
+
+\section{Hyperbolic Geometry Cont.}
+At late times, the matter density decreases and the curvature term dominates. This gives us:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 \approx \frac{-kc^2}{a^2}
+\]
+This results in $\dot{a} \propto t$ where the universe expands linearly with time. This is called free expansion.
+
+In both flat and hyperbolic geometries we have unbound infinite growth, with the hyperbolic geometry expanding faster than a universe with the flat geometry.
+
+\section{Spherical Geometry}
+Here, $k > 0$. Again we have the Friedmann equation:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \rho(t) - \frac{kc^2}{a^2}
+\]
+
+Now, the second term remains negatively signed. This means that as the universe expands and the curvature term dominates, the expansion rate slows down and eventually stops. The universe then begins to contract, leading to a big crunch.
+
+There is some point in time in which the two terms can cancel leading to $H(t) = 0$. This is an unstable equilibrium that will eventually collapse under its own gravity.
+
+\section{Observational Parameters}
+Instead of guessing at values of parameters, we want to make an attempt at measuring true values from the universe itself. There are a few key parameters we'll consider:
+\begin{itemize}
+    \item The Hubble constant at the current epoch.
+    \item Density parameters, we denote these $\Omega_x(t)$. The x may vary depending on the density being considered, i.e. mass density, energy density etc.
+    \item Deceleration parameter, $q_0$. This describes the rate at which the expansion of the universe is changing (regardless of acceleration or deceleration).
+\end{itemize}
+
+\subsection{Hubble Constant at Current Epoch}
+
+We can measure this using velocities and distances. Velocities can be ascertained using redshift and distances using standard candles. Current measurements are between units of:
+\[
+    68-72 \si{km s^{-1} Mpc^{-1}}
+\]
+
+The smaller this value is, the smaller the expansion, the higher value the more rapid the expansion.
+
+We can say:
+\[
+    t_h \propto \frac{1}{H_0}
+\]
+Where $t_h$ is called the hubble time. This time provides a very rough estimate for the age of the universe. We can look at stars and use our understanding of the stellar evolution to determine a minimum possible age of the universe. 
+
+If we compute the hubble time for a flat matter dominated universe this underestimates the age of the universe. Not all stars can therefore be adequately explained by this model. To fix this, we can adjust our understanding of the curvature and species-makeup of the universe. 
+
+If we move from a flat universe to a hyperbolic one, the hubble time actually moves closer to the actual age. This fails for spherical geometry which gives an even younger universe.
+
+This rules out a spherical geometry as a possible geometry for our current use. As adjusting to a hyperbolic universe would require changing other values to compensate (and this is indicating against), the current favoured solution is the flat universe.
+
+If the Friedmann equation is solved properly, without our limit argument, a much better argument for the stellar age is generated.
+
+\subsection{Densities}
+
+It is preferable for us to determine densities as fractions of some value. In order to define our density values, they need to be relative to some important value. This value is called the critical density:
+\[
+    \Omega_x(t) = \frac{\rho_x(t)}{\rho_c(t)}
+\]
+This critical density is the density value that we require in order keep $k=0$. To determine this we look at the Friedmann Equation:
+\[
+    H^2(t) = \frac{8 \pi G}{3}\rho(t) \implies \boxed{\rho_c(t) = \frac{3 H^2 (t)}{8 \pi G}}
+\]
+
+We can use these densities to simplify the Friedmann Eqn:
+\[
+    \left(\frac{\dot{a}}{a}\right)^2 = H^2 = \frac{8 \pi G}{3} \rho_c \Omega - \frac{kc^2}{a^2}
+\]
+\[
+    = H^2 \Omega - \frac{kc^2}{a^2}
+\]
+\[
+    1 = \Omega - \frac{kc^2}{a^2 H^2}
+\]
+\[
+    \Omega(t) - 1 = \frac{kc^2}{a^2(t) H^2(t)}
+\]
+
+It is then common to define a curvature density parameter $-\Omega_k(t)$ such that:
+\[
+    \Omega(t) - 1 = - \Omega_k(t)
+\]
+\[
+    \Omega(t) + \Omega_k(t) = 1
+\]
+
+For a critically dense universe, the second term is zero and this means that the first term (all of the relative energy components) sums to one.
+
+\subsection{Deceleration Parameter}
+We can consider a Taylor expansion of $a(t)$ around the current epoch $a(t_0)$ (in the current epoch):
+\[
+    a(t_0) + \dot{a}(t_0)(t-t_0) + \frac{\ddot{a}}{2}(t - t_0)^2
+\]
+And dividing through by the current epoch scale factor:
+\[
+    \frac{\dot{a}(t_0)}{a(t_0)} \approx 1 + \frac{\dot{a}(t_0)}{a(t_0)} \Biggr\rvert_{t = t_0} + \frac{\ddot{a}(t_0)}{a(t_0)} \Biggr\rvert_{t = t_0} (t-t_0)^2
+\]
+\[
+    = 1 + H_0 (t-t_0) - q_0 H_0^2 (t-t_0)^2
+\]
+
+Where $q_0$ is defined by this, and the negative sign is historical choice. This gives:
+\[
+    q_0 \equiv - \frac{\ddot{a}(t_0)}{a(t_0)} \frac{1}{H_0^2}
+\]
+
+This was defined on the historical assumption of a decelerating expansion which has proven incorrect. The sign conventions are therefore weird.
+
+For a matter dominated universe:
+\[
+    \frac{\ddot{a}}{a} = - \frac{4 \pi G}{3} \rho(t)
+\]
+
+And at the present epoch:
+\[
+    = - \frac{4 \pi G}{3} \rho_0 \implies q_0 = \frac{4 \pi G}{3} \frac{\rho_0}{H_0^2}
+\]
+\[
+    = \frac{4 \pi G}{3} \frac{\Omega_0 \rho_c}{H_0^2}
+\]
+\[
+    = \frac{4 \pi G}{3} \frac{\Omega_0 3 H_0^2}{8 \pi G H_0^2} = \frac{\Omega_0}{2} > 0
+\]
+
+This is positive for the deceleration constant, so the universe is\dots decelerating in its expansion. We know that this isn't accurate, so there's a missing piece.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/lec12-01.png}
+     \caption{}
+\end{figure}
+
+We can fix this by adding a cosmological constant, shown in the dotted line that we will encounter next lecture.

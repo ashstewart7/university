@@ -1,2 +1,126 @@
 % !TeX root = main.tex
-\lecture{7}{Thu 12 Feb 2026 15:00}{Mechanics VII: }
+\lecture{7}{Thu 12 Feb 2026 15:00}{Mechanics VII: Simultaneous Translation/Rotation \& Rolling}
+
+\section{Mixed Translational/Rotational Motion}
+For a rigid body undergoing ``complex motion'', i.e. an asteroid moving through space while also rotating in an orbit, we can decompose the problem into two parts:
+\begin{itemize}
+    \item Motion of the whole body, considered about the CoM (translational motion of the CoM).
+    \item Rotations of the body about the CoM.
+\end{itemize}
+
+The result (no examinable derivation) is:
+\[
+    \vec{L} = \left(\vec{R} \times \vec{P}\right)_\text{of the CM about $O$} + \left(\sum_i \vec{r}_i^\prime \times \vec{p}_i^\prime\right)_\text{of components about CM}
+\]
+
+And for kinetic energy, assuming a constant angular velocity:
+\[
+    E_k = \frac{1}{2}mv_{CM}^2 + \frac{1}{2}I_0 \omega^2
+\]
+
+\section{Sliding and Rolling}
+An object sliding up/down a slope is a familiar problem we've seen in CM1. The acceleration is given by the frictional force.
+
+We have an object rotating with $\omega$ resulting in the centre of mass moving with $v_{CM}$. The object has radius $r$.
+
+What is the condition for the cylindrical object to exclusively roll, with no sliding effects. Consider one point on the circumference $A$ over one full rotation. If there has been no slipping, the distance travelled by the CoM must be exactly the circumference $2 \pi r$.
+
+The time period of one complete rotation is $T = 2 \pi / \omega$. The translation speed therefore must be:
+\[
+    v = d/t = \frac{2 \pi r}{2 \pi / \omega} = r \omega
+\]
+
+The total kinetic energy in the strictly rolling case must be:
+\[
+    E_k = \frac{1}{2}mv_{cm}^2 + \frac{1}{2}I_0 \omega^2
+\]
+
+Consider a coin with mass and radius $m, r$ purely rolling along a flat surface with $\omega$ and $v_{CM}$.
+
+We have already derived the moment of inertia of $I_0 = mr^2/2$. The kinetic energy is hence:
+\[
+    E_k = \frac{1}{2}mv_{CM}^2 + \frac{1}{4} mr^2 \omega^2
+\]
+\[
+    = \frac{1}{2}mv_{CM}^2 + \frac{1}{4} mr^2 \left(\frac{v_{cm}}{r}\right)^2
+\]
+\[
+    = \frac{1}{2}mv_{CM}^2 + \frac{1}{4} m\left(v_{cm}\right)^2
+\]
+\[
+    = \frac{3}{4}mv_{cm}^2
+\]
+
+Suppose the coin is now rolling down an inclined slope, with incline at angle $\theta$ to the horizontal. The coin now has unbalanced forces and hence additional frictional forces $f$ and additional translational and angular acceleration $a, \alpha$
+
+For strictly pure rolling, $f$ provides just sufficient force to prevent slipping. This acts at the point of contact, on the coin diameter (at distance $r$ from the CoM) and hence creates a torque about the CoM.
+
+\[
+    \vec{\tau} = \vec{r} \times \vec{f}
+\]
+These are perpendicular hence:
+\[
+    \tau = rf
+\]
+
+Also:
+\[
+    \tau = I_0 \alpha \implies rf = I_0 \alpha \implies f = \frac{I_0 \alpha}{r} \tag{1}
+\]
+
+We can now write the equation of motion down the slope:
+\[
+    mg \sin \theta - f = m a
+\]
+\[
+    mg \sin \theta - \frac{I_0 \alpha}{r} = ma
+\]
+
+As we're dealing with pure rolling, $v = r \omega \implies a = r \alpha \implies \alpha = a/r$:
+\[
+    mg \sin \theta - \frac{I_0 a}{r^2} = ma
+\]
+\[
+    \implies a \left(m + \frac{I_0}{r^2}\right) = mg \sin \theta
+\]
+\[
+    \implies a = \frac{mg \sin \theta}{m + I_0 /r^2}
+\]
+
+We can simplify the problem a little by using the radius of gyration such that $I_0 = mK^2$:
+\[
+    a = \frac{mg \sin \theta}{m + mK^2 / r} = = \frac{g \sin \theta}{1 + K^2 / r^2}
+\]
+
+Assuming our object is still a uniform disk:
+\[
+    I_0 = mr^2 / 2 \implies K^2 = R^2/2
+\]
+\[
+    \implies a = \frac{g \sin \theta}{1 + 1/2} = \frac{2}{3} g \sin \theta
+\]
+
+\subsection{Other Objects Rolling Down Slope}
+Imagine a different configuration of object rolling (i.e. a ball instead of a coin). An object with the smallest $I_0, K$ is going to be the fastest. Consider the following objects:
+\begin{itemize}
+    \item Hollow Cylinder: $I_0 = mR^2$, identical to a ring.
+    \item Solid Cylinder: $I_0 = mR^2 / 2$, identical to a solid coin.
+    \item Solid Sphere: $I_0 = 2mR^2/5$.
+    \item Hollow Sphere: $I_0 = 2mR^2/3$.
+\end{itemize}
+
+Hence the solid sphere has the smallest moment of inertia (on average has its mass distribution closest to the axis) hence will reach the bottom of the slope faster (assuming constant mass).
+
+\section{Mixed Rolling and Sliding}
+Imagine a very steep or slippery surface where the frictional force fails to prevent sliding and both sliding/rolling occur.
+
+For example, in 10-pin bowling, a highly skilled bowler releases their ball perfectly in a straight line. Does the ball:
+\begin{enumerate}
+    \item Roll all the way.
+    \item Slide all the way.
+    \item Slide, and then roll.
+    \item Roll, and then slide.
+\end{enumerate}
+
+In turns out that it does (3), initially sliding before settling into a rolling motion. See next lecture for solution.
+

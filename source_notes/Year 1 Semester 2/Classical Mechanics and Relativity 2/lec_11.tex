@@ -1,2 +1,239 @@
 % !TeX root = main.tex
-\lecture{11}{Thu 26 Feb 2026 15:00}{Mechanics VIII: }
+\lecture{11}{Thu 26 Feb 2026 15:00}{Mechanics VIII: 10-Pin Bowling, Impulse and Centre of Percussion}
+
+\section{10-Pin Bowling}
+
+Consider a ball of mass $M$ and radius $R$ being bowled in an alley. The ball is released with velocity $v_0$. As it makes contact with the wooden floor (coefficient of friction $\mu$) the ball slows down and begins to rotate.
+
+Initially, it is both sliding and rolling. After some time, the ball ceases sliding and rolls only. 
+
+\textbf{Write expressions for:}
+
+\begin{enumerate}
+    \item Linear deceleration.
+    \item Angular acceleration.
+    \item The speed of the centre of the ball after time $t$.
+    \item The angular velocity of the ball about its centre after time $t$.
+    
+    {\hspace*{-\leftmargin}}\textbf{Then:} 
+
+    \item Show that the ball with both slide and rotate until time $t_\text{roll}$ elapses, where:
+    \[
+        t_\text{roll} = \frac{v_0}{\mu g \left(1 + \frac{R^2}{K^2}\right)}
+    \]
+    \item After time $t_\text{roll}$ the ball rolls at constant speed $v_{roll}$.  Give an expression for $v_\text{roll}$.
+\end{enumerate}
+
+\subsection{Part I}
+The ball experiences three forces:
+\begin{itemize}
+    \item Weight force $mg$.
+    \item Normal reaction force $N$.
+    \item Frictional force $f$.
+\end{itemize}
+
+The first two forces cancel, hence the net force is simply friction:
+\[
+    f = - \mu R = - \mu mg = ma \implies a = - \mu g
+\]
+
+\subsection{Part II}
+The friction causes the ball to pick up an angular velocity as it rotates, by supplying a torque:
+\[
+    \tau = I_0 \alpha = | \vec{r} \times \vec{f}|
+\]
+
+Hence:
+\[
+    I_0 \alpha = r |f|
+\]
+\[
+    \alpha = \frac{\mu m g r}{I_0}
+\]
+
+In terms of the radius of gyration, $I_0 = mK^2$:
+\[
+    \alpha = \frac{\mu m g r}{m K^2} = \frac{\mu g r}{K^2}
+\]
+
+\subsection{Part III}
+The linear deceleration  is constant, so we can just use SUVAT:
+\[
+    v = u + at
+\]
+\[
+    V_{CM}(t) = v_0 - \mu gt
+\]
+
+\subsection{Part IV}
+The angular acceleration $\alpha$ is also a constant. We can use the angular equivalent of SUVAT:
+\[
+    \omega = \omega_0 + \alpha t
+\]
+\[
+    \omega(t) = \omega_0 + \frac{\mu g r t}{K^2}
+\]
+
+And as it starts purely sliding $\omega_0 = 0$
+\[
+    \omega(t) = \frac{\mu g r t}{K^2}
+\]
+
+\subsection{Part V}
+Pure rolling defines the moment when the sliding stops and the motion is exclusively rotational. This has the condition that the frictional force totally counteracts sliding motion and hence $v_{CM}(t) = r \omega(t)$. Equating these:
+
+\[
+    v_0 - \mu g t = \frac{mu g r^2 t}{K^2}
+\]
+\[
+    t_\text{roll} \left(\frac{\mu g r^2}{K^2} + \mu g\right) = v_0
+\]
+\[
+    t_\text{roll} = \frac{v_0}{\mu g \left(1 + r^2/K^2\right)}
+\]
+as required!
+
+For a spherical object, this simplifies to:
+\[
+    \frac{7 v_0}{7 \mu g}
+\]
+
+
+\subsection{Part VI}
+When $t = t_\text{roll}$, we can use the time dependence of $v$:
+\[
+    v_\text{roll} = v_{CM}(t_\text{roll}) = v_0 - \mu g \left(\frac{2v_0}{7g \mu}\right)
+\]
+\[
+    = v_0 \left(1 - \frac{2}{7}\right)
+\]
+\[
+    v_\text{roll} = \frac{5}{9}v_0
+\]
+
+\section{Impulsive Forces and Torques (``Hitting Things'')}
+An impulse is a force that acts for a very short period. This causes a change in the translational velocity/momentum according to:
+\[
+    \frac{d \vec{p}}{dt} = \vec{F}
+\]
+\[
+    \Delta \vec{P} = \int \vec{F} dt = \vec{F} \Delta T
+\]
+
+For a body which can rotate, there's also an impulsive torque applied:
+\[
+    \frac{d \vec{L}}{dt} = \tau
+\]
+\[
+    \Delta \vec{L} = \int \vec{\tau} dt = | \vec{r} \times \vec{F}| \Delta t
+\]
+
+Broadly, we can break the impacts of an impulsive force on a rigid body to:
+\begin{itemize}
+    \item A change in CM translational velocity as $\Delta v_{CM}$ given from $\Delta p = m \Delta v$.
+    \item A change in angular velocity about the CM fby $\Delta \omega$ given by $\Delta L = I \Delta \omega$
+\end{itemize}
+
+There are some special ways to hit things with special cases of these changes, however. 
+
+\textbf{Force at CoM}
+
+Consider a rigid body of mass $M$ and an impulsive force $\vec{F}$ is applied at the centre of mass for short time $\Delta t$.
+
+\[
+    F = \frac{dp}{dt} \therefore \Delta p = F \Delta t 
+\]
+\[
+    m \Delta v = F \Delta t
+\]
+
+So the whole body picks up a new translational velocity:
+\[
+    \Delta v = \frac{F \Delta t}{m} \tag{1}
+\]
+In this case, there is no torque about the centre of mass ($r = 0$), so no induced rotation. The whole body sets off at the new velocity without rotating.
+
+\textbf{Force Below CoM}
+
+Now consider a force being applied below the object's CoM. Suppose it's applied at distance $b$ directly below the CoM.
+
+Just as done before, the whole body has an induced translational motion. This translational motion happens at the same $\Delta v$. 
+
+There is now however some torque applied about the CoM.
+
+\[
+    \vec{\tau} = \vec{r} \times \vec{F}
+\]
+\[
+    \tau = bF
+\]
+We also know that:
+\[
+    \tau = \frac{d \vec{L}}{dt} \implies \boxed{\Delta L = \tau \Delta t = bF \Delta t}
+\]
+Finally, $L = I_0 \omega$:
+\[
+    bF \Delta t = I_0 \Delta \omega \implies \boxed{\Delta \omega = \frac{b F \Delta t}{I_0}} \tag{2}
+\]
+
+What is the combined impact of this combined translational and rotational induced motion on some point \emph{above} the CoM? Suppose this point $A$, lies in line with the CoM vertically, at height $h$.
+
+This point receives induced velocity $\Delta v$ and some induced $\Delta \omega$ rotationally. For this point above, the rotation is in the opposite direction, causing the upper section to twist towards the induced force (and the lower section to be pushed away by the force).
+
+Hence at $A$, $\Delta v$ and $\Delta \omega$ act in opposite directions. For some specific choices of $a, h$, we can cause these to cancel at $A$.
+
+By $v = r \omega$, this gives the conditions:
+\[
+    \Delta v = h \Delta \omega
+\]
+\[
+    \frac{F \Delta t}{m} = h \frac{r b F \Delta t}{I_0}
+\]
+\[
+    \frac{1}{m} = h \frac{h b}{I_0}   
+\]
+
+This leaves a problem which is purely about the geometry of the shape and point and not the force:
+\[
+    b = \frac{I_0}{mh}
+\]
+
+What if point $A$ is no longer hypothetically free to move and is instead a pivot. In a bat or a racquet, this is the point at which the object is being held by the person.
+
+If this is true, and a force is applied at the lower point $B$, the hand feels no reaction force if:
+\[
+    b = \frac{I_0}{mh}
+\]
+This is called the centre of percussion or the sweet spot.
+
+\subsection{Uniform Rod, Pivot at One End}
+Consider our object is now a bat, modelled as a slender rod with a pivot at one end. The CoM sits at distance $h$ from the pivot and the CoP sits at $h + b$. The total length is $L = 2h$, assuming the bar is uniform.
+
+The total mass is $M$. As previously derived, the moment of inertia through its centre of mass is:
+\[
+    I_0 = \frac{ML^2}{12}
+\]
+
+Hence:
+\[
+    b = \frac{ML^2}{12 M h}
+\]
+\[
+    = \frac{2 ML^2}{12 M L}
+\]
+\[
+    = \frac{L}{6}
+\]
+
+Hence the CoP sits at $L/2 + L/6 = \frac{2L}{3}$ below the pivot.
+
+\subsection{Door Stop}
+We can place the a door stop at a length $2L/3$ away from the hinges to minimise (theoretically eliminate) the force felt by the pivot (the hinges). This minimises the force felt by the hinges and gives the smoothest possible effect.
+
+\section{Rigid Penduli}
+he centre of percussion equivalently defines the Centre of Oscillation. This means that if we have a complex object acting as a pendulum, the period of oscillation will be equal to the period of oscillation of a simple pendulum with a point mass at the CoP.
+
+
+
+
+
